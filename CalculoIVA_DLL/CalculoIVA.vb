@@ -2,9 +2,9 @@
 
     Private total As Double
     Private Enum tipoIVAEnum
-        general = 0.21
-        reducido = 0.1
-        productos_basicos = 0.05
+        general = 21
+        reducido = 10
+        productos_basicos = 5
     End Enum
 
     Private tipoIVA As tipoIVAEnum
@@ -25,7 +25,7 @@
         ElseIf (tipoIVAEnum.productos_basicos = tipo) Then
             tipoIVA = tipoIVAEnum.productos_basicos
         End If
-        precioBase = totalPrecio / (1 + tipoIVA)
+        precioBase = totalPrecio / (100 + tipoIVA)
         Return precioBase
     End Function
 
