@@ -18,15 +18,21 @@
 
 
     Public Function TotalSinIVA(totalPrecio As Double, tipo As String) As Double
-        If (tipoIVAEnum.general = tipo) Then
+        Dim tipoIVA As tipoIVAEnum
+
+        If (tipo = "general") Then
             tipoIVA = tipoIVAEnum.general
-        ElseIf (tipoIVAEnum.reducido = tipo) Then
+        ElseIf (tipo = "reducido") Then
             tipoIVA = tipoIVAEnum.reducido
-        ElseIf (tipoIVAEnum.productos_basicos = tipo) Then
+
+        ElseIf (tipo = "productos basicos") Then
             tipoIVA = tipoIVAEnum.productos_basicos
         End If
-        precioBase = totalPrecio / (100 + tipoIVA)
-        Return precioBase
+        precioBase = (totalPrecio / (100 + CInt(tipoIVA))) * 100
+
+
+
+        Return Math.Round(precioBase, 2)
     End Function
 
     Public Function CalcularIVA(totalPrecio As Double, tipo As String) As Double
