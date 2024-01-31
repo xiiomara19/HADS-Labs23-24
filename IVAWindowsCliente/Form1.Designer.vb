@@ -39,66 +39,69 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(106, 66)
+        Me.Label1.Location = New System.Drawing.Point(119, 82)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(162, 17)
+        Me.Label1.Size = New System.Drawing.Size(180, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Cantidad a pagar (total):"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(106, 124)
+        Me.Label2.Location = New System.Drawing.Point(119, 155)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 17)
+        Me.Label2.Size = New System.Drawing.Size(74, 20)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Tipo IVA:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(106, 260)
+        Me.Label3.Location = New System.Drawing.Point(119, 325)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(91, 17)
+        Me.Label3.Size = New System.Drawing.Size(103, 20)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Total sin IVA:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(106, 316)
+        Me.Label4.Location = New System.Drawing.Point(119, 395)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(33, 17)
+        Me.Label4.Size = New System.Drawing.Size(40, 20)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "IVA:"
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(313, 66)
+        Me.TextBox1.Location = New System.Drawing.Point(352, 82)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(146, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(164, 26)
         Me.TextBox1.TabIndex = 4
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(313, 255)
+        Me.TextBox2.Location = New System.Drawing.Point(352, 319)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(146, 22)
+        Me.TextBox2.Size = New System.Drawing.Size(164, 26)
         Me.TextBox2.TabIndex = 5
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(313, 313)
+        Me.TextBox3.Location = New System.Drawing.Point(352, 391)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(146, 22)
+        Me.TextBox3.Size = New System.Drawing.Size(164, 26)
         Me.TextBox3.TabIndex = 6
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(480, 70)
+        Me.Label5.Location = New System.Drawing.Point(540, 88)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(16, 17)
+        Me.Label5.Size = New System.Drawing.Size(18, 20)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "€"
         '
@@ -106,16 +109,18 @@ Partial Class Form1
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"general", "reducido", "productos basicos"})
-        Me.ComboBox1.Location = New System.Drawing.Point(313, 124)
+        Me.ComboBox1.Location = New System.Drawing.Point(352, 155)
+        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(146, 24)
+        Me.ComboBox1.Size = New System.Drawing.Size(164, 28)
         Me.ComboBox1.TabIndex = 8
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(220, 192)
+        Me.Button1.Location = New System.Drawing.Point(248, 240)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(109, 38)
+        Me.Button1.Size = New System.Drawing.Size(123, 48)
         Me.Button1.TabIndex = 9
         Me.Button1.Text = "Calcular"
         Me.Button1.UseVisualStyleBackColor = True
@@ -123,26 +128,26 @@ Partial Class Form1
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(483, 260)
+        Me.Label6.Location = New System.Drawing.Point(543, 325)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(16, 17)
+        Me.Label6.Size = New System.Drawing.Size(18, 20)
         Me.Label6.TabIndex = 10
         Me.Label6.Text = "€"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(486, 315)
+        Me.Label7.Location = New System.Drawing.Point(547, 394)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(16, 17)
+        Me.Label7.Size = New System.Drawing.Size(18, 20)
         Me.Label7.TabIndex = 11
         Me.Label7.Text = "€"
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(900, 562)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button1)
@@ -155,6 +160,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)

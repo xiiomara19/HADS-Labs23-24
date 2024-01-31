@@ -10,4 +10,8 @@
         TextBox3.Text = c.CalcularIVA(CDbl(TextBox1.Text), ComboBox1.SelectedItem)
 
     End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
