@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{995DCD34-E1A9-43B6-B743-F31503D91F70}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>IVAConsola.Module1</StartupObject>
+    <StartupObject>IVAConsola.Principal</StartupObject>
     <RootNamespace>IVAConsola</RootNamespace>
     <AssemblyName>IVAConsola</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -72,7 +72,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Module1.vb" />
+    <Compile Include="Principal.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
