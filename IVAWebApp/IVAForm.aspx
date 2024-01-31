@@ -27,13 +27,14 @@
         <p>
             Elija el tipo de IVA aplicado:</p>
         <asp:DropDownList ID="tipoIVAList" runat="server">
-            <asp:ListItem Selected="True" Value="general">General</asp:ListItem>
-            <asp:ListItem Value="reducido">Reducido</asp:ListItem>
-            <asp:ListItem Value="productos basicos">Productos básicos</asp:ListItem>
+            <asp:ListItem Selected="True" Value="21">General</asp:ListItem>
+            <asp:ListItem Value="10">Reducido</asp:ListItem>
+            <asp:ListItem Value="5">Productos básicos</asp:ListItem>
         </asp:DropDownList>
         <br />
         <br />
         <asp:Button ID="CalcularBtn" runat="server" Text="Calcular" />
+        <asp:Label ID="ErrorLbl" runat="server"></asp:Label>
         <br />
         <br />
         Precio base:<br />
