@@ -44,6 +44,12 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CalculoIVA_DLL">
+      <HintPath>..\CalculoIVA_DLL\bin\Debug\CalculoIVA_DLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaDeDatos">
+      <HintPath>..\CapaDeDatos\bin\Debug\CapaDeDatos.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
