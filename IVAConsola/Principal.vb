@@ -1,4 +1,4 @@
-﻿Module Module1
+﻿Module Principal
 
     Sub Main()
         Dim c As New CalculoIVA_DLL.CalculoIVA
