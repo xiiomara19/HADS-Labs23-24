@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="IVAForm.aspx.vb" Inherits="IVAWebApp.IVAForm" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="IVAPagina.aspx.vb" Inherits="IVAWebApp.IVAForm" %>
 
 <!DOCTYPE html>
 <script runat="server">
