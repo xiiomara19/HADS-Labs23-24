@@ -1,10 +1,8 @@
 ﻿Module Principal
 
     Sub Main()
-        Dim c As New CalculoIVA_DLL.CalculoIVA
-
-        Console.WriteLine("Cantidad a pagar(total): ")
         Try
+            Console.WriteLine("Cantidad a pagar(total): ")
             Dim total As Double = Console.ReadLine
 
             Console.WriteLine("Escoga un tipo de IVA:
@@ -25,25 +23,23 @@
                 End If
             End While
 
-            Dim precioBase As Double
-            Dim IVA As Double
+            Dim pTotalIVA As Byte
 
             If (tipoIVA = 2) Then
                 Console.WriteLine("Tipo IVA: reducido")
-                precioBase = c.TotalSinIVA(total, "reducido")
-                IVA = c.CalcularIVA(total, "reducido")
+                pTotalIVA = 10
             ElseIf (tipoIVA = 3) Then
                 Console.WriteLine("Tipo IVA: de productos básicos")
-                precioBase = c.TotalSinIVA(total, "productos basicos")
-                IVA = c.CalcularIVA(total, "productos basicos")
+                pTotalIVA = 5
             Else
                 Console.WriteLine("Tipo IVA: general")
-                precioBase = c.TotalSinIVA(total, "general")
-                IVA = c.CalcularIVA(total, "general")
+                pTotalIVA = 21
             End If
 
-            Console.WriteLine("Total sin IVA: {0}", precioBase)
-            Console.WriteLine("IVA: {0}", IVA)
+            Dim c As New CalculoIVA_DLL.CalculoIVA(total, pTotalIVA)
+
+            Console.WriteLine("Total sin IVA: {0}", c.TotalSinIVA())
+            Console.WriteLine("IVA: {0}", c.CalcularIVA())
         Catch ex As Exception
             Console.WriteLine("Debe insertar un valor numérico.")
         End Try
