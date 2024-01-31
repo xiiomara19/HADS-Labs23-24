@@ -14,7 +14,7 @@
         Catch ex As Exception
             PrecioBaseTxtBox.Text = ""
             IVAAplicadoTxtBox.Text = ""
-            ErrorLbl.Text = "Se debe introducir una cantidad."
+            ErrorLbl.Text = "Se debe introducir un valor numérico."
         End Try
 
 
