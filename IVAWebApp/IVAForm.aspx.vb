@@ -6,13 +6,15 @@
     End Sub
 
     Protected Sub CalcularBtn_Click(sender As Object, e As EventArgs) Handles CalcularBtn.Click
-
+        ErrorLbl.Text = ""
         Try
             Dim c As New CalculoIVA_DLL.CalculoIVA(TotalInput.Value, tipoIVAList.SelectedValue)
             PrecioBaseTxtBox.Text = c.TotalSinIVA
             IVAAplicadoTxtBox.Text = c.CalcularIVA
         Catch ex As Exception
-            ErrorLbl.Text = "Algo ha ido mal"
+            PrecioBaseTxtBox.Text = ""
+            IVAAplicadoTxtBox.Text = ""
+            ErrorLbl.Text = "Se debe introducir una cantidad."
         End Try
 
 

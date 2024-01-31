@@ -23,7 +23,8 @@
     <form id="form1" runat="server">
         Introduzca la cantidad total:
         <p>
-            <input id="TotalInput" type="text" runat="server"/></p>
+            <input id="TotalInput" type="text" runat="server"/><asp:Label ID="ErrorLbl" runat="server" ForeColor="Red"></asp:Label>
+        </p>
         <p>
             Elija el tipo de IVA aplicado:</p>
         <asp:DropDownList ID="tipoIVAList" runat="server">
@@ -34,7 +35,6 @@
         <br />
         <br />
         <asp:Button ID="CalcularBtn" runat="server" Text="Calcular" />
-        <asp:Label ID="ErrorLbl" runat="server"></asp:Label>
         <br />
         <br />
         Precio base:<br />

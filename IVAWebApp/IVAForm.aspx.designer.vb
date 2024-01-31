@@ -32,6 +32,15 @@ Partial Public Class IVAForm
     Protected WithEvents TotalInput As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''Control ErrorLbl.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ErrorLbl As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control tipoIVAList.
     '''</summary>
     '''<remarks>
@@ -48,15 +57,6 @@ Partial Public Class IVAForm
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents CalcularBtn As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control ErrorLbl.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ErrorLbl As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control PrecioBaseTxtBox.
