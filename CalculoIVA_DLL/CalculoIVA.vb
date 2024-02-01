@@ -9,7 +9,6 @@
         TipoIVA = pTotalIVA
     End Sub
 
-
     Public Function TotalSinIVA() As Double
         Return Math.Round((TotalAPagar / (100 + CInt(TipoIVA))) * 100, 2)
     End Function
