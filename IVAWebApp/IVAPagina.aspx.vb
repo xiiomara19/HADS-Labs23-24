@@ -9,8 +9,8 @@
         ErrorLbl.Text = ""
         Try
             Dim c As New CalculoIVA_DLL.CalculoIVA(TotalInput.Value, tipoIVAList.SelectedValue)
-            PrecioBaseTxtBox.Text = c.TotalSinIVA
-            IVAAplicadoTxtBox.Text = c.CalcularIVA
+            PrecioBaseTxtBox.Text = c.TotalSinIVA()
+            IVAAplicadoTxtBox.Text = c.IVA()
         Catch ex As Exception
             PrecioBaseTxtBox.Text = ""
             IVAAplicadoTxtBox.Text = ""

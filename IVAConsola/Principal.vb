@@ -48,7 +48,7 @@
             Dim c As New CalculoIVA_DLL.CalculoIVA(total, pTotalIVA)
 
             Console.WriteLine("Total sin IVA: {0}", c.TotalSinIVA())
-            Console.WriteLine("IVA: {0}", c.CalcularIVA())
+            Console.WriteLine("IVA: {0}", c.IVA())
         Catch ex As Exception
             Console.WriteLine("Debe insertar un valor numérico positivo.")
         End Try

@@ -14,7 +14,7 @@
         Return Math.Round((TotalAPagar / (100 + CInt(TipoIVA))) * 100, 2)
     End Function
 
-    Public Function CalcularIVA() As Double
+    Public Function IVA() As Double
         Return TotalAPagar - TotalSinIVA()
     End Function
 

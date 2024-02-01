@@ -15,7 +15,7 @@
         Dim c As New CalculoIVA_DLL.CalculoIVA(CDbl(TextBox1.Text), pTotalIVA)
 
         TextBox2.Text = c.TotalSinIVA()
-        TextBox3.Text = c.CalcularIVA()
+        TextBox3.Text = c.IVA()
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

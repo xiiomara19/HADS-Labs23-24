@@ -1,7 +1,10 @@
 ﻿Public Class GeneradorDeDatos
 
-    Private Shared ImportesFacturasYTiposIVA As Double(,) =
-        {{2500, 10}, {3150.55, 21}, {25000, 21}, {315.35, 4}}
+    Private Shared ImportesFacturasYTiposIVA As Double(,)
+
+    Private Sub New()
+        ImportesFacturasYTiposIVA = {{2500, 10}, {3150.55, 21}, {25000, 21}, {315.35, 4}}
+    End Sub
 
     Public Shared Function ObtenerTotalFactura(numeroFactura As Integer) As Double
         If numeroFactura > 0 AndAlso numeroFactura <= ImportesFacturasYTiposIVA.GetLength(0) Then
