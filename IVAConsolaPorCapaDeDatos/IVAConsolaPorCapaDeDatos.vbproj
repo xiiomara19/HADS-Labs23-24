@@ -48,8 +48,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculoIvaPorCapaDeDatos_DLL">
-      <HintPath>..\..\..\..\OneDrive\Documentos\3.ING INFOR\2.cuatri\Herramientas Avanzadas de Desarrollo de Software\GitHubHADS\net01_caceres_fernandez_paslavska\SCalculoIVA\CalculoIvaPorCapaDeDatos_DLL\bin\Debug\CalculoIvaPorCapaDeDatos_DLL.dll</HintPath>
+    <Reference Include="CalculoIvaPorCapaDeDatos_DLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CalculoIvaPorCapaDeDatos_DLL\bin\Debug\CalculoIvaPorCapaDeDatos_DLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

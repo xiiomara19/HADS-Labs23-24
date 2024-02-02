@@ -1,9 +1,8 @@
 ﻿Public Class GeneradorDeDatos
 
-    Private Shared ImportesFacturasYTiposIVA As Double(,)
+    Private Shared ImportesFacturasYTiposIVA As Double(,) = {{2500, 10}, {3150.55, 21}, {25000, 21}, {315.35, 4}}
 
     Private Sub New()
-        ImportesFacturasYTiposIVA = {{2500, 10}, {3150.55, 21}, {25000, 21}, {315.35, 4}}
     End Sub
 
     Public Shared Function ObtenerTotalFactura(numeroFactura As Integer) As Double
@@ -14,7 +13,6 @@
             Throw New ArgumentException("Número de factura no válido")
         End If
     End Function
-
 
     Public Shared Function ObtenerTipoIVA(numeroFactura As Integer) As Integer
         If numeroFactura > 0 AndAlso numeroFactura <= ImportesFacturasYTiposIVA.GetLength(0) Then
