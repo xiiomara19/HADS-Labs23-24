@@ -5,11 +5,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{920820F7-4287-4F83-82B5-395D14B1FE94}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>CalculoIvaPorCapaDeDatos_DLL</RootNamespace>
     <AssemblyName>CalculoIvaPorCapaDeDatos_DLL</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -43,15 +43,21 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CalculoIVA_DLL">
-      <HintPath>..\CalculoIVA_DLL\bin\Debug\CalculoIVA_DLL.dll</HintPath>
+      <HintPath>..\CalculoIVA_DLL\obj\Debug\CalculoIVA_DLL.dll</HintPath>
     </Reference>
     <Reference Include="CapaDeDatos">
-      <HintPath>..\CapaDeDatos\bin\Debug\CapaDeDatos.dll</HintPath>
+      <HintPath>..\CapaDeDatos\obj\Debug\CapaDeDatos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -75,6 +81,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
