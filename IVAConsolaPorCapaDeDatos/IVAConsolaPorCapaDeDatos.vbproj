@@ -48,10 +48,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculoIvaPorCapaDeDatos_DLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CalculoIvaPorCapaDeDatos_DLL\bin\Debug\CalculoIvaPorCapaDeDatos_DLL.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -111,13 +107,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalculoIVA_DLL\CalculoIVA_DLL.vbproj">
-      <Project>{e05c54b9-dae2-4113-8ac7-d5e62220dbab}</Project>
-      <Name>CalculoIVA_DLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.vbproj">
-      <Project>{d5d9acb3-4434-4bff-9594-63a69423a352}</Project>
-      <Name>CapaDeDatos</Name>
+    <ProjectReference Include="..\CalculoIvaPorCapaDeDatos_DLL\CalculoIvaPorCapaDeDatos_DLL.vbproj">
+      <Project>{920820f7-4287-4f83-82b5-395d14b1fe94}</Project>
+      <Name>CalculoIvaPorCapaDeDatos_DLL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
