@@ -47,12 +47,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculoIVA_DLL">
-      <HintPath>..\CalculoIVA_DLL\obj\Debug\CalculoIVA_DLL.dll</HintPath>
-    </Reference>
-    <Reference Include="CapaDeDatos">
-      <HintPath>..\CapaDeDatos\obj\Debug\CapaDeDatos.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -112,6 +106,16 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalculoIVA_DLL\CalculoIVA_DLL.vbproj">
+      <Project>{e05c54b9-dae2-4113-8ac7-d5e62220dbab}</Project>
+      <Name>CalculoIVA_DLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.vbproj">
+      <Project>{d5d9acb3-4434-4bff-9594-63a69423a352}</Project>
+      <Name>CapaDeDatos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
