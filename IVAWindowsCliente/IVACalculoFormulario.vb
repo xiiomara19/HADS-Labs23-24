@@ -1,7 +1,6 @@
 ﻿Public Class IVACalculoFormulario
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-
         Dim pTotalIVA As Byte
         Dim selectedValue As String = ComboBox1.SelectedItem.ToString()
 
@@ -19,6 +18,6 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        ComboBox1.SelectedIndex = 0
     End Sub
 End Class
