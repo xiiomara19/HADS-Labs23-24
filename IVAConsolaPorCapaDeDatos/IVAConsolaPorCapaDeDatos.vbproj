@@ -109,5 +109,11 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalculoIVA_DLL\CalculoIVA_DLL.vbproj">
+      <Project>{e05c54b9-dae2-4113-8ac7-d5e62220dbab}</Project>
+      <Name>CalculoIVA_DLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
