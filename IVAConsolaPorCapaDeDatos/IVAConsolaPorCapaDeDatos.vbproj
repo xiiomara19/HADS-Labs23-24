@@ -115,6 +115,10 @@
       <Project>{e05c54b9-dae2-4113-8ac7-d5e62220dbab}</Project>
       <Name>CalculoIVA_DLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.vbproj">
+      <Project>{d5d9acb3-4434-4bff-9594-63a69423a352}</Project>
+      <Name>CapaDeDatos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
