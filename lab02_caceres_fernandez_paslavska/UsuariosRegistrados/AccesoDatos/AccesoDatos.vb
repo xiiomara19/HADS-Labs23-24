@@ -33,7 +33,7 @@ Public Class AccesoDatos
             numregs = SqlComando.ExecuteNonQuery()
         Catch ex As Exception
             Console.WriteLine(ex.Message)
-            'Return ex.Message
+            Return 1
         End Try
         Return numregs
     End Function
@@ -41,19 +41,33 @@ Public Class AccesoDatos
     Public Shared Function ObtenerUsuarios(email As String) As SqlDataReader
         Dim sql = "SELECT * FROM Erabiltzaileak WHERE email= '" & email & "'"
         SqlComando = New SqlCommand(sql, BDConexion)
-        Try
-
-        Catch ex As Exception
-
-        End Try
+        Return SqlComando.ExecuteReader()
     End Function
 
     Public Shared Function ComprobarUsuario(email As String) As Integer
-
+        Dim sql = "UPDATE Erabiltzaileak SET egiaztatua=true where email='" & email & "' "
+        SqlComando = New SqlCommand(sql, BDConexion)
+        Dim numregs As Integer
+        Try
+            numregs = SqlComando.ExecuteScalar()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+            Return 1
+        End Try
+        Return numregs
     End Function
 
     Public Shared Function ModificarConstraseñaUsuario(email As String, nuevaContra As String) As Integer
-
+        Dim sql = "UPDATE Erabiltzaileak SET ´pasahitza='" & nuevaContra & "'WHERE email='" & email & "'"
+        SqlComando = New SqlCommand(sql, BDConexion)
+        Dim numregs As Integer
+        Try
+            numregs = SqlComando.ExecuteNonQuery()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+            Return 1
+        End Try
+        Return numregs
     End Function
 
 
