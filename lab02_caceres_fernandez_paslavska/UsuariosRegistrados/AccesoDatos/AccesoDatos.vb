@@ -3,9 +3,18 @@
 Public Class AccesoDatos
     Private Shared BDConexion As SqlConnection
     Private Shared SqlComando As SqlCommand
+    Private Shared instancia As AccesoDatos
     Private Sub New()
 
     End Sub
+
+    Public Shared Function getInstancia()
+        If IsNothing(instancia) Then
+            instancia = New AccesoDatos()
+        End If
+        Return instancia
+    End Function
+
 
     Public Shared Function Conectar()
         Dim strconHADS_DB_Erabiltzaileak As String =
