@@ -16,7 +16,7 @@ Public Class AccesoDatos
     End Function
 
 
-    Public Shared Function Conectar()
+    Public Shared Sub Conectar()
         Dim strconHADS_DB_Erabiltzaileak As String =
             "Server=tcp:hads2324.database.windows.net,1433;Initial Catalog=usuariosBD;Persist Security 
             Info=False;User ID=efernandez200@ikasle.ehu.eus@hads2324;Password=hads-2324;
@@ -28,11 +28,11 @@ Public Class AccesoDatos
         Catch ex As Exception
             Throw New ErrorConexion()
         End Try
-    End Function
+    End Sub
 
-    Public Shared Function CerrarConexion()
+    Public Shared Sub CerrarConexion()
         BDConexion.Close()
-    End Function
+    End Sub
 
     Public Shared Function IncluirUsuario(email As String, nombre As String, apellido As String, preguntaOculta As String, respuesta As String, na As Integer, numeroVerificacion As Integer, verificado As Boolean, codigoGrupo As String, codigoSubGrupo As String, tipoUsuario As String, contraseña As String) As Integer
         Dim sql As String = "INSERT INTO Erabiltzaileak VALUES('" & email & "', '" & nombre & "', '" & apellido & "', '" & preguntaOculta & "', '" & respuesta & "', '" & na & "', '" & numeroVerificacion & "', '" & verificado & "', '" & codigoGrupo & "', '" & codigoSubGrupo & "', '" & tipoUsuario & "', '" & contraseña & "')"
