@@ -11,7 +11,7 @@ Module PruebaAccesoDatos
             Console.WriteLine("Conexión a la BD realizada con éxito.")
             'da.IncluirUsuario("d@gmail.com", "Daria", "Paslavska", "Que tal?", "Bien", 22, 22, True, 33, 32, "Alumno", 1111)
             Dim usuario As SqlClient.SqlDataReader = da.ObtenerUsuarios("eider@gmail.com")
-            usuario.Read()
+            Console.WriteLine(usuario.Read())
             Console.WriteLine(usuario.GetString(1))
             Console.WriteLine("Cerrando conexión con la BD...")
             da.CerrarConexion()

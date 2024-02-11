@@ -16,14 +16,16 @@
             <asp:Label ID="Label1" runat="server" Text="E-mail:"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="TextBox1" runat="server" Height="30px" Width="164px"></asp:TextBox>
+            <asp:TextBox ID="emailField" runat="server" Height="30px" Width="164px"></asp:TextBox>
+            <asp:Label ID="errEmail" runat="server"></asp:Label>
         </p>
         <p>
             &nbsp;</p>
         <p>
             <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label>
         </p>
-        <asp:TextBox ID="TextBox2" runat="server" Height="33px" Width="160px"></asp:TextBox>
+        <asp:TextBox ID="PassField" runat="server" Height="33px" Width="160px"></asp:TextBox>
+        <asp:Label ID="errPass" runat="server"></asp:Label>
         <p>
             &nbsp;</p>
         <p>
@@ -33,6 +35,9 @@
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Register.aspx">Quiero registrarme</asp:HyperLink>
         </p>
         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Recuperar.aspx">Recuperar contraseña</asp:HyperLink>
+        <p>
+            <asp:Label ID="Message" runat="server"></asp:Label>
+        </p>
     </form>
 </body>
 </html>

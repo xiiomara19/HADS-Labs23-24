@@ -32,13 +32,22 @@ Partial Public Class WebForm1
     Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''TextBox1 control.
+    '''emailField control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents emailField As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''errEmail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents errEmail As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Label2 control.
@@ -50,13 +59,22 @@ Partial Public Class WebForm1
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''TextBox2 control.
+    '''PassField control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents PassField As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''errPass control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents errPass As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Button1 control.
@@ -84,4 +102,13 @@ Partial Public Class WebForm1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
+
+    '''<summary>
+    '''Message control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Message As Global.System.Web.UI.WebControls.Label
 End Class
