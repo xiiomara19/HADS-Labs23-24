@@ -11,8 +11,7 @@
     Dim Tquestion As String
     Dim Tanswer As String
     Dim Tna As Integer
-    Dim TnumVerificacion As Integer
-    Dim Tverificado As Boolean
+    Dim TnumVerificacion As Long
     Dim Tgroup As String
     Dim TsubGroup As String
     Dim Tpass As String
@@ -45,6 +44,8 @@
                 Trol = TeacherRBtn.Text
             End If
             Tna = 0
+            Randomize()
+            TnumVerificacion = CLng(Rnd() * 123456) + 1000000
 
             registrarUsuario()
         End If
@@ -67,17 +68,13 @@
     End Sub
 
     Protected Sub registrarUsuario()
-        TnumVerificacion = 1
-        Tverificado = True
         Try
             da.Conectar()
-            errConexionLbl.Text = da.IncluirUsuario(Temail, TName, TlastName, Tquestion, Tanswer, Tna, TnumVerificacion, Tverificado, Tgroup, TsubGroup, Trol, Tpass)
+            errConexionLbl.Text = da.IncluirUsuario(Temail, TName, TlastName, Tquestion, Tanswer, Tna, TnumVerificacion, vbNull, Tgroup, TsubGroup, Trol, Tpass)
             da.CerrarConexion()
         Catch ex As Exception
             errConexionLbl.Text = ex.Message
         End Try
-
-
     End Sub
 
     Protected Sub reiniciarErrores()
