@@ -9,7 +9,7 @@ Module PruebaAccesoDatos
             Console.WriteLine("Conectando a la BD...")
             da.Conectar()
             Console.WriteLine("Conexión a la BD realizada con éxito.")
-            da.IncluirUsuario("prueba@gmail.com", "prueba", "test", "Que tal?", "Bien", 22, 22, True, 33, 32, "Alumno", 1111)
+            da.IncluirUsuario("pra@gmail.com", "prueba", "test", "Que tal?", "Bien", 22, 22, True, 33, 32, "Alumno", 1111)
             Dim usuario As SqlClient.SqlDataReader = da.ObtenerUsuarios("prueba@gmail.com")
             Console.WriteLine(usuario.Read())
             Console.WriteLine(usuario.GetString(1))
