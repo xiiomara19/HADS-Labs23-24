@@ -43,7 +43,7 @@ Public Class AccesoDatos
             numregs = SqlComando.ExecuteNonQuery()
         Catch ex As Exception
             Console.WriteLine(ex.Message)
-            Return 1
+            Return -1
         End Try
         Return numregs
     End Function
@@ -62,7 +62,7 @@ Public Class AccesoDatos
             numregs = SqlComando.ExecuteScalar()
         Catch ex As Exception
             Console.WriteLine(ex.Message)
-            Return 1
+            Return -1
         End Try
         Return numregs
     End Function
@@ -75,7 +75,7 @@ Public Class AccesoDatos
             numregs = SqlComando.ExecuteNonQuery()
         Catch ex As Exception
             Console.WriteLine(ex.Message)
-            Return 1
+            Return -1
         End Try
         Return numregs
     End Function
