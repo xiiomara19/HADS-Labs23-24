@@ -55,24 +55,7 @@ Public Class AccesoDatos
     End Function
 
     Public Shared Function ComprobarUsuario(email As String) As Integer
-<<<<<<< HEAD
         Dim sql = "UPDATE Erabiltzaileak SET egiaztatua=1 WHERE email='" & email & "'"
-=======
-        Dim sql = "UPDATE Erabiltzaileak SET egiaztatua=true where email='" & email & "' "
-        SqlComando = New SqlCommand(sql, BDConexion)
-        Dim numregs As Integer
-        Try
-            numregs = SqlComando.ExecuteScalar()
-        Catch ex As Exception
-            Console.WriteLine(ex.Message)
-            Return -1
-        End Try
-        Return numregs
-    End Function
-
-    Public Shared Function ModificarContraseñaUsuario(email As String, nuevaContra As String) As Integer
-        Dim sql = "UPDATE Erabiltzaileak SET pasahitza='" & nuevaContra & "'WHERE email='" & email & "'"
->>>>>>> 8e0d37aef8665d60d9d8534b438e16e8b44709b5
         SqlComando = New SqlCommand(sql, BDConexion)
         Dim numregs As Integer
         Try
