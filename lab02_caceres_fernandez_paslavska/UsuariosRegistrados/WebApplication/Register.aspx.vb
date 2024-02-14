@@ -48,6 +48,8 @@
             TnumVerificacion = CLng(Rnd() * 123456) + 1000000
 
             registrarUsuario()
+
+            Response.Redirect("~/verificar.aspx" & "?erab=" & Temail & "&egZenb=" & TnumVerificacion)
         End If
     End Sub
 
@@ -70,7 +72,7 @@
     Protected Sub registrarUsuario()
         Try
             da.Conectar()
-            errConexionLbl.Text = da.IncluirUsuario(Temail, TName, TlastName, Tquestion, Tanswer, Tna, TnumVerificacion, vbNull, Tgroup, TsubGroup, Trol, Tpass)
+            da.IncluirUsuario(Temail, TName, TlastName, Tquestion, Tanswer, Tna, TnumVerificacion, CBool("False"), Tgroup, TsubGroup, Trol, Tpass)
             da.CerrarConexion()
         Catch ex As Exception
             errConexionLbl.Text = ex.Message
