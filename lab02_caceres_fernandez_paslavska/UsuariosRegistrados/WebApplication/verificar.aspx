@@ -10,7 +10,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            VERIFICAR USUARIO</div>
+            VERIFICAR USUARIO<br />
+            <br />
+            Pulsa el botón &#39;Confirmar&#39; para confirmar el registro<br />
+        </div>
+        <asp:Button ID="ConfirmarBtn" runat="server" Text="Confirmar" />
+        <p>
+            <asp:Label ID="errVerificaciónLbl" runat="server" ForeColor="Red"></asp:Label>
+        </p>
     </form>
 </body>
 </html>

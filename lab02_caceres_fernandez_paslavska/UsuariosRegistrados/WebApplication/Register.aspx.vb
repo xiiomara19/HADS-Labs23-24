@@ -71,9 +71,9 @@
 
     Protected Sub registrarUsuario()
         Try
-            da.Conectar()
-            da.IncluirUsuario(Temail, TName, TlastName, Tquestion, Tanswer, Tna, TnumVerificacion, CBool("False"), Tgroup, TsubGroup, Trol, Tpass)
-            da.CerrarConexion()
+            AccesoDatos.AccesoDatos.getInstancia().Conectar()
+            AccesoDatos.AccesoDatos.getInstancia().IncluirUsuario(Temail, TName, TlastName, Tquestion, Tanswer, Tna, TnumVerificacion, CBool("False"), Tgroup, TsubGroup, Trol, Tpass)
+            AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
         Catch ex As Exception
             errConexionLbl.Text = ex.Message
         End Try
