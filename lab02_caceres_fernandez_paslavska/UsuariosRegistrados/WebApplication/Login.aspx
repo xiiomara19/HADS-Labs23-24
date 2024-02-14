@@ -34,7 +34,7 @@
         <p>
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Register.aspx">Quiero registrarme</asp:HyperLink>
         </p>
-        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Recuperar.aspx">Recuperar contraseña</asp:HyperLink>
+        <asp:HyperLink ID="recuperarLink" runat="server" NavigateUrl="~/Recuperar.aspx">Recuperar contraseña</asp:HyperLink>
         <p>
             <asp:Label ID="Message" runat="server"></asp:Label>
         </p>
