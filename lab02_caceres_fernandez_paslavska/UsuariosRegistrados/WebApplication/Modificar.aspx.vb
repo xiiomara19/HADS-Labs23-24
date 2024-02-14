@@ -50,8 +50,9 @@ Public Class WebForm4
 
         Else
             cambiarContraseña()
-            'Response.Redirect("Menu.aspx")
+            Button1.Enabled = False
         End If
+
     End Sub
 
     Private Sub obtenerContraseña()
@@ -69,10 +70,30 @@ Public Class WebForm4
         Dim numregs As Integer = da.ModificarContraseñaUsuario(email, PswdField1.Text)
         If numregs < 0 Then
             errPswd.Text = "No se ha podido cambiar la contraseña."
+            errPswdAntg.Text = ""
+            errPswdNuevo1.Text = ""
+            errPswdNuevo2.Text = ""
+            correctMsj.Text = ""
         Else
+            errPswdAntg.Text = ""
+            errPswdNuevo1.Text = ""
+            errPswdNuevo2.Text = ""
+            errPswd.Text = ""
             correctMsj.Text = "Se ha actualizado la contraseña correctamente."
         End If
         da.CerrarConexion()
     End Sub
 
+    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        errPswdAntg.Text = ""
+        errPswdNuevo1.Text = ""
+        errPswdNuevo2.Text = ""
+        errPswd.Text = ""
+        correctMsj.Text = ""
+        PassField.Text = ""
+        PswdField1.Text = ""
+        PswdField2.Text = ""
+        Response.Redirect("Menu.aspx")
+    End Sub
 End Class
