@@ -13,17 +13,21 @@
             <br />
         </div>
         <asp:Label ID="Label1" runat="server" Text="Contraseña"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="PassField" runat="server"></asp:TextBox>
+            <asp:Label ID="errPswdAntg" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         <p>
             <asp:Label ID="Label3" runat="server" Text="Nueva contraseña"></asp:Label>
-            <asp:TextBox ID="TextBox2" runat="server" style="margin-bottom: 0px"></asp:TextBox>
+            <asp:TextBox ID="PswdField1" runat="server" style="margin-bottom: 0px"></asp:TextBox>
+            <asp:Label ID="errPswdNuevo1" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <asp:Label ID="Label4" runat="server" Text="Repite nueva contraseña"></asp:Label>
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        <asp:TextBox ID="PswdField2" runat="server"></asp:TextBox>
+            <asp:Label ID="errPswdNuevo2" runat="server" ForeColor="Red"></asp:Label>
         <p>
-            &nbsp;</p>
+            <asp:Label ID="errPswd" runat="server" ForeColor="Red"></asp:Label>
+        </p>
         <asp:Button ID="Button1" runat="server" Height="38px" Text="Volver" Width="110px" />
     </form>
 </body>
