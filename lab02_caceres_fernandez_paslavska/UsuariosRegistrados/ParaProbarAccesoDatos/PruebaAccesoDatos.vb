@@ -15,6 +15,7 @@ Module PruebaAccesoDatos
             Console.WriteLine(usuario.GetString(1))
             Console.WriteLine("Cerrando conexión con la BD...")
             da.CerrarConexion()
+            usuario.Close()
             Console.WriteLine("Conexión con la BD cerrada.")
         Catch ex As Exception
             Console.WriteLine(ex.Message)

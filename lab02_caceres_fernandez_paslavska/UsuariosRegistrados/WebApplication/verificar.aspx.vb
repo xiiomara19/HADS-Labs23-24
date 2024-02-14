@@ -28,12 +28,15 @@ Public Class verificar
     Protected Function verificarUsuario() As Integer
         Dim verificado As Integer = -1
         Try
-            AccesoDatos.AccesoDatos.getInstancia().Conectar()
-            Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().verificarUsuario(id, CInt(verifNum))
-            If (reader.HasRows) Then
-                verificado = AccesoDatos.AccesoDatos.getInstancia().ComprobarUsuario(id)
+            da.Conectar()
+            Dim reader As SqlDataReader = da.verificarUsuario(id, CInt(verifNum))
+            Dim hay As Boolean = reader.HasRows
+            reader.Close()
+            If (hay) Then
+                verificado = da.ComprobarUsuario(id)
             End If
-            AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
+            da.CerrarConexion()
+
         Catch ex As Exception
             errVerificaciónLbl.Text = ex.Message
         End Try
