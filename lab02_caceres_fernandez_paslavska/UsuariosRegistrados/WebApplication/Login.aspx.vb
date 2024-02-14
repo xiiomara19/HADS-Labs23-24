@@ -45,6 +45,7 @@ Public Class WebForm1
 
     End Sub
 
+
     Protected Sub Email_TextChanged(sender As Object, e As EventArgs) Handles emailField.TextChanged
 
         Session("loggedUserEmail") = emailField.Text

@@ -248,13 +248,13 @@ Partial Public Class WebForm3
     Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control err.
+    '''Control errRolLbl.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents err As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents errRolLbl As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control StudentRBtn.
@@ -282,4 +282,13 @@ Partial Public Class WebForm3
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents RegisterBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control errConexionLbl.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents errConexionLbl As Global.System.Web.UI.WebControls.Label
 End Class

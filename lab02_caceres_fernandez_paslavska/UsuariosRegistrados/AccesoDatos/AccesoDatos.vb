@@ -35,8 +35,8 @@ Public Class AccesoDatos
         BDConexion.Close()
     End Sub
 
-    Public Shared Function IncluirUsuario(pemail As String, nombre As String, apellido As String, preguntaOculta As String, respuesta As String, na As Integer, numeroVerificacion As Integer, verificado As Boolean, codigoGrupo As String, codigoSubGrupo As String, tipoUsuario As String, contraseña As String) As Integer
-        Dim sql As String = "INSERT INTO Erabiltzaileak(email, izena, abizena, galderaEzkutua, erantzuna, na, egiaztatzeZenbakia, agiaztatua, lantaldeKodea, azpitaldeKodea, erabliltzaileMota, pasahitza) VALUES('" & pemail & "', '" & nombre & "', '" & apellido & "', '" & preguntaOculta & "', '" & respuesta & "', '" & na & "', '" & numeroVerificacion & "', '" & verificado & "', '" & codigoGrupo & "', '" & codigoSubGrupo & "', '" & tipoUsuario & "', '" & contraseña & "')"
+    Public Shared Function IncluirUsuario(pemail As String, nombre As String, apellido As String, preguntaOculta As String, respuesta As String, na As Integer, numeroVerificacion As Long, verificado As Boolean, codigoGrupo As String, codigoSubGrupo As String, tipoUsuario As String, contraseña As String) As Integer
+        Dim sql As String = "INSERT INTO Erabiltzaileak(email, izena, abizena, galderaEzkutua, erantzuna, na, egiaztatzeZenbakia, egiaztatua, lantaldeKodea, azpitaldeKodea, erabiltzaileMota, pasahitza) VALUES('" & pemail & "', '" & nombre & "', '" & apellido & "', '" & preguntaOculta & "', '" & respuesta & "', '" & na & "', '" & numeroVerificacion & "', '" & verificado & "', '" & codigoGrupo & "', '" & codigoSubGrupo & "', '" & tipoUsuario & "', '" & contraseña & "')"
         SqlComando = New SqlCommand(sql, BDConexion)
         Dim numregs As Integer
         Try

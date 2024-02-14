@@ -42,7 +42,7 @@
         <asp:Label ID="Label4" runat="server" Text="Respuesta"></asp:Label>
         </p>
         <p>
-        <asp:TextBox ID="AnswerTxt" runat="server"></asp:TextBox>
+        <asp:TextBox ID="AnswerTxt" runat="server" BorderColor="Black"></asp:TextBox>
             <asp:Label ID="errAnswerLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <p>
@@ -69,17 +69,18 @@
         <p>
             <asp:Label ID="Label10" runat="server" Text="Rol"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="err" runat="server" ForeColor="Red"></asp:Label>
+            <asp:Label ID="errRolLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <p>
-            <asp:RadioButton ID="StudentRBtn" runat="server" GroupName="persona" />
-&nbsp;Alumno</p>
+            <asp:RadioButton ID="StudentRBtn" runat="server" GroupName="persona" Text="Alumno" />
+        </p>
         <p>
-            <asp:RadioButton ID="TeacherRBtn" runat="server" GroupName="persona" />
-&nbsp;Profesor</p>
+            <asp:RadioButton ID="TeacherRBtn" runat="server" GroupName="persona" Text="Profesor" />
+        </p>
         <p>
             <asp:Button ID="RegisterBtn" runat="server" Height="25px" Text="Registrarse" Width="163px" />
         </p>
+        <asp:Label ID="errConexionLbl" runat="server" ForeColor="Red"></asp:Label>
     </form>
 </body>
 </html>
