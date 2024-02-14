@@ -16,11 +16,11 @@ Public Class WebForm1
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         If String.IsNullOrWhiteSpace(emailField.Text) Then
-            errEmail.Text = "Campo Requerido!"
+            errEmail.Text = "¡Campo Requerido!"
             errPass.Text = ""
             errEmail.ForeColor = System.Drawing.Color.Red
         ElseIf String.IsNullOrWhiteSpace(PassField.Text) Then
-            errPass.Text = "Campo Requerido!"
+            errPass.Text = "¡Campo Requerido!"
             errEmail.Text = ""
             errPass.ForeColor = System.Drawing.Color.Red
         Else
