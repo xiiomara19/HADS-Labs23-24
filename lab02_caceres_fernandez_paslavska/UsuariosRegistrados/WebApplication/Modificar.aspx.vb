@@ -42,15 +42,15 @@ Public Class WebForm4
             errPswdNuevo2.Text = ""
             errPswd.Text = "Las nuevas contraseñas no coinciden."
 
-        ElseIf PassField.Text <> PswdField1.Text Then
+        ElseIf PassField.Text = PswdField1.Text Then
             errPswdAntg.Text = ""
             errPswdNuevo1.Text = ""
             errPswdNuevo2.Text = ""
             errPswd.Text = "La contraseña a modificar es la misma que la contraseña antigua."
 
         Else
-
-            Response.Redirect("Menu.aspx")
+            cambiarContraseña()
+            'Response.Redirect("Menu.aspx")
         End If
     End Sub
 
@@ -64,6 +64,15 @@ Public Class WebForm4
         da.CerrarConexion()
         usuario.Close()
     End Sub
-
+    Private Sub cambiarContraseña()
+        da.Conectar()
+        Dim numregs As Integer = da.ModificarContraseñaUsuario(email, PswdField1.Text)
+        If numregs < 0 Then
+            errPswd.Text = "No se ha podido cambiar la contraseña."
+        Else
+            correctMsj.Text = "Se ha actualizado la contraseña correctamente."
+        End If
+        da.CerrarConexion()
+    End Sub
 
 End Class

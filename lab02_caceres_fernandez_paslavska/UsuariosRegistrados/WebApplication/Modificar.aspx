@@ -27,6 +27,7 @@
             <asp:Label ID="errPswdNuevo2" runat="server" ForeColor="Red"></asp:Label>
         <p>
             <asp:Label ID="errPswd" runat="server" ForeColor="Red"></asp:Label>
+            <asp:Label ID="correctMsj" runat="server"></asp:Label>
         </p>
         <asp:Button ID="Button1" runat="server" Height="38px" Text="Volver" Width="110px" />
     </form>
