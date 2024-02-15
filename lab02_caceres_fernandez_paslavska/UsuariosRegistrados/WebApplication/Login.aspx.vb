@@ -6,6 +6,7 @@ Public Class WebForm1
     Dim da As AccesoDatos.AccesoDatos
     Dim email As Boolean = 0
     Dim pass As String = ""
+    Dim egiaztatua As Boolean = False
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -30,6 +31,9 @@ Public Class WebForm1
             Check_Email_Password()
             If (Not email) Then
                 Message.Text = "Dirección de correo no registrada."
+
+            ElseIf (Not (egiaztatua)) Then
+                Message.Text = "Usuario no esta registrado correctamente"
             Else
                 If (pass.Equals(PassField.Text)) Then
 
@@ -63,6 +67,7 @@ Public Class WebForm1
                 reader.Read()
                 email = 1
                 pass = reader.GetString(11)
+                egiaztatua = reader.GetBoolean(7)
             End If
             da.CerrarConexion()
             reader.Close()
@@ -73,4 +78,6 @@ Public Class WebForm1
         'Console.WriteLine(pass, email)
 
     End Sub
+
+
 End Class
