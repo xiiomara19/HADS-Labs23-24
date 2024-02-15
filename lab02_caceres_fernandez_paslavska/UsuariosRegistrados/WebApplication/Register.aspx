@@ -42,7 +42,7 @@
         <asp:Label ID="Label4" runat="server" Text="Respuesta"></asp:Label>
         </p>
         <p>
-        <asp:TextBox ID="AnswerTxt" runat="server" BorderColor="Black"></asp:TextBox>
+        <asp:TextBox ID="AnswerTxt" runat="server"></asp:TextBox>
             <asp:Label ID="errAnswerLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <p>
@@ -60,11 +60,16 @@
             <asp:Label ID="errSubgroupLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <p>
-            <asp:Label ID="Label9" runat="server" Text="Password"></asp:Label>
-        </p>
+            Contraseña</p>
         <p>
             <asp:TextBox ID="PasswordTxt" runat="server" TextMode="Password"></asp:TextBox>
             <asp:Label ID="errPassLbl" runat="server" ForeColor="Red"></asp:Label>
+        </p>
+        <p>
+            Confirmar contraseña</p>
+        <p>
+            <asp:TextBox ID="ConfirmPassTxt" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:Label ID="errConfirmPassLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <p>
             <asp:Label ID="Label10" runat="server" Text="Rol"></asp:Label>
@@ -79,6 +84,8 @@
         </p>
         <p>
             <asp:Button ID="RegisterBtn" runat="server" Height="25px" Text="Registrarse" Width="163px" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="volverBtn" runat="server" Text="Volver" />
         </p>
         <asp:Label ID="errConexionLbl" runat="server" ForeColor="Red"></asp:Label>
     </form>

@@ -212,15 +212,6 @@ Partial Public Class WebForm3
     Protected WithEvents errSubgroupLbl As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control Label9.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''Control PasswordTxt.
     '''</summary>
     '''<remarks>
@@ -237,6 +228,24 @@ Partial Public Class WebForm3
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents errPassLbl As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control ConfirmPassTxt.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ConfirmPassTxt As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control errConfirmPassLbl.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents errConfirmPassLbl As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control Label10.
@@ -282,6 +291,15 @@ Partial Public Class WebForm3
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents RegisterBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control volverBtn.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents volverBtn As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control errConexionLbl.

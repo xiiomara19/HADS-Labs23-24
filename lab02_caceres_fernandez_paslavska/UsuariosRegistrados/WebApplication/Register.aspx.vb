@@ -1,9 +1,12 @@
-﻿Public Class WebForm3
+﻿Imports System.Drawing
+
+Public Class WebForm3
     Inherits System.Web.UI.Page
 
     Private Shared tipoUsuElegido As Boolean
     Private Shared allFilled As Boolean
     Dim da As AccesoDatos.AccesoDatos
+    Dim pattern As String = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
 
     Dim Temail As String
     Dim TName As String
@@ -69,6 +72,11 @@
         End If
     End Sub
 
+    Protected Function IsValidEmail(email As String) As Boolean
+        Dim match As Match = Regex.Match(email, pattern)
+        Return match.Success
+    End Function
+
     Protected Sub registrarUsuario()
         Try
             AccesoDatos.AccesoDatos.getInstancia().Conectar()
@@ -90,39 +98,71 @@
         errRolLbl.Text = ""
         errSubgroupLbl.Text = ""
         errConexionLbl.Text = ""
+        errConfirmPassLbl.Text = ""
+        EmailTxt.BorderColor = Color.Black
+        NameTxt.BorderColor = Color.Black
+        LastNameTxt.BorderColor = Color.Black
+        AnswerTxt.BorderColor = Color.Black
+        GroupCodeTxt.BorderColor = Color.Black
+        QuestionTxt.BorderColor = Color.Black
+        CodeSubgroupTxt.BorderColor = Color.Black
+        PasswordTxt.BorderColor = Color.Black
+        ConfirmPassTxt.BorderColor = Color.Black
+
     End Sub
 
     Protected Sub comprobarCamposRellenos()
         If String.IsNullOrWhiteSpace(EmailTxt.Text) Then
             errEmailLbl.Text = "Campo requerido."
+            EmailTxt.BorderColor = Color.Red
+            allFilled = False
+        ElseIf Not IsValidEmail(EmailTxt.Text) Then
+            errEmailLbl.Text = "Email no válido."
+            EmailTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(NameTxt.Text) Then
             errNameLbl.Text = "Campo requerido."
+            NameTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(LastNameTxt.Text) Then
             errLastNameLbl.Text = "Campo requerido."
+            LastNameTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(QuestionTxt.Text) Then
             errHiddenLbl.Text = "Campo requerido."
+            QuestionTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(AnswerTxt.Text) Then
             errAnswerLbl.Text = "Campo requerido."
+            AnswerTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(GroupCodeTxt.Text) Then
             errGroupLbl.Text = "Campo requerido."
+            GroupCodeTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(CodeSubgroupTxt.Text) Then
             errSubgroupLbl.Text = "Campo requerido."
+            CodeSubgroupTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(PasswordTxt.Text) Then
             errPassLbl.Text = "Campo requerido."
+            PasswordTxt.BorderColor = Color.Red
+            allFilled = False
+        End If
+        If String.IsNullOrWhiteSpace(ConfirmPassTxt.Text) Then
+            errPassLbl.Text = "Campo requerido."
+            ConfirmPassTxt.BorderColor = Color.Red
+            allFilled = False
+        ElseIf PasswordTxt.Text <> ConfirmPassTxt.Text Then
+            errPassLbl.Text = "La contraseña debe ser igual a la anterior."
+            ConfirmPassTxt.BorderColor = Color.Red
             allFilled = False
         End If
         If Not tipoUsuElegido Then
@@ -130,4 +170,9 @@
             allFilled = False
         End If
     End Sub
+
+    Protected Sub volverBtn_Click1(sender As Object, e As EventArgs) Handles volverBtn.Click
+        Response.Redirect("~/Login.aspx")
+    End Sub
+
 End Class
