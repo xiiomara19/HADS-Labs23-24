@@ -63,8 +63,8 @@ Public Class WebForm1
             email = 1
             pass = reader.GetString(11)
         End If
-        reader.Close()
         da.CerrarConexion()
+        reader.Close()
         'Console.WriteLine(pass, email)
 
     End Sub
