@@ -63,7 +63,7 @@
             <asp:Label ID="Label9" runat="server" Text="Password"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="PasswordTxt" runat="server"></asp:TextBox>
+            <asp:TextBox ID="PasswordTxt" runat="server" TextMode="Password"></asp:TextBox>
             <asp:Label ID="errPassLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <p>
