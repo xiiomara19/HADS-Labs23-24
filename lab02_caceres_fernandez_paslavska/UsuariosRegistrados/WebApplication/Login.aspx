@@ -13,31 +13,37 @@
         <div>
         </div>
         <p>
-            <asp:Label ID="Label1" runat="server" Text="E-mail:"></asp:Label>
-        </p>
+            &nbsp;</p>
         <p>
+            <asp:Label ID="Label1" runat="server" Text="E-mail:"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="emailField" runat="server" Height="30px" Width="164px"></asp:TextBox>
-            <asp:Label ID="errEmail" runat="server"></asp:Label>
+            &nbsp;&nbsp;&nbsp;
+            <asp:Label ID="errEmail" runat="server" ForeColor="Red"></asp:Label>
         </p>
         <p>
             &nbsp;</p>
         <p>
             <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label>
-        </p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="PassField" runat="server" Height="33px" Width="160px" TextMode="Password"></asp:TextBox>
-        <asp:Label ID="errPass" runat="server"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="errPass" runat="server" ForeColor="Red"></asp:Label>
+        </p>
         <p>
             &nbsp;</p>
         <p>
             <asp:Button ID="Button1" runat="server" Height="38px" Text="Login" Width="96px" />
         </p>
         <p>
+            <asp:Label ID="Message" runat="server" ForeColor="Red"></asp:Label>
+        </p>
+        <p>
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Register.aspx">Quiero registrarme</asp:HyperLink>
         </p>
         <asp:HyperLink ID="recuperarLink" runat="server" NavigateUrl="~/Recuperar.aspx">Recuperar contraseña</asp:HyperLink>
         <p>
-            <asp:Label ID="Message" runat="server"></asp:Label>
-        </p>
+            &nbsp;</p>
     </form>
 </body>
 </html>

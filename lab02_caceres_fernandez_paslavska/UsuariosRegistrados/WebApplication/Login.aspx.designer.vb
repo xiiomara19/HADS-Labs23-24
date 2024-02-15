@@ -86,6 +86,15 @@ Partial Public Class WebForm1
     Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control Message.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Message As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control HyperLink1.
     '''</summary>
     '''<remarks>
@@ -102,13 +111,4 @@ Partial Public Class WebForm1
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents recuperarLink As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''Control Message.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Message As Global.System.Web.UI.WebControls.Label
 End Class
