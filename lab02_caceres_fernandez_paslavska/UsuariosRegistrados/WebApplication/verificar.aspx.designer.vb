@@ -23,6 +23,15 @@ Partial Public Class verificar
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''Control infoLbl.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents infoLbl As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control ConfirmarBtn.
     '''</summary>
     '''<remarks>
@@ -30,6 +39,15 @@ Partial Public Class verificar
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ConfirmarBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control volverBtn.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents volverBtn As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control errVerificaciónLbl.

@@ -24,7 +24,6 @@ Public Class WebForm3
         tipoUsuElegido = False
         allFilled = True
         reiniciarErrores()
-        da = AccesoDatos.AccesoDatos.getInstancia()
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles RegisterBtn.Click
@@ -82,7 +81,7 @@ Public Class WebForm3
             AccesoDatos.AccesoDatos.getInstancia().Conectar()
             AccesoDatos.AccesoDatos.getInstancia().IncluirUsuario(Temail, TName, TlastName, Tquestion, Tanswer, Tna, TnumVerificacion, CBool("False"), Tgroup, TsubGroup, Trol, Tpass)
             AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
-        Catch ex As Exception
+        Catch ex As AccesoDatos.ErrorConexion
             errConexionLbl.Text = ex.Message
         End Try
     End Sub
@@ -108,7 +107,6 @@ Public Class WebForm3
         CodeSubgroupTxt.BorderColor = Color.Black
         PasswordTxt.BorderColor = Color.Black
         ConfirmPassTxt.BorderColor = Color.Black
-
     End Sub
 
     Protected Sub comprobarCamposRellenos()

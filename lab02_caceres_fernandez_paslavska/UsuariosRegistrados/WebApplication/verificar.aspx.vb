@@ -10,6 +10,7 @@ Public Class verificar
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         da = AccesoDatos.AccesoDatos.getInstancia()
         errVerificaciónLbl.Text = ""
+        infoLbl.Text = "Pulsa el botón 'Confirmar' para confirmar el registro"
 
     End Sub
 
@@ -18,7 +19,8 @@ Public Class verificar
         id = Request.QueryString("erab")
         verifNum = CInt(Request.QueryString("egZenb"))
         If (verificarUsuario() <> -1) Then
-            Response.Redirect("~/Menu.aspx")
+            infoLbl.Text = "Se ha registrado correctamente."
+            volverBtn.Enabled = True
         Else
             errVerificaciónLbl.Text = "No se ha podido registrar al usuario, los datos son incorrectos."
         End If
@@ -43,4 +45,8 @@ Public Class verificar
 
         Return verificado
     End Function
+
+    Protected Sub volverBtn_Click(sender As Object, e As EventArgs) Handles volverBtn.Click
+        Response.Redirect("~/Login.aspx")
+    End Sub
 End Class

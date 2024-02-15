@@ -55,16 +55,21 @@ Public Class WebForm1
     End Sub
 
     Private Sub Check_Email_Password()
-        da.Conectar()
-        Dim reader As SqlDataReader = da.ObtenerUsuarios(emailField.Text)
+        Try
+            da.Conectar()
+            Dim reader As SqlDataReader = da.ObtenerUsuarios(emailField.Text)
 
-        If (reader.HasRows) Then
-            reader.Read()
-            email = 1
-            pass = reader.GetString(11)
-        End If
-        da.CerrarConexion()
-        reader.Close()
+            If (reader.HasRows) Then
+                reader.Read()
+                email = 1
+                pass = reader.GetString(11)
+            End If
+            da.CerrarConexion()
+            reader.Close()
+        Catch ex As Exception
+            Message.Text = ex.Message
+        End Try
+
         'Console.WriteLine(pass, email)
 
     End Sub

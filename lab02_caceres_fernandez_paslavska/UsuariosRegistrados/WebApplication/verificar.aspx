@@ -12,9 +12,13 @@
         <div>
             VERIFICAR USUARIO<br />
             <br />
-            Pulsa el botón &#39;Confirmar&#39; para confirmar el registro<br />
+            <asp:Label ID="infoLbl" runat="server" Text="Pulsa el botón 'Confirmar' para confirmar el registro"></asp:Label>
+            <br />
+            <br />
         </div>
         <asp:Button ID="ConfirmarBtn" runat="server" Text="Confirmar" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="volverBtn" runat="server" Enabled="False" Text="Volver al inicio" />
         <p>
             <asp:Label ID="errVerificaciónLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>
