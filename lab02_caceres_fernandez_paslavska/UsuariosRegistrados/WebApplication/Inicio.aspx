@@ -13,7 +13,7 @@
             <br />
             Home<br />
         </div>
-        <asp:Button ID="LoginBtn" runat="server" Text="Login" />
+        <asp:Button ID="LoginBtn" runat="server" Text="Login" Height="38px" Width="96px"/>
         <p>
             <asp:Button ID="RegisterBtn" runat="server" Text="Registro" />
         </p>

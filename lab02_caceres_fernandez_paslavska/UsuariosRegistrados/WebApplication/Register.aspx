@@ -83,9 +83,9 @@
             <asp:RadioButton ID="TeacherRBtn" runat="server" GroupName="persona" Text="Profesor" />
         </p>
         <p>
-            <asp:Button ID="RegisterBtn" runat="server" Height="25px" Text="Registrarse" Width="163px" />
+            <asp:Button ID="RegisterBtn" runat="server" Text="Registrarse" Height="38px" Width="96px" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="volverBtn" runat="server" Text="Volver" />
+            <asp:Button ID="volverBtn" runat="server" Text="Volver" Height="38px" Width="96px"/>
         </p>
         <asp:Label ID="errConexionLbl" runat="server" ForeColor="Red"></asp:Label>
     </form>

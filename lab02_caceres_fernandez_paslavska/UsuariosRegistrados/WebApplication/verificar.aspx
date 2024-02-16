@@ -16,9 +16,9 @@
             <br />
             <br />
         </div>
-        <asp:Button ID="ConfirmarBtn" runat="server" Text="Confirmar" />
+        <asp:Button ID="ConfirmarBtn" runat="server" Text="Confirmar" Height="38px" Width="96px"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="volverBtn" runat="server" Enabled="False" Text="Volver al inicio" />
+        <asp:Button ID="volverBtn" runat="server" Enabled="False" Text="Volver al inicio" Height="38px" Width="96px"/>
         <p>
             <asp:Label ID="errVerificaciónLbl" runat="server" ForeColor="Red"></asp:Label>
         </p>

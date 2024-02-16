@@ -11,6 +11,7 @@ Public Class WebForm1
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Session("loggedUserEmail") = ""
+        Session("Inicio") = "No"
         da = AccesoDatos.AccesoDatos.getInstancia()
     End Sub
 

@@ -20,9 +20,12 @@ Public Class WebForm3
     Dim Tpass As String
     Dim Trol As String
 
+    Dim estado As String
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         tipoUsuElegido = False
         allFilled = True
+        estado = Session("Inicio").ToString()
         reiniciarErrores()
     End Sub
 
@@ -168,7 +171,11 @@ Public Class WebForm3
     End Sub
 
     Protected Sub volverBtn_Click1(sender As Object, e As EventArgs) Handles volverBtn.Click
-        Response.Redirect("~/Login.aspx")
+        If (estado <> "No") Then
+            Response.Redirect("Inicio.aspx")
+        Else
+            Response.Redirect("Login.aspx")
+        End If
     End Sub
 
 End Class

@@ -19,7 +19,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </p>
         <p>
-            <asp:Button ID="validarEm" runat="server" Text="Validar email" />
+            <asp:Button ID="validarEm" runat="server" Text="Validar email" Height="38px" Width="96px"/>
         </p>
         <p>
             <asp:Label ID="Label1" runat="server" Text="Pregunta"></asp:Label>
@@ -38,9 +38,9 @@
         &nbsp;
         <asp:Label ID="pass" runat="server"></asp:Label>
         <p>
-            <asp:Button ID="comprobar" runat="server" Height="41px" Text="Comprobar" Width="104px" />
+            <asp:Button ID="comprobar" runat="server" Text="Comprobar" Height="38px" Width="96px" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button1" runat="server" Height="39px" Text="Volver" Width="107px" />
+            <asp:Button ID="Button1" runat="server" Text="Volver" Height="38px" Width="96px" />
         </p>
         <p>
             &nbsp;</p>
