@@ -31,6 +31,13 @@ Public Class WebForm3
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles RegisterBtn.Click
         allFilled = True
+
+        If StudentRBtn.Checked Or TeacherRBtn.Checked Then
+            tipoUsuElegido = True
+        Else
+            tipoUsuElegido = False
+        End If
+
         reiniciarErrores()
         comprobarCamposRellenos()
 
@@ -115,6 +122,7 @@ Public Class WebForm3
         errSubgroupLbl.Text = ""
         errConexionLbl.Text = ""
         errConfirmPassLbl.Text = ""
+
     End Sub
 
     Protected Sub comprobarCamposRellenos()
