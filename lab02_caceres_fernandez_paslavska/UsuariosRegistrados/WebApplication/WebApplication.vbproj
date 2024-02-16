@@ -102,6 +102,7 @@
     <Content Include="Modificar.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Recuperar.aspx" />
+    <Content Include="Inicio.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="verificar.aspx.vb">
       <DependentUpon>verificar.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.vb">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.vb">
+      <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
