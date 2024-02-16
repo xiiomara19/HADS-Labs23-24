@@ -88,6 +88,8 @@
             <asp:Button ID="volverBtn" runat="server" Text="Volver" Height="38px" Width="96px"/>
         </p>
         <asp:Label ID="errConexionLbl" runat="server" ForeColor="Red"></asp:Label>
+        <br />
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Final.aspx">Salir de la app</asp:HyperLink>
     </form>
 </body>
 </html>

@@ -99,7 +99,7 @@
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
-    <Content Include="Modificar.aspx" />
+    <Content Include="CambiarContraseña.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Recuperar.aspx" />
     <Content Include="Inicio.aspx" />
@@ -139,11 +139,11 @@
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Modificar.aspx.designer.vb">
-      <DependentUpon>Modificar.aspx</DependentUpon>
+    <Compile Include="CambiarContraseña.aspx.designer.vb">
+      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modificar.aspx.vb">
-      <DependentUpon>Modificar.aspx</DependentUpon>
+    <Compile Include="CambiarContraseña.aspx.vb">
+      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Menu.aspx.designer.vb">
