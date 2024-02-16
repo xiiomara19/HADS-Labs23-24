@@ -158,10 +158,10 @@ Public Class WebForm3
             allFilled = False
         End If
         If String.IsNullOrWhiteSpace(ConfirmPassTxt.Text) Then
-            errPassLbl.Text = "Campo requerido."
+            errConfirmPassLbl.Text = "Campo requerido."
             allFilled = False
         ElseIf PasswordTxt.Text <> ConfirmPassTxt.Text Then
-            errPassLbl.Text = "La contraseña debe ser igual a la anterior."
+            errConfirmPassLbl.Text = "La contraseña debe ser igual a la anterior."
             allFilled = False
         End If
         If Not tipoUsuElegido Then
