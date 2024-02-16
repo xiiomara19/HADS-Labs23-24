@@ -7,7 +7,7 @@ Public Class WebForm1
     Dim email As Boolean = 0
     Dim pass As String = ""
     Dim egiaztatua As Boolean = False
-
+    Dim pattern As String = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Session("loggedUserEmail") = ""
@@ -18,6 +18,10 @@ Public Class WebForm1
 
         If String.IsNullOrWhiteSpace(emailField.Text) Then
             errEmail.Text = "¡Campo Requerido!"
+            errPass.Text = ""
+            errEmail.ForeColor = System.Drawing.Color.Red
+        ElseIf Not IsValidEmail(emailField.Text) Then
+            errEmail.Text = "No es un email válido."
             errPass.Text = ""
             errEmail.ForeColor = System.Drawing.Color.Red
         ElseIf String.IsNullOrWhiteSpace(PassField.Text) Then
@@ -79,5 +83,9 @@ Public Class WebForm1
 
     End Sub
 
+    Protected Function IsValidEmail(email As String) As Boolean
+        Dim match As Match = Regex.Match(email, pattern)
+        Return match.Success
+    End Function
 
 End Class
