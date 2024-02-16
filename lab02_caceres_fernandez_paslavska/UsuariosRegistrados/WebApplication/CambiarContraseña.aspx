@@ -30,7 +30,9 @@
             <asp:Label ID="correctMsj" runat="server"></asp:Label>
         </p>
         <asp:Button ID="Button2" runat="server" Height="38px" Text="Volver" Width="96px" />
+        &nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" Height="38px" Text="Confirmar" Width="96px" />
+    &nbsp;&nbsp;&nbsp;
     </form>
 </body>
 </html>

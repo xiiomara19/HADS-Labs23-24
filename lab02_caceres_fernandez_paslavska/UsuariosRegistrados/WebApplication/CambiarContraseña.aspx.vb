@@ -4,10 +4,12 @@ Public Class WebForm4
     Dim da As AccesoDatos.AccesoDatos
     Dim email As String
     Dim pswd As String
+    Dim contra As Boolean
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         email = Session("loggedUserEmail").ToString()
         da = AccesoDatos.AccesoDatos.getInstancia()
+        contra = False
         obtenerContraseña()
     End Sub
 
@@ -50,6 +52,7 @@ Public Class WebForm4
 
         Else
             cambiarContraseña()
+            contra = True
             Button1.Enabled = False
         End If
 
@@ -94,7 +97,11 @@ Public Class WebForm4
         PassField.Text = ""
         PswdField1.Text = ""
         PswdField2.Text = ""
-        Response.Redirect("Menu.aspx")
+        If contra Then
+            Response.Redirect("Menu.aspx")
+        Else
+            Response.Redirect("Login.aspx")
+        End If
     End Sub
 
 End Class
