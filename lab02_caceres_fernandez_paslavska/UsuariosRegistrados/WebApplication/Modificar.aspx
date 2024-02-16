@@ -29,7 +29,7 @@
             <asp:Label ID="errPswd" runat="server" ForeColor="Red"></asp:Label>
             <asp:Label ID="correctMsj" runat="server"></asp:Label>
         </p>
-        <asp:Button ID="Button2" runat="server" Height="38px" Text="Volver" Width="110px" />
+        <asp:Button ID="Button2" runat="server" Height="38px" Text="Volver" Width="110px" UseSubmitBehavior="False" />
         <asp:Button ID="Button1" runat="server" Height="38px" Text="Confirmar" Width="110px" />
     </form>
 </body>

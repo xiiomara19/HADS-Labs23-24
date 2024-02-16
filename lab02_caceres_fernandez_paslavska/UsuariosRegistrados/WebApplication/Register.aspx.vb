@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing
+Imports System.Data.SqlClient
 
 Public Class WebForm3
     Inherits System.Web.UI.Page
@@ -86,6 +87,20 @@ Public Class WebForm3
         End Try
     End Sub
 
+    Protected Function IsNotAvailableEmail(email As String) As Boolean
+        Dim isAvailable As Boolean = False
+        Try
+            AccesoDatos.AccesoDatos.getInstancia().Conectar()
+            Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().ObtenerUsuarios(email)
+            isAvailable = reader.HasRows()
+            reader.Close()
+            AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
+        Catch ex As AccesoDatos.ErrorConexion
+            errConexionLbl.Text = ex.Message
+        End Try
+        Return isAvailable
+    End Function
+
     Protected Sub reiniciarErrores()
         errEmailLbl.Text = ""
         errAnswerLbl.Text = ""
@@ -116,6 +131,11 @@ Public Class WebForm3
             allFilled = False
         ElseIf Not IsValidEmail(EmailTxt.Text) Then
             errEmailLbl.Text = "Email no válido."
+            EmailTxt.BorderColor = Color.Red
+            allFilled = False
+        ElseIf IsNotAvailableEmail(EmailTxt.Text) Then
+            errEmailLbl.Text = "Ese email ya está en uso."
+            EmailTxt.Text = ""
             EmailTxt.BorderColor = Color.Red
             allFilled = False
         End If
