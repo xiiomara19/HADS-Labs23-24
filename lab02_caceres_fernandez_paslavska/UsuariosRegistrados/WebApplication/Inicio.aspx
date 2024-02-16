@@ -11,11 +11,12 @@
     <form id="form1" runat="server">
         <div>
             <br />
-            Home<br />
+            PÁGINA PRINCIPAL<br />
+            <br />
         </div>
         <asp:Button ID="LoginBtn" runat="server" Text="Login" Height="38px" Width="96px"/>
         <p>
-            <asp:Button ID="RegisterBtn" runat="server" Text="Registro" />
+            <asp:Button ID="RegisterBtn" runat="server" Text="Registro" Height="38px" Width="96px"/>
         </p>
     </form>
 </body>
