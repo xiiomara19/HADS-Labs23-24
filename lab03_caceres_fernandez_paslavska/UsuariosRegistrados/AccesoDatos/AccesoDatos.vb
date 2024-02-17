@@ -18,9 +18,9 @@ Public Class AccesoDatos
 
     Public Shared Sub Conectar()
         Dim strconHADS_DB_Erabiltzaileak As String = "Server=tcp:hads2324.database.windows.net,1433;" &
-                                                     "Initial Catalog=usuariosBD;Persist Security Info=False;" &
+                                                     "Initial Catalog=lab3BD;Persist Security Info=False;" &
                                                      "User ID=efernandez200@ikasle.ehu.eus@hads2324;Password=hads-2324;" &
-                                                      "MultipleActiveResultSets =False;Encrypt=True;TrustServerCertificate=False;" &
+                                                      "MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;" &
                                                        "Connection Timeout=30;"
 
         Try
