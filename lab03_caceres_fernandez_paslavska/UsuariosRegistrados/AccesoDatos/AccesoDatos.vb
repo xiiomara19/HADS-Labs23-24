@@ -5,7 +5,8 @@ Public Class AccesoDatos
     Private Shared SqlComando As SqlCommand
     Private Shared instancia As AccesoDatos
     Private Shared dapAlumnos As SqlDataAdapter
-    Private Shared dapTrabajos As SqlDataAdapter
+    Private Shared dapTrabajosGenericos As SqlDataAdapter
+    Private Shared dapTareasAlumno As SqlDataAdapter
     Private Sub New()
 
     End Sub
@@ -90,19 +91,22 @@ Public Class AccesoDatos
 
     Public Shared Function alumnoMatriculadoAsignaturasAdaptadorObtener(pemail As String) As SqlDataAdapter
         Dim sql = "SELECT DISTINCT irakasgaiKodea FROM KlasekoTaldeak WHERE kodea IN (SELECT taldeKodea FROM IkasleakTaldeak WHERE email='" & pemail & "')"
-        Return New SqlDataAdapter(sql, BDConexion)
+        dapAlumnos = New SqlDataAdapter(sql, BDConexion)
+        Return dapAlumnos
     End Function
 
     'TODO
     Public Shared Function TrabajosGenericosExplotacionAdaptadorObtener() As SqlDataAdapter
         Dim sql As String = ""
-        Return New SqlDataAdapter(sql, BDConexion)
+        dapTrabajosGenericos = New SqlDataAdapter(sql, BDConexion)
+        Return dapTrabajosGenericos
     End Function
 
     'TODO
     Public Shared Function ObtenerAdaptadorTareasAlumnado() As SqlDataAdapter
         Dim sql As String = ""
-        Return New SqlDataAdapter(sql, BDConexion)
+        dapTareasAlumno = New SqlDataAdapter(sql, BDConexion)
+        Return dapTareasAlumno
     End Function
 
 End Class
