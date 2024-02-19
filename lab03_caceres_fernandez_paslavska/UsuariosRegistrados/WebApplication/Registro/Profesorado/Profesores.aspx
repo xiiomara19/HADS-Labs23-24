@@ -23,7 +23,7 @@
                         <asp:HyperLink ID="HyperLink2" runat="server" style="margin-left: 20px;">Grupos</asp:HyperLink>
                         <br />
                         <br />
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/ModificarPassword.aspx" style="margin-left: 20px;">Cambiar la contraseña</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink" runat="server" NavigateUrl="~/Registro/ModificarPassword.aspx" style="margin-left: 20px;">Cambiar la contraseña</asp:HyperLink>
                     </asp:Panel>
                 </td>
                 <td class="auto-style1">
