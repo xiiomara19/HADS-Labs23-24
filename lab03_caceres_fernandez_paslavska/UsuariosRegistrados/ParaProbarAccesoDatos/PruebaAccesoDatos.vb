@@ -3,20 +3,19 @@
 Module PruebaAccesoDatos
 
     Sub Main()
-        Dim da As AccesoDatos.AccesoDatos
-        da = AccesoDatos.AccesoDatos.getInstancia()
+
         Try
             Console.WriteLine("Conectando a la BD...")
-            da.Conectar()
+            AccesoDatos.AccesoDatos.getInstancia().Conectar()
             Console.WriteLine("Conexión a la BD realizada con éxito.")
-            da.IncluirUsuario("pra@gmail.com", "prueba", "test", "Que tal?", "Bien", 22, 22, True, 33, 32, "Alumno", 1111)
+            AccesoDatos.AccesoDatos.getInstancia().IncluirUsuario("pra@gmail.com", "prueba", "test", "Que tal?", "Bien", 22, 22, True, 33, 32, "Alumno", 1111)
             'da.IncluirUsuario("x@gmail.com", "prueba2", "test", "Que tal?", "Bien", 10, 10, False, 10, 10, "Alumno", 1234)
 
-            Dim usuario As SqlClient.SqlDataReader = da.ObtenerUsuarios("prueba@gmail.com")
+            Dim usuario As SqlClient.SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().ObtenerUsuarios("prueba@gmail.com")
             Console.WriteLine(usuario.Read())
             Console.WriteLine(usuario.GetString(1))
             Console.WriteLine("Cerrando conexión con la BD...")
-            da.CerrarConexion()
+            AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
             usuario.Close()
             Console.WriteLine("Conexión con la BD cerrada.")
         Catch ex As Exception

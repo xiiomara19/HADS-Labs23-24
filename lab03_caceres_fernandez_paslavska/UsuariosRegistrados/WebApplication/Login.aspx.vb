@@ -3,7 +3,6 @@
 Public Class LoginFormLab3
     Inherits System.Web.UI.Page
 
-    Dim da As AccesoDatos.AccesoDatos
     Dim email As Boolean = 0
     Dim pass As String = ""
     Dim egiaztatua As Boolean = False
@@ -12,7 +11,7 @@ Public Class LoginFormLab3
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Session("loggedUserEmail") = ""
         Session("Inicio") = "No"
-        da = AccesoDatos.AccesoDatos.getInstancia()
+
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -71,8 +70,8 @@ Public Class LoginFormLab3
 
     Private Sub Check_Email_Password()
         Try
-            da.Conectar()
-            Dim reader As SqlDataReader = da.ObtenerUsuarios(emailField.Text)
+            AccesoDatos.AccesoDatos.getInstancia().Conectar()
+            Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().ObtenerUsuarios(emailField.Text)
 
             If (reader.HasRows) Then
                 reader.Read()
@@ -80,7 +79,7 @@ Public Class LoginFormLab3
                 pass = reader.GetString(11)
                 egiaztatua = reader.GetBoolean(7)
             End If
-            da.CerrarConexion()
+            AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
             reader.Close()
         Catch ex As Exception
             Message.Text = ex.Message
