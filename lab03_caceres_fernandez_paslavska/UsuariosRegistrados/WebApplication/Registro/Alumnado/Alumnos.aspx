@@ -24,7 +24,7 @@
         <table>
             <tr>
                 <td class="auto-style2">
-                    <asp:Panel ID="Panel1" runat="server" Height="449px" Width="262px" BackColor="#CCFFCC">
+                    <asp:Panel ID="Panel1" runat="server" Height="449px" Width="262px" BackColor="#CCFFCC" BorderColor="Black" BorderStyle="Ridge" BorderWidth="2px">
                         <br />
                         <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Registro/Alumnado/TrabajosGenericosAlumnado.aspx" style="margin-left: 20px;">Trabajos genéricos</asp:HyperLink>
                         <br />
@@ -39,10 +39,12 @@
                     </asp:Panel>
                 </td>
                 <td class="auto-style1">
-                    <asp:Panel ID="Panel2" runat="server" Height="449px" Width="914px" BackColor="#E6FFFF" HorizontalAlign="Center" CssClass="auto-style3">
+                    <asp:Panel ID="Panel2" runat="server" Height="449px" Width="914px" BackColor="#E6FFFF" HorizontalAlign="Center" BorderColor="Black" BorderStyle="Ridge" BorderWidth="2px" CssClass="auto-style3">
                         <br />
                         <br />
-                        <asp:HyperLink ID="HyperLink5" runat="server">Gestión de trabajos</asp:HyperLink>
+                        <strong>
+                        <asp:HyperLink ID="HyperLink5" runat="server" style="font-size: 34px;">Gestión de trabajos</asp:HyperLink>
+                        </strong>
                         <br />
                         <br />
                         <asp:HyperLink ID="HyperLink6" runat="server">Alumnos</asp:HyperLink>
