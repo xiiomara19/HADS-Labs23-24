@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class WebForm4
     Inherits System.Web.UI.Page
-    Dim da As AccesoDatos.AccesoDatos
     Dim email As String
     Dim pswd As String
     Dim contra As Boolean
@@ -11,7 +10,6 @@ Public Class WebForm4
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         email = Session("loggedUserEmail").ToString()
         estado = Session("Modificar").ToString()
-        da = AccesoDatos.AccesoDatos.getInstancia()
         contra = False
         obtenerContraseña()
     End Sub
@@ -62,18 +60,18 @@ Public Class WebForm4
     End Sub
 
     Private Sub obtenerContraseña()
-        da.Conectar()
-        Dim usuario As SqlDataReader = da.ObtenerUsuarios(email)
+        AccesoDatos.AccesoDatos.getInstancia().Conectar()
+        Dim usuario As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().ObtenerUsuarios(email)
         If (usuario.HasRows) Then
             usuario.Read()
             pswd = usuario.GetString(11)
         End If
-        da.CerrarConexion()
+        AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
         usuario.Close()
     End Sub
     Private Sub cambiarContraseña()
-        da.Conectar()
-        Dim numregs As Integer = da.ModificarContraseñaUsuario(email, PswdField1.Text)
+        AccesoDatos.AccesoDatos.getInstancia().Conectar()
+        Dim numregs As Integer = AccesoDatos.AccesoDatos.getInstancia().ModificarContraseñaUsuario(email, PswdField1.Text)
         If numregs < 0 Then
             errPswd.Text = "No se ha podido cambiar la contraseña."
             errPswdAntg.Text = ""
@@ -87,7 +85,7 @@ Public Class WebForm4
             errPswd.Text = ""
             correctMsj.Text = "Se ha actualizado la contraseña correctamente."
         End If
-        da.CerrarConexion()
+        AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
     End Sub
 
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
