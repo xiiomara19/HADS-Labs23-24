@@ -4,6 +4,8 @@ Public Class AccesoDatos
     Private Shared BDConexion As SqlConnection
     Private Shared SqlComando As SqlCommand
     Private Shared instancia As AccesoDatos
+    Private Shared dapAlumnos As SqlDataAdapter
+    Private Shared dapTrabajos As SqlDataAdapter
     Private Sub New()
 
     End Sub
@@ -84,6 +86,12 @@ Public Class AccesoDatos
         Dim sql = "SELECT * FROM Erabiltzaileak WHERE email='" & email & "' AND egiaztatzeZenbakia=" & numVerif
         SqlComando = New SqlCommand(sql, BDConexion)
         Return SqlComando.ExecuteReader()
+    End Function
+
+    Public Shared Function alumnoMatriculadoAsignaturasAdaptadorObtener(pemail As String) As SqlDataAdapter
+        Return New SqlDataAdapter("SELECT DISTINCT irakasgaiKodea FROM KlasekoTaldeak WHERE kodea IN (SELECT taldeKodea FROM IkasleakTaldeak WHERE email='" & pemail & "')", BDConexion)
+
+
     End Function
 
 End Class

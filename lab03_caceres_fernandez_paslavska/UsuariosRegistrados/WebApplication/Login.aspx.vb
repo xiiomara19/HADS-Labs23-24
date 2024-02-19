@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class WebForm1
+Public Class LoginFormLab3
     Inherits System.Web.UI.Page
 
     Dim da As AccesoDatos.AccesoDatos
@@ -50,7 +50,7 @@ Public Class WebForm1
                     End If
 
                 Else
-                        Message.Text = "Password incorrecto."
+                    Message.Text = "Password incorrecto."
 
                 End If
 

@@ -1,4 +1,4 @@
-﻿Public Class WebForm1
+﻿Public Class LoginFormLab3
     Inherits System.Web.UI.Page
 
 
