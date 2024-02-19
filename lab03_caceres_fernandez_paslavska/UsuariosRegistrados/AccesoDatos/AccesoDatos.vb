@@ -51,7 +51,7 @@ Public Class AccesoDatos
     End Function
 
     Public Shared Function ObtenerUsuarios(email As String) As SqlDataReader
-        Dim sql = "SELECT * FROM Erabiltzaileak WHERE email= '" & email & "'"
+        Dim sql As String = "SELECT * FROM Erabiltzaileak WHERE email= '" & email & "'"
         SqlComando = New SqlCommand(sql, BDConexion)
         Return SqlComando.ExecuteReader()
     End Function
@@ -89,9 +89,18 @@ Public Class AccesoDatos
     End Function
 
     Public Shared Function alumnoMatriculadoAsignaturasAdaptadorObtener(pemail As String) As SqlDataAdapter
-        Return New SqlDataAdapter("SELECT DISTINCT irakasgaiKodea FROM KlasekoTaldeak WHERE kodea IN (SELECT taldeKodea FROM IkasleakTaldeak WHERE email='" & pemail & "')", BDConexion)
+        Dim sql = "SELECT DISTINCT irakasgaiKodea FROM KlasekoTaldeak WHERE kodea IN (SELECT taldeKodea FROM IkasleakTaldeak WHERE email='" & pemail & "')"
+        Return New SqlDataAdapter(sql, BDConexion)
+    End Function
 
+    Public Shared Function TrabajosGenericosExplotacionAdaptadorObtener() As SqlDataAdapter
+        Dim sql As String = ""
+        Return New SqlDataAdapter(sql, BDConexion)
+    End Function
 
+    Public Shared Function ObtenerAdaptadorTareasAlumnado() As SqlDataAdapter
+        Dim sql As String = ""
+        Return New SqlDataAdapter(sql, BDConexion)
     End Function
 
 End Class
