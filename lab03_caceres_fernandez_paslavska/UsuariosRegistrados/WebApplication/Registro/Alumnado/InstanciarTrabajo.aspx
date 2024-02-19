@@ -69,7 +69,7 @@
                 </td>
             </tr>
         </table>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/ModificarPassword.aspx" Style="margin-left: 20px;">Atras</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/Alumnado/TrabajosGenericosAlumnado.aspx" Style="margin-left: 20px;">Atras</asp:HyperLink>
     </form>
 </body>
 </html>
