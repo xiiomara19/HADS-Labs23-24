@@ -93,11 +93,13 @@ Public Class AccesoDatos
         Return New SqlDataAdapter(sql, BDConexion)
     End Function
 
+    'TODO
     Public Shared Function TrabajosGenericosExplotacionAdaptadorObtener() As SqlDataAdapter
         Dim sql As String = ""
         Return New SqlDataAdapter(sql, BDConexion)
     End Function
 
+    'TODO
     Public Shared Function ObtenerAdaptadorTareasAlumnado() As SqlDataAdapter
         Dim sql As String = ""
         Return New SqlDataAdapter(sql, BDConexion)
