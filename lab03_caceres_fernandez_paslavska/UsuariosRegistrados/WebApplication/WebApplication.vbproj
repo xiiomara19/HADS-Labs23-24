@@ -46,9 +46,6 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AccesoDatos">
-      <HintPath>..\AccesoDatos\bin\Debug\AccesoDatos.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -95,6 +92,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Registro\Profesorado\Profesores.aspx" />
     <Content Include="verificar.aspx" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
@@ -104,6 +102,7 @@
     <Content Include="Recuperar.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Final.aspx" />
+    <Content Include="Registro\Alumnado\Alumnos.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -160,6 +159,13 @@
       <DependentUpon>Recuperar.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Registro\Profesorado\Profesores.aspx.designer.vb">
+      <DependentUpon>Profesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro\Profesorado\Profesores.aspx.vb">
+      <DependentUpon>Profesores.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="verificar.aspx.designer.vb">
       <DependentUpon>verificar.aspx</DependentUpon>
     </Compile>
@@ -179,6 +185,13 @@
     </Compile>
     <Compile Include="Final.aspx.vb">
       <DependentUpon>Final.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Registro\Alumnado\Alumnos.aspx.designer.vb">
+      <DependentUpon>Alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro\Alumnado\Alumnos.aspx.vb">
+      <DependentUpon>Alumnos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
@@ -209,8 +222,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Registro\Alumnado\" />
-    <Folder Include="Registro\Profesorado\" />
+    <ProjectReference Include="..\AccesoDatos\AccesoDatos.vbproj">
+      <Project>{ab7541e1-5c1a-495b-8c7e-cff7366b370f}</Project>
+      <Name>AccesoDatos</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
