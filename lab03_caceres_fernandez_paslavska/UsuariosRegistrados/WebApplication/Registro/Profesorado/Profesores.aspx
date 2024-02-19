@@ -31,11 +31,11 @@
                         <br />
                         <br />
                         <strong>
-                        <asp:HyperLink ID="HyperLink5" runat="server">Gestión de trabajos</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink5" runat="server" style="font-size: 34px;">Gestión de trabajos</asp:HyperLink>
                         </strong>
                         <br />
                         <br />
-                        <asp:HyperLink ID="HyperLink6" runat="server">Profesores</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink6" runat="server" >Profesores</asp:HyperLink>
                     </asp:Panel>
                 </td>
             </tr>
