@@ -3,12 +3,10 @@
 Public Class verificar
     Inherits System.Web.UI.Page
 
-    Dim da As AccesoDatos.AccesoDatos
     Dim id As String
     Dim verifNum As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        da = AccesoDatos.AccesoDatos.getInstancia()
         errVerificaciónLbl.Text = ""
         infoLbl.Text = "Pulsa el botón 'Confirmar' para confirmar el registro"
 
@@ -30,14 +28,14 @@ Public Class verificar
     Protected Function verificarUsuario() As Integer
         Dim verificado As Integer = -1
         Try
-            da.Conectar()
-            Dim reader As SqlDataReader = da.verificarUsuario(id, CInt(verifNum))
+            AccesoDatos.AccesoDatos.getInstancia().Conectar()
+            Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().verificarUsuario(id, CInt(verifNum))
             Dim hay As Boolean = reader.HasRows
             reader.Close()
             If (hay) Then
-                verificado = da.ComprobarUsuario(id)
+                verificado = AccesoDatos.AccesoDatos.getInstancia().ComprobarUsuario(id)
             End If
-            da.CerrarConexion()
+            AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
 
         Catch ex As Exception
             errVerificaciónLbl.Text = ex.Message

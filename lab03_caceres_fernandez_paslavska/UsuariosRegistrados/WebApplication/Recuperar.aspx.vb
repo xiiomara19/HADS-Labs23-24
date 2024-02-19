@@ -2,13 +2,9 @@
 
 Public Class WebForm6
     Inherits System.Web.UI.Page
-
-    Dim da As AccesoDatos.AccesoDatos
     Dim email As Boolean = 0
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
-        da = AccesoDatos.AccesoDatos.getInstancia()
 
     End Sub
 
@@ -41,22 +37,22 @@ Public Class WebForm6
     End Sub
 
     Private Sub Check_Email()
-        da.Conectar()
-        Dim reader As SqlDataReader = da.ObtenerUsuarios(emailField.Text)
+        AccesoDatos.AccesoDatos.getInstancia().Conectar()
+        Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().ObtenerUsuarios(emailField.Text)
 
         If (reader.HasRows) Then
             reader.Read()
             email = 1
         End If
-        da.CerrarConexion()
+        AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
         'Console.WriteLine(pass, email)
         reader.Close()
     End Sub
 
     Private Sub Dar_Pregunta()
         'Dim userEmail As String = Session("loggedUserEmail").ToString()
-        da.Conectar()
-        Dim reader As SqlDataReader = da.ObtenerUsuarios(emailField.Text)
+        AccesoDatos.AccesoDatos.getInstancia().Conectar()
+        Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().ObtenerUsuarios(emailField.Text)
 
         If (reader.HasRows) Then
             reader.Read()
@@ -64,7 +60,7 @@ Public Class WebForm6
             pregunta.Text = reader.GetString(3)
 
         End If
-        da.CerrarConexion()
+        AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
         'Console.WriteLine(pass, email)
         reader.Close()
     End Sub
@@ -91,8 +87,8 @@ Public Class WebForm6
 
     Private Sub ValidarRespuesta()
         Dim respuestabd As String
-        da.Conectar()
-        Dim reader As SqlDataReader = da.ObtenerUsuarios(emailField.Text)
+        AccesoDatos.AccesoDatos.getInstancia().Conectar()
+        Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().ObtenerUsuarios(emailField.Text)
 
         If (reader.HasRows) Then
             reader.Read()
@@ -104,7 +100,7 @@ Public Class WebForm6
                 errorEmail.Text = "Respuesta incorrecta"
             End If
         End If
-        da.CerrarConexion()
+        AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
         reader.Close()
 
     End Sub

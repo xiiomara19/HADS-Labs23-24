@@ -6,8 +6,11 @@ Public Class WebForm4
     Dim pswd As String
     Dim contra As Boolean
 
+    Dim estado As String
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         email = Session("loggedUserEmail").ToString()
+        estado = Session("Modificar").ToString()
         da = AccesoDatos.AccesoDatos.getInstancia()
         contra = False
         obtenerContraseña()
@@ -98,9 +101,17 @@ Public Class WebForm4
         PswdField1.Text = ""
         PswdField2.Text = ""
         If contra Then
-            Response.Redirect("Menu.aspx")
+            If (estado <> "Alumno") Then
+                Response.Redirect("Profesorado/Profesores.aspx")
+            Else
+                Response.Redirect("Alumnado/Alumnos.aspx")
+            End If
         Else
-            Response.Redirect("Login.aspx")
+            If (estado <> "Alumno") Then
+                Response.Redirect("Profesorado/Profesores.aspx")
+            Else
+                Response.Redirect("Alumnado/Alumnos.aspx")
+            End If
         End If
     End Sub
 
