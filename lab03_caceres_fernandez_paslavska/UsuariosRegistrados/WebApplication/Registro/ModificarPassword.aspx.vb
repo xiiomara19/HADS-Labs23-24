@@ -10,7 +10,7 @@ Public Class WebForm4
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         email = Session("loggedUserEmail").ToString()
-        estado = Session("Inicio").ToString()
+        estado = Session("Modificar").ToString()
         da = AccesoDatos.AccesoDatos.getInstancia()
         contra = False
         obtenerContraseña()
