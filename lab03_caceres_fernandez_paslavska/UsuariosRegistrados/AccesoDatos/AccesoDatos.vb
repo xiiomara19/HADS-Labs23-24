@@ -88,7 +88,7 @@ Public Class AccesoDatos
         Return SqlComando.ExecuteReader()
     End Function
 
-    Public Shared Function alumnoMatriculadoAsignaturasAdaptadorObtener(pemail As String) As SqlDataAdapter
+    Public Shared Function AlumnoMatriculadoAsignaturasAdaptadorObtener(pemail As String) As SqlDataAdapter
         Dim sql = "SELECT DISTINCT irakasgaiKodea FROM KlasekoTaldeak WHERE kodea IN (SELECT taldeKodea FROM IkasleakTaldeak WHERE email='" & pemail & "')"
         Return New SqlDataAdapter(sql, BDConexion)
     End Function

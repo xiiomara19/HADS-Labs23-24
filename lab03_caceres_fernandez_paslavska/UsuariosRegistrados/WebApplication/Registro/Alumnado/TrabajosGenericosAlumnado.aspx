@@ -42,10 +42,8 @@
                 </asp:Panel>
             </td>
         </tr>
-       <tr>
             <asp:GridView ID="TareasGV" runat="server" AllowSorting="True">
             </asp:GridView>
-       </tr>
         </table> 
 
     </form>
