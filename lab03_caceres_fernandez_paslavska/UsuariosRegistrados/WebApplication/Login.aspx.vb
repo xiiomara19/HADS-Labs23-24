@@ -41,10 +41,16 @@ Public Class WebForm1
                 Message.Text = "Usuario no esta registrado correctamente"
             Else
                 If (pass.Equals(PassField.Text)) Then
+                    If (Session("loggedUserEmail")).ToString.Contains("@ikasle.ehu.eus") Then
+                        'Server.Transfer("~/Registro/Alumnado/Alumnos.aspx")
+                        Response.Redirect("~/Registro/Alumnado/Alumnos.aspx")
+                    Else
+                        'Server.Transfer("~/Registro/Profesorado/Profesores.aspx")
+                        Response.Redirect("~/Registro/Profesorado/Profesores.aspx")
+                    End If
 
-                    Server.Transfer("Menu.aspx")
                 Else
-                    Message.Text = "Password incorrecto."
+                        Message.Text = "Password incorrecto."
 
                 End If
 
