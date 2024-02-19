@@ -12,9 +12,16 @@
         <div>
             <br />
             ALUMNOS</div>
-        <p>
+        <asp:Panel ID="Panel1" runat="server" Height="299px" Width="444px">
+            <br />
+            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Registro/Alumnado/TrabajosGenericosAlumnado.aspx">Trabajos genéricos</asp:HyperLink>
+            <br />
+            <asp:HyperLink ID="HyperLink3" runat="server" >Trabajos personales</asp:HyperLink>
+            <br />
+            <asp:HyperLink ID="HyperLink2" runat="server" >Grupos</asp:HyperLink>
+            <br />
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/ModificarPassword.aspx">Cambiar la contraseña</asp:HyperLink>
-        </p>
+        </asp:Panel>
     </form>
 </body>
 </html>
