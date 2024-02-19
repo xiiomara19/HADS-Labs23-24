@@ -23,70 +23,70 @@ Partial Public Class LoginFormLab3
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Control Panel1.
+    '''Panel1 control.
     '''</summary>
     '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control HyperLink4.
+    '''HyperLink4 control.
     '''</summary>
     '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink4 As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''Control HyperLink3.
+    '''HyperLink3 control.
     '''</summary>
     '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink3 As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''Control HyperLink2.
+    '''HyperLink2 control.
     '''</summary>
     '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''Control HyperLink1.
+    '''HyperLink control.
     '''</summary>
     '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents HyperLink As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''Control Panel2.
+    '''Panel2 control.
     '''</summary>
     '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control HyperLink5.
+    '''HyperLink5 control.
     '''</summary>
     '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink5 As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''Control HyperLink6.
+    '''HyperLink6 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
