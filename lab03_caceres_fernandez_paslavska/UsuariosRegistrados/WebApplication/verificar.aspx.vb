@@ -3,7 +3,7 @@
 Public Class verificar
     Inherits System.Web.UI.Page
 
-    Dim id As String
+    Dim idUser As String
     Dim verifNum As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -14,7 +14,7 @@ Public Class verificar
 
     Protected Sub ConfirmarBtn_Click(sender As Object, e As EventArgs) Handles ConfirmarBtn.Click
         errVerificaciónLbl.Text = ""
-        id = Request.QueryString("erab")
+        idUser = Request.QueryString("erab")
         verifNum = CInt(Request.QueryString("egZenb"))
         If (verificarUsuario() <> -1) Then
             infoLbl.Text = "Se ha registrado correctamente."
@@ -29,11 +29,11 @@ Public Class verificar
         Dim verificado As Integer = -1
         Try
             AccesoDatos.AccesoDatos.getInstancia().Conectar()
-            Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().verificarUsuario(id, CInt(verifNum))
+            Dim reader As SqlDataReader = AccesoDatos.AccesoDatos.getInstancia().verificarUsuario(idUser, CInt(verifNum))
             Dim hay As Boolean = reader.HasRows
             reader.Close()
             If (hay) Then
-                verificado = AccesoDatos.AccesoDatos.getInstancia().ComprobarUsuario(id)
+                verificado = AccesoDatos.AccesoDatos.getInstancia().ComprobarUsuario(idUser)
             End If
             AccesoDatos.AccesoDatos.getInstancia().CerrarConexion()
 
