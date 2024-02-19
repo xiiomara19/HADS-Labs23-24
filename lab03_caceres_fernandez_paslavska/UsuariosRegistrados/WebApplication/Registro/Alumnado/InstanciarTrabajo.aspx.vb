@@ -5,4 +5,7 @@
 
     End Sub
 
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles CrearBtn.Click
+
+    End Sub
 End Class
