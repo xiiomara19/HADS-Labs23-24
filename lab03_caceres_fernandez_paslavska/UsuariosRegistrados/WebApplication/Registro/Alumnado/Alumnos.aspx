@@ -12,6 +12,9 @@
         <div>
             <br />
             ALUMNOS</div>
+        <p>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/ModificarPassword.aspx">Cambiar la contraseña</asp:HyperLink>
+        </p>
     </form>
 </body>
 </html>
