@@ -92,7 +92,11 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Registro\Alumnado\TrabajosGenericosAlumnado.aspx" />
+    <Content Include="Registro\Alumnado\InstanciarTrabajo.aspx" />
     <Content Include="Registro\Profesorado\Profesores.aspx" />
+    <Content Include="Registro\Profesorado\TrabajosProfesores.aspx" />
+    <Content Include="Registro\Profesorado\IncluirTrabajoGenerico.aspx" />
     <Content Include="verificar.aspx" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
@@ -159,11 +163,39 @@
       <DependentUpon>Recuperar.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Registro\Alumnado\TrabajosGenericosAlumnado.aspx.designer.vb">
+      <DependentUpon>TrabajosGenericosAlumnado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro\Alumnado\TrabajosGenericosAlumnado.aspx.vb">
+      <DependentUpon>TrabajosGenericosAlumnado.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Registro\Alumnado\InstanciarTrabajo.aspx.designer.vb">
+      <DependentUpon>InstanciarTrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro\Alumnado\InstanciarTrabajo.aspx.vb">
+      <DependentUpon>InstanciarTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Registro\Profesorado\Profesores.aspx.designer.vb">
       <DependentUpon>Profesores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro\Profesorado\Profesores.aspx.vb">
       <DependentUpon>Profesores.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Registro\Profesorado\TrabajosProfesores.aspx.designer.vb">
+      <DependentUpon>TrabajosProfesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro\Profesorado\TrabajosProfesores.aspx.vb">
+      <DependentUpon>TrabajosProfesores.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Registro\Profesorado\IncluirTrabajoGenerico.aspx.designer.vb">
+      <DependentUpon>IncluirTrabajoGenerico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro\Profesorado\IncluirTrabajoGenerico.aspx.vb">
+      <DependentUpon>IncluirTrabajoGenerico.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="verificar.aspx.designer.vb">
