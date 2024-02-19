@@ -66,4 +66,31 @@ Partial Public Class WebForm12
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+
+    '''<summary>
+    '''Control Panel2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control HyperLink5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents HyperLink5 As Global.System.Web.UI.WebControls.HyperLink
+
+    '''<summary>
+    '''Control HyperLink6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents HyperLink6 As Global.System.Web.UI.WebControls.HyperLink
 End Class
