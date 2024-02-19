@@ -94,6 +94,7 @@
   <ItemGroup>
     <Content Include="Registro\Alumnado\TrabajosGenericosAlumnado.aspx" />
     <Content Include="Registro\Alumnado\InstanciarTrabajo.aspx" />
+    <Content Include="Registro\Alumnado\Alumnos.aspx" />
     <Content Include="Registro\Profesorado\Profesores.aspx" />
     <Content Include="Registro\Profesorado\TrabajosProfesores.aspx" />
     <Content Include="Registro\Profesorado\IncluirTrabajoGenerico.aspx" />
@@ -101,12 +102,11 @@
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
-    <Content Include="CambiarContraseña.aspx" />
+    <Content Include="Registro\ModificarPassword.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Recuperar.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Final.aspx" />
-    <Content Include="Registro\Alumnado\Alumnos.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -142,11 +142,18 @@
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="CambiarContraseña.aspx.designer.vb">
-      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+    <Compile Include="Registro\Alumnado\Alumnos.aspx.designer.vb">
+      <DependentUpon>Alumnos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CambiarContraseña.aspx.vb">
-      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+    <Compile Include="Registro\Alumnado\Alumnos.aspx.vb">
+      <DependentUpon>Alumnos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Registro\ModificarPassword.aspx.designer.vb">
+      <DependentUpon>ModificarPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro\ModificarPassword.aspx.vb">
+      <DependentUpon>ModificarPassword.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Menu.aspx.designer.vb">
@@ -217,13 +224,6 @@
     </Compile>
     <Compile Include="Final.aspx.vb">
       <DependentUpon>Final.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="Registro\Alumnado\Alumnos.aspx.designer.vb">
-      <DependentUpon>Alumnos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Registro\Alumnado\Alumnos.aspx.vb">
-      <DependentUpon>Alumnos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

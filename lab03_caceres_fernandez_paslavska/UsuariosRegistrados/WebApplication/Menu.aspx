@@ -11,7 +11,7 @@
         <div>
             PARA USUARIOS REGISTRADOS</div>
         <p>
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="CambiarContraseña.aspx">Cambiar la contraseña</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/ModificarPassword.aspx">Cambiar la contraseña</asp:HyperLink>
         </p>
         <p>
             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="Final.aspx">Salir de la app</asp:HyperLink>

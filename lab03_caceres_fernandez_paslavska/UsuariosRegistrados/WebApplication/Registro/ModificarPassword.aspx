@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="CambiarContraseña.aspx.vb" Inherits="WebApplication.WebForm4" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ModificarPassword.aspx.vb" Inherits="WebApplication.WebForm4" %>
 
 <!DOCTYPE html>
 
