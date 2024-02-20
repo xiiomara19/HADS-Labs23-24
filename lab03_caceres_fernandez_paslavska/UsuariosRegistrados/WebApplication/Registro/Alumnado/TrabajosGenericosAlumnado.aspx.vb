@@ -8,7 +8,10 @@ Public Class WebForm8
     Dim dapTrabajos As SqlDataAdapter
     Dim tblAsignaturas As DataTable
     Dim tblTrabajos As DataTable
+    Dim dvTrabajos As DataView
+
     Dim idUsuario As String
+    Dim asignaturaElegida As String
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -33,6 +36,15 @@ Public Class WebForm8
             asignaturasDDL.DataSource = tblAsignaturas
             asignaturasDDL.DataBind()
 
+            tblTrabajos = dstTrabajos.Tables("LanGenerikoak")
+            'TareasGV.DataSource = tblTrabajos
+            'TareasGV.DataBind()
+            dvTrabajos = New DataView()
+            dvTrabajos.Table = tblTrabajos
+            dvTrabajos.RowFilter = "irakasgaiKodea='" & asignaturaElegida & "'"
+            TareasGV.DataSource = dvTrabajos
+            TareasGV.DataBind()
+
             Session("datosAsignaturas") = dstAsignaturas
             Session("dapAsignaturas") = dapAsignaturas
             Session("datosTrabajos") = dstTrabajos
@@ -40,6 +52,16 @@ Public Class WebForm8
     End Sub
 
     Protected Sub asignaturasDDL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles asignaturasDDL.SelectedIndexChanged
+        asignaturaElegida = asignaturasDDL.SelectedValue.ToString
+    End Sub
 
+    Protected Sub verBtn_Click(sender As Object, e As EventArgs) Handles verBtn.Click
+        dvTrabajos = New DataView()
+        dvTrabajos.Table = tblTrabajos
+        dvTrabajos.Sort = "kodea ASC"
+        TareasGV.DataSource = dvTrabajos
+        dvTrabajos.RowFilter = "irakasgaiKodea=" & asignaturaElegida
+        TareasGV.DataBind()
+        TareasGV.Visible = True
     End Sub
 End Class
