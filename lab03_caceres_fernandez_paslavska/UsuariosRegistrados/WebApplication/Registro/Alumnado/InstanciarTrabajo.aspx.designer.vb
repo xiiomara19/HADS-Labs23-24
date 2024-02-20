@@ -113,6 +113,24 @@ Partial Public Class WebForm9
     Protected WithEvents TextBox4 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control errorMessage.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents errorMessage As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control correctMessage.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents correctMessage As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control CrearBtn.
     '''</summary>
     '''<remarks>
@@ -131,13 +149,13 @@ Partial Public Class WebForm9
     Protected WithEvents Panel3 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control Table1.
+    '''Control GridView1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
+    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''Control HyperLink1.

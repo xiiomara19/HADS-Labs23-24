@@ -104,8 +104,8 @@ Public Class AccesoDatos
     End Function
 
     'TODO
-    Public Shared Function ObtenerAdaptadorTareasAlumnado() As SqlDataAdapter
-        Dim sql As String = ""
+    Public Shared Function ObtenerAdaptadorTareasAlumnado(pemail As String) As SqlDataAdapter
+        Dim sql As String = "SELECT IkasleakLanak.email, LanGenerikoak.kodea, LanGenerikoak.aurreikusitakoOrduak, IkasleakLanak.benetakoOrduak FROM (LanPertsonalak JOIN IkasleakLanak ON LanPertsonalak.email = IkasleakLanak.email) JOIN LanGenerikoak ON LanGenerikoak.kodea = IkasleakLanak.lanGenerikoarenKodea WHERE IkasleakLanak.email='" & pemail & "'"
         dapTareasAlumno = New SqlDataAdapter(sql, BDConexion)
         Return dapTareasAlumno
     End Function

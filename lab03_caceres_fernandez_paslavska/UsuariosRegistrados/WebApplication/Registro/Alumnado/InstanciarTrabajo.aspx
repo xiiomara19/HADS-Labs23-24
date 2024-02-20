@@ -13,10 +13,11 @@
 
         .auto-style2 {
             width: 683px;
-            height: 348px;
+            height: 365px;
         }
         .auto-style3 {
-            height: 348px;
+            height: 365px;
+            width: 556px;
         }
     </style>
 </head>
@@ -30,26 +31,30 @@
         <table>
             <tr>
                 <td class="auto-style3">
-                    <asp:Panel ID="Panel2" runat="server" Height="344px" Width="556px">
+                    <asp:Panel ID="Panel2" runat="server" Height="375px" Width="556px">
                         <br />
                         <asp:Label ID="Label1" runat="server" Text="Email"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox>
                         <br />
                         <br />
                         <asp:Label ID="Label2" runat="server" Text="Trabajo genérico"></asp:Label>
                         &nbsp;&nbsp;
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" Enabled="False"></asp:TextBox>
                         <br />
                         <br />
                         <asp:Label ID="Label3" runat="server" Text="Horas previstas"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox3" runat="server" Enabled="False"></asp:TextBox>
                         <br />
                         <br />
-                        <asp:Label ID="Label4" runat="server" Text="Horas invertidas"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text="Horas efectivas"></asp:Label>
                         &nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                        <br />
+                        <br />
+                        <asp:Label ID="errorMessage" runat="server" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="correctMessage" runat="server" ForeColor="Black"></asp:Label>
                         <br />
                         <br />
                         <asp:Button ID="CrearBtn" runat="server" Text="Crear trabajo" />
@@ -57,19 +62,19 @@
                 </td>
                 <td class="auto-style2">
                     <asp:Panel ID="Panel3" runat="server" Height="284px" Width="681px">
-                        <asp:Table ID="Table1" runat="server" BorderColor="Black" BorderStyle="Ridge" BorderWidth="1px" CellPadding="4" CellSpacing="3" ForeColor="Black" GridLines="Both">
-                            <asp:TableHeaderRow>
-                                <asp:TableHeaderCell>Email</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Código de trabajo</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Horas previstas</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Horas invertidas</asp:TableHeaderCell>
-                            </asp:TableHeaderRow>
-                        </asp:Table>
+                        <asp:GridView ID="GridView1" runat="server">
+                            <Columns>
+                                <asp:BoundField HeaderText="Email" />
+                                <asp:BoundField HeaderText="Código trabajo" />
+                                <asp:BoundField HeaderText="Horas previstas" />
+                                <asp:BoundField HeaderText="Horas efectivas" />
+                            </Columns>
+                        </asp:GridView>
                     </asp:Panel>
                 </td>
             </tr>
         </table>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/Alumnado/TrabajosGenericosAlumnado.aspx" Style="margin-left: 20px;">Atras</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/Alumnado/TrabajosGenericosAlumnado.aspx" Style="margin-left: 20px;">Página anterior</asp:HyperLink>
     </form>
 </body>
 </html>
