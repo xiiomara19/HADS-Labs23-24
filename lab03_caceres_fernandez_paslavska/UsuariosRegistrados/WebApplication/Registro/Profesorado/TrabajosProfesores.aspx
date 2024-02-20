@@ -14,7 +14,7 @@
         <asp:Panel ID="Panel1" runat="server" BackColor="#CCCCCC" Height="94px" HorizontalAlign="Center" style="margin-bottom: 26px">
             <br />
             PROFESOR<br /> GESTION DE TAREAS GENERICOS</asp:Panel>
-        <asp:Panel ID="Panel2" runat="server" Height="181px" Width="1164px">
+        <asp:Panel ID="Panel2" runat="server" Height="254px" Width="1164px">
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="Label1" runat="server" Text="Seleccionar asignatura"></asp:Label>
@@ -32,9 +32,22 @@
                     <asp:SessionParameter DefaultValue="Session(&quot;loggedUserEmail&quot;)" Name="email" SessionField="loggedUserEmail" />
                 </SelectParameters>
             </asp:SqlDataSource>
+            <br />
+            <br />
+            <br />
+            <br />
         </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" Height="305px" Width="840px">
-            <asp:GridView ID="GridView1" runat="server" Height="248px" Width="668px">
+            <asp:GridView ID="GridView1" runat="server" Height="248px" Width="845px" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:CommandField ShowSelectButton="True" />
+                    <asp:BoundField HeaderText="Codigo" />
+                    <asp:BoundField HeaderText="Descripcion" />
+                    <asp:BoundField HeaderText="Cod Asig" />
+                    <asp:BoundField HeaderText="HEstimadas" />
+                    <asp:BoundField HeaderText="Explotacion" />
+                    <asp:BoundField HeaderText="TipoTarea" />
+                </Columns>
             </asp:GridView>
         </asp:Panel>
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login.aspx">Cerrar sesion</asp:HyperLink>
