@@ -21,7 +21,7 @@
             :<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="DropDownList1" runat="server" Height="93px" Width="225px" DataSourceID="sqldsDocentesGrupos" DataTextField="irakasgaiKodea"  DataValueField="irakasgaiKodea">
+            <asp:DropDownList ID="DropDownList1" runat="server" Height="93px" Width="225px" DataSourceID="sqldsDocentesGrupos" AutoPostBack="True" DataTextField="irakasgaiKodea"  DataValueField="irakasgaiKodea">
                 <asp:ListItem></asp:ListItem>
             </asp:DropDownList>
             &nbsp;&nbsp;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -38,31 +38,36 @@
             <br />
         </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" Height="305px" Width="840px">
-            <asp:GridView ID="GridView1" runat="server" Height="248px" Width="845px" AutoGenerateColumns="False">
+            <asp:GridView ID="GridView1" runat="server" Height="307px" Width="845px" AllowSorting="True" AutoGenerateColumns ="False" DataKeyNames="kodea" DataSourceID="sqldsTrabajosGenericos" BorderColor="#006666" BorderStyle="Double" AutoGenerateEditButton="True">
                 <Columns>
-                    <asp:CommandField ShowSelectButton="True" />
-                    <asp:BoundField HeaderText="Codigo" />
-                    <asp:BoundField HeaderText="Descripcion" />
-                    <asp:BoundField HeaderText="Cod Asig" />
-                    <asp:BoundField HeaderText="HEstimadas" />
-                    <asp:BoundField HeaderText="Explotacion" />
-                    <asp:BoundField HeaderText="TipoTarea" />
+                    <asp:BoundField DataField="irakasgaiKodea" HeaderText="Codigo" ReadOnly="True" SortExpression="kodea" >
+                    <FooterStyle ForeColor="White" />
+                    <HeaderStyle BackColor="#006666" BorderColor="#006666" BorderStyle="Double" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="deskribapena" HeaderText="Descripcion" SortExpression="deskribapena" />
+                    <asp:BoundField DataField="irakasgaiKodea" HeaderText="CodAsig" SortExpression="irakasgaiKodea" />
+                    <asp:BoundField DataField="aurreikusitakoOrduak" HeaderText="HEstimadas" SortExpression="aurreikusitakoOrduak" />
+                    <asp:CheckBoxField DataField="ustiapenean" HeaderText="Explotacion" SortExpression="ustiapenean" />
+                    <asp:BoundField DataField="lanMota" HeaderText="TipoTarea" SortExpression="lanMota" />
                 </Columns>
+                <HeaderStyle BackColor="#006666" ForeColor="White" />
             </asp:GridView>
         </asp:Panel>
+        <asp:SqlDataSource ID="sqldsTrabajosGenericos" runat="server" ConnectionString="<%$ ConnectionStrings:lab3BDConnectionString2 %>" SelectCommand="SELECT kodea, deskribapena, irakasgaiKodea, aurreikusitakoOrduak, ustiapenean, lanMota FROM LanGenerikoak WHERE (irakasgaiKodea = @irakasgaiKodea)" DeleteCommand="DELETE FROM LanGenerikoak" InsertCommand="INSERT INTO LanGenerikoak() VALUES()" UpdateCommand="UPDATE LanGenerikoak SET deskribapena= @deskribapena, aurreikusitakoOrduak= @aurreIkusitakoOrduak, lanMota=@lanMota WHERE kodea=@kodea">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="DropDownList1" DefaultValue="DropDownList1.SelectedValue()" Name="irakasgaiKodea" PropertyName="SelectedValue" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="deskribapena" />
+                <asp:Parameter Name="aurreIkusitakoOrduak" />
+                <asp:Parameter Name="lanMota" />
+                <asp:Parameter Name="kodea" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <br />
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login.aspx">Cerrar sesion</asp:HyperLink>
         <br />
         <br />
-            <asp:Table ID="Table1" runat="server" BorderColor="Black" BorderStyle="Ridge" BorderWidth="1px" CellPadding="4" CellSpacing="3" ForeColor="Black" GridLines="Both" Width="839px">
-                <asp:TableHeaderRow>
-                    <asp:TableHeaderCell>Código</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Descripcion</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Cod Asig</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>HEstimadas</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Explotacion</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>TipoTarea</asp:TableHeaderCell>
-                </asp:TableHeaderRow>
-            </asp:Table>
     </form>
 </body>
 </html>

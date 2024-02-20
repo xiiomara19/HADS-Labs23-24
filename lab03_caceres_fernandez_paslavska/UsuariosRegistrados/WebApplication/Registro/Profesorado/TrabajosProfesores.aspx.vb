@@ -10,4 +10,12 @@
         Dim b As Integer = 2
         Dim c As Integer = DropDownList1.SelectedIndex()
     End Sub
+
+    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
+
+    End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Response.Redirect("~/Registro/Profesorado/IncluirTrabajoGenerico.aspx")
+    End Sub
 End Class

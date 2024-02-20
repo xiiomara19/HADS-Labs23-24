@@ -95,6 +95,15 @@ Partial Public Class WebForm10
     Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
+    '''sqldsTrabajosGenericos control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sqldsTrabajosGenericos As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
     '''HyperLink1 control.
     '''</summary>
     '''<remarks>
@@ -102,13 +111,4 @@ Partial Public Class WebForm10
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''Table1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Table1 As Global.System.Web.UI.WebControls.Table
 End Class
