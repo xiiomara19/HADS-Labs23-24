@@ -9,7 +9,7 @@ Public Class LoginFormLab3
     Dim pattern As String = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Session("loggedUserEmail") = ""
+        'Session("loggedUserEmail") = ""
         Session("Inicio") = "No"
 
     End Sub
@@ -40,6 +40,7 @@ Public Class LoginFormLab3
                 Message.Text = "Usuario no esta registrado correctamente"
             Else
                 If (pass.Equals(PassField.Text)) Then
+                    Session("loggedUserEmail") = emailField.Text
                     If (Session("loggedUserEmail")).ToString.Contains("@ikasle.ehu.eus") Then
                         'Server.Transfer("~/Registro/Alumnado/Alumnos.aspx")
                         Response.Redirect("~/Registro/Alumnado/Alumnos.aspx")
@@ -62,8 +63,8 @@ Public Class LoginFormLab3
 
     Protected Sub Email_TextChanged(sender As Object, e As EventArgs) Handles emailField.TextChanged
 
-        Session("loggedUserEmail") = emailField.Text
-        Check_Email_Password()
+        'Session("loggedUserEmail") = emailField.Text
+        'Check_Email_Password()
 
 
     End Sub
