@@ -59,13 +59,13 @@ Partial Public Class WebForm8
     Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control Button1.
+    '''Control verBtn.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents verBtn As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control Panel3.

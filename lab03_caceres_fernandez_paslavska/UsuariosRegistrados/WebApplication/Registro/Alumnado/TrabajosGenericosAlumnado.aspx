@@ -28,7 +28,7 @@
                 </asp:DropDownList>
                 <asp:Panel ID="Panel2" runat="server" Width="169px">
                 <br />
-                <asp:Button ID="Button1" runat="server" Text="Button" />
+                <asp:Button ID="verBtn" runat="server" Text="Ver Trabajos" />
                 </asp:Panel>
             </td>
             <td class="auto-style3">
