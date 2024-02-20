@@ -46,10 +46,10 @@
             <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" Visible="False" DataKeyNames="Codigo">
                 <Columns>
                     <asp:CommandField SelectText="Instanciar" ShowSelectButton="True" ButtonType="Button" />
-                    <asp:BoundField HeaderText="Codigo" SortExpression="ASC" />
-                    <asp:BoundField HeaderText="Descripcion" />
-                    <asp:BoundField HeaderText="Horas previstas" />
-                    <asp:BoundField HeaderText="Tipo de trabajo" />
+                    <asp:BoundField HeaderText="Codigo" DataField="kodea" SortExpression="ASC" />
+                    <asp:BoundField HeaderText="Descripcion" DataField="deskribapena" />
+                    <asp:BoundField HeaderText="Horas previstas" DataField="aurreikusitakoOrduak" />
+                    <asp:BoundField HeaderText="Tipo de trabajo" DataField="lanMota" />
                 </Columns>
             </asp:GridView>
        </tr>
