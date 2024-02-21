@@ -103,9 +103,22 @@ Public Class AccesoDatos
     End Function
 
     Public Shared Function ObtenerAdaptadorTareasAlumnado(pemail As String) As SqlDataAdapter
-        Dim sql As String = "SELECT IkasleakLanak.email, LanGenerikoak.kodea, LanGenerikoak.aurreikusitakoOrduak, IkasleakLanak.benetakoOrduak FROM IkasleakLanak JOIN LanGenerikoak ON LanGenerikoak.kodea = IkasleakLanak.lanGenerikoarenKodea WHERE IkasleakLanak.email='" & pemail & "'"
+        Dim sql As String = "SELECT * FROM IkasleakLanak  WHERE email='" & pemail & "'"
         dapTareasAlumno = New SqlDataAdapter(sql, BDConexion)
         Return dapTareasAlumno
+    End Function
+
+    Public Shared Function cambiarInstanciado(codigo As String) As Integer
+        Dim sql = "UPDATE LanGenerikoak SET ustiapenean=1 WHERE kodea='" & codigo & "'"
+        SqlComando = New SqlCommand(sql, BDConexion)
+        Dim numregs As Integer
+        Try
+            numregs = SqlComando.ExecuteNonQuery()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+            Return -1
+        End Try
+        Return numregs
     End Function
 
 End Class
