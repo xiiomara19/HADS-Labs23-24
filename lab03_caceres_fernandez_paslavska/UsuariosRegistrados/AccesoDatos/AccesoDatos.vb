@@ -97,7 +97,7 @@ Public Class AccesoDatos
     End Function
 
     Public Shared Function TrabajosGenericosExplotacionAdaptadorObtener() As SqlDataAdapter
-        Dim sql As String = "SELECT * FROM LanGenerikoak"
+        Dim sql As String = "SELECT * FROM LanGenerikoak WHERE ustiapenean=1"
         dapTrabajosGenericos = New SqlDataAdapter(sql, BDConexion)
         Return dapTrabajosGenericos
     End Function

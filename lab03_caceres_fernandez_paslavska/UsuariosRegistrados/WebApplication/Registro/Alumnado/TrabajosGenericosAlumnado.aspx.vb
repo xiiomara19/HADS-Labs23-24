@@ -22,6 +22,9 @@ Public Class WebForm8
         If Page.IsPostBack Then
             dstAsignaturas = Session("datosAsignaturas")
             dstTrabajos = Session("datosTrabajos")
+            dapAsignaturas = Session("dapAsignaturas")
+            dvTrabajos = Session("vistaTrabajos")
+            tblTrabajos = Session("tablaTrabajos")
         Else
             AccesoDatos.AccesoDatos.Conectar()
             dapAsignaturas = AccesoDatos.AccesoDatos.AlumnoMatriculadoAsignaturasAdaptadorObtener(idUsuario)
@@ -42,6 +45,7 @@ Public Class WebForm8
             Session("datosAsignaturas") = dstAsignaturas
             Session("dapAsignaturas") = dapAsignaturas
             Session("datosTrabajos") = dstTrabajos
+
         End If
     End Sub
 
@@ -50,10 +54,12 @@ Public Class WebForm8
         tblTrabajos = dstTrabajos.Tables("LanGenerikoak")
         dvTrabajos = New DataView(tblTrabajos)
         dvTrabajos.Sort = "kodea ASC"
-        dvTrabajos.RowFilter = $"irakasgaiKodea = '{asignaturasDDL.SelectedValue}'"
+        dvTrabajos.RowFilter = $"irakasgaiKodea = '{asignaturasDDL.SelectedValue}' AND ustiapenean = 1"
         TareasGV.DataSource = dvTrabajos
         TareasGV.DataBind()
         TareasGV.Visible = True
+        Session("vistaTrabajos") = dvTrabajos
+        Session("tablaTrabajos") = tblTrabajos
     End Sub
 
     Protected Sub caractTareasCBL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles caractTareasCBL.SelectedIndexChanged
@@ -77,7 +83,10 @@ Public Class WebForm8
     End Sub
 
     Protected Sub TareasGV_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TareasGV.SelectedIndexChanged
+        tblAsignaturas = Session("tablaAsignaturas")
         tareaElegida = TareasGV.SelectedDataKey.Value.ToString
-        Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida & "&horas=" & "")
+        horasTarea = tblTrabajos.Rows(TareasGV.SelectedIndex).Item(3).ToString
+        Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida & "&horas=" & horasTarea)
     End Sub
+
 End Class
