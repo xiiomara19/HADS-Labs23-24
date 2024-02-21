@@ -43,7 +43,7 @@
             </td>
         </tr>
        <tr>
-            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" Visible="False">
+            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" Visible="False" DataKeyNames="kodea">
                 <Columns>
                     <asp:CommandField SelectText="Instanciar" ShowSelectButton="True" ButtonType="Button" />
                     <asp:BoundField HeaderText="Codigo" DataField="kodea" SortExpression="kodea ASC" />
