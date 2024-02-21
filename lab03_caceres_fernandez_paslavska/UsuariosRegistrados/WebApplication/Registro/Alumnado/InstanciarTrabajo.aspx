@@ -62,12 +62,12 @@
                 </td>
                 <td class="auto-style2">
                     <asp:Panel ID="Panel3" runat="server" Height="284px" Width="681px">
-                        <asp:GridView ID="GridView1" runat="server">
+                        <asp:GridView ID="TareasGV" runat="server" AutoGenerateColumns="False">
                             <Columns>
-                                <asp:BoundField HeaderText="Email" />
-                                <asp:BoundField HeaderText="Código trabajo" />
-                                <asp:BoundField HeaderText="Horas previstas" />
-                                <asp:BoundField HeaderText="Horas efectivas" />
+                                <asp:BoundField HeaderText="Email" DataField="email" />
+                                <asp:BoundField HeaderText="Código trabajo" DataField="lanGenerikoarenKodea" />
+                                <asp:BoundField HeaderText="Horas previstas" DataField="aurreikusitakoOrduak" />
+                                <asp:BoundField HeaderText="Horas efectivas" DataField="benetakoOrduak" />
                             </Columns>
                         </asp:GridView>
                     </asp:Panel>

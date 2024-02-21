@@ -149,13 +149,13 @@ Partial Public Class WebForm9
     Protected WithEvents Panel3 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control GridView1.
+    '''Control TareasGV.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents TareasGV As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''Control HyperLink1.
