@@ -37,13 +37,14 @@ Public Class WebForm8
             asignaturasDDL.DataBind()
 
             tblTrabajos = dstTrabajos.Tables("LanGenerikoak")
-            'TareasGV.DataSource = tblTrabajos
-            'TareasGV.DataBind()
-            dvTrabajos = New DataView()
-            dvTrabajos.Table = tblTrabajos
-            dvTrabajos.RowFilter = "irakasgaiKodea='" & asignaturaElegida & "'"
-            TareasGV.DataSource = dvTrabajos
+            TareasGV.DataSource = tblTrabajos
             TareasGV.DataBind()
+
+            'dvTrabajos = New DataView()
+            'dvTrabajos.Table = tblTrabajos
+            'dvTrabajos.RowFilter = "irakasgaiKodea='" & asignaturaElegida & "'"
+            'TareasGV.DataSource = dvTrabajos
+            'TareasGV.DataBind()
 
             Session("datosAsignaturas") = dstAsignaturas
             Session("dapAsignaturas") = dapAsignaturas
@@ -56,12 +57,36 @@ Public Class WebForm8
     End Sub
 
     Protected Sub verBtn_Click(sender As Object, e As EventArgs) Handles verBtn.Click
-        dvTrabajos = New DataView()
-        dvTrabajos.Table = tblTrabajos
-        dvTrabajos.Sort = "kodea ASC"
-        TareasGV.DataSource = dvTrabajos
-        dvTrabajos.RowFilter = "irakasgaiKodea=" & asignaturaElegida
-        TareasGV.DataBind()
+        'dvTrabajos = New DataView()
+        'dvTrabajos.Table = tblTrabajos
+        'dvTrabajos.Sort = "kodea ASC"
+        'dvTrabajos.RowFilter = "irakasgaiKodea=" & asignaturaElegida
+        'TareasGV.DataSource = dvTrabajos
+        'TareasGV.DataBind()
         TareasGV.Visible = True
+    End Sub
+
+    Protected Sub caractTareasCBL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles caractTareasCBL.SelectedIndexChanged
+        If caractTareasCBL.Items.Item(1).Selected Then
+            TareasGV.Columns.Item(2).Visible = True
+        Else
+            TareasGV.Columns.Item(2).Visible = False
+        End If
+
+        If caractTareasCBL.Items.Item(2).Selected Then
+            TareasGV.Columns.Item(3).Visible = True
+        Else
+            TareasGV.Columns.Item(3).Visible = False
+        End If
+
+        If caractTareasCBL.Items.Item(3).Selected Then
+            TareasGV.Columns.Item(4).Visible = True
+        Else
+            TareasGV.Columns.Item(4).Visible = False
+        End If
+    End Sub
+
+    Protected Sub TareasGV_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TareasGV.SelectedIndexChanged
+        Response.Redirect("")
     End Sub
 End Class

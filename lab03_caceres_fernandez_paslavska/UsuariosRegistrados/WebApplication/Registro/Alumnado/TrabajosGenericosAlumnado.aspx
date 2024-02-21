@@ -34,7 +34,7 @@
             <td class="auto-style3">
                 <asp:Panel ID="Panel3" runat="server" Width="251px">
                     <asp:CheckBoxList ID="caractTareasCBL" runat="server">
-                        <asp:ListItem Value="kodea">Código</asp:ListItem>
+                        <asp:ListItem Value="kodea" Enabled="False" Selected="True">Código</asp:ListItem>
                         <asp:ListItem Value="deskribapena">Descripción</asp:ListItem>
                         <asp:ListItem Value="aurreikusitakoOrduak">Horas previstas</asp:ListItem>
                         <asp:ListItem Value="lanMota">Tipo de trabajo</asp:ListItem>
@@ -43,7 +43,7 @@
             </td>
         </tr>
        <tr>
-            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="kodea">
+            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="kodea" Visible="False">
                 <Columns>
                     <asp:CommandField SelectText="Instanciar" ShowSelectButton="True" ButtonType="Button" />
                     <asp:BoundField HeaderText="Codigo" DataField="kodea" SortExpression="ASC" />
