@@ -85,7 +85,7 @@ Public Class WebForm8
     Protected Sub TareasGV_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TareasGV.SelectedIndexChanged
         tblAsignaturas = Session("tablaAsignaturas")
         tareaElegida = TareasGV.SelectedDataKey.Value.ToString
-        horasTarea = tblTrabajos.Rows(TareasGV.SelectedIndex).Item(3).ToString
+        horasTarea = dvTrabajos.ToTable.Rows(TareasGV.SelectedIndex).Item(3)
         Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida & "&horas=" & horasTarea)
     End Sub
 
