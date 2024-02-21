@@ -108,17 +108,4 @@ Public Class AccesoDatos
         Return dapTareasAlumno
     End Function
 
-    Public Shared Function cambiarInstanciado(codigo As String) As Integer
-        Dim sql = "UPDATE LanGenerikoak SET ustiapenean=1 WHERE kodea='" & codigo & "'"
-        SqlComando = New SqlCommand(sql, BDConexion)
-        Dim numregs As Integer
-        Try
-            numregs = SqlComando.ExecuteNonQuery()
-        Catch ex As Exception
-            Console.WriteLine(ex.Message)
-            Return -1
-        End Try
-        Return numregs
-    End Function
-
 End Class

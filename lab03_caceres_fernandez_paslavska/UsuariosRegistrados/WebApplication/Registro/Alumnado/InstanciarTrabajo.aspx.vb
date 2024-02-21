@@ -10,7 +10,7 @@ Public Class WebForm9
         TextBox1.Text = Session("loggedUserEmail").ToString()
         Session("datosAsignaturas").ToString()
         TextBox2.Text = Request.QueryString("tarea")
-        'TextBox3.Text = Request.QueryString("horas")
+        TextBox3.Text = Request.QueryString("horas")
         CrearBtn.Enabled = True
         If Page.IsPostBack Then
             dstTrabajos = Session("instanciarTrabajo")
@@ -25,6 +25,7 @@ Public Class WebForm9
             TareasGV.DataSource = dvTrabajos
             TareasGV.DataBind()
             Session("instanciarTrabajo") = dstTrabajos
+            Session("adaptador") = dapTrabajos
         End If
 
     End Sub
@@ -32,6 +33,7 @@ Public Class WebForm9
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles CrearBtn.Click
         ReiniciarErrores()
         Dim valor As Integer
+        Dim bldTrabajos As New SqlCommandBuilder(Session("adaptador"))
         If String.IsNullOrEmpty(TextBox4.Text) Then
             errorMessage.Text = "Debe insertar el número de horas efectivas."
         ElseIf Not Int32.TryParse(TextBox4.Text, valor) Then
@@ -41,16 +43,26 @@ Public Class WebForm9
         Else
             dstTrabajos = Session("instanciarTrabajo")
             tblTrabajos = dstTrabajos.Tables("IkasleLanak")
+            Dim rowTrabajos As DataRow = tblTrabajos.NewRow()
+            rowTrabajos("email") = TextBox1.Text
+            rowTrabajos("lanGenerikoarenKodea") = TextBox2.Text
+            rowTrabajos("aurreikusitakoOrduak") = TextBox3.Text
+            rowTrabajos("benetakoOrduak") = TextBox4.Text
+            tblTrabajos.Rows.Add(rowTrabajos)
             dvTrabajos = New DataView(tblTrabajos)
             TareasGV.DataSource = dvTrabajos
             TareasGV.DataBind()
-
-            If (AccesoDatos.AccesoDatos.cambiarInstanciado(Request.QueryString("tarea")) > 0) Then
+            dapTrabajos = Session("adaptador")
+            Try
+                dapTrabajos.Update(dstTrabajos, "IkasleLanak")
+                dstTrabajos.AcceptChanges()
                 correctMessage.Text = "Se ha instanciado correctamente su trabajo"
                 CrearBtn.Enabled = False
-            Else
-                errorMessage.Text = "No se ha podido instanciar tu trabajo"
-            End If
+            Catch ex As Exception
+                errorMessage.Text = "No se puede volver a instanciar un mismo trabajo."
+                CrearBtn.Enabled = False
+            End Try
+
         End If
     End Sub
 
