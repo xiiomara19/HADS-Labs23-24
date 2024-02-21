@@ -3,8 +3,11 @@ Public Class WebForm9
     Inherits System.Web.UI.Page
     Dim dapTrabajos As SqlDataAdapter
     Dim dstTrabajos As DataSet
+    Dim dst As DataSet
     Dim tblTrabajos As DataTable
+    Dim tbl As DataTable
     Dim dvTrabajos As DataView
+
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         TextBox1.Text = Session("loggedUserEmail").ToString()
@@ -53,6 +56,13 @@ Public Class WebForm9
             TareasGV.DataSource = dvTrabajos
             TareasGV.DataBind()
             dapTrabajos = Session("adaptador")
+            dst = Session("datosTrabajos")
+            tbl = dst.Tables("LanGenerikoak")
+            'esto no funciona ayuda
+            tbl.Rows(TareasGV.SelectedIndex).Item(4) = 0
+            TareasGV.DataSource = tbl
+            TareasGV.DataBind()
+            Session("datosTrabajos") = dst
             Try
                 dapTrabajos.Update(dstTrabajos, "IkasleLanak")
                 dstTrabajos.AcceptChanges()
