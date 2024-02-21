@@ -22,6 +22,7 @@ Public Class WebForm8
         If Page.IsPostBack Then
             dstAsignaturas = Session("datosAsignaturas")
             dstTrabajos = Session("datosTrabajos")
+            dapAsignaturas = Session("dapAsignaturas")
         Else
             AccesoDatos.AccesoDatos.Conectar()
             dapAsignaturas = AccesoDatos.AccesoDatos.AlumnoMatriculadoAsignaturasAdaptadorObtener(idUsuario)
@@ -54,6 +55,7 @@ Public Class WebForm8
         TareasGV.DataSource = dvTrabajos
         TareasGV.DataBind()
         TareasGV.Visible = True
+        Session("vistaTrabajos") = dvTrabajos
     End Sub
 
     Protected Sub caractTareasCBL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles caractTareasCBL.SelectedIndexChanged
@@ -80,4 +82,5 @@ Public Class WebForm8
         tareaElegida = TareasGV.SelectedDataKey.Value.ToString
         Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida & "&horas=" & "")
     End Sub
+
 End Class
