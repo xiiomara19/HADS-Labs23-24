@@ -35,9 +35,9 @@
                 <asp:Panel ID="Panel3" runat="server" Width="251px">
                     <asp:CheckBoxList ID="caractTareasCBL" runat="server">
                         <asp:ListItem Value="kodea" Enabled="False" Selected="True">Código</asp:ListItem>
-                        <asp:ListItem Value="deskribapena">Descripción</asp:ListItem>
-                        <asp:ListItem Value="aurreikusitakoOrduak">Horas previstas</asp:ListItem>
-                        <asp:ListItem Value="lanMota">Tipo de trabajo</asp:ListItem>
+                        <asp:ListItem Value="deskribapena" Selected="True">Descripción</asp:ListItem>
+                        <asp:ListItem Value="aurreikusitakoOrduak" Selected="True">Horas previstas</asp:ListItem>
+                        <asp:ListItem Value="lanMota" Selected="True">Tipo de trabajo</asp:ListItem>
                     </asp:CheckBoxList>
                 </asp:Panel>
             </td>
