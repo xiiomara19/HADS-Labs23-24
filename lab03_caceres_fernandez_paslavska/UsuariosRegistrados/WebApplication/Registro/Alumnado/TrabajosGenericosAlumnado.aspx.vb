@@ -12,6 +12,7 @@ Public Class WebForm8
 
     Dim idUsuario As String
     Dim asignaturaElegida As String
+    Dim tareaElegida As String
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -87,6 +88,7 @@ Public Class WebForm8
     End Sub
 
     Protected Sub TareasGV_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TareasGV.SelectedIndexChanged
-        Response.Redirect("")
+        tareaElegida = TareasGV.SelectedDataKey.Value.ToString
+        Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida)
     End Sub
 End Class
