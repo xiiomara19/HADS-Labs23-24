@@ -43,13 +43,13 @@
             </td>
         </tr>
        <tr>
-            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="kodea" Visible="False">
+            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" Visible="False">
                 <Columns>
                     <asp:CommandField SelectText="Instanciar" ShowSelectButton="True" ButtonType="Button" />
-                    <asp:BoundField HeaderText="Codigo" DataField="kodea" SortExpression="ASC" />
-                    <asp:BoundField HeaderText="Descripcion" DataField="deskribapena" />
-                    <asp:BoundField HeaderText="Horas previstas" DataField="aurreikusitakoOrduak" />
-                    <asp:BoundField HeaderText="Tipo de trabajo" DataField="lanMota" />
+                    <asp:BoundField HeaderText="Codigo" DataField="kodea" SortExpression="kodea ASC" />
+                    <asp:BoundField HeaderText="Descripcion" DataField="deskribapena" SortExpression="deskribapena ASC"/>
+                    <asp:BoundField HeaderText="Horas previstas" DataField="aurreikusitakoOrduak" SortExpression=" aurreikusitakoOrduak ASC"/>
+                    <asp:BoundField HeaderText="Tipo de trabajo" DataField="lanMota" SortExpression="lanMota ASC"/>
                 </Columns>
             </asp:GridView>
        </tr>
