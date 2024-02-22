@@ -34,6 +34,7 @@
         Tipo trabajo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="DropDownList2" runat="server">
         </asp:DropDownList>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ObtenerTablaCodigosAsignaturas" TypeName="AccesoDatos.AccesoDatos"></asp:ObjectDataSource>
         <br />
         <br />
         <asp:Button ID="AnadirBtn" runat="server" Text="Añadir trabajo" />

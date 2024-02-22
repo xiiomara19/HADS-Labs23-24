@@ -108,4 +108,21 @@ Public Class AccesoDatos
         Return dapTareasAlumno
     End Function
 
+    Public Shared Function ObtenerAdaptadorTrabajosGenericos(pemail As String) As SqlDataAdapter
+        Dim sql As String = "SELECT * FROM LanGenerikoak  WHERE email='" & pemail & "'"
+        Return New SqlDataAdapter(sql, BDConexion)
+
+    End Function
+
+    Public Shared Function ObtenerTablaCodigosAsignaturas() As DataTable
+
+        Dim sql As String = "SELECT kodea FROM Irakasgaiak"
+        SqlComando = New SqlCommand(sql, BDConexion)
+
+        Dim table As DataTable = New DataTable()
+        Dim da As SqlDataAdapter = New SqlDataAdapter(sql, BDConexion)
+        da.Fill(table)
+        Return table
+
+    End Function
 End Class
