@@ -33,6 +33,10 @@
         <br />
         Tipo trabajo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="DropDownList2" runat="server">
+            <asp:ListItem Selected="True">Laboratorio</asp:ListItem>
+            <asp:ListItem>Trabajo</asp:ListItem>
+            <asp:ListItem>Ejercicio</asp:ListItem>
+            <asp:ListItem>Examen</asp:ListItem>
         </asp:DropDownList>
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ObtenerTablaCodigosAsignaturas" TypeName="AccesoDatos.AccesoDatos"></asp:ObjectDataSource>
         <br />
