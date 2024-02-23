@@ -111,7 +111,7 @@ Public Class AccesoDatos
         Return dapTareasAlumno
     End Function
 
-    Public Shared Function ObtenerAdaptadorTrabajosGenericos(pemail As String) As SqlDataAdapter
+    Public Shared Function ObtenerAdaptadorTrabajosGenericos() As SqlDataAdapter
         Dim sql As String = "SELECT * FROM LanGenerikoak"
         dapTrabajosGenericos = New SqlDataAdapter(sql, BDConexion)
         Return dapTrabajosGenericos

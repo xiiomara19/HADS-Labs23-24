@@ -17,22 +17,22 @@
         <br />
         <br />
         Código&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="codigoTxt" runat="server"></asp:TextBox>
         <br />
         <br />
-        Descripción&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        Descripción&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="descripcionTxt" runat="server"></asp:TextBox>
         <br />
         <br />
-        Asignatura&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ObjectDataSource1" DataTextField="kodea" DataValueField="kodea">
+        Asignatura&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="asignaturasDDL" runat="server" DataSourceID="ObjectDataSource1" DataTextField="kodea" DataValueField="kodea">
         </asp:DropDownList>
         <br />
         <br />
         Horas previstas&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+        <asp:TextBox ID="horasTxt" runat="server"></asp:TextBox>
         <br />
         <br />
         Tipo trabajo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="DropDownList2" runat="server">
+        <asp:DropDownList ID="tipoTrabajoDDL" runat="server">
             <asp:ListItem Selected="True">Laboratorio</asp:ListItem>
             <asp:ListItem>Trabajo</asp:ListItem>
             <asp:ListItem>Ejercicio</asp:ListItem>
@@ -43,6 +43,7 @@
         <br />
         <asp:Button ID="AnadirBtn" runat="server" Text="Añadir trabajo" />
         <br />
+        <asp:Label ID="errorConLbl" runat="server" ForeColor="Red"></asp:Label>
         <br />
 
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/Profesorado/TrabajosProfesores.aspx" Style="margin-left: 20px;">Mirar trabajos</asp:HyperLink>
