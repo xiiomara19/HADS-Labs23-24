@@ -6,7 +6,11 @@ Public Class AccesoDatos
     Private Shared instancia As AccesoDatos
     Private Shared dapAlumnos As SqlDataAdapter
     Private Shared dapTrabajosGenericos As SqlDataAdapter
+    Private Shared dapTrabajosGenericosExp As SqlDataAdapter
     Private Shared dapTareasAlumno As SqlDataAdapter
+    Private Shared dapCodAsig As SqlDataAdapter
+    Private Shared dstCodAsig As DataSet
+    Private Shared tblCodAsig As DataTable
     Private Sub New()
 
     End Sub
@@ -91,15 +95,14 @@ Public Class AccesoDatos
 
     Public Shared Function AlumnoMatriculadoAsignaturasAdaptadorObtener(pemail As String) As SqlDataAdapter
         Dim sql = "SELECT DISTINCT irakasgaiKodea FROM KlasekoTaldeak WHERE kodea IN (SELECT taldeKodea FROM IkasleakTaldeak WHERE email='" & pemail & "')"
-        'dapAlumnos = New SqlDataAdapter(sql, BDConexion)
-        Dim x = New SqlDataAdapter(sql, BDConexion)
-        Return x
+        dapAlumnos = New SqlDataAdapter(sql, BDConexion)
+        Return dapAlumnos
     End Function
 
     Public Shared Function TrabajosGenericosExplotacionAdaptadorObtener() As SqlDataAdapter
         Dim sql As String = "SELECT * FROM LanGenerikoak WHERE ustiapenean=1"
-        dapTrabajosGenericos = New SqlDataAdapter(sql, BDConexion)
-        Return dapTrabajosGenericos
+        dapTrabajosGenericosExp = New SqlDataAdapter(sql, BDConexion)
+        Return dapTrabajosGenericosExp
     End Function
 
     Public Shared Function ObtenerAdaptadorTareasAlumnado(pemail As String) As SqlDataAdapter
@@ -109,20 +112,21 @@ Public Class AccesoDatos
     End Function
 
     Public Shared Function ObtenerAdaptadorTrabajosGenericos(pemail As String) As SqlDataAdapter
-        Dim sql As String = "SELECT * FROM LanGenerikoak  WHERE email='" & pemail & "'"
-        Return New SqlDataAdapter(sql, BDConexion)
-
+        Dim sql As String = "SELECT * FROM LanGenerikoak"
+        dapTrabajosGenericos = New SqlDataAdapter(sql, BDConexion)
+        Return dapTrabajosGenericos
     End Function
 
     Public Shared Function ObtenerTablaCodigosAsignaturas() As DataTable
 
         Dim sql As String = "SELECT kodea FROM Irakasgaiak"
-        SqlComando = New SqlCommand(sql, BDConexion)
+        dapCodAsig = New SqlDataAdapter(sql, BDConexion)
+        dstCodAsig = New DataSet()
+        dapCodAsig.Fill(dstCodAsig, "Irakasgaiak")
 
-        Dim table As DataTable = New DataTable()
-        Dim da As SqlDataAdapter = New SqlDataAdapter(sql, BDConexion)
-        da.Fill(table)
-        Return table
+        tblCodAsig = dstCodAsig.Tables("Irakasgaiak")
+
+        Return tblCodAsig
 
     End Function
 End Class
