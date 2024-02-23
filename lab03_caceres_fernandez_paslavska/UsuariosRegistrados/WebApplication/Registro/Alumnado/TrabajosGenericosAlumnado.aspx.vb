@@ -25,6 +25,7 @@ Public Class WebForm8
             dapAsignaturas = Session("dapAsignaturas")
             dvTrabajos = Session("vistaTrabajos")
             tblTrabajos = Session("tablaTrabajos")
+            dapTrabajos = Session("dapTrabajos")
         Else
             AccesoDatos.AccesoDatos.Conectar()
             dapAsignaturas = AccesoDatos.AccesoDatos.AlumnoMatriculadoAsignaturasAdaptadorObtener(idUsuario)
@@ -45,7 +46,7 @@ Public Class WebForm8
             Session("datosAsignaturas") = dstAsignaturas
             Session("dapAsignaturas") = dapAsignaturas
             Session("datosTrabajos") = dstTrabajos
-
+            Session("dapTrabajos") = dapTrabajos
         End If
     End Sub
 
@@ -86,6 +87,7 @@ Public Class WebForm8
         tblAsignaturas = Session("tablaAsignaturas")
         tareaElegida = TareasGV.SelectedDataKey.Value.ToString
         horasTarea = dvTrabajos.ToTable.Rows(TareasGV.SelectedIndex).Item(3)
+        Session("gridIndex") = TareasGV.SelectedIndex
         Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida & "&horas=" & horasTarea)
     End Sub
 
