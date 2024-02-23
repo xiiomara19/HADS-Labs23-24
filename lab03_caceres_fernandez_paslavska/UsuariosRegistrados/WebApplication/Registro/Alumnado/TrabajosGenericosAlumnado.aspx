@@ -19,7 +19,7 @@
     <form id="form1" runat="server">
         <asp:Panel ID="Panel1" runat="server" BackColor="#CCCCCC" Height="55px" HorizontalAlign="Center" Width="504px">
             ALUMNO<br /> GESTIÓN DE TRABAJOS GENÉRICOS</asp:Panel>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Elige una asignatura (solo aparecerán en las que estes matriculado):"></asp:Label>
    <table class="auto-style2">
         <tr>
             <td class="auto-style3">
