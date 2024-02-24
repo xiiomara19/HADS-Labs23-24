@@ -2,6 +2,7 @@
 Public Class WebForm9
     Inherits System.Web.UI.Page
     Dim dapTrabajos As SqlDataAdapter
+    Dim dap As SqlDataAdapter
     Dim dstTrabajos As DataSet
     Dim dst As DataSet
     Dim tblTrabajos As DataTable
@@ -37,6 +38,7 @@ Public Class WebForm9
         ReiniciarErrores()
         Dim valor As Integer
         Dim bldTrabajos As New SqlCommandBuilder(Session("adaptador"))
+        Dim bldTareas As New SqlCommandBuilder(Session("dapTrabajos"))
         If String.IsNullOrEmpty(TextBox4.Text) Then
             errorMessage.Text = "Debe insertar el número de horas efectivas."
         ElseIf Not Int32.TryParse(TextBox4.Text, valor) Then
@@ -44,28 +46,32 @@ Public Class WebForm9
         ElseIf CInt(TextBox4.Text) < 0 Then
             errorMessage.Text = "El número de horas efectivas debe ser positivo."
         Else
-            dstTrabajos = Session("instanciarTrabajo")
-            tblTrabajos = dstTrabajos.Tables("IkasleLanak")
-            Dim rowTrabajos As DataRow = tblTrabajos.NewRow()
-            rowTrabajos("email") = TextBox1.Text
-            rowTrabajos("lanGenerikoarenKodea") = TextBox2.Text
-            rowTrabajos("aurreikusitakoOrduak") = TextBox3.Text
-            rowTrabajos("benetakoOrduak") = TextBox4.Text
-            tblTrabajos.Rows.Add(rowTrabajos)
-            dvTrabajos = New DataView(tblTrabajos)
-            TareasGV.DataSource = dvTrabajos
-            TareasGV.DataBind()
-            dapTrabajos = Session("adaptador")
+            'dstTrabajos = Session("instanciarTrabajo")
+            'tblTrabajos = dstTrabajos.Tables("IkasleLanak")
+            'Dim rowTrabajos As DataRow = tblTrabajos.NewRow()
+            'rowTrabajos("email") = TextBox1.Text
+            'rowTrabajos("lanGenerikoarenKodea") = TextBox2.Text
+            'rowTrabajos("aurreikusitakoOrduak") = TextBox3.Text
+            'rowTrabajos("benetakoOrduak") = TextBox4.Text
+            'tblTrabajos.Rows.Add(rowTrabajos)
+            'dvTrabajos = New DataView(tblTrabajos)
+            'TareasGV.DataSource = dvTrabajos
+            'TareasGV.DataBind()
+            'dapTrabajos = Session("adaptador")
+
             dst = Session("datosTrabajos")
             tbl = dst.Tables("LanGenerikoak")
-            'esto no funciona ayuda
-            tbl.Rows(TareasGV.SelectedIndex).Item(4) = 0
-            TareasGV.DataSource = tbl
-            TareasGV.DataBind()
-            Session("datosTrabajos") = dst
+            Dim indice As Integer = Session("gridIndex")
+            tbl.Rows(indice).Item("ustiapenean") = 0
+            dap = Session("dapTrabajos")
+
             Try
-                dapTrabajos.Update(dstTrabajos, "IkasleLanak")
-                dstTrabajos.AcceptChanges()
+                'dapTrabajos.Update(dstTrabajos, "IkasleLanak")
+                'dstTrabajos.AcceptChanges()
+                'Session("adaptador") = dapTrabajos
+                dap.Update(dst, "LanGenerikoak")
+                dst.AcceptChanges()
+                Session("dapTrabajos") = dap
                 correctMessage.Text = "Se ha instanciado correctamente su trabajo"
                 CrearBtn.Enabled = False
             Catch ex As Exception

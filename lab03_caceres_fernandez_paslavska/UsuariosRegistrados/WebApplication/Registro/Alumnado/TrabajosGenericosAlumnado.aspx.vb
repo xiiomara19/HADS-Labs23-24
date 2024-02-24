@@ -61,6 +61,7 @@ Public Class WebForm8
         TareasGV.Visible = True
         Session("vistaTrabajos") = dvTrabajos
         Session("tablaTrabajos") = tblTrabajos
+        Session("datosTrabajos") = dstTrabajos
     End Sub
 
     Protected Sub caractTareasCBL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles caractTareasCBL.SelectedIndexChanged
@@ -84,8 +85,8 @@ Public Class WebForm8
     End Sub
 
     Protected Sub TareasGV_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TareasGV.SelectedIndexChanged
-        tblAsignaturas = Session("tablaAsignaturas")
         tareaElegida = TareasGV.SelectedDataKey.Value.ToString
+        Dim x As Byte = tblTrabajos.Rows(TareasGV.SelectedIndex).Item("ustiapenean")
         horasTarea = dvTrabajos.ToTable.Rows(TareasGV.SelectedIndex).Item(3)
         Session("gridIndex") = TareasGV.SelectedIndex
         Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida & "&horas=" & horasTarea)
