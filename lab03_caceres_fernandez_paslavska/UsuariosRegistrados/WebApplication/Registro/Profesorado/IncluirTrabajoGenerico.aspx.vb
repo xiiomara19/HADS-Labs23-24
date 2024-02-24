@@ -73,7 +73,7 @@ Public Class WebForm11
                 Session("dapIncluirTrabajos") = dapIncluirTrabajos
                 Session("dstIncluirTrabajos") = dstIncluirTrabajos
             Catch ex As Exception
-                errorConLbl.Text = ex.Message
+                errorConLbl.Text = "No se puee incluir un trabajo ya existente."
             End Try
         End If
 
