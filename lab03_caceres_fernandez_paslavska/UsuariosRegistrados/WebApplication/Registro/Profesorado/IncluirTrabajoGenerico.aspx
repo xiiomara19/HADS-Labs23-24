@@ -18,9 +18,13 @@
         <br />
         Código&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="codigoTxt" runat="server"></asp:TextBox>
+        &nbsp;
+        <asp:Label ID="errorCod" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Descripción&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="descripcionTxt" runat="server"></asp:TextBox>
+        &nbsp;
+        <asp:Label ID="errorDesc" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Asignatura&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="asignaturasDDL" runat="server" DataSourceID="ObjectDataSource1" DataTextField="kodea" DataValueField="kodea">
@@ -29,6 +33,8 @@
         <br />
         Horas previstas&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="horasTxt" runat="server"></asp:TextBox>
+        &nbsp;
+        <asp:Label ID="errorHoras" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Tipo trabajo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -41,9 +47,11 @@
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ObtenerTablaCodigosAsignaturas" TypeName="AccesoDatos.AccesoDatos"></asp:ObjectDataSource>
         <br />
         <br />
+        <asp:Label ID="errorConLbl" runat="server" ForeColor="Red"></asp:Label>
+        <br />
+        <br />
         <asp:Button ID="AnadirBtn" runat="server" Text="Añadir trabajo" />
         <br />
-        <asp:Label ID="errorConLbl" runat="server" ForeColor="Red"></asp:Label>
         <br />
 
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro/Profesorado/TrabajosProfesores.aspx" Style="margin-left: 20px;">Mirar trabajos</asp:HyperLink>

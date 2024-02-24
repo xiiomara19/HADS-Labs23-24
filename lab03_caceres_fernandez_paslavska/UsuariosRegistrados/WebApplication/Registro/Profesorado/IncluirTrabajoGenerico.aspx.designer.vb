@@ -41,6 +41,15 @@ Partial Public Class WebForm11
     Protected WithEvents codigoTxt As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control errorCod.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents errorCod As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control descripcionTxt.
     '''</summary>
     '''<remarks>
@@ -48,6 +57,15 @@ Partial Public Class WebForm11
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents descripcionTxt As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control errorDesc.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents errorDesc As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control asignaturasDDL.
@@ -68,6 +86,15 @@ Partial Public Class WebForm11
     Protected WithEvents horasTxt As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control errorHoras.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents errorHoras As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control tipoTrabajoDDL.
     '''</summary>
     '''<remarks>
@@ -86,15 +113,6 @@ Partial Public Class WebForm11
     Protected WithEvents ObjectDataSource1 As Global.System.Web.UI.WebControls.ObjectDataSource
 
     '''<summary>
-    '''Control AnadirBtn.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents AnadirBtn As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control errorConLbl.
     '''</summary>
     '''<remarks>
@@ -102,6 +120,15 @@ Partial Public Class WebForm11
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents errorConLbl As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control AnadirBtn.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents AnadirBtn As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control HyperLink1.

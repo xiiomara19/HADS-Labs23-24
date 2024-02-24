@@ -46,18 +46,18 @@ Public Class WebForm9
         ElseIf CInt(TextBox4.Text) < 0 Then
             errorMessage.Text = "El número de horas efectivas debe ser positivo."
         Else
-            'dstTrabajos = Session("instanciarTrabajo")
-            'tblTrabajos = dstTrabajos.Tables("IkasleLanak")
-            'Dim rowTrabajos As DataRow = tblTrabajos.NewRow()
-            'rowTrabajos("email") = TextBox1.Text
-            'rowTrabajos("lanGenerikoarenKodea") = TextBox2.Text
-            'rowTrabajos("aurreikusitakoOrduak") = TextBox3.Text
-            'rowTrabajos("benetakoOrduak") = TextBox4.Text
-            'tblTrabajos.Rows.Add(rowTrabajos)
-            'dvTrabajos = New DataView(tblTrabajos)
-            'TareasGV.DataSource = dvTrabajos
-            'TareasGV.DataBind()
-            'dapTrabajos = Session("adaptador")
+            dstTrabajos = Session("instanciarTrabajo")
+            tblTrabajos = dstTrabajos.Tables("IkasleLanak")
+            Dim rowTrabajos As DataRow = tblTrabajos.NewRow()
+            rowTrabajos("email") = TextBox1.Text
+            rowTrabajos("lanGenerikoarenKodea") = TextBox2.Text
+            rowTrabajos("aurreikusitakoOrduak") = TextBox3.Text
+            rowTrabajos("benetakoOrduak") = TextBox4.Text
+            tblTrabajos.Rows.Add(rowTrabajos)
+            dvTrabajos = New DataView(tblTrabajos)
+            TareasGV.DataSource = dvTrabajos
+            TareasGV.DataBind()
+            dapTrabajos = Session("adaptador")
 
             dst = Session("datosTrabajos")
             tbl = dst.Tables("LanGenerikoak")
@@ -66,9 +66,9 @@ Public Class WebForm9
             dap = Session("dapTrabajos")
 
             Try
-                'dapTrabajos.Update(dstTrabajos, "IkasleLanak")
-                'dstTrabajos.AcceptChanges()
-                'Session("adaptador") = dapTrabajos
+                dapTrabajos.Update(dstTrabajos, "IkasleLanak")
+                dstTrabajos.AcceptChanges()
+                Session("adaptador") = dapTrabajos
                 dap.Update(dst, "LanGenerikoak")
                 dst.AcceptChanges()
                 Session("dapTrabajos") = dap

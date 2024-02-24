@@ -34,30 +34,57 @@ Public Class WebForm11
         Dim subject As String = asignaturasDDL.SelectedValue
         Dim hours As String = horasTxt.Text
         Dim type As String = tipoTrabajoDDL.SelectedValue
+        Dim valor As Integer
+        Dim bldIncluirTrabajos As New SqlCommandBuilder(Session("dapIncluirTrabajos"))
+        ReiniciarErrores()
 
-        dapIncluirTrabajos = Session("dapIncluirTrabajos")
-        dstIncluirTrabajos = Session("dstIncluirTrabajos")
-        fila = dstIncluirTrabajos.Tables(0).NewRow()
-        fila("kodea") = code
-        fila("deskribapena") = description
-        fila("irakasgaiKodea") = subject
-        fila("aurreikusitakoOrduak") = hours
-        fila("ustiapenean") = True
-        fila("lanMota") = type
+        If (String.IsNullOrEmpty(codigoTxt.Text)) Then
+            errorCod.Text = "¡Campo obligatorio!"
+        ElseIf (String.IsNullOrEmpty(descripcionTxt.Text)) Then
+            errorDesc.Text = "¡Campo obligatorio!"
+        ElseIf (String.IsNullOrEmpty(horasTxt.Text)) Then
+            errorHoras.Text = "¡Campo obligatorio!"
+        ElseIf Not Int32.TryParse(horasTxt.Text, valor) Then
+            errorHoras.Text = "El número de horas debe ser un número entero. "
+        ElseIf CInt(horasTxt.Text) < 0 Then
+            errorHoras.Text = "El número de horas debe ser positivo."
+        Else
+            dapIncluirTrabajos = Session("dapIncluirTrabajos")
+            dstIncluirTrabajos = Session("dstIncluirTrabajos")
+            Dim tblIncluirTrabajos As DataTable = dstIncluirTrabajos.Tables("LanGenerikoak")
+            fila = tblIncluirTrabajos.NewRow()
+            fila("kodea") = code
+            fila("deskribapena") = description
+            fila("irakasgaiKodea") = subject
+            fila("aurreikusitakoOrduak") = hours
+            fila("ustiapenean") = True
+            fila("lanMota") = type
 
-        dstIncluirTrabajos.Tables(0).Rows.Add(fila)
-        Session("dstIncluirTrabajos") = dstIncluirTrabajos
-        Dim comando As New SqlCommand()
-        Try
-            comando.CommandText = "INSERT INTO LanGenerikoak (kodea, deskribapena, irakasgaiKodea, aurreikusitakoOrduak, ustiapenean, lanMota) VALUES ('" & code & "', '" & description & "', '" & subject & "', '" & hours & "', 1, '" & type & "')"
-            comando.Connection = New SqlConnection("Data Source=tcp:hads2324.database.windows.net,1433;" &
-                                                         "Initial Catalog=lab3BD;Persist Security Info=True;" &
-                                                         "User ID=efernandez200@ikasle.ehu.eus@hads2324;Password=hads-2324")
-            dapIncluirTrabajos.InsertCommand = comando
-            dapIncluirTrabajos.Update(dstIncluirTrabajos)
-        Catch ex As Exception
-            errorConLbl.Text = ex.Message
-        End Try
+            tblIncluirTrabajos.Rows.Add(fila)
+            Dim comando As New SqlCommand()
+            Try
+                comando.CommandText = "INSERT INTO LanGenerikoak (kodea, deskribapena, irakasgaiKodea, aurreikusitakoOrduak, ustiapenean, lanMota) VALUES ('" & code & "', '" & description & "', '" & subject & "', '" & hours & "', 1, '" & type & "')"
+                comando.Connection = New SqlConnection("Data Source=tcp:hads2324.database.windows.net,1433;" &
+                                                             "Initial Catalog=lab3BD;Persist Security Info=True;" &
+                                                             "User ID=efernandez200@ikasle.ehu.eus@hads2324;Password=hads-2324")
+                dapIncluirTrabajos.InsertCommand = comando
+                dapIncluirTrabajos.Update(dstIncluirTrabajos, "LanGenerikoak")
+                dstIncluirTrabajos.AcceptChanges()
+                Session("dapIncluirTrabajos") = dapIncluirTrabajos
+                Session("dstIncluirTrabajos") = dstIncluirTrabajos
+            Catch ex As Exception
+                errorConLbl.Text = ex.Message
+            End Try
+        End If
 
+
+
+    End Sub
+
+    Protected Sub ReiniciarErrores()
+        errorConLbl.Text = ""
+        errorCod.Text = ""
+        errorDesc.Text = ""
+        errorHoras.Text = ""
     End Sub
 End Class
