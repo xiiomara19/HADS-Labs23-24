@@ -17,7 +17,7 @@
     </head>
 <body style="height: 39px">
     <form id="form1" runat="server">
-        <asp:Panel ID="Panel1" runat="server" BackColor="#CCCCCC" Height="55px" HorizontalAlign="Center" Width="504px">
+        <asp:Panel ID="Panel1" runat="server" BackColor="#CCCCCC" Height="55px" HorizontalAlign="Center">
             ALUMNO<br /> GESTIÓN DE TRABAJOS GENÉRICOS</asp:Panel>
         <asp:Label ID="Label1" runat="server" Text="Elige una asignatura (solo aparecerán en las que estes matriculado):"></asp:Label>
    <table class="auto-style2">
@@ -43,7 +43,7 @@
             </td>
         </tr>
        <tr>
-            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" Visible="False" DataKeyNames="kodea" EmptyDataText="No existen tareas por instanciar para la asignatura seleccionada." ShowHeaderWhenEmpty="True">
+            <asp:GridView ID="TareasGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" Visible="False" DataKeyNames="kodea" EmptyDataText="No existen tareas por instanciar para la asignatura seleccionada." ShowHeaderWhenEmpty="True" BorderColor="#003399">
                 <Columns>
                     <asp:CommandField SelectText="Instanciar" ShowSelectButton="True" ButtonType="Button" />
                     <asp:BoundField HeaderText="Codigo" DataField="kodea" SortExpression="kodea ASC" />
@@ -51,9 +51,14 @@
                     <asp:BoundField HeaderText="Horas previstas" DataField="aurreikusitakoOrduak" SortExpression=" aurreikusitakoOrduak ASC"/>
                     <asp:BoundField HeaderText="Tipo de trabajo" DataField="lanMota" SortExpression="lanMota ASC"/>
                 </Columns>
+                <EmptyDataRowStyle ForeColor="#003399" />
+                <HeaderStyle BackColor="#003399" ForeColor="White" />
+                <RowStyle BorderColor="#003399" ForeColor="#003399" />
             </asp:GridView>
        </tr>
         </table> 
+
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login.aspx">Cerrar sesión</asp:HyperLink>
 
     </form>
 </body>
