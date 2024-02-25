@@ -58,7 +58,7 @@
        </tr>
         </table> 
 
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login.aspx">Cerrar sesión</asp:HyperLink>
+        <asp:LinkButton ID="LinkButton1" runat="server">Cerrar sesion</asp:LinkButton>
 
     </form>
 </body>

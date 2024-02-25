@@ -92,4 +92,8 @@ Public Class WebForm8
         Response.Redirect("InstanciarTrabajo.aspx?tarea=" & tareaElegida & "&horas=" & horasTarea)
     End Sub
 
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        Session.Abandon()
+        Response.Redirect("/Login.aspx")
+    End Sub
 End Class

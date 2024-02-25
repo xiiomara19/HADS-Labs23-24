@@ -64,8 +64,8 @@
                 <asp:Parameter Name="kodea" />
             </UpdateParameters>
         </asp:SqlDataSource>
+        <asp:LinkButton ID="LinkButton1" runat="server">Cerrar sesion</asp:LinkButton>
         <br />
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login.aspx">Cerrar sesion</asp:HyperLink>
         <br />
         <br />
     </form>

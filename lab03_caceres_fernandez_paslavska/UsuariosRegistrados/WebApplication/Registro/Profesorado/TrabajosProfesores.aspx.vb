@@ -18,4 +18,9 @@
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Response.Redirect("~/Registro/Profesorado/IncluirTrabajoGenerico.aspx")
     End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        Session.Abandon()
+        Response.Redirect("/Login.aspx")
+    End Sub
 End Class
