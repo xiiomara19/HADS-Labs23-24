@@ -11,6 +11,7 @@ class Pelicula(models.Model):
     sinopsis = models.CharField(max_length=500)
     votos = models.IntegerField()
 
+
     def __str__(self):
         return self.title
 
