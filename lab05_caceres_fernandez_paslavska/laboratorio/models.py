@@ -20,7 +20,7 @@ class PeliculasVotante(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     votos = models.ManyToManyField(Pelicula)
 
-'''
+'''    
 class authUser(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=30)
