@@ -20,5 +20,7 @@ from sitioDeFilms import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.register, name='register')
+    path('register/', views.registerPage, name='register'),
+    path('login/', views.loginPage, name='login'),
+    path('', views.homePage, name='home')
 ]
