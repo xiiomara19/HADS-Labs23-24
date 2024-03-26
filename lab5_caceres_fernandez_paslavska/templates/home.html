@@ -6,5 +6,7 @@
 </head>
 <body>
     <h3>INICIO</h3>
+    <h2>Bienvenido, {{ request.user }}</h2>
+    <span><a href="{% url 'logout' %}">Cerrar sesión</a></span>
 </body>
 </html>
