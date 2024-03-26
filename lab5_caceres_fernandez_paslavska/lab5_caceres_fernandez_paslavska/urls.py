@@ -19,5 +19,6 @@ from django.urls import path
 from sitioDeFilms import views
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.register, name='register')
 ]
