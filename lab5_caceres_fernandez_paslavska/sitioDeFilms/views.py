@@ -52,4 +52,18 @@ def homePage(request):
     context = {}
     return render(request, 'home.html', context)
 
+@login_required(login_url='login')
+def botePage(request):
+    context = {}
+    return render(request, 'bote.html', context)
+
+@login_required(login_url='login')
+def botesPage(request):
+    context = {}
+    return render(request, 'botes.html', context)
+
+@login_required(login_url='login')
+def filmsPage(request):
+    context = {}
+    return render(request, 'films.html', context)
 
