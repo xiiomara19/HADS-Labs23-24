@@ -65,6 +65,5 @@ def botesPage(request):
 @login_required(login_url='login')
 def filmsPage(request):
     films = Pelicula.objects.all()
-    context = {}
     return render(request, 'films.html', {'films': films})
 
