@@ -73,8 +73,6 @@ def botePage(request):
             selected_film.save()
             usuario.votos.add(selected_film)
             usuario.save()
-            # selected_filma.norkBozkatu.append(user.username)
-            # selected_filma.save()
             whoVote_list = selected_film.get_whoVote_list()
             whoVote_list.append(request.user.username)
             selected_film.whoVote = ','.join(whoVote_list)
