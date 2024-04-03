@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
-
+from .models import *
 
 
 def registerPage(request):
@@ -55,15 +55,16 @@ def homePage(request):
 @login_required(login_url='login')
 def botePage(request):
     context = {}
-    return render(request, 'bote.html', context)
+    return render(request, 'vote.html', context)
 
 @login_required(login_url='login')
 def botesPage(request):
     context = {}
-    return render(request, 'botes.html', context)
+    return render(request, 'votes.html', context)
 
 @login_required(login_url='login')
 def filmsPage(request):
+    films = Pelicula.objects.all()
     context = {}
-    return render(request, 'films.html', context)
+    return render(request, 'films.html', {'films': films})
 

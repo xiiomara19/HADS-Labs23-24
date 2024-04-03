@@ -1,13 +1,34 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Películas</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'estilo.css' %}">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
-<body>
-    <h3>PELÍCULAS</h3>
-</body>
-</html>
+
+    {% block content %}
+        <br>
+        <div>
+            <div>
+                <div>
+                    <h5>Peliculas</h5>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Director</th>
+                            <th>Anio</th>
+                            <th>Genero</th>
+                            <th>Sipnosis</th>
+                            <th>votos</th>
+                        </tr>
+                        
+                        {% for i in films %}
+                            <tr>
+                                <td>{{ i.title }}</td>
+                                <td>{{ i.director }}</td>
+                                <td>{{ i.year }}</td>
+                                <td>{{ i.genero }}</td>
+                                <td>{{ i.sinopsis }}</td>
+                                <td>{{ i.votos }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endblock content %}
