@@ -10,6 +10,15 @@ class Pelicula(models.Model):
     genero = models.CharField(max_length=2)
     sinopsis = models.CharField(max_length=500)
     votos = models.IntegerField()
+    whoVote = models.CharField(max_length=600, blank=True)
+
+    def get_whoVote_list(self):
+        return self.whoVote.split(',')
+
+    def set_whoVote_list(self, value):
+        self.whoVote = ','.join(value)
+
+    whoVote_list = property(get_whoVote_list, set_whoVote_list)
 
     def __str__(self):
         return self.title
@@ -18,6 +27,9 @@ class PeliculasVotante(models.Model):
     #id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     votos = models.ManyToManyField(Pelicula)
+
+    def __str__(self):
+        return self.usuario
 
 '''    
 class authUser(models.Model):

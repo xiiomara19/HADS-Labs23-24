@@ -15,5 +15,14 @@
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/lab05_caceres_fernandez_paslavska/venv/../../../../../../Program Files/SQLite/DB Browser for SQLite.exe</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="776161b9-6a7e-4335-aae3-ebd8cf36c216">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/lab5_caceres_fernandez_paslavska/lab5_caceres_fernandez_paslavska/settings.py</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Владелец\PycharmProjects\2HADS-Labs23-24\lab5_caceres_fernandez_paslavska\db.sqlite3</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

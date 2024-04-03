@@ -54,8 +54,33 @@ def homePage(request):
 
 @login_required(login_url='login')
 def botePage(request):
-    context = {}
-    return render(request, 'vote.html', context)
+    if request.method == "GET":
+        films = Pelicula.objects.all()
+        return render(request, 'vote.html', {'Pelicula': films})
+    if 'bote' in request.POST:
+        # Coger la pelicula
+        films = Pelicula.objects.all()
+        film = request.POST.get('film', False)
+        selected_film = Pelicula.objects.get(title=film)
+        # Agregar un voto a la pelicula y guardar
+        uId = request.user.id
+        usuario, created = PeliculasVotante.objects.get_or_create(usuario_id=uId)
+        if selected_film in usuario.votos.all():
+            messages.error(request, "Ya votaste esta película")
+            return render(request, 'vote.html', {'Pelicula': films})
+        else:
+            selected_film.votos += 1
+            selected_film.save()
+            usuario.votos.add(selected_film)
+            usuario.save()
+            # selected_filma.norkBozkatu.append(user.username)
+            # selected_filma.save()
+            whoVote_list = selected_film.get_whoVote_list()
+            whoVote_list.append(request.user.username)
+            selected_film.whoVote = ','.join(whoVote_list)
+            selected_film.save()
+            messages.success(request, "La votación se ha completado." + " Votaste por la película." + selected_film.title)
+            return render(request, 'vote.html', {'Pelicula': films})
 
 @login_required(login_url='login')
 def botesPage(request):

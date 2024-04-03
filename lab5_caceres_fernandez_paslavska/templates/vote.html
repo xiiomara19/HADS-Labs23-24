@@ -1,13 +1,25 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Votar</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'estilo.css' %}">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
-<body>
-    <h3>VOTAR</h3>
+
+{% block votar %}
+
+    {% load static %}
+  
+    <h1>Vota por tu película favorita</h1>
+    <form method="post" action="{% url 'bote' %}" style="margin-left: 121px">{% csrf_token %}
+        <label for="testua">Elige una película:</label>
+        <select name="film">
+            {% for p in Pelicula %}
+                <option value="{{ p.title }}">{{ p.title }}</option>
+            {% endfor %}
+        </select>   
+        <input type="submit" name="bote" value="votar" />
+    </form>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
 </body>
 </html>
