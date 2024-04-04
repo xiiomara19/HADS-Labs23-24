@@ -29,7 +29,7 @@ class PeliculasVotante(models.Model):
     votos = models.ManyToManyField(Pelicula)
 
     def __str__(self):
-        return self.usuario
+        return str(self.usuario)
 
 '''    
 class authUser(models.Model):
