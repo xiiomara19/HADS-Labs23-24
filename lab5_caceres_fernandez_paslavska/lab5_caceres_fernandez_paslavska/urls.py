@@ -25,6 +25,6 @@ urlpatterns = [
     path('', views.homePage, name='home'),
     path('logout/', views.logoutPage, name='logout'),
     path('films/', views.filmsPage, name='films'),
-    path('vote/', views.botePage, name='vote'),
-    path('votes/', views.botesPage, name='votes')
+    path('vote/', views.votePage, name='vote'),
+    path('votes/', views.votesPage, name='votes')
 ]

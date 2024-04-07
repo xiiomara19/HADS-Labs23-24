@@ -53,11 +53,11 @@ def homePage(request):
     return render(request, 'home.html', context)
 
 @login_required(login_url='login')
-def botePage(request):
+def votePage(request):
     if request.method == "GET":
         films = Pelicula.objects.all()
         return render(request, 'vote.html', {'Pelicula': films})
-    if 'bote' in request.POST:
+    if 'vote' in request.POST:
         # Coger la pelicula
         films = Pelicula.objects.all()
         film = request.POST.get('film', False)
@@ -81,7 +81,7 @@ def botePage(request):
             return render(request, 'vote.html', {'Pelicula': films})
 
 @login_required(login_url='login')
-def botesPage(request):
+def votesPage(request):
     context = {}
     return render(request, 'votes.html', context)
 
