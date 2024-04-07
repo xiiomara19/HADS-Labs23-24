@@ -1,14 +1,25 @@
 {% include 'navegation.html' %}
-<title>Sitio de films</title>
+<title>Área de películas</title>
 {% block votos %}
 {% load static %}
     <br>
-        <div>
-            <div>
-                <div>
-                    <h3 align="center">Aficionados</h3>
-                </div>
-            </div>
-        </div>
-    
+    <h3 align="center">Aficionados</h3>
+    <br>
+    <form method="post" action="{% url 'votes' %}" style="margin-left: 121px">{% csrf_token %}
+        <label for="testua">Elige una película:</label>
+        <select name="film">
+            {% for p in Pelicula %}
+                <option value="{{ p.title }}">{{ p.title }}</option>
+            {% endfor %}
+        </select>   
+        <input type="submit" name="vote" value="Mostrar aficionados" />
+    </form>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 {% endblock votos %}
