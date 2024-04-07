@@ -21,6 +21,8 @@
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
+    {% endif %}
+    {% if Votantes %}
         <br>
         <table border="1" align="center">
         <thead>
@@ -33,9 +35,6 @@
             <tr><td>{{ a }}</td></tr>
             {% endfor %}
         </tbody>
-    </table>
+        </table>
     {% endif %}
-
-    
-
 {% endblock votos %}
