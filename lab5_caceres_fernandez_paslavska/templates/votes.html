@@ -21,12 +21,11 @@
     </form>
 
     {% if messages %}
-        <ul class="messages" style="margin-left: 121px">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
+        {% for message in messages %}
+            <p id="messages" style="margin-left: 121px">{{ message }}</p>
+        {% endfor %}
     {% endif %}
+    
     {% if Votantes %}
         <br>
         <table border="1" style="margin-left: 450px">
