@@ -6,14 +6,18 @@
     <br>
     <h3 align="center">Vota por tu película favorita</h3>
     <br>
-    <form method="post" action="{% url 'vote' %}" style="margin-left: 121px">{% csrf_token %}
+    <form method="post" action="{% url 'vote' %}" style="width: 300px; margin-left: 121px">{% csrf_token %}
         <label for="testua">Elige una película:</label>
-        <select name="film">
+        <div class="input-group mb-3">
+            <select class="custom-select" name="film">
             {% for p in Pelicula %}
                 <option value="{{ p.title }}">{{ p.title }}</option>
             {% endfor %}
-        </select>   
-        <input type="submit" name="vote" value="Votar" />
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" name="vote">Votar</button>
+            </div>
+        </div>
     </form>
     {% if messages %}
         <ul class="messages">

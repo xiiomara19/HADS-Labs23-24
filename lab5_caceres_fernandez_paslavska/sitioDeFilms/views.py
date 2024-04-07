@@ -66,7 +66,7 @@ def votePage(request):
         uId = request.user.id
         usuario, created = PeliculasVotante.objects.get_or_create(usuario_id=uId)
         if selected_film in usuario.votos.all():
-            messages.error(request, "Ya votaste esta película")
+            messages.info(request, "Ya votaste esta película")
             return render(request, 'vote.html', {'Pelicula': films})
         else:
             selected_film.votos += 1
@@ -91,7 +91,7 @@ def votesPage(request):
         film = request.POST.get('film', False)
         selected_film = Pelicula.objects.get(title=film)
         if selected_film.votos == 0:
-            messages.error(request, "No hay votantes para la película "+selected_film.title+".")
+            messages.info(request, "No hay votantes para la película "+selected_film.title+".")
             return render(request, 'votes.html', {'Pelicula': films})
         whoVote_list = selected_film.get_whoVote_list()
         messages.success(request, "Los votantes de la película " + selected_film.title + " son: ")
