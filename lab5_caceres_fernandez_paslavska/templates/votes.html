@@ -1,7 +1,8 @@
 {% include 'navegation.html' %}
 <title>Área de películas</title>
+
 {% block votos %}
-{% load static %}
+    {% load static %}
     <br>
     <h3 align="center">Aficionados</h3>
     <br>
@@ -11,7 +12,7 @@
             {% for p in Pelicula %}
                 <option value="{{ p.title }}">{{ p.title }}</option>
             {% endfor %}
-        </select>   
+        </select>
         <input type="submit" name="vote" value="Mostrar aficionados" />
     </form>
     {% if messages %}
@@ -20,6 +21,21 @@
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
+        <br>
+        <table border="1" align="center">
+        <thead>
+            <tr>
+            <th>Aficionados</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in Votantes %}
+            <tr><td>{{ a }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
+
+    
 
 {% endblock votos %}
