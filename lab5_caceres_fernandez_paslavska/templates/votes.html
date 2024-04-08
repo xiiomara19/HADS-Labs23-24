@@ -6,8 +6,8 @@
     <br>
     <h3 align="center">Aficionados</h3>
     <br>
-     <form method="post" action="{% url 'votes' %}" style="width: 300px; margin-left: 121px">{% csrf_token %}
-        <label for="testua">Elige una película:</label>
+     <form method="post" action="{% url 'votes' %}" style="width: 600px; margin-left: 121px">{% csrf_token %}
+         <label for="testua">Elige una película:</label>
         <div class="input-group mb-3">
             <select class="custom-select" name="film">
                 {% for p in Pelicula %}
@@ -22,13 +22,13 @@
 
     {% if messages %}
         {% for message in messages %}
-            <p id="messages" style="margin-left: 121px">{{ message }}</p>
+            <p id="messages" style="margin-left: 300px">{{ message }}</p>
         {% endfor %}
     {% endif %}
     
     {% if Votantes %}
         <br>
-        <table border="1" align="center">
+        <table border="1" style="width:150px" align="center" class="table table-bordered">
         <thead>
             <tr>
             <th>Aficionados</th>

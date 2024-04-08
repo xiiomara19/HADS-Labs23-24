@@ -6,7 +6,7 @@
     <br>
     <h3 align="center">Vota por tu película favorita</h3>
     <br>
-    <form method="post" action="{% url 'vote' %}" style="width: 300px; margin-left: 121px">{% csrf_token %}
+    <form method="post" action="{% url 'vote' %}" style="width: 500px; margin-left: 121px">{% csrf_token %}
         <label for="testua">Elige una película:</label>
         <div class="input-group mb-3">
             <select class="custom-select" name="film">
