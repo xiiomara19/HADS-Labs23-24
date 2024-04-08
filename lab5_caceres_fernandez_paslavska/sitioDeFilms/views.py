@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
 from .models import *
-
+from django.core.paginator import Paginator
 
 def registerPage(request):
     if request.user.is_authenticated:
@@ -100,5 +100,8 @@ def votesPage(request):
 @login_required(login_url='login')
 def filmsPage(request):
     films = Pelicula.objects.all()
-    return render(request, 'films.html', {'films': films})
+    paginator = Paginator(films, 4)  # 10 elementos por página
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'films.html', {'films': page_obj})
 
