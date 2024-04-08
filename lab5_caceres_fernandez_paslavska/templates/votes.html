@@ -4,41 +4,53 @@
 {% block votos %}
     {% load static %}
     <br>
-    <h3 align="center">Aficionados</h3>
+    <h3 class="text-center">Aficionados</h3>
     <br>
-     <form method="post" action="{% url 'votes' %}" style="width: 600px; margin-left: 121px">{% csrf_token %}
-         <label for="testua">Elige una película:</label>
-        <div class="input-group mb-3">
-            <select class="custom-select" name="film">
-                {% for p in Pelicula %}
-                    <option value="{{ p.title }}">{{ p.title }}</option>
-                {% endfor %}
-            </select>
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="submit" name="vote">Mostrar aficionados</button>
-            </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <form method="post" action="{% url 'votes' %}" style="width: 600px;">{% csrf_token %}
+                <label for="testua">Elige una película:</label>
+                <div class="input-group mb-3">
+                    <select class="custom-select" name="film">
+                        {% for p in Pelicula %}
+                            <option value="{{ p.title }}">{{ p.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" name="vote">Mostrar aficionados</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 
-    {% if messages %}
-        {% for message in messages %}
-            <p id="messages" style="margin-left: 300px">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-    
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <p id="messages">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
     {% if Votantes %}
         <br>
-        <table border="1" style="width:150px" align="center" class="table table-bordered">
-        <thead>
-            <tr>
-            <th>Aficionados</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for a in Votantes %}
-            <tr><td>{{ a }}</td></tr>
-            {% endfor %}
-        </tbody>
-        </table>
+        <div class="container">
+            <div class="row justify-content-center">
+                <table border="1" style="width:150px" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Aficionados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in Votantes %}
+                            <tr><td>{{ a }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     {% endif %}
 {% endblock votos %}

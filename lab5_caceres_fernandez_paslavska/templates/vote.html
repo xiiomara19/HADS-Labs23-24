@@ -4,24 +4,32 @@
 
     {% load static %}
     <br>
-    <h3 align="center">Vota por tu película favorita</h3>
+    <h3 class="text-center">Vota por tu película favorita</h3>
     <br>
-    <form method="post" action="{% url 'vote' %}" style="width: 500px; margin-left: 121px">{% csrf_token %}
-        <label for="testua">Elige una película:</label>
-        <div class="input-group mb-3">
-            <select class="custom-select" name="film">
-            {% for p in Pelicula %}
-                <option value="{{ p.title }}">{{ p.title }}</option>
-            {% endfor %}
-            </select>
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="submit" name="vote">Votar</button>
-            </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <form method="post" action="{% url 'vote' %}" style="width: 500px;">{% csrf_token %}
+                <label for="testua">Elige una película:</label>
+                <div class="input-group mb-3">
+                    <select class="custom-select" name="film">
+                    {% for p in Pelicula %}
+                        <option value="{{ p.title }}">{{ p.title }}</option>
+                    {% endfor %}
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" name="vote">Votar</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-    {% if messages %}
-        {% for message in messages %}
-            <p id="messages" style="margin-left: 121px">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <p id="messages">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 {% endblock votar %}
