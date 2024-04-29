@@ -4,11 +4,23 @@ import './App.css';
 function App() {
   return (
     <div class="Game">
-        <div class="Game-option Game-options-playing">
-
+        <div class="Game-options ">
+          <button class="App-button App-button-marked" >Give up</button>
+          <button class="App-button App-button-marked" >Start over</button>
         </div>
-        <div class="game-container-outer">
-          <div class="game-container-inner">
+        <div class="game_container-outer">
+          <div class="game_container-inner">
+            <div class="game_boards">
+              <div class="game_boards-row">
+                <div class="row_field">
+                  <div class="Row Row-current">
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                  </div>
+                </div>
+                <div class="row_field"></div>
+              </div>
+              <div class="game_boards-row"></div>
+            </div>
 
           </div>
           <div class="Game-challenge-bar">
