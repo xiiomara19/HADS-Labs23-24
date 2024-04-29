@@ -40,6 +40,7 @@ function App() {
               <button class="Game-keyboard-button" type="button" id="a">Ñ</button>
             </div>
             <div class="Game-keyboard-row">
+              <button class="Game-keyboard-button" type="button" id="a">Delete</button>
               <button class="Game-keyboard-button" type="button" id="a">Z</button>
               <button class="Game-keyboard-button" type="button" id="a">X</button>
               <button class="Game-keyboard-button" type="button" id="a">C</button>
@@ -47,6 +48,7 @@ function App() {
               <button class="Game-keyboard-button" type="button" id="a">B</button>
               <button class="Game-keyboard-button" type="button" id="a">N</button>
               <button class="Game-keyboard-button" type="button" id="a">M</button>
+              <button class="Game-keyboard-button" type="button" id="a">Enter</button>
             </div>
           </div>
         </div>
