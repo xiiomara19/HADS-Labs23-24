@@ -46,6 +46,13 @@
   padding-bottom: 8px
 }
 
+.Game,h1 {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+
 .game__container-outer {
   display: flex;
   flex-direction: column;
@@ -153,7 +160,7 @@
   height: var(--adaptive-height-large)
 }
 
-.row__field {
+.row_field {
   display: flex;
   flex: 1 1;
   flex-direction: column;
@@ -202,6 +209,12 @@
   justify-content: space-between
 }
 
+.Game-options .App-button {
+  height: 27px;
+  margin: 4px 3px 0;
+  min-height: 0
+}
+
 .App-button-marked {
   background-color: #ae525230;
   font-size: .9em;
@@ -245,4 +258,16 @@ body.dark .App-button:hover {
 .App-button:disabled {
   background-color: #3e485730;
   color: #8c8e91
+}
+
+.Game-challenge-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  min-height: 18px
+}
+
+.Game-challenge-bar button {
+  width: 340px
 }
