@@ -41,3 +41,61 @@
   width: 200px;
   height: 200px;
 }
+
+.Game {
+  padding-bottom: 8px
+}
+
+.game__container-outer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%
+}
+
+.game__container-inner {
+  flex: 1 1 auto;
+  margin: auto;
+  max-width: 550px;
+  overflow: hidden;
+  width: 100%
+}
+
+
+.Game-keyboard {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 550px;
+  width: 100%
+}
+
+.Game-keyboard-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch
+}
+
+.Game-keyboard-button {
+  align-items: center;
+  background-color: #cbd3df;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex: 1 1;
+  font-size: 20px;
+  justify-content: center;
+  margin: 3px;
+  min-height: 40px;
+  text-decoration: inherit
+}
+
+.Game-keyboard-button-wide {
+  flex: 2 1
+}
+
+.Game-keyboard-button:focus {
+  outline: none
+}
