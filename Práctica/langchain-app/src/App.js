@@ -15,6 +15,17 @@ function App() {
                 <div class="row_field">
                   <div class="Row Row-current">
                     <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                  </div>
+                  <div class="Row">
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
+                    <div class="Row-letter" aria-live="assertive" aria-label=""></div>
                   </div>
                 </div>
                 <div class="row_field"></div>
@@ -52,7 +63,7 @@ function App() {
               <button class="Game-keyboard-button" type="button" id="a">Ñ</button>
             </div>
             <div class="Game-keyboard-row">
-              <button class="Game-keyboard-button" type="button" id="a">Delete</button>
+              <button class="Game-keyboard-button" type="button" id="a">⌫</button>
               <button class="Game-keyboard-button" type="button" id="a">Z</button>
               <button class="Game-keyboard-button" type="button" id="a">X</button>
               <button class="Game-keyboard-button" type="button" id="a">C</button>
