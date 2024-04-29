@@ -46,6 +46,13 @@
   padding-bottom: 8px
 }
 
+.Game,h1 {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+
 .game__container-outer {
   display: flex;
   flex-direction: column;
@@ -119,4 +126,148 @@
 /* Icon style */
 .button-icon {
   margin-right: 5px; /* Margin between icon and text */
+}
+
+
+.Row-letter {
+  border-radius: .25rem;
+  font-size: inherit;
+  height: 100%;
+  margin: .125rem;
+  padding: 0;
+  position: relative;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 20%
+}
+
+.Row {
+  box-sizing: border-box;
+  display: flex;
+  font-size: calc(1.8vh + 2.5px);
+  font-size: var(--adaptive-font);
+  height: 2.5vh;
+  height: var(--adaptive-height);
+  margin: .125rem;
+  width: 100%
+}
+
+.Row-current {
+  font-size: calc(2vh + 4px);
+  font-size: var(--adaptive-font-large);
+  height: 4.5vh;
+  height: var(--adaptive-height-large)
+}
+
+.row_field {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  padding: .25rem .25rem 0
+}
+
+.row__field:focus {
+  outline: none
+}
+
+.game_container-outer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%
+}
+
+.game_container-inner {
+  flex: 1 1 auto;
+  margin: auto;
+  max-width: 550px;
+  overflow: hidden;
+  width: 100%
+}
+
+.game_boards {
+  width: 100%
+}
+
+.game_boards-row {
+  display: flex;
+  width: 100%
+}
+
+.Game-options {
+  display: flex;
+  justify-content: right;
+  margin: 0 auto;
+  max-width: 350px;
+  min-height: 42px;
+  padding: 4px
+}
+
+.Game-options-playing {
+  justify-content: space-between
+}
+
+.Game-options .App-button {
+  height: 27px;
+  margin: 4px 3px 0;
+  min-height: 0
+}
+
+.App-button-marked {
+  background-color: #ae525230;
+  font-size: .9em;
+  font-weight: 600;
+  letter-spacing: .5px;
+  line-height: 11px;
+  padding: 4px 18px;
+  text-align: center;
+  white-space: nowrap
+}
+
+.App-button {
+  align-items: center;
+  background: #52ae9030;
+  border: none;
+  border-radius: 30px;
+  color: #626568;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  line-height: 20px;
+  margin: 3px;
+  min-height: 35px;
+  padding: 4px 14px
+}
+
+body.dark .App-button {
+  background: #61d9b2cc
+}
+
+.App-button:hover {
+  background: #5277ae30;
+  color: #626568
+}
+
+body.dark .App-button:hover {
+  background: #79a6e9db
+}
+
+.App-button:disabled {
+  background-color: #3e485730;
+  color: #8c8e91
+}
+
+.Game-challenge-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  min-height: 18px
+}
+
+.Game-challenge-bar button {
+  width: 340px
 }
