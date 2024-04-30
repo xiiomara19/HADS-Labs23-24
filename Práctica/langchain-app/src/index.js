@@ -4,12 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Settings from './settings';
+import Info from './info';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function renderSettings() {
   root.render(
     <React.StrictMode>
       <Settings />
+    </React.StrictMode>
+  );
+}
+function renderInfo() {
+  root.render(
+    <React.StrictMode>
+      <Info />
     </React.StrictMode>
   );
 }
@@ -23,6 +31,8 @@ function renderApp() {
 renderApp();
 
 document.getElementById('open-settings').addEventListener('click', renderSettings);
+document.getElementById('open-about').addEventListener('click', renderInfo);
+document.getElementById('closebtn').addEventListener('click', renderApp);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
