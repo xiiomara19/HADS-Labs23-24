@@ -17,7 +17,7 @@ function renderSettings() {
 function renderInfo() {
   root.render(
     <React.StrictMode>
-      <Info />
+      <Info onClose={renderApp}/>
     </React.StrictMode>
   );
 }

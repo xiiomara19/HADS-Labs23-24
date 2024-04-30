@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function Info({ onClose }) {
   return (
     <div class="App-page">
       <div class="App-title">
         About
-        <button class="App-button-close">
+        <button class="App-button-close" onClick={onClose}>
         ✖
         </button>
       </div>
@@ -22,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default Info;
