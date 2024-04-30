@@ -32,7 +32,6 @@ renderApp();
 
 document.getElementById('open-settings').addEventListener('click', renderSettings);
 document.getElementById('open-about').addEventListener('click', renderInfo);
-document.getElementById('closebtn').addEventListener('click', renderApp);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
