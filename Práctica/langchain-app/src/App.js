@@ -14,236 +14,236 @@ function App() {
               <div class="game_boards-row">
                 <div class="row_field">
                   <div class="Row Row-current">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                 </div>
                 <div class="row_field">
-                <div class="Row Row-current">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                  <div class="Row Row-current">
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                 </div>
               </div>
               <div class="game_boards-row">
                 <div class="row_field">
-                <div class="Row Row-current">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                  <div class="Row Row-current">
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                 </div>
                 <div class="row_field">
-                <div class="Row Row-current">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                  <div class="Row Row-current">
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                   <div class="Row">
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
-                    <input type="text" class="Row-letter" aria-live="assertive" aria-label="" />
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
+                    <div class="Row-letter"aria-live="assertive"  ></div>
                   </div>
                 </div>
               </div>

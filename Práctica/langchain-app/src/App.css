@@ -87,6 +87,7 @@
 .Game-keyboard-button {
   align-items: center;
   background-color: #cbd3df;
+  border-left-color: rgb(22, 28, 45);
   border-radius: 4px;
   color: inherit;
   cursor: pointer;
@@ -142,13 +143,28 @@
   width: 20%
 }
 
+.Row-letter {
+  background-color: #e7ebf1;
+  border-radius: 5px;
+  color: #363535;
+  display: flex;
+  flex: 1 1;
+  font-weight: 700;
+  text-transform: uppercase
+}
+
+.Row,.Row-letter {
+  align-items: center;
+  justify-content: center
+}
+
 .Row {
   box-sizing: border-box;
   display: flex;
   font-size: calc(1.8vh + 2.5px);
   font-size: var(--adaptive-font);
   height: 2.5vh;
-  height: var(--adaptive-height);
+  height: 16.775px;
   margin: .125rem;
   width: 100%
 }
@@ -157,7 +173,21 @@
   font-size: calc(2vh + 4px);
   font-size: var(--adaptive-font-large);
   height: 4.5vh;
-  height: var(--adaptive-height-large)
+  height: 32.825px;
+}
+
+@media screen and (min-height: 1024px) {
+  .Row {
+      box-sizing:border-box;
+      display: flex;
+      margin: .125rem;
+      width: 100%
+  }
+
+  .Row,.Row-current {
+      height: max(40px,2.5vh);
+      height: max(40px,var(--adaptive-height))
+  }
 }
 
 .row_field {
@@ -270,4 +300,47 @@ body.dark .App-button:hover {
 
 .Game-challenge-bar button {
   width: 340px
+}
+
+.letter-correct {
+  background-color: #57ac78;
+  border: none;
+  color: #fff!important
+}
+
+.letter-elsewhere {
+  background-color: #e9c601;
+  border: none;
+  color: #fff!important
+}
+
+.letter-absent {
+  background-color: #a2a2a2;
+  border: none;
+  color: #fff!important
+}
+
+.Top-window-title {
+  align-items: center;
+  background-color: #f1f3f9;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  flex-grow: 1;
+  font-size: 24px;
+  font-weight: 800;
+  height: 50px;
+  justify-content: center;
+  padding: 5px;
+  position: relative
+}
+
+body.dark .Top-window-title {
+  background: #9b9a9a;
+  color: #363535
+}
+
+.Top-window-content {
+  height: 100%;
+  padding: 5px 20px;
+  width: 100%
 }
