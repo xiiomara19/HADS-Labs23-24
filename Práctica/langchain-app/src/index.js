@@ -32,9 +32,9 @@ function renderInfo() {
 }
 function renderApp() {
   root.render(
-    <React.StrictMode>
+    
       <App />
-    </React.StrictMode>
+    
   );
 }
 renderApp();

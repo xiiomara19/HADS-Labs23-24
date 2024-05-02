@@ -1,0 +1,30 @@
+{
+    "solutions": [
+        {"word": "pluma", "id": "1"},
+        {"word": "silla", "id": "2"},
+        {"word": "mosca", "id": "3"},
+        {"word": "libro", "id": "4"},
+        {"word": "papel", "id": "5"},
+        {"word": "juego", "id": "6"},
+        {"word": "limon", "id": "7"},
+        {"word": "mango", "id": "8"},
+        {"word": "perro", "id": "9"},
+        {"word": "melon", "id": "10"},
+        {"word": "plato", "id": "11"},
+        {"word": "amigo", "id": "12"},
+        {"word": "pasta", "id": "13"},
+        {"word": "arroz", "id": "14"},
+        {"word": "pollo", "id": "15"},
+        {"word": "carne", "id": "16"},
+        {"word": "parir", "id": "17"},
+        {"word": "poder", "id": "18"},
+        {"word": "trece", "id": "19"},
+        {"word": "tiene", "id": "20"},
+        {"word": "adios", "id": "21"},
+        {"word": "estar", "id": "22"},
+        {"word": "forma", "id": "23"},
+        {"word": "todos", "id": "24"},
+        {"word": "fuera", "id": "25"}
+        
+    ]
+}
