@@ -37,10 +37,10 @@ useEffect(() => {
   usedIndices.push(getRandomIndex(usedIndices));
   usedIndices.push(getRandomIndex(usedIndices));
 
-  setSolution1(data.solutions[usedIndices[0]].word);
-  setSolution2(data.solutions[usedIndices[1]].word);
-  setSolution3(data.solutions[usedIndices[2]].word);
-  setSolution4(data.solutions[usedIndices[3]].word);
+  setSolution1(data.solutions[usedIndices[0]]);
+  setSolution2(data.solutions[usedIndices[1]]);
+  setSolution3(data.solutions[usedIndices[2]]);
+  setSolution4(data.solutions[usedIndices[3]]);
 }, []);
 
 console.log(solution1);
