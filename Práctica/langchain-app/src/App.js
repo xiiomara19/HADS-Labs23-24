@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
+import Quordle from './Quordle';
 
 function App() {
 
