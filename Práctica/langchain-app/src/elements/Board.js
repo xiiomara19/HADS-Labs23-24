@@ -36,64 +36,63 @@ function Board() {
             <div className="game_boards">
               <div className="game_boards-row">
                 <div className="row_field">
-                  <div className="Row Row-current">
+                  <div id='T1R1' className="Row Row-current">
                     <input id='T1R1C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" autoFocus value={l1} onChange={handleChange1}/>
                     <input id='T1R1C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l2} onChange={handleChange2} readOnly/>
                     <input id='T1R1C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l3} onChange={handleChange3} readOnly/>
                     <input id='T1R1C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l4} onChange={handleChange4} readOnly/>
                     <input id='T1R1C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l5} onChange={handleChange5} readOnly/>
-                    
                   </div>
-                  <div className="Row">
+                  <div id='T1R2' className="Row">
                     <input id='T1R2C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R2C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R2C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T1R2C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T1R2C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T1R23' className="Row">
                     <input id='T1R3C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R3C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R3C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T1R3C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T1R3C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T1R4' className="Row">
                     <input id='T1R4C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R4C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R4C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T1R4C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T1R4C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T1R5' className="Row">
                   <input id='T1R5C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R5C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R5C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T1R5C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T1R5C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T1R6' className="Row">
                   <input id='T1R6C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R6C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R6C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T1R6C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T1R6C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T1R7' className="Row">
                     <input id='T1R7C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R7C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R7C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T1R7C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T1R7C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T1R8' className="Row">
                     <input id='T1R8C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R8C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R8C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T1R8C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T1R8C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T1R9' className="Row">
                     <input id='T1R9C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T1R9C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T1R9C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
@@ -102,63 +101,63 @@ function Board() {
                   </div>
                 </div>
                 <div className="row_field">
-                <div className="Row Row-current">
+                <div id='T2R1' className="Row Row-current">
                     <input id='T2R1C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l1} onChange={handleChange1} readOnly/>
                     <input id='T2R1C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l2} onChange={handleChange2} readOnly/>
                     <input id='T2R1C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l3} onChange={handleChange3} readOnly/>
                     <input id='T2R1C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l4} onChange={handleChange4} readOnly/>
                     <input id='T2R1C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l5} onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R2' className="Row">
                     <input id='T2R2C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R2C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R2C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T2R2C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T2R2C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R3' className="Row">
                     <input id='T2R3C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R3C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R3C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T2R3C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T2R3C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R4' className="Row">
                     <input id='T2R4C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R4C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R4C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T2R4C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T2R4C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R5' className="Row">
                     <input id='T2R5C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R5C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R5C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T2R5C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T2R5C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R6' className="Row">
                     <input id='T2R6C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R6C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R6C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T2R6C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T2R6C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R7' className="Row">
                     <input id='T2R7C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R7C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R7C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T2R7C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T2R7C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R8' className="Row">
                     <input id='T2R8C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R8C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R8C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T2R8C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T2R8C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T2R9' className="Row">
                     <input id='T2R9C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T2R9C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T2R9C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
@@ -169,64 +168,64 @@ function Board() {
               </div>
               <div className="game_boards-row">
                 <div className="row_field">
-                  <div className="Row Row-current">
-                  <input id='T3R1C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l1} onChange={handleChange1} readOnly/>
+                  <div id='T3R1' className="Row Row-current">
+                    <input id='T3R1C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l1} onChange={handleChange1} readOnly/>
                     <input id='T3R1C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l2} onChange={handleChange2} readOnly/>
                     <input id='T3R1C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l3} onChange={handleChange3} readOnly/>
                     <input id='T3R1C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l4} onChange={handleChange4} readOnly/>
                     <input id='T3R1C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l5} onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T3R2C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T3R2' className="Row">
+                    <input id='T3R2C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R2C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R2C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R2C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T3R2C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T3R3' className="Row">
                     <input id='T3R3C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R3C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R3C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R3C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T3R3C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T3R4' className="Row">
                     <input id='T3R4C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R4C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R4C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R4C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T3R4C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T3R5' className="Row">
                     <input id='T3R5C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R5C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R5C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R5C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T3R5C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T3R6C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T3R6' className="Row">
+                    <input id='T3R6C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R6C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R6C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R6C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T3R6C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T3R7C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T3R7' className="Row">
+                    <input id='T3R7C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R7C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R7C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R7C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T3R7C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T3R8C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T3R8' className="Row">
+                    <input id='T3R8C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R8C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R8C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R8C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T3R8C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T3R9C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T3R9' className="Row">
+                    <input id='T3R9C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T3R9C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T3R9C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T3R9C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
@@ -234,64 +233,64 @@ function Board() {
                   </div>
                 </div>
                 <div className="row_field">
-                  <div className="Row Row-current">
+                  <div id='T4R1' className="Row Row-current">
                     <input id='T4R1C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l1} onChange={handleChange1} readOnly/>
                     <input id='T4R1C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l2} onChange={handleChange2} readOnly/>
                     <input id='T4R1C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l3} onChange={handleChange3} readOnly/>
                     <input id='T4R1C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l4} onChange={handleChange4} readOnly/>
                     <input id='T4R1C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" value={l5} onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T4R2' className="Row">
                     <input id='T4R2C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R2C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R2C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R2C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T4R2C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T4R3' className="Row">
                     <input id='T4R3C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R3C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R3C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R3C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T4R3C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
+                  <div id='T4R4' className="Row">
                    <input id='T4R4C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R4C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R4C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R4C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T4R4C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T4R5C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T4R5' className="Row">
+                    <input id='T4R5C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R5C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R5C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R5C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T4R5C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T4R6C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T4R6' className="Row">
+                    <input id='T4R6C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R6C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R6C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R6C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T4R6C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T4R7C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T4R7' className="Row">
+                    <input id='T4R7C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R7C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R7C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R7C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T4R7C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T4R8C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T4R8'className="Row">
+                    <input id='T4R8C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R8C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R8C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R8C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
                     <input id='T4R8C5' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange5} readOnly/>
                   </div>
-                  <div className="Row">
-                  <input id='T4R9C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
+                  <div id='T4R9'className="Row">
+                    <input id='T4R9C1' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange1} readOnly/>
                     <input id='T4R9C2' className="Row-letter"aria-live="assertive" type="text" maxLength="1" onChange={handleChange2} readOnly/>
                     <input id='T4R9C3' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange3} readOnly/>
                     <input id='T4R9C4' className="Row-letter"aria-live="assertive" type="text" maxLength="1"  onChange={handleChange4} readOnly/>
