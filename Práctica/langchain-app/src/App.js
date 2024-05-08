@@ -4,6 +4,8 @@ import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import Quordle from './Quordle';
+import Popup from './elements/Popup';
+
 
 function App() {
 
@@ -42,9 +44,6 @@ useEffect(() => {
   setSolution2(data.solutions[usedIndices[1]]);
   setSolution3(data.solutions[usedIndices[2]]);
   setSolution4(data.solutions[usedIndices[3]]);
-
-  // Alerta cuando se inicia el juego
-  alert("¡El juego ha comenzado!");
 }, []);
 
 console.log(solution1);
@@ -52,13 +51,35 @@ console.log(solution2);
 console.log(solution3);
 console.log(solution4);
 
+const  [giveUpButton, setGiveUpButton] = useState(false);
+const [firstPopup, setFirstPopup] = useState(true);
+
+useEffect(() => {
+  setTimeout(() => {
+    setFirstPopup(false);
+    }, 2000);
+}, []);
+
+const handleStartOver = () => {
+  // Aquí puedes reiniciar tus estados o realizar cualquier otra lógica de reinicio necesaria
+  setSolution1(null);
+  setSolution2(null);
+  setSolution3(null);
+  setSolution4(null);
+  setGiveUpButton(false);
+  setFirstPopup(true);
+  document.getElementById("giveUp").classList.remove("invisible");
+  document.getElementById("startOver").classList.add("invisible");
+};
+
   return (
 
     <div className="Game">
-        <div className="Game-options ">
-          <button id="giveUp" className="App-button App-button-marked invisible" onClick={() => {alert("Te has rendido")}}>Give up</button>
-          <button id="startOver" className="App-button App-button-marked invisible" onClick={() => {alert("Reiniciar")}}>Start over</button>
-        </div>
+      <div className="Game-options ">
+        <button id="giveUp" className="App-button App-button-marked" onClick={() => setGiveUpButton(true)}>Rendirse</button>
+        <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
+
+      </div>
         <div className="game_container-outer">
             <Board/>
           <div className="Game-challenge-bar">
@@ -66,7 +87,22 @@ console.log(solution4);
           </div>
           <Keyboard/>
         </div>
+        <Popup trigger={giveUpButton} setTrigger={setGiveUpButton}>
+          <h1>Has PERDIDO </h1>
+          <button className='close-btn' onClick={() => {
+            setGiveUpButton(false); 
+            document.getElementById("giveUp").classList.add("invisible");
+            document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
+          <p>La respuesta era:</p>
+          <p>{solution1}, {solution2}, {solution3}, {solution4}</p>
+          <button onClick={handleStartOver}>Comenzar de nuevo</button>
+        </Popup>
+
+        <Popup trigger={firstPopup} setTrigger={setFirstPopup}>
+          <h1>¡Haz tu primera tirada!</h1>
+        </Popup>
       </div>
+
 
     
   );
