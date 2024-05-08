@@ -1,15 +1,17 @@
 import './styles/App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
-import Quordle from './Quordle';
+import Quordle, { boardBegininig } from './Quordle';
 import Popup from './elements/Popup';
 
+export const AppContext = createContext();
 
 function App() {
 
-  
+  const [board, setBoard] = useState(boardBegininig);
+
   /** PARA ESCRIBIR LA LETRA EN LOS 4 A LA VEZ
 const [values, setValues] = useState(['', '', '', '']);
 
@@ -80,6 +82,9 @@ const handleStartOver = () => {
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
 
       </div>
+      <AppContext.Provider 
+          value={{solution1, solution2, solution3, solution4,
+          board, setBoard}}>
         <div className="game_container-outer">
             <Board/>
           <div className="Game-challenge-bar">
@@ -87,6 +92,7 @@ const handleStartOver = () => {
           </div>
           <Keyboard/>
         </div>
+      </AppContext.Provider>
         <Popup trigger={giveUpButton} setTrigger={setGiveUpButton}>
           <h1>Has PERDIDO </h1>
           <button className='close-btn' onClick={() => {
