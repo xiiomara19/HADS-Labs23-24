@@ -10,17 +10,11 @@ export const AppContext = createContext();
 
 function App() {
 
+
   const [board, setBoard] = useState(boardBegininig);
 
-  /** PARA ESCRIBIR LA LETRA EN LOS 4 A LA VEZ
-const [values, setValues] = useState(['', '', '', '']);
+  const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
 
-const handleChange = (index) => (event) => {
-  const newValues = [...values];
-  newValues[index] = event.target.value;
-  setValues(newValues);
-};
-*/
 
 const [solution1, setSolution1] = useState(null);
 const [solution2, setSolution2] = useState(null);
@@ -84,7 +78,7 @@ const handleStartOver = () => {
       </div>
       <AppContext.Provider 
           value={{solution1, solution2, solution3, solution4,
-          board, setBoard}}>
+          board, setBoard, enteredLetter, setEnteredLetter}}>
         <div className="game_container-outer">
             <Board/>
           <div className="Game-challenge-bar">
