@@ -461,4 +461,8 @@ body.dark .Top-window-title {
   width: 100%
 }
 
+.invisible {
+  display: none;
+}
+
 

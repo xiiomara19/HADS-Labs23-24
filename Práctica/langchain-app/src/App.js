@@ -42,6 +42,9 @@ useEffect(() => {
   setSolution2(data.solutions[usedIndices[1]]);
   setSolution3(data.solutions[usedIndices[2]]);
   setSolution4(data.solutions[usedIndices[3]]);
+
+  // Alerta cuando se inicia el juego
+  alert("¡El juego ha comenzado!");
 }, []);
 
 console.log(solution1);
@@ -53,8 +56,8 @@ console.log(solution4);
 
     <div className="Game">
         <div className="Game-options ">
-          <button className="App-button App-button-marked" >Give up</button>
-          <button className="App-button App-button-marked" >Start over</button>
+          <button id="giveUp" className="App-button App-button-marked invisible" onClick={() => {alert("Te has rendido")}}>Give up</button>
+          <button id="startOver" className="App-button App-button-marked invisible" onClick={() => {alert("Reiniciar")}}>Start over</button>
         </div>
         <div className="game_container-outer">
             <Board/>
@@ -64,6 +67,7 @@ console.log(solution4);
           <Keyboard/>
         </div>
       </div>
+
     
   );
 }
