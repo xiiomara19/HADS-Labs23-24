@@ -16,7 +16,7 @@ function Key({val}) {
           
         }
         else if (val === 'Enter') {
-            if (enteredLetter.row !==5) return;
+            if (enteredLetter.col !== 5) return;
             setEnteredLetter({row: enteredLetter.row + 1, col: 0});
         }
 
