@@ -8,13 +8,13 @@ function Keyboard() {
   return (
           <div className="Game-keyboard">
             <div className="Game-keyboard-row">
-              {row1.map((letter) => {return <Key val={letter}/>})}
+              {row1.map((letter) => {return <Key key={letter} val={letter}/>})}
             </div>
             <div className="Game-keyboard-row">
-              {row2.map((letter) => {return <Key val={letter}/>})}
+              {row2.map((letter) => {return <Key key={letter} val={letter}/>})}
             </div>
             <div className="Game-keyboard-row">
-              {row3.map((letter) => {return <Key val={letter}/>})}
+              {row3.map((letter) => {return <Key key={letter} val={letter}/>})}
             </div>
           </div>
   )
