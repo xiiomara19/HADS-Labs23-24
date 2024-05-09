@@ -32,9 +32,7 @@ function renderInfo() {
 }
 function renderApp() {
   root.render(
-    
       <App />
-    
   );
 }
 renderApp();

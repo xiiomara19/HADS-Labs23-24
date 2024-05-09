@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { AppContext } from '../App'
 
 function Key({val}) {
-    const {board, onKeyDelete, onKeyEnter, OnKeyLetter} = useContext(AppContext);
+    const {onKeyDelete, onKeyEnter, OnKeyLetter} = useContext(AppContext);
 
     const keyPressed = () => {
         if (val === 'Delete') {
