@@ -10,63 +10,91 @@ export const AppContext = createContext();
 
 function App() {
 
-
   const [board, setBoard] = useState(boardBegininig);
 
   const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
 
+  const [solution1, setSolution1] = useState(null);
+  const [solution2, setSolution2] = useState(null);
+  const [solution3, setSolution3] = useState(null);
+  const [solution4, setSolution4] = useState(null);
 
-const [solution1, setSolution1] = useState(null);
-const [solution2, setSolution2] = useState(null);
-const [solution3, setSolution3] = useState(null);
-const [solution4, setSolution4] = useState(null);
 
-useEffect(() => {
-  const getRandomIndex = (usedIndices) => {
-    let index;
-    do {
-      index = Math.floor(Math.random() * data.solutions.length);
-    } while (usedIndices.includes(index));
-    return index;
+  useEffect(() => {
+    const getRandomIndex = (usedIndices) => {
+      let index;
+      do {
+        index = Math.floor(Math.random() * data.solutions.length);
+      } while (usedIndices.includes(index));
+      return index;
   };
 
-  const usedIndices = [];
-  usedIndices.push(getRandomIndex(usedIndices));
-  usedIndices.push(getRandomIndex(usedIndices));
-  usedIndices.push(getRandomIndex(usedIndices));
-  usedIndices.push(getRandomIndex(usedIndices));
+    const usedIndices = [];
+    usedIndices.push(getRandomIndex(usedIndices));
+    usedIndices.push(getRandomIndex(usedIndices));
+    usedIndices.push(getRandomIndex(usedIndices));
+    usedIndices.push(getRandomIndex(usedIndices));
 
-  setSolution1(data.solutions[usedIndices[0]]);
-  setSolution2(data.solutions[usedIndices[1]]);
-  setSolution3(data.solutions[usedIndices[2]]);
-  setSolution4(data.solutions[usedIndices[3]]);
-}, []);
+    setSolution1(data.solutions[usedIndices[0]]);
+    setSolution2(data.solutions[usedIndices[1]]);
+    setSolution3(data.solutions[usedIndices[2]]);
+    setSolution4(data.solutions[usedIndices[3]]);
+  }, []);
 
-console.log(solution1);
-console.log(solution2);
-console.log(solution3);
-console.log(solution4);
+  console.log(solution1);
+  console.log(solution2);
+  console.log(solution3);
+  console.log(solution4);
 
-const  [giveUpButton, setGiveUpButton] = useState(false);
-const [firstPopup, setFirstPopup] = useState(true);
+  const  [giveUpButton, setGiveUpButton] = useState(false);
+  const [firstPopup, setFirstPopup] = useState(true);
 
-useEffect(() => {
-  setTimeout(() => {
-    setFirstPopup(false);
-    }, 2000);
-}, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setFirstPopup(false);
+      }, 2000);
+  }, []);
 
-const handleStartOver = () => {
-  // Aquí puedes reiniciar tus estados o realizar cualquier otra lógica de reinicio necesaria
-  setSolution1(null);
-  setSolution2(null);
-  setSolution3(null);
-  setSolution4(null);
-  setGiveUpButton(false);
-  setFirstPopup(true);
-  document.getElementById("giveUp").classList.remove("invisible");
-  document.getElementById("startOver").classList.add("invisible");
-};
+  const handleStartOver = () => {
+    // Aquí puedes reiniciar tus estados o realizar cualquier otra lógica de reinicio necesaria
+    setSolution1(null);
+    setSolution2(null);
+    setSolution3(null);
+    setSolution4(null);
+    setGiveUpButton(false);
+    setFirstPopup(true);
+    document.getElementById("giveUp").classList.remove("invisible");
+    document.getElementById("startOver").classList.add("invisible");
+  };
+
+  const OnKeyLetter = (val) => {
+    if(enteredLetter.col > 4) return;
+    const newBoard = [...board];
+    newBoard[enteredLetter.row][enteredLetter.col] = val;
+    newBoard[enteredLetter.row][enteredLetter.col + 5] = val;
+    newBoard[enteredLetter.row + 9][enteredLetter.col] = val;
+    newBoard[enteredLetter.row + 9][enteredLetter.col + 5] = val;
+    setEnteredLetter({row: enteredLetter.row, col: enteredLetter.col + 1})
+    setBoard(newBoard)
+  }
+
+  const onKeyDelete = () => {
+    if (enteredLetter.col === 0) return;
+    const newBoard = [...board];
+    newBoard[enteredLetter.row][enteredLetter.col - 1] = '';
+    newBoard[enteredLetter.row][enteredLetter.col + 4] = '';
+    newBoard[enteredLetter.row + 9][enteredLetter.col - 1] = '';
+    newBoard[enteredLetter.row + 9][enteredLetter.col + 4] = '';
+    setEnteredLetter({row: enteredLetter.row, col: enteredLetter.col - 1})
+    setBoard(newBoard)
+  }
+
+  const onKeyEnter = () => {
+    if (enteredLetter.col !== 5) return;
+    setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+  }
+
+
 
   return (
 
@@ -78,7 +106,8 @@ const handleStartOver = () => {
       </div>
       <AppContext.Provider 
           value={{solution1, solution2, solution3, solution4,
-          board, setBoard, enteredLetter, setEnteredLetter}}>
+          board, setBoard, enteredLetter, setEnteredLetter,
+          onKeyDelete, onKeyEnter, OnKeyLetter}}>
         <div className="game_container-outer">
             <Board/>
           <div className="Game-challenge-bar">
