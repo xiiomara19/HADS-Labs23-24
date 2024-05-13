@@ -5,6 +5,10 @@ import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import { boardBegininig } from './Quordle';
 import Popup from './elements/Popup';
+import {config} from "dotenv";
+config();
+
+
 
 export const AppContext = createContext();
 
@@ -18,9 +22,6 @@ function App() {
   const [solution2, setSolution2] = useState(null);
   const [solution3, setSolution3] = useState(null);
   const [solution4, setSolution4] = useState(null);
-
-  const  [giveUpButton, setGiveUpButton] = useState(false);
-  const [firstPopup, setFirstPopup] = useState(true);
 
 
   useEffect(() => {
@@ -49,6 +50,8 @@ function App() {
   console.log(solution3);
   console.log(solution4);
 
+  const  [giveUpButton, setGiveUpButton] = useState(false);
+  const [firstPopup, setFirstPopup] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
