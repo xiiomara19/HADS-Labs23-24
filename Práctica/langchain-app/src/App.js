@@ -67,6 +67,7 @@ function App() {
 
   const OnKeyLetter = (val) => {
     if(enteredLetter.col > 4) return;
+    if (enteredLetter.row > 8) return;
     const newBoard = [...board];
     newBoard[enteredLetter.row][enteredLetter.col] = val;
     newBoard[enteredLetter.row][enteredLetter.col + 5] = val;
@@ -91,8 +92,6 @@ function App() {
     if (enteredLetter.col !== 5) return;
     setEnteredLetter({row: enteredLetter.row + 1, col: 0});
   }
-
-
 
   return (
 
