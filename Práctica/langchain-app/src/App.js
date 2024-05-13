@@ -19,6 +19,9 @@ function App() {
   const [solution3, setSolution3] = useState(null);
   const [solution4, setSolution4] = useState(null);
 
+  const  [giveUpButton, setGiveUpButton] = useState(false);
+  const [firstPopup, setFirstPopup] = useState(true);
+
 
   useEffect(() => {
     const getRandomIndex = (usedIndices) => {
@@ -46,8 +49,6 @@ function App() {
   console.log(solution3);
   console.log(solution4);
 
-  const  [giveUpButton, setGiveUpButton] = useState(false);
-  const [firstPopup, setFirstPopup] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,9 +69,6 @@ function App() {
     newBoard[enteredLetter.row][enteredLetter.col + 5] = val;
     newBoard[enteredLetter.row + 9][enteredLetter.col] = val;
     newBoard[enteredLetter.row + 9][enteredLetter.col + 5] = val;
-    console.log(enteredLetter.col)
-    console.log(val)
-
     setEnteredLetter({row: enteredLetter.row, col: enteredLetter.col + 1})
     setBoard(newBoard)
   }
