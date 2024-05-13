@@ -56,16 +56,10 @@ function App() {
   }, []);
 
   const handleStartOver = () => {
-    // Aquí puedes reiniciar tus estados o realizar cualquier otra lógica de reinicio necesaria
-    setSolution1(null);
-    setSolution2(null);
-    setSolution3(null);
-    setSolution4(null);
-    setGiveUpButton(false);
-    setFirstPopup(true);
-    document.getElementById("giveUp").classList.remove("invisible");
-    document.getElementById("startOver").classList.add("invisible");
+    window.location.reload();
   };
+
+  document.getElementById("home").onclick = handleStartOver;
 
   const OnKeyLetter = (val) => {
     if(enteredLetter.col > 4) return;
@@ -74,6 +68,9 @@ function App() {
     newBoard[enteredLetter.row][enteredLetter.col + 5] = val;
     newBoard[enteredLetter.row + 9][enteredLetter.col] = val;
     newBoard[enteredLetter.row + 9][enteredLetter.col + 5] = val;
+    console.log(enteredLetter.col)
+    console.log(val)
+
     setEnteredLetter({row: enteredLetter.row, col: enteredLetter.col + 1})
     setBoard(newBoard)
   }
