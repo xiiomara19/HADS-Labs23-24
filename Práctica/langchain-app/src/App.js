@@ -5,8 +5,7 @@ import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import { boardBegininig } from './Quordle';
 import Popup from './elements/Popup';
-import {config} from "dotenv";
-config();
+
 
 
 
