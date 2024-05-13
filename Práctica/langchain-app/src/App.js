@@ -3,7 +3,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
-import { boardBegininig } from './Quordle';
+import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup';
 
 
@@ -16,6 +16,8 @@ function App() {
   const [board, setBoard] = useState(boardBegininig);
 
   const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
+
+  const [wordSet, setWordSet] = useState(new Set());
 
   const [solution1, setSolution1] = useState(null);
   const [solution2, setSolution2] = useState(null);
@@ -51,6 +53,7 @@ function App() {
 
   const  [giveUpButton, setGiveUpButton] = useState(false);
   const [firstPopup, setFirstPopup] = useState(true);
+  const [incorrectWord, setIncorrectWord] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -89,7 +92,17 @@ function App() {
 
   const onKeyEnter = () => {
     if (enteredLetter.col !== 5) return;
-    setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+    let word = '';
+    for (let i=0; i<5; i++) {
+      word += board[enteredLetter.row][i];
+    }
+    if (wordSet.has(word.toLowerCase())) setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+    else {
+      setIncorrectWord(true);
+      setTimeout(() => {
+        setIncorrectWord(false);
+      }, 2000);
+    }
   }
 
   return (
@@ -125,6 +138,10 @@ function App() {
 
         <Popup trigger={firstPopup} setTrigger={setFirstPopup}>
           <h1>¡Haz tu primera tirada!</h1>
+        </Popup>
+
+        <Popup trigger={incorrectWord} setTrigger={setIncorrectWord}>
+          <h1>No es una palabra valida</h1>
         </Popup>
       </div>
 
