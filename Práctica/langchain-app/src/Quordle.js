@@ -1,3 +1,5 @@
+import data from './data/data.txt'
+
 function sameLetterAndPosition(word, letter, pos) {
     if (word[pos] === letter) {
         return true;
@@ -20,7 +22,7 @@ function sameLetterWrongPosition(word, letter, pos){
     return array;
 }
 
-function Quordle(word, letter, pos, id) {
+export function Quordle(word, letter, pos, id) {
     let cell = document.getElementById(id);
     let row = cell.parentElement;
 
@@ -70,4 +72,14 @@ export const boardBegininig = [
   
 ]
 
-export default Quordle;
+export const CreateWordSet = async () => {
+    let wordSet
+    await fetch(data)
+    .then(response => response.text())
+    .then(text => {
+        const words = text.split("\n")
+        wordSet = new Set(words)
+    })
+    return {wordSet}
+}
+
