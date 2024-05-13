@@ -5,7 +5,7 @@ import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import { boardBegininig } from './Quordle';
 import Popup from './elements/Popup';
-
+import axios from 'axios';  
 
 
 
@@ -22,6 +22,28 @@ function App() {
   const [solution3, setSolution3] = useState(null);
   const [solution4, setSolution4] = useState(null);
 
+  useEffect(() => {
+    const fetchWord = async () => {
+      // Prepare the prompt for the OpenAI API
+      const prompt = `what is the capital of Spain?`;
+  
+      // Send a request to the OpenAI API
+      const openAiResponse = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+        prompt,
+        max_tokens: 1,
+      }, {
+        headers: {
+          'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      // Log the response from the OpenAI API
+      console.log(openAiResponse.data.choices[0].text.trim());
+    };
+  
+    fetchWord();
+  }, []);
 
   useEffect(() => {
     const getRandomIndex = (usedIndices) => {
