@@ -3,7 +3,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
-import Quordle, { boardBegininig } from './Quordle';
+import { boardBegininig } from './Quordle';
 import Popup from './elements/Popup';
 
 export const AppContext = createContext();
