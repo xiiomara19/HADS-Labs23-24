@@ -204,7 +204,7 @@ function Board() {
                     <Cell id='T3R8C4' row={16} col={3}/>
                     <Cell id='T3R8C5' row={16} col={4}/>
                   </div>
-                  <div id='T3R9' className={`Row ${visitedRows.includes(1) ? 'Row-current' : ''}`}>
+                  <div id='T3R9' className={`Row ${visitedRows.includes(17) ? 'Row-current' : ''}`}>
                     <Cell id='T3R9C1' row={17} col={0}/>
                     <Cell id='T3R9C2' row={17} col={1}/>
                     <Cell id='T3R9C3' row={17} col={2}/>

@@ -1,3 +1,4 @@
+import data from './data/data.txt'
 
 export const boardBegininig = [
     ["", "", "", "", "",        "", "", "", "", ""],
@@ -22,3 +23,5 @@ export const boardBegininig = [
     ["", "", "", "", "",        "", "", "", "", ""]
   
 ]
+
+export default Quordle;
