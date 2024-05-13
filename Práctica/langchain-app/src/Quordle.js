@@ -24,4 +24,13 @@ export const boardBegininig = [
   
 ]
 
-export default Quordle;
+export const CreateWordSet = async () => {
+    let wordSet
+    await fetch(data)
+    .then(response => response.text())
+    .then(text => {
+        const words = text.split("\n")
+        wordSet = new Set(words)
+    })
+    return {wordSet}
+}
