@@ -61,6 +61,12 @@ function App() {
       }, 2000);
   }, []);
 
+  useEffect(() => {
+    CreateWordSet().then((words) => {
+      setWordSet(words.wordSet);
+    }); 
+  },[]);
+
   const handleStartOver = () => {
     window.location.reload();
   };
@@ -96,12 +102,22 @@ function App() {
     for (let i=0; i<5; i++) {
       word += board[enteredLetter.row][i];
     }
-    if (wordSet.has(word.toLowerCase())) setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+
+    if (wordSet.has(word.toLowerCase())){
+      setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+    } 
     else {
       setIncorrectWord(true);
       setTimeout(() => {
         setIncorrectWord(false);
       }, 2000);
+    }
+
+    if (word === solution1) {
+
+    }
+    if (enteredLetter.row === 5) {
+      setGiveUpButton(true);
     }
   }
 
