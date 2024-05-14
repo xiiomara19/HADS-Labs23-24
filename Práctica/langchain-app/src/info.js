@@ -15,8 +15,6 @@ function Info({ onClose }) {
         <hr></hr>
         <p>Our game is....</p>
         <hr></hr>
-        <p>lalalalaalalal</p>
-        <hr></hr>
       </div>
     </div>
   );
