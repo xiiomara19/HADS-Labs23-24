@@ -10,9 +10,12 @@ import { fetchData } from './GroqFuncions';
 
 export const AppContext = createContext();
 
+
 function App() {
 
   const [board, setBoard] = useState(boardBegininig);
+
+
 
   const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
 
@@ -66,6 +69,7 @@ function App() {
 
   useEffect(() => {
     CreateWordSet().then((words) => {
+      console.log(words.wordSet);
       setWordSet(words.wordSet);
     }); 
   },[]);
@@ -105,7 +109,7 @@ function App() {
     for (let i=0; i<5; i++) {
       word += board[enteredLetter.row][i];
     }
-
+    console.log(wordSet);
     if (wordSet.has(word.toLowerCase())){
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
     } 

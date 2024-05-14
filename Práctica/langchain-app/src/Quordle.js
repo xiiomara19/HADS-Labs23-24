@@ -29,7 +29,7 @@ export const CreateWordSet = async () => {
     await fetch(data)
     .then(response => response.text())
     .then(text => {
-        const words = text.split("\r")
+        const words = text.split(/\r\n|\r|\n/)
         wordSet = new Set(words)
     })
     return {wordSet}
