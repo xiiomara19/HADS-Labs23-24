@@ -5,8 +5,7 @@ import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup'; 
-import {ChatGroq} from '@langchain/groq';
-import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { fetchData} from './GroqFuncions';
 
 
 export const AppContext = createContext();
@@ -28,22 +27,6 @@ function App() {
   const [solution4, setSolution4] = useState(null);
 
     useEffect(() => {
-      const model = new ChatGroq({
-        apiKey: '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',
-      });
-      
-      const prompt = ChatPromptTemplate.fromMessages([
-        ["system", "You are a helpful assistant"],
-      ]);
-
-      const fetchData = async () => {
-        const chain = prompt.pipe(model);
-        const response = await chain.invoke({
-          input: "What is the capital of Spain?",
-        });
-        console.log("response", response);
-      };
-
       fetchData();
     }, []);
 
