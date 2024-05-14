@@ -5,15 +5,18 @@ import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup';
-import axios from 'axios';  
-
+import {ChatGroq} from '@langchain/groq';
+import { ChatPromptTemplate } from "@langchain/core/prompts"; 
 
 
 export const AppContext = createContext();
 
+
 function App() {
 
   const [board, setBoard] = useState(boardBegininig);
+
+
 
   const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
 
@@ -25,28 +28,26 @@ function App() {
   const [solution4, setSolution4] = useState(null);
 
   useEffect(() => {
-    const fetchWord = async () => {
-      // Prepare the prompt for the OpenAI API
-      const prompt = `what is the capital of Spain?`;
-  
-      // Send a request to the OpenAI API
-      const openAiResponse = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
-        prompt,
-        max_tokens: 1,
-      }, {
-        headers: {
-          'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
+    const model = new ChatGroq({
+      apiKey: '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',
+    });
+    
+    const prompt = ChatPromptTemplate.fromMessages([
+      ["system", "You are a helpful assistant"],
+    ]);
+
+    const fetchData = async () => {
+      const chain = prompt.pipe(model);
+      const response = await chain.invoke({
+        input: "What is the capital of Spain?",
       });
-  
-      // Log the response from the OpenAI API
-      console.log(openAiResponse.data.choices[0].text.trim());
+      console.log("response", response);
     };
-  
-    fetchWord();
+
+    fetchData();
   }, []);
 
+  
   useEffect(() => {
     const getRandomIndex = (usedIndices) => {
       let index;
