@@ -16,7 +16,7 @@ function Board() {
             <div className="game_boards">
               <div className="game_boards-row">
                 <div className="row_field">
-                  <div id='T1R1' className="Row Row-current">
+                  <div id='T1R1' className={`Row ${visitedRows.includes(1) ? '' : 'Row-current'}`}>
                     <Cell id='T1R1C1' row={0} col={0}/>
                     <Cell id='T1R1C2' row={0} col={1}/>
                     <Cell id='T1R1C3' row={0} col={2}/>
@@ -81,7 +81,7 @@ function Board() {
                   </div>
                 </div>
                 <div className="row_field">
-                <div id='T2R1' className="Row Row-current">
+                <div id='T2R1' className={`Row ${visitedRows.includes(1) ? '' : 'Row-current'}`}>
                     <Cell id='T2R1C1' row={0} col={5}/>
                     <Cell id='T2R1C2' row={0} col={6}/>
                     <Cell id='T2R1C3' row={0} col={7}/>
@@ -148,7 +148,7 @@ function Board() {
               </div>
               <div className="game_boards-row">
                 <div className="row_field">
-                  <div id='T3R1' className="Row Row-current">
+                  <div id='T3R1' className={`Row ${visitedRows.includes(1) ? '' : 'Row-current'}`}>
                     <Cell id='T3R1C1' row={9} col={0}/>
                     <Cell id='T3R1C2' row={9} col={1}/>
                     <Cell id='T3R1C3' row={9} col={2}/>
@@ -213,7 +213,7 @@ function Board() {
                   </div>
                 </div>
                 <div className="row_field">
-                  <div id='T4R1' className="Row Row-current">
+                  <div id='T4R1' className={`Row ${visitedRows.includes(1) ? '' : 'Row-current'}`}>
                     <Cell id='T4R1C1' row={9} col={5}/>
                     <Cell id='T4R1C2' row={9} col={6}/>
                     <Cell id='T4R1C3' row={9} col={7}/>

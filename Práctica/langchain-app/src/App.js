@@ -86,7 +86,6 @@ function App() {
 
   useEffect(() => {
     CreateWordSet().then((words) => {
-      console.log(words.wordSet);
       setWordSet(words.wordSet);
     }); 
   },[]);
@@ -125,8 +124,9 @@ function App() {
     let word = '';
     for (let i=0; i<5; i++) {
       word += board[enteredLetter.row][i];
+      
     }
-    console.log(wordSet);
+
     if (wordSet.has(word.toLowerCase())){
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
     } 
@@ -136,9 +136,8 @@ function App() {
         setIncorrectWord(false);
       }, 2000);
     }
-
     if (word === solution1) {
-
+      setEnteredLetter({row: 5, col: 0});
     }
     if (enteredLetter.row === 5) {
       setGiveUpButton(true);
