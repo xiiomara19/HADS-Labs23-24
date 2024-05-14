@@ -5,7 +5,8 @@ import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup'; 
-import { fetchData} from './GroqFuncions';
+import { boardBeginingAI, fetchData} from './GroqFuncions';
+import BoardAI from './elements/BoardAI';
 
 
 export const AppContext = createContext();
@@ -15,7 +16,7 @@ function App() {
 
   const [board, setBoard] = useState(boardBegininig);
 
-
+  const [boardAI, setBoardAI] = useState(boardBeginingAI);
 
   const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
 
@@ -25,6 +26,11 @@ function App() {
   const [solution2, setSolution2] = useState(null);
   const [solution3, setSolution3] = useState(null);
   const [solution4, setSolution4] = useState(null);
+
+  const [solutionAI1, setSolutionAI1] = useState(null);
+  const [solutionAI2, setSolutionAI2] = useState(null);
+  const [solutionAI3, setSolutionAI3] = useState(null);
+  const [solutionAI4, setSolutionAI4] = useState(null);
 
     useEffect(() => {
       fetchData();
@@ -45,19 +51,31 @@ function App() {
     usedIndices.push(getRandomIndex(usedIndices));
     usedIndices.push(getRandomIndex(usedIndices));
     usedIndices.push(getRandomIndex(usedIndices));
+    usedIndices.push(getRandomIndex(usedIndices));
+    usedIndices.push(getRandomIndex(usedIndices));
+    usedIndices.push(getRandomIndex(usedIndices));
+    usedIndices.push(getRandomIndex(usedIndices));
 
     setSolution1(data.solutions[usedIndices[0]]);
     setSolution2(data.solutions[usedIndices[1]]);
     setSolution3(data.solutions[usedIndices[2]]);
     setSolution4(data.solutions[usedIndices[3]]);
+    setSolutionAI1(data.solutions[usedIndices[4]]);
+    setSolutionAI2(data.solutions[usedIndices[5]]);
+    setSolutionAI3(data.solutions[usedIndices[6]]);
+    setSolutionAI4(data.solutions[usedIndices[7]]);
   }, []);
 
   console.log(solution1);
   console.log(solution2);
   console.log(solution3);
   console.log(solution4);
+  console.log(solutionAI1);
+  console.log(solutionAI2);
+  console.log(solutionAI3);
+  console.log(solutionAI4);
 
-  const  [giveUpButton, setGiveUpButton] = useState(false);
+  const [giveUpButton, setGiveUpButton] = useState(false);
   const [firstPopup, setFirstPopup] = useState(true);
   const [incorrectWord, setIncorrectWord] = useState(false);
 
@@ -138,14 +156,16 @@ function App() {
       <AppContext.Provider 
           value={{solution1, solution2, solution3, solution4,
           board, setBoard, enteredLetter, setEnteredLetter,
-          onKeyDelete, onKeyEnter, OnKeyLetter}}>
-        <div className="game_container-outer">
-            <Board/>
-          <div className="Game-challenge-bar">
-
+          onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
+          solutionAI1, solutionAI2, solutionAI3, solutionAI4}}>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div className="game_container-outer" >     
+                <Board/>
+                <div className="Game-challenge-bar"></div>
+                <Keyboard/>
+            </div>
+            <BoardAI/>
           </div>
-          <Keyboard/>
-        </div>
       </AppContext.Provider>
         <Popup trigger={giveUpButton} setTrigger={setGiveUpButton}>
           <h1>Has PERDIDO </h1>
