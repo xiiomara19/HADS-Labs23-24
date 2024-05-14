@@ -29,8 +29,9 @@ const model = new ChatGroq({
   
   const prompt = ChatPromptTemplate.fromMessages([
     ["user", "You are playing the game Quordle. "+ 
+    "You need to take one word from ./data/db.json"+
     "When you make a guess, please respond in the following format: 'guess: word'. " +
-    "You have to guess the 4 words that are hidden in the board. "+ 
+    "You have to guess the 4 word (5 letters length) that are hidden in the board. "+ 
     "You can guess a word by typing the word in the chat. The game "+
     "will tell you how many letters are correct and how many letters "+
     "are in the correct position. You have 9 attempts to guess the "+
@@ -43,16 +44,46 @@ const model = new ChatGroq({
     " 3. which letters are not in the word, keyword used will be grey "+
     "The words are in Spanish and 5 letters long. The words are not repeated. "+
     " The word you provide must have exactly 5 letters long, be in lowercase and exist in the Spanish language. "+
-    "The word provided must follow this format: 'guess: word'. "],
+    "The word provided must follow this format: 'guess: word'. "+
+    "You need to take one word from ./data/db.json"],
 ]);
 
+
+
+const fetchSolutions = async () => {
+    const response = await fetch('./data/db.json');
+    const data = await response.json();
+    return data.solutions;
+};
+
 export const fetchData = async () => {
+        
+
     const chain = prompt.pipe(model);
     const response = await chain.invoke({
         input: "Make yor guess",
     });
+
+
     const wordMatch = response.content.match(/guess: (\w+)/);
+    console.log(wordMatch);
     const word = wordMatch ? wordMatch[1] : '';
+
+    const isValidLength = word.length === 5;
+
+    if (!isValidLength) {
+        console.log("Guessed word is not 5 letters long");
+        console.log(word);
+        
+        return fetchData(); 
+    }
+
+    const wordsDic = fetchSolutions();  // ---------------------NO FUNCIONA Y DA ERROR--------------
+    console.log(wordsDic[0]);
+
+
+
+
     console.log("Guessed word", word);
     console.log("PALABRA ELGIDA", response.content);
     return response.content;
