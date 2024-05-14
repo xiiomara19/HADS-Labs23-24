@@ -5,7 +5,7 @@ import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
 import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup'; 
-import { fetchData } from './GroqFuncions';
+import { fetchData} from './GroqFuncions';
 
 
 export const AppContext = createContext();
@@ -27,7 +27,7 @@ function App() {
   const [solution4, setSolution4] = useState(null);
 
     useEffect(() => {
-      fetchData()
+      fetchData();
     }, []);
 
   

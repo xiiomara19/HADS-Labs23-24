@@ -29,6 +29,7 @@ const model = new ChatGroq({
   
   const prompt = ChatPromptTemplate.fromMessages([
     ["user", "You are playing the game Quordle. "+ 
+    "When you make a guess, please respond in the following format: 'guess: word'. " +
     "You have to guess the 4 words that are hidden in the board. "+ 
     "You can guess a word by typing the word in the chat. The game "+
     "will tell you how many letters are correct and how many letters "+
@@ -41,13 +42,19 @@ const model = new ChatGroq({
     " 2. which letters are in the word in the correct postion, keyword used will be green "+
     " 3. which letters are not in the word, keyword used will be grey "+
     "The words are in Spanish and 5 letters long. The words are not repeated. "+
-    " The word you provide must have exactly 5 letters long andd exist in the Spanish language. "],
+    " The word you provide must have exactly 5 letters long, be in lowercase and exist in the Spanish language. "+
+    "The word provided must follow this format: 'guess: word'. "],
 ]);
 
 export const fetchData = async () => {
     const chain = prompt.pipe(model);
     const response = await chain.invoke({
-        input: "Make your first guess.",
+        input: "Make yor guess",
     });
-    console.log("response", response.content);
+    const wordMatch = response.content.match(/guess: (\w+)/);
+    const word = wordMatch ? wordMatch[1] : '';
+    console.log("Guessed word", word);
+    console.log("PALABRA ELGIDA", response.content);
+    return response.content;
 };
+
