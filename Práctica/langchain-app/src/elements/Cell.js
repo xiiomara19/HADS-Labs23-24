@@ -5,7 +5,9 @@ import { AppContext } from '../App'
 function Cell({col, row}) {
     const {board, solution1, solution2, solution3, solution4, enteredLetter} = useContext(AppContext);
     const cell = board[row][col];
-
+    if (cell === "") {
+        return <div className="Row-letter" aria-live="assertive"></div>;
+    }
     if (enteredLetter.row > row) {
         if (col < 5){
             return checkCell(solution1, col, cell);

@@ -6,16 +6,16 @@ import Board from './elements/Board';
 import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup'; 
 import { fetchData} from './GroqFuncions';
+import {ChatGroq} from '@langchain/groq';
+import { ChatPromptTemplate } from "@langchain/core/prompts";
 
 
 export const AppContext = createContext();
 
 
 function App() {
-
+  
   const [board, setBoard] = useState(boardBegininig);
-
-
 
   const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
 
@@ -25,9 +25,32 @@ function App() {
   const [solution2, setSolution2] = useState(null);
   const [solution3, setSolution3] = useState(null);
   const [solution4, setSolution4] = useState(null);
+  
+  const  [giveUpButton, setGiveUpButton] = useState(false);
+  const [firstPopup, setFirstPopup] = useState(true);
+  const [incorrectWord, setIncorrectWord] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
 
     useEffect(() => {
+      const model = new ChatGroq({
+        apiKey: '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',
+      });
+
+      const prompt = ChatPromptTemplate.fromMessages([
+        ["system", "You are a helpful assistant"],
+      ]);
+
+      const fetchData = async () => {
+        const chain = prompt.pipe(model);
+        const response = await chain.invoke({
+          input: "What is the capital of Spain?",
+        });
+        console.log("response", response);
+      };
+
       fetchData();
+      
     }, []);
 
   
@@ -56,11 +79,7 @@ function App() {
   console.log(solution2);
   console.log(solution3);
   console.log(solution4);
-
-  const  [giveUpButton, setGiveUpButton] = useState(false);
-  const [firstPopup, setFirstPopup] = useState(true);
-  const [incorrectWord, setIncorrectWord] = useState(false);
-
+  
   useEffect(() => {
     setTimeout(() => {
       setFirstPopup(false);
@@ -72,6 +91,10 @@ function App() {
       setWordSet(words.wordSet);
     }); 
   },[]);
+  
+  useEffect(() => {
+    checkWin(guessedRows);
+  }, [guessedRows]);
 
   const handleStartOver = () => {
     window.location.reload();
@@ -82,11 +105,26 @@ function App() {
   const OnKeyLetter = (val) => {
     if(enteredLetter.col > 4) return;
     if (enteredLetter.row > 8) return;
+    
     const newBoard = [...board];
-    newBoard[enteredLetter.row][enteredLetter.col] = val;
-    newBoard[enteredLetter.row][enteredLetter.col + 5] = val;
-    newBoard[enteredLetter.row + 9][enteredLetter.col] = val;
-    newBoard[enteredLetter.row + 9][enteredLetter.col + 5] = val;
+    console.log(newBoard)
+    
+    if (Object.keys(guessedRows[0]).length === 0) {
+      newBoard[enteredLetter.row][enteredLetter.col] = val;
+    }
+
+    if (Object.keys(guessedRows[1]).length === 0) {
+      newBoard[enteredLetter.row][enteredLetter.col + 5] = val;
+    }
+
+    if (Object.keys(guessedRows[2]).length === 0 ) {
+      newBoard[enteredLetter.row + 9][enteredLetter.col] = val;
+    }
+
+    if (Object.keys(guessedRows[3]).length === 0) {
+      newBoard[enteredLetter.row + 9][enteredLetter.col + 5] = val;
+    }
+    
     setEnteredLetter({row: enteredLetter.row, col: enteredLetter.col + 1})
     setBoard(newBoard)
   }
@@ -100,33 +138,55 @@ function App() {
     newBoard[enteredLetter.row + 9][enteredLetter.col + 4] = '';
     setEnteredLetter({row: enteredLetter.row, col: enteredLetter.col - 1})
     setBoard(newBoard)
-  }
+  } 
 
   const onKeyEnter = () => {
     if (enteredLetter.col !== 5) return;
+    console.log(guessedRows)
     let word = '';
     for (let i=0; i<5; i++) {
-      word += board[enteredLetter.row][i];
-      
+      if (Object.keys(guessedRows[0]).length === 0) word += board[enteredLetter.row][i];
+      else if (Object.keys(guessedRows[1]).length === 0) word += board[enteredLetter.row][i+5];
+      else if (Object.keys(guessedRows[2]).length === 0) word += board[enteredLetter.row+9][i];
+      else if (Object.keys(guessedRows[3]).length === 0) word += board[enteredLetter.row+9][i+5];
     }
 
     if (wordSet.has(word.toLowerCase())){
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
-    } 
+      if (word.toLowerCase() === solution1) {
+        let newGuessedRows = [...guessedRows];
+        newGuessedRows[0] = {value: word.toLowerCase()};
+        setGuessedRows(newGuessedRows);
+      }
+      if (word.toLowerCase() === solution2){
+        let newGuessedRows = [...guessedRows];
+        newGuessedRows[1] = {value: word.toLowerCase()};
+        setGuessedRows(newGuessedRows);
+      }
+      
+      if (word.toLowerCase() === solution3 ) { 
+        let newGuessedRows = [...guessedRows];
+        newGuessedRows[2] = {value: word.toLowerCase()};
+        setGuessedRows(newGuessedRows);
+      }
+  
+      if ( word.toLowerCase() === solution4) {
+        let newGuessedRows = [...guessedRows];
+        newGuessedRows[3] = {value: word.toLowerCase()};
+        setGuessedRows(newGuessedRows);
+      }
+      checkWin(guessedRows);
+      console.log(guessedRows)
+    }
     else {
       setIncorrectWord(true);
       setTimeout(() => {
         setIncorrectWord(false);
       }, 2000);
     }
-    if (word === solution1) {
-      setEnteredLetter({row: 5, col: 0});
-    }
-    if (enteredLetter.row === 5) {
-      setGiveUpButton(true);
-    }
-  }
 
+  }
+  
   return (
 
     <div className="Game">
@@ -165,11 +225,30 @@ function App() {
         <Popup trigger={incorrectWord} setTrigger={setIncorrectWord}>
           <h1>No es una palabra valida</h1>
         </Popup>
+
+        <Popup trigger={gameOver} setTrigger={setGameOver}>
+          <h1>Has GANADO</h1>
+          <button className='close-btn' onClick={() => {
+            setGameOver(false); 
+            document.getElementById("giveUp").classList.add("invisible");
+            document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
+          <h1>¡Felicidades!</h1>
+          <br/>
+          <button onClick={handleStartOver}>Comenzar de nuevo</button>
+        </Popup>
       </div>
-
-
-    
   );
+
+  function checkWin(guessedRows) {
+
+    if (guessedRows.every(row => Object.keys(row).length !== 0)) {
+      console.log("win");
+      setGameOver(true);
+      return;
+    }
+  }
 }
+
+
 
 export default App;
