@@ -7,7 +7,6 @@ import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup'; 
 import { boardBeginingAI, fetchData} from './GroqFuncions';
 import BoardAI from './elements/BoardAI';
-import { fetchData} from './GroqFuncions';
 
 
 export const AppContext = createContext();
