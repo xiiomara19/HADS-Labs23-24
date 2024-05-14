@@ -86,6 +86,6 @@ export const fetchData = async () => {
 
     console.log("Guessed word", word);
     console.log("PALABRA ELGIDA", response.content);
-    return response.content;
+    return word;
 };
 

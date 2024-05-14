@@ -32,10 +32,36 @@ function App() {
   const [solutionAI3, setSolutionAI3] = useState(null);
   const [solutionAI4, setSolutionAI4] = useState(null);
 
-    useEffect(() => {
-      fetchData();
-    }, []);
+  const [wordAI, setWordAI] = useState('');
 
+    useEffect(() => {
+      const fetchWord = async () => {
+        try {
+          const fetchedWord = await fetchData();
+          setWordAI(fetchedWord);
+        } catch (error) {
+          console.error('Error fetching word:', error);
+        }
+      };
+      fetchWord();
+    }, []);
+    
+    
+    useEffect(() => {
+    // Function to update boardAI with the wordAI horizontally at the first row
+      const updateBoardAI = (word) => {
+      const newBoardAI = [...boardAI];
+      for (let i = 0; i < word.length; i++) {
+        newBoardAI[0][i] = word[i];
+        newBoardAI[0][i+5] = word[i];
+        newBoardAI[9][i] = word[i];
+        newBoardAI[9][i+5] = word[i];
+      }
+      setBoardAI(newBoardAI);
+    };
+      // Call the function to update boardAI with wordAI
+      updateBoardAI(wordAI);
+    }, [wordAI]);
   
   useEffect(() => {
     const getRandomIndex = (usedIndices) => {
@@ -157,7 +183,7 @@ function App() {
           value={{solution1, solution2, solution3, solution4,
           board, setBoard, enteredLetter, setEnteredLetter,
           onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
-          solutionAI1, solutionAI2, solutionAI3, solutionAI4}}>
+          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI}}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div className="game_container-outer" >     
                 <Board/>
