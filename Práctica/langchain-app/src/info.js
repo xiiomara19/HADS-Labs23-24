@@ -1,4 +1,3 @@
-import logo from './icons/logo.svg';
 import './styles/App.css';
 
 function Info({ onClose }) {
