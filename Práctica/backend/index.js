@@ -110,12 +110,6 @@ const model = new ChatGroq({
 
 
 
-
-
-
-
-
-
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
