@@ -3,9 +3,8 @@ import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
-import { CreateWordSet, boardBegininig } from './Quordle';
+import { CreateWordSet, boardBegininig, boardBeginingAI} from './Quordle';
 import Popup from './elements/Popup'; 
-import { boardBeginingAI, fetchData} from './GroqFuncions';
 import BoardAI from './elements/BoardAI';
 //import {main} from '../../backend/index';
 
