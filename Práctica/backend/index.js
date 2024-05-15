@@ -33,8 +33,27 @@ async function getGroqChatCompletion() {
   
 };
 
+async function getWordFromPos() {
+
+  const data = fs.readFileSync("posiciones.json", "utf8");
+  const obj = JSON.parse(data);
+  const str = JSON.stringify(obj);
+
+  return groq.chat.completions.create({
+      messages: [
+          {
+              role: "user",
+              content: "There are 5 pos here:" + str + "Take randomly one letter from each pos so you have finally a word with 5 letters. Return just generated word",
+          }
+      ],
+      model: "llama3-8b-8192"
+  });
+  
+};
+
 module.exports = {
-  getGroqChatCompletion
+  getGroqChatCompletion,
+  getWordFromPos
 };
 
 app.get('/getWord', async (req, res) => {
