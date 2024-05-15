@@ -362,3 +362,7 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /lab5_caceres_fernandez_paslavska/venv/
+
+/Práctica/backend/node_modules/
+
+/Práctica/langchain-app/node_modules/

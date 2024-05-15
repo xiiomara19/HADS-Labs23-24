@@ -1,5 +1,9 @@
+
 import {ChatGroq} from '@langchain/groq';
 import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { AppContext } from '../App';
+
+const {wordSet} = useContext(AppContext);
 
 export const boardBeginingAI = [ 
     ["", "", "", "", "", "", "", "", "", ""],
@@ -58,23 +62,29 @@ const fetchSolutions = async () => {
 
 export const fetchData = async () => {
         
-
+    //enviar pregunta a la IA
     const chain = prompt.pipe(model);
     const response = await chain.invoke({
         input: "Make yor guess",
     });
 
-
+    //obtener la palabra de la respuesta
     const wordMatch = response.content.match(/guess: (\w+)/);
     console.log(wordMatch);
     const word = wordMatch ? wordMatch[1] : '';
 
-    const isValidLength = word.length === 5;
+    //validar que la palabra esté en el set de palabras
+    if (!wordSet.has(word)) {
+        console.log("Guessed word is not in the word set");
+        console.log(word);
+        return fetchData();
+    }
 
+    //validar que la palabra sea de 5 letras
+    const isValidLength = word.length === 5;
     if (!isValidLength) {
         console.log("Guessed word is not 5 letters long");
         console.log(word);
-        
         return fetchData(); 
     }
 

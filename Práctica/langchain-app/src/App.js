@@ -228,7 +228,7 @@ function App() {
           value={{solution1, solution2, solution3, solution4,
           board, setBoard, enteredLetter, setEnteredLetter,
           onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
-          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI}}>
+          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet}}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div className="game_container-outer" >     
                 <Board/>
