@@ -220,8 +220,6 @@ function App() {
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
   }, [wordAI]);
-
-
   
   return (
 
