@@ -194,10 +194,10 @@ function App() {
   useEffect(() => {
     const fetchWord = async () => {
       try {
-        const response = await fecth('http://localhost:5000/')
-        console.log("palabra de la IA", response)
-        /*const fetchedWord = await fetchData();
-        setWordAI(fetchedWord);*/
+        const response = await fetch('http://localhost:5000/getWord')
+        const data = await response.json();
+        console.log("palabra de la IA", data);
+        setWordAI(data);
       } catch (error) {
         console.error('Error fetching word:', error);
       }
