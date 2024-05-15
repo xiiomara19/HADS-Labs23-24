@@ -12,7 +12,7 @@ const ChatPromptTemplate = require("@langchain/core/prompts");
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Welcome to Quordle!');
   //getDiccionary(res);
   //getAnswerFromGroq(res);
   //getGroqChatCompletion(res);
@@ -25,9 +25,8 @@ app.listen(port, () => {
 });
 
 const groq = new ChatGroq({
-  apiKey: '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',
+  apiKey: process.env.REACT_APP_GROQ_API_KEY,
 });
-
 
 
 async function getDiccionary(res) {
@@ -36,7 +35,6 @@ async function getDiccionary(res) {
   const obj = JSON.parse(data);
   const str = JSON.stringify(obj.solutions);
   res.send(str);
-
 
 }
 
@@ -59,7 +57,7 @@ async function getGroqChatCompletion() {
       messages: [
           {
               role: "user",
-              content: "Take 1 word from this file" + str+ "Only write this word no other text",
+              content: "Take 1 word from this file" + str + "Only write this word no other text",
           }
       ],
       model: "llama3-8b-8192"

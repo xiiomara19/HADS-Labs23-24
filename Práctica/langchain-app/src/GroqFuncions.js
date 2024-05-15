@@ -1,10 +1,10 @@
-
+//import {useContext} from 'react'
 import {ChatGroq} from '@langchain/groq';
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-import { AppContext } from './App';
-import { useContext } from 'react';
+//import { AppContext } from './App';
 
-const {wordSet} = useContext(AppContext);
+
+//const {wordSet} = useContext(AppContext);
 
 export const boardBeginingAI = [ 
     ["", "", "", "", "", "", "", "", "", ""],
@@ -75,12 +75,13 @@ export const fetchData = async () => {
     const word = wordMatch ? wordMatch[1] : '';
 
     //validar que la palabra esté en el set de palabras
+    /** 
     if (!wordSet.has(word)) {
         console.log("Guessed word is not in the word set");
         console.log(word);
         return fetchData();
     }
-
+    */
     //validar que la palabra sea de 5 letras
     const isValidLength = word.length === 5;
     if (!isValidLength) {
