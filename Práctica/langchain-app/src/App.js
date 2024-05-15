@@ -14,65 +14,30 @@ export const AppContext = createContext();
 
 
 function App() {
-  
-  const [board, setBoard] = useState(boardBegininig);
-
-  const [boardAI, setBoardAI] = useState(boardBeginingAI);
-
-  const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
-
-  const [wordSet, setWordSet] = useState(new Set());
-
-  const [solution1, setSolution1] = useState(null);
-  const [solution2, setSolution2] = useState(null);
-  const [solution3, setSolution3] = useState(null);
-  const [solution4, setSolution4] = useState(null);
 
   const [solutionAI1, setSolutionAI1] = useState(null);
   const [solutionAI2, setSolutionAI2] = useState(null);
   const [solutionAI3, setSolutionAI3] = useState(null);
   const [solutionAI4, setSolutionAI4] = useState(null);
 
-  const [wordAI, setWordAI] = useState('');
+  const [solution1, setSolution1] = useState(null);
+  const [solution2, setSolution2] = useState(null);
+  const [solution3, setSolution3] = useState(null);
+  const [solution4, setSolution4] = useState(null);
+
+  /////////////////////////////////////////////////////////////////////
+  // -------------------  FUNCIONES HUMANO ---------------------------
+  /////////////////////////////////////////////////////////////////////
   
-  const  [giveUpButton, setGiveUpButton] = useState(false);
+  const [board, setBoard] = useState(boardBegininig);
+  const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
+  const [wordSet, setWordSet] = useState(new Set());
+  
+  const [giveUpButton, setGiveUpButton] = useState(false);
   const [firstPopup, setFirstPopup] = useState(true);
   const [incorrectWord, setIncorrectWord] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
-
-    
-
-    useEffect(() => {
-      const fetchWord = async () => {
-        try {
-          const response = await fecth('http://localhost:5000/')
-          console.log("palabra de la IA", response)
-          /*const fetchedWord = await fetchData();
-          setWordAI(fetchedWord);*/
-        } catch (error) {
-          console.error('Error fetching word:', error);
-        }
-      };
-      fetchWord();
-    }, []);
-    
-    
-    useEffect(() => {
-    // Function to update boardAI with the wordAI horizontally at the first row
-      const updateBoardAI = (word) => {
-      const newBoardAI = [...boardAI];
-      for (let i = 0; i < word.length; i++) {
-        newBoardAI[0][i] = word[i];
-        newBoardAI[0][i+5] = word[i];
-        newBoardAI[9][i] = word[i];
-        newBoardAI[9][i+5] = word[i];
-      }
-      setBoardAI(newBoardAI);
-    };
-      // Call the function to update boardAI with wordAI
-      updateBoardAI(wordAI);
-    }, [wordAI]);
   
   useEffect(() => {
     const getRandomIndex = (usedIndices) => {
@@ -218,6 +183,46 @@ function App() {
     }
 
   }
+
+  /////////////////////////////////////////////////////////////////////
+  // -------------------  FUNCIONES IA ---------------------------
+  /////////////////////////////////////////////////////////////////////
+  
+  const [boardAI, setBoardAI] = useState(boardBeginingAI);
+
+  const [wordAI, setWordAI] = useState('');
+  useEffect(() => {
+    const fetchWord = async () => {
+      try {
+        const response = await fecth('http://localhost:5000/')
+        console.log("palabra de la IA", response)
+        /*const fetchedWord = await fetchData();
+        setWordAI(fetchedWord);*/
+      } catch (error) {
+        console.error('Error fetching word:', error);
+      }
+    };
+    fetchWord();
+  }, []);
+  
+  
+  useEffect(() => {
+  // Function to update boardAI with the wordAI horizontally at the first row
+    const updateBoardAI = (word) => {
+    const newBoardAI = [...boardAI];
+    for (let i = 0; i < word.length; i++) {
+      newBoardAI[0][i] = word[i];
+      newBoardAI[0][i+5] = word[i];
+      newBoardAI[9][i] = word[i];
+      newBoardAI[9][i+5] = word[i];
+    }
+    setBoardAI(newBoardAI);
+  };
+    // Call the function to update boardAI with wordAI
+    updateBoardAI(wordAI);
+  }, [wordAI]);
+
+
   
   return (
 
