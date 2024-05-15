@@ -11,31 +11,16 @@ const ChatPromptTemplate = require("@langchain/core/prompts");
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Welcome to Quordle!');
-  //getDiccionary(res);
-  //getAnswerFromGroq(res);
-  //getGroqChatCompletion(res);
-  
-});
-
-app.listen(port, () => {
-  console.log('App listening at http://localhost:5000');
-  main();
-});
-
 const groq = new ChatGroq({
   apiKey: process.env.REACT_APP_GROQ_API_KEY,
 });
 
 
 async function getDiccionary(res) {
-
   const data = fs.readFileSync("db.json", "utf8");
   const obj = JSON.parse(data);
   const str = JSON.stringify(obj.solutions);
   res.send(str);
-
 }
 
 async function main() {
@@ -45,6 +30,7 @@ async function main() {
   //  console.log(wordMatch);
   //  const word = wordMatch ? wordMatch[1] : '';
   console.log(chatCompletion.choices[0]?.message?.content || "");
+  return chatCompletion.choices[0]?.message?.content;
  // console.log("Guessed word", word);
 }
 async function getGroqChatCompletion() {
@@ -62,8 +48,26 @@ async function getGroqChatCompletion() {
       ],
       model: "llama3-8b-8192"
   });
-}
+};
+
 module.exports = {
   main,
   getGroqChatCompletion
 };
+
+app.get('/', async (req, res) => {
+  //res.send('Welcome to Quordle!');
+  const chatCompletion = await getGroqChatCompletion();
+  console.log(chatCompletion.choices[0]?.message?.content || "");
+  res.send(chatCompletion.choices[0]?.message?.content || "");
+
+  //getDiccionary(res);
+  //getAnswerFromGroq(res);
+  //getGroqChatCompletion(res);
+  
+});
+
+app.listen(port, () => {
+  console.log('App listening at http://localhost:5000');
+  main();
+});

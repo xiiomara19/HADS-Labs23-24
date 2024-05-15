@@ -7,6 +7,7 @@ import { CreateWordSet, boardBegininig } from './Quordle';
 import Popup from './elements/Popup'; 
 import { boardBeginingAI, fetchData} from './GroqFuncions';
 import BoardAI from './elements/BoardAI';
+//import {main} from '../../backend/index';
 
 
 export const AppContext = createContext();
@@ -40,11 +41,15 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
 
+    
+
     useEffect(() => {
       const fetchWord = async () => {
         try {
-          const fetchedWord = await fetchData();
-          setWordAI(fetchedWord);
+          const response = await fecth('http://localhost:5000/')
+          console.log("palabra de la IA", response)
+          /*const fetchedWord = await fetchData();
+          setWordAI(fetchedWord);*/
         } catch (error) {
           console.error('Error fetching word:', error);
         }
