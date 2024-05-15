@@ -2,6 +2,7 @@
 import {ChatGroq} from '@langchain/groq';
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { AppContext } from '../App';
+import { useContext } from 'react';
 
 const {wordSet} = useContext(AppContext);
 
