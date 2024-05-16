@@ -5,7 +5,9 @@ import { AppContext } from '../App'
 function CellAI({col, row}) {
     const {boardAI, solutionAI1, solutionAI2, solutionAI3, solutionAI4, enteredLetter} = useContext(AppContext);
     const cell = boardAI[row][col];
-
+    if (cell === "") {
+        return <div className="Row-letter" aria-live="assertive"></div>;
+    }
     if (enteredLetter.row > row) {
         if (col < 5){
             return checkCell(solutionAI1, col, cell);

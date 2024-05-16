@@ -6,6 +6,7 @@ import Board from './elements/Board';
 import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
+import Statistics from './statistics';
 
 
 export const AppContext = createContext();
@@ -194,6 +195,7 @@ function App() {
         newGuessedRows[3] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
+      console.log(guessedRows[0]);
       checkWin(guessedRows);
     }
     else {
@@ -204,7 +206,6 @@ function App() {
     }
 
     //send colors from AI to backend
-    
     const colors1 = checkWord(wordAI, [solutionAI1]);
     sendColorsWord1(colors1)
   
@@ -402,7 +403,7 @@ function App() {
           value={{solution1, solution2, solution3, solution4,
           board, setBoard, enteredLetter, setEnteredLetter,
           onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
-          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet}}>
+          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows}}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div className="game_container-outer" >     
                 <Board/>
