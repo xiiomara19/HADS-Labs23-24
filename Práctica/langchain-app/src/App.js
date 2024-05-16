@@ -115,6 +115,7 @@ function App() {
   useEffect(() => {
     CreateWordSet().then((words) => {
       setWordSet(words.wordSet);
+      console.log(words.wordSet)
     }); 
   },[]);
   
@@ -217,7 +218,9 @@ function App() {
 
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
+    console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
+    console.log(dictionaryAI);
   }
 
   /////////////////////////////////////////////////////////////////////
@@ -232,14 +235,22 @@ function App() {
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
 
   useEffect(() => {
+    console.log('Dictionary AI has been updated:', dictionaryAI);
+  }, [dictionaryAI]);
+
+  useEffect(() => {
     CreateWordSet().then((words) => {
       setDictionaryAI(words.wordSet);
+      //console.log(dictionaryAI);
     }); 
   },[]);
 
+
+
+
   useEffect(() => {
     if (dictionaryAI.size > 0) {
-  
+      console.log(dictionaryAI);
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
 
@@ -266,6 +277,7 @@ function App() {
   
           // Get the response data
           const responseData = await response.json();
+          console.log(dictionaryAI);
           console.log('Word:', responseData);
           // Save the prediction in wordPredictionAI
           setWordAI(responseData);
@@ -279,13 +291,19 @@ function App() {
     }
   }, [dictionaryAI]);
   
-  
+
+
   async function receiveAttempt(res1, res2, res3, res4) {
+    console.log(dictionaryAI);
+    console.log(dictionaryAI.size);
+    console.log(dictionaryAI.length);
     console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Recibiendo intento+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    if (dictionaryAI.size > 0) {
+    
+    if (dictionaryAI.size > 0 || dictionaryAI.length > 0) {
+      console.log(dictionaryAI);
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
-
+      
       try {
         const response = await fetch('http://localhost:5000/receiveAttempt', {
           method: 'POST',
