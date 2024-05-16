@@ -6,7 +6,6 @@ import Board from './elements/Board';
 import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies, filterDictionaryAI} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
-import Statistics from './statistics';
 
 
 export const AppContext = createContext();
@@ -27,14 +26,13 @@ function App() {
       }
     }, 1000);
     return () => clearInterval(timer);
-  })
+  }, [minutes, seconds])
 
-  const stop = () => {
-    clearInterval(timer)
-    console.log(minutes ," : ", seconds)
-    
-    //setGiveUpButton(true);
+  function stop () {
+    clearInterval(timer);
+    setGiveUpButton(true);
   }
+  
 
   /////////////////////////////////////////////////////////////////////
   // -------------------  FUNCIONES HUMANO ---------------------------
@@ -58,6 +56,7 @@ function App() {
   const [firstPopup, setFirstPopup] = useState(true);
   const [incorrectWord, setIncorrectWord] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [selectSolutions, setSelectSolutions] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
 
   useEffect(() => {
@@ -88,6 +87,7 @@ function App() {
     setSolutionAI3(data.solutions[usedIndices[6]]);
     setSolutionAI4(data.solutions[usedIndices[7]]);
   }, []);
+  
   console.log("Solutiones HUMANO: ");
   console.log(solution1);
   console.log(solution2);
@@ -334,7 +334,7 @@ function App() {
         }
       }
       if (!found) {
-        colors.push("gray");
+        colors.push("grey");
       }
     }
     return colors;
@@ -363,9 +363,9 @@ function App() {
 
     <div className="Game">
       <div className="Game-options ">
-        <button id="giveUp" className="App-button App-button-marked" onClick={() => {clearInterval(timer.current); setGiveUpButton(true); console.log(timer); }}>Rendirse</button>
+        <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
-
+        <button id="newSolutions" className='App-button App-button-marked' onClick={() => setSelectSolutions(true)}>Elegir soluciones</button>
       </div>
       <AppContext.Provider 
           value={{solution1, solution2, solution3, solution4,
@@ -413,6 +413,25 @@ function App() {
           
           <p> Lo has conseguido en {minutes<10? "0"+minutes:minutes}:{seconds<10? "0"+seconds:seconds}</p>
           <button onClick={handleStartOver}>Comenzar de nuevo</button>
+        </Popup>
+
+        <Popup trigger={selectSolutions} setTrigger={setSelectSolutions}>
+          <h1>Puedes elegir las soluciones de tu juego:</h1>
+          <button className='close-btn' onClick={() => {
+            setSelectSolutions(false); }}>✖</button>
+          <input type="text" placeholder="Solucion 1" onChange={(e) => 
+            {console.log(e.target.value.length);
+              if (e.target.value !== "" && e.target.value.length === 5 ) setSolution1(e.target.value)}}></input>
+          <p></p>
+          <input type="text" placeholder="Solución 2" onChange={(e) => setSolution2(e.target.value)}></input>
+          <p></p>
+          <input type="text" placeholder="Solución 3" onChange={(e) => setSolution3(e.target.value)}></input>
+          <p></p>
+          <input type="text" placeholder="Solución 4" onChange={(e) => setSolution4(e.target.value)}></input>
+          <br></br>
+          <br></br>
+          <button onClick={() => {
+            setSelectSolutions(false);}}>Guardar cambios</button>
         </Popup>
       </div>
   );

@@ -465,4 +465,11 @@ body.dark .Top-window-title {
   display: none;
 }
 
+.App-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Asegúrate de que el contenedor tenga altura */
+}
+
 
