@@ -13,6 +13,32 @@ export const AppContext = createContext();
 
 function App() {
 
+  const [seconds, setSeconds] = useState(0);
+  const[minutes, setMinutes] = useState(0);
+
+  let timer;
+  useEffect(() => {
+    timer = setInterval(() => {
+      setSeconds(seconds + 1);
+      if (seconds === 59) {
+        setSeconds(0);
+        setMinutes(minutes + 1);
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  })
+
+  const stop = () => {
+    clearInterval(timer)
+    console.log(minutes ," : ", seconds)
+    
+    //setGiveUpButton(true);
+  }
+
+  /////////////////////////////////////////////////////////////////////
+  // -------------------  FUNCIONES HUMANO ---------------------------
+  /////////////////////////////////////////////////////////////////////
+  
   const [solutionAI1, setSolutionAI1] = useState(null);
   const [solutionAI2, setSolutionAI2] = useState(null);
   const [solutionAI3, setSolutionAI3] = useState(null);
@@ -23,10 +49,6 @@ function App() {
   const [solution3, setSolution3] = useState(null);
   const [solution4, setSolution4] = useState(null);
 
-  /////////////////////////////////////////////////////////////////////
-  // -------------------  FUNCIONES HUMANO ---------------------------
-  /////////////////////////////////////////////////////////////////////
-  
   const [board, setBoard] = useState(boardBegininig);
   const [enteredLetter, setEnteredLetter] = useState({row: 0, col: 0});
   const [wordSet, setWordSet] = useState(new Set());
@@ -334,7 +356,7 @@ function App() {
 
     <div className="Game">
       <div className="Game-options ">
-        <button id="giveUp" className="App-button App-button-marked" onClick={() => setGiveUpButton(true)}>Rendirse</button>
+        <button id="giveUp" className="App-button App-button-marked" onClick={() => {clearInterval(timer.current); setGiveUpButton(true); console.log(timer); }}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
 
       </div>
@@ -360,6 +382,8 @@ function App() {
             document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
           <p>La respuesta era:</p>
           <p>{solution1}, {solution2}, {solution3}, {solution4}</p>
+          <br/>
+          <p> Has tardado: {minutes<10? "0"+minutes:minutes}:{seconds<10? "0"+seconds:seconds}</p>
           <button onClick={handleStartOver}>Comenzar de nuevo</button>
         </Popup>
 
@@ -379,6 +403,8 @@ function App() {
             document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
           <h1>¡Felicidades!</h1>
           <br/>
+          
+          <p> Lo has conseguido en {minutes<10? "0"+minutes:minutes}:{seconds<10? "0"+seconds:seconds}</p>
           <button onClick={handleStartOver}>Comenzar de nuevo</button>
         </Popup>
       </div>
