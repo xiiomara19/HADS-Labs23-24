@@ -29,8 +29,7 @@ function App() {
   }, [minutes, seconds])
 
   function stop () {
-    clearInterval(timer)
-    console.log(minutes ," : ", seconds)
+    clearInterval(timer);
     setGiveUpButton(true);
   }
   
@@ -87,6 +86,7 @@ function App() {
     setSolutionAI3(data.solutions[usedIndices[6]]);
     setSolutionAI4(data.solutions[usedIndices[7]]);
   }, []);
+  
   console.log("Solutiones HUMANO: ");
   console.log(solution1);
   console.log(solution2);
@@ -367,7 +367,7 @@ function App() {
         }
       }
       if (!found) {
-        colors.push("gray");
+        colors.push("grey");
       }
     }
     return colors;
