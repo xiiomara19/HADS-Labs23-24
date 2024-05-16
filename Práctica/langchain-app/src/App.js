@@ -118,6 +118,7 @@ function App() {
   useEffect(() => {
     CreateWordSet().then((words) => {
       setWordSet(words.wordSet);
+      console.log(words.wordSet)
     }); 
   },[]);
   
@@ -133,7 +134,7 @@ function App() {
 
   const OnKeyLetter = (val) => {
     if(enteredLetter.col > 4) return;
-    if (enteredLetter.row > 8) return;
+    if (enteredLetter.row > 8) return; 
     
     const newBoard = [...board];
     
@@ -182,7 +183,7 @@ function App() {
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
       if (word.toLowerCase() === solution1) {
         let newGuessedRows = [...guessedRows];
-        newGuessedRows[0] = {row: enteredLetter.row+1};
+        newGuessedRows[0] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
       if (word.toLowerCase() === solution2){
@@ -202,7 +203,6 @@ function App() {
         newGuessedRows[3] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
-      console.log(guessedRows[0]);
       checkWin(guessedRows);
     }
     else {
@@ -220,7 +220,9 @@ function App() {
 
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
+    console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
+    console.log(dictionaryAI);
   }
 
   /////////////////////////////////////////////////////////////////////
@@ -235,14 +237,22 @@ function App() {
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
 
   useEffect(() => {
+    console.log('Dictionary AI has been updated:', dictionaryAI);
+  }, [dictionaryAI]);
+
+  useEffect(() => {
     CreateWordSet().then((words) => {
       setDictionaryAI(words.wordSet);
+      //console.log(dictionaryAI);
     }); 
   },[]);
 
+
+
+
   useEffect(() => {
     if (dictionaryAI.size > 0) {
-  
+      console.log(dictionaryAI);
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
 
@@ -269,6 +279,7 @@ function App() {
   
           // Get the response data
           const responseData = await response.json();
+          console.log(dictionaryAI);
           console.log('Word:', responseData);
           // Save the prediction in wordPredictionAI
           setWordAI(responseData);
@@ -282,13 +293,19 @@ function App() {
     }
   }, [dictionaryAI]);
   
-  
+
+
   async function receiveAttempt(res1, res2, res3, res4) {
+    console.log(dictionaryAI);
+    console.log(dictionaryAI.size);
+    console.log(dictionaryAI.length);
     console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Recibiendo intento+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    if (dictionaryAI.size > 0) {
+    
+    if (dictionaryAI.size > 0 || dictionaryAI.length > 0) {
+      console.log(dictionaryAI);
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
-
+      
       try {
         const response = await fetch('http://localhost:5000/receiveAttempt', {
           method: 'POST',
@@ -410,7 +427,7 @@ function App() {
             setGiveUpButton(false); 
             document.getElementById("giveUp").classList.add("invisible");
             document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
-          <p>La respuesta era:</p>
+          <p>Las respuestas eran:</p>
           <p>{solution1}, {solution2}, {solution3}, {solution4}</p>
           <br/>
           <p> Has tardado: {minutes<10? "0"+minutes:minutes}:{seconds<10? "0"+seconds:seconds}</p>
@@ -445,30 +462,62 @@ function App() {
           <button className='close-btn' onClick={() => {
             setSelectSolutions(false); }}>✖</button>
           <div>
-          <input id="sol1" type="text" placeholder="Solucion 1" onChange={(e) => 
-            {console.log(e.target.value.length);
-              if (e.target.value !== "" && e.target.value.length === 5 ) setSolution1(e.target.value)}}></input>
-          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          <input id="sol1" type="text" placeholder="Solucion 1"></input>
+          <p id ="msg1" className='invisible'> Debe introducir una palabra de 5 letras</p>
           </div>
           <p></p>
           <div>
-          <input id="sol2" type="text" placeholder="Solución 2" onChange={(e) => setSolution2(e.target.value)}></input>
-          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          <input id="sol2" type="text" placeholder="Solución 2"></input>
+          <p id="msg2" className='invisible'> Debe introducir una palabra de 5 letras</p>
           </div>
           <p></p>
           <div>
-          <input id="sol3" type="text" placeholder="Solución 3" onChange={(e) => setSolution3(e.target.value)}></input>
-          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          <input id="sol3" type="text" placeholder="Solución 3"></input>
+          <p id="msg3" className='invisible'> Debe introducir una palabra de 5 letras</p>
           </div>
           <p></p>
           <div>
-          <input id="sol4" type="text" placeholder="Solución 4" onChange={(e) => setSolution4(e.target.value)}></input>
-          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          <input id="sol4" type="text" placeholder="Solución 4"></input>
+          <p id="msg4" className='invisible'> Debe introducir una palabra de 5 letras</p>
           </div>
           <br></br>
+          <p id="cambiosMsg" className='invisible'>Se han guardado sus nuevas soluciones</p>
+          <p id="noCambiosMsg" className='invisible'>No se han modificado las soluciones originales</p>
           <br></br>
           <button onClick={() => {
-            setSelectSolutions(false);}}>Guardar cambios</button>
+            let sol1 = document.getElementById("sol1");
+            let msg1 = document.getElementById("msg1");
+            console.log(sol1.value.length != 5);
+            console.log(sol1.value.length );
+            if (sol1.value.length !== 0) if (sol1.value.length !== 5) msg1.classList.remove("invisible");
+
+            let sol2 = document.getElementById("sol2");
+            let msg2 = document.getElementById("msg2");
+            console.log(sol2.value.length);
+            if(sol2.value.length !== 0) if (sol2.value.length !== 5) msg2.classList.remove("invisible");
+
+            let sol3 = document.getElementById("sol3");
+            let msg3 = document.getElementById("msg3");
+            console.log(sol3.value.length);
+            if (sol3.value.length !== 0) if (sol3.value.length !== 5) msg3.classList.remove("invisible");
+
+            let sol4 = document.getElementById("sol4");
+            let msg4 = document.getElementById("msg4");
+            console.log(sol4.value.length);
+            if (sol4.value.length !== 0 ) if (sol4.value.length !== 5) msg4.classList.remove("invisible");
+            
+            if((sol1.value.length ===5 || sol1.value.length === 0) && (sol2.value.length === 5 || sol2.value.length === 0) && (sol3.value.length === 5 || sol3.value.length === 0) && (sol4.value.length === 5 || sol4.value.length === 0)){
+              console.log("Confirmar");
+              document.getElementById("cambiosMsg").classList.remove("invisible");
+              msg1.classList.add("invisible");
+              msg2.classList.add("invisible");
+              msg3.classList.add("invisible");
+              msg4.classList.add("invisible");
+              if (sol1.value.length !== 0) setSolution1(sol1.value);
+              if (sol2.value.length !== 0)  setSolution2(sol2.value);
+              if (sol3.value.length !== 0)  setSolution3(sol3.value);
+              if (sol4.value.length !== 0) setSolution4(sol4.value);
+            }}}>Guardar cambios</button>
         </Popup>
       </div>
   );
@@ -478,6 +527,10 @@ function App() {
     if (guessedRows.every(row => Object.keys(row).length !== 0)) {
       console.log("win");
       setGameOver(true);
+      return;
+    }
+    else if (enteredLetter.row === 8) {
+      setGiveUpButton(true);
       return;
     }
   }

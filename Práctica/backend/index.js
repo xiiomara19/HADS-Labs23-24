@@ -134,6 +134,7 @@ app.post('/receiveAttempt', async (req, res) => {
           }
     }
         // Send the prediction back in the response
+        console.log('WORD TO SEND:', word);
         res.send(JSON.stringify(word));
 
   } catch (error) {
