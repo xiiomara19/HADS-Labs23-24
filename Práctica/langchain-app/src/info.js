@@ -4,7 +4,7 @@ function Info({ onClose }) {
   return (
     <div className="App-page">
       <div className="App-title">
-        About
+        Sobre
         <button className="App-button-close" onClick={onClose}>
         ✖
         </button>

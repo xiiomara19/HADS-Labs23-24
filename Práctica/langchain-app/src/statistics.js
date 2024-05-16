@@ -5,7 +5,7 @@ function Statistics({ onClose }) {
   return (
     <div class="App-page">
       <div class="App-title">
-        Statistics
+        Estadisticas
         <button class="App-button-close" onClick={onClose}>
         ✖
         </button>

@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 function renderSettings() {
   root.render(
     <React.StrictMode>
-      <Settings />
+      <Settings onClose={renderApp}/>
     </React.StrictMode>
   );
 }
