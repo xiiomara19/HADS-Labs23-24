@@ -3,7 +3,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
-import { CreateWordSet, boardBegininig, boardBeginingAI} from './Quordle';
+import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
 //import {main} from '../../backend/index';
@@ -37,15 +37,15 @@ function App() {
   const [incorrectWord, setIncorrectWord] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
-  
+
   useEffect(() => {
-    const getRandomIndex = (usedIndices) => {
-      let index;
-      do {
-        index = Math.floor(Math.random() * data.solutions.length);
-      } while (usedIndices.includes(index));
-      return index;
-  };
+      const getRandomIndex = (usedIndices) => {
+        let index;
+        do {
+          index = Math.floor(Math.random() * data.solutions.length);
+        } while (usedIndices.includes(index));
+        return index;
+      };
 
     const usedIndices = [];
     usedIndices.push(getRandomIndex(usedIndices));
@@ -188,8 +188,69 @@ function App() {
   /////////////////////////////////////////////////////////////////////
   
   const [boardAI, setBoardAI] = useState(boardBeginingAI);
-
+  const [dictionaryAI, setDictionaryAI] = useState(new Set());
   const [wordAI, setWordAI] = useState('');
+  const [wordPredictionAI, setWordPredictionAI] = useState('');
+
+  useEffect(() => {
+    CreateWordSet().then((words) => {
+      setDictionaryAI(words.wordSet);
+    }); 
+  },[]);
+
+  useEffect(() => {
+    if (dictionaryAI.size > 0) {
+      //const frequencies = getFrequencies(Array.from(dictionaryAI));
+  
+      const dictionaryArray = Array.from(dictionaryAI);
+      console.log('dictionaryArray:', dictionaryArray);
+  
+      const frequencies = getFrequencies(dictionaryArray);
+      console.log('frequencies:', frequencies);
+
+
+      const sendFrequencies = async () => {
+        try {
+          
+
+          const response = await fetch('http://localhost:5000/sendFrequencesBegining', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              messages: [
+                {
+                  content: frequencies
+                }
+              ]
+            }),
+          });
+  
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+  
+          // Get the response data
+          const responseData = await response.json();
+          const regex = /{word:\s*['"]([^'"]+)['"]}/;
+          const match = responseData.match(regex);
+          const word = match ? match[1] : null;
+          console.log('Response:', responseData);
+          console.log('Word:', word);
+          // Save the prediction in wordPredictionAI
+          setWordPredictionAI(responseData);
+  
+        } catch (error) {
+          console.error('Error sending frequencies:', error);
+        }
+      };
+  
+      sendFrequencies();
+    }
+  }, [dictionaryAI]);
+  
+/** 
   useEffect(() => {
     const fetchWord = async () => {
       try {
@@ -203,7 +264,7 @@ function App() {
     };
     fetchWord();
   }, []);
-  
+ */ 
   
   useEffect(() => {
   // Function to update boardAI with the wordAI horizontally at the first row

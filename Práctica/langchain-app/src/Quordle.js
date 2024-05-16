@@ -28,6 +28,16 @@ export const boardBegininig = [
   
 ]
 
+export const CreateWordSet = async () => {
+  let wordSet
+  await fetch(data)
+  .then(response => response.text())
+  .then(text => {
+      const words = text.split(/\r\n|\r|\n/)
+      wordSet = new Set(words)
+  })
+  return {wordSet}
+}
 
   /////////////////////////////////////////////////////////////////////
   // ------------------------  TABLA IA -------------------------------
@@ -55,14 +65,27 @@ export const boardBeginingAI = [
     ["", "", "", "", "", "", "", "", "", ""],
 ];
 
+export const getFrequencies = (wordSet) => {
+  const frequencies = Array.from({ length: 5 }, () => Array.from({ length: 27 }, () => 0));
 
-export const CreateWordSet = async () => {
-    let wordSet
-    await fetch(data)
-    .then(response => response.text())
-    .then(text => {
-        const words = text.split(/\r\n|\r|\n/)
-        wordSet = new Set(words)
-    })
-    return {wordSet}
-}
+  wordSet.forEach((word) => {
+    for (let i = 0; i < word.length; i++) {
+      const letter = word[i].toLowerCase();
+      const position = i;
+      let index;
+      if (letter === 'ñ') {
+        index = 26; // Assign the last index for 'ñ'
+      } else {
+        index = letter.charCodeAt(0) - 97;
+      }
+      frequencies[position][index]++;
+    }
+  });
+
+  const result = frequencies.map((positionFrequencies, position) => {
+    const frequenciesString = positionFrequencies.join(',');
+    return `Posición ${position + 1}: ${frequenciesString}`;
+  }).join('; ');
+
+  return result;
+};
