@@ -195,7 +195,7 @@ function App() {
       try {
         const response = await fetch('http://localhost:5000/getWord')
         const data = await response.json();
-        console.log("palabra de la IA", data);
+        //console.log("palabra de la IA", data);
         setWordAI(data);
       } catch (error) {
         console.error('Error fetching word:', error);
