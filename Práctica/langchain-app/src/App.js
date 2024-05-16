@@ -26,7 +26,7 @@ function App() {
       }
     }, 1000);
     return () => clearInterval(timer);
-  }, [minutes, seconds])
+  }, [seconds, minutes])
 
   function stop () {
     clearInterval(timer);
@@ -88,6 +88,8 @@ function App() {
     setSolutionAI4(data.solutions[usedIndices[7]]);
   }, []);
   
+  useEffect(() => {
+
   console.log("Solutiones HUMANO: ");
   console.log(solution1);
   console.log(solution2);
@@ -100,6 +102,8 @@ function App() {
   console.log(solutionAI3);
   console.log(solutionAI4);
   console.log("");
+  }, [solution1, solution2, solution3, solution4]);
+
 
   
   useEffect(() => {
@@ -277,6 +281,7 @@ function App() {
   
   
   async function receiveAttempt(res1, res2, res3, res4) {
+    console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Recibiendo intento+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     if (dictionaryAI.size > 0) {
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
