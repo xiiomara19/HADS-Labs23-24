@@ -35,68 +35,10 @@ async function getGroqChatCompletion(message) {
   
 };
 
-async function getWordFromPos() {
-
-  const data = fs.readFileSync("posiciones.json", "utf8");
-  const obj = JSON.parse(data);
-  const str = JSON.stringify(obj);
-
-  return groq.chat.completions.create({
-      messages: [
-          {
-              role: "user",
-              content: "There are 5 pos here:" + str + "Take randomly one letter from each pos so you have finally a word with 5 letters. Return just generated word",
-          }
-      ],
-      model: "llama3-8b-8192"
-  });
-  
-};
-
-module.exports = {
-  getGroqChatCompletion,
-  getWordFromPos
-};
-
-app.get('/getWord', async (req, res) => {
-  const chatCompletion = await getGroqChatCompletion();
-  res.send(JSON.stringify(chatCompletion.choices[0]?.message?.content));
-});
-
-app.post('/ColorsWord1', (req, res) => {
-  const { colors } = req.body;
-  console.log('Received colors from word1:', colors);
-  res.json({ message: 'Colors received successfully' });
-});
-
-app.post('/ColorsWord2', (req, res) => {
-  const { colors } = req.body;
-  console.log('Received colors from word2:', colors);
-  res.json({ message: 'Colors received successfully' });
-});
-
-app.post('/ColorsWord3', (req, res) => {
-  const { colors } = req.body;
-  console.log('Received colors from word3:', colors);
-  res.json({ message: 'Colors received successfully' });
-});
-
-app.post('/ColorsWord4', (req, res) => {
-  const { colors } = req.body;
-  console.log('Received colors from word4:', colors);
-  res.json({ message: 'Colors received successfully' });
-});
 
 app.get('/', (req, res) => {
   res.send('AI Chatbot API is running!');
 })
-
-app.get('/getDbData', (req, res) => {
-  const data = fs.readFileSync("../langchain-app/src/data/db.json", "utf8");
-  console.log(data);
-  res.send(data);
-});
-
 
 app.post('/sendFrequencesBegining', async (req, res) => {
   try {
@@ -107,6 +49,62 @@ app.post('/sendFrequencesBegining', async (req, res) => {
     let contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
                             formatFrequences(frequencies) +
                             " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
+                            " Return just the 5 letters word following the format: 'guess: word'.";
+    let word = ''
+    while(word.length != 5 || !dictionary.has(word)){
+          // Format the frequencies to match the expected format
+          const formattedFrequencies = {
+            messages: [
+              {
+                content: contentStrings
+              }
+            ]
+          };
+
+          // Pass the frequencies to getGroqChatCompletion
+          const prediction = await getGroqChatCompletion(formattedFrequencies);
+
+          // Extract the prediction from the response
+          const response = JSON.stringify(prediction.choices[0]?.message?.content).toLowerCase();
+          const wordMatch = response.match(/guess: (\w+)/);
+          word = wordMatch ? wordMatch[1] : '';
+          console.log('Word:', word);
+
+          if(word.length != 5){
+            contentStrings = "The word "+ word +" is not 5 letters long. Try again. "+ contentStrings;
+          }
+          else if(!dictionary.has(word)){
+            contentStrings = "The word "+ word +" is not in the dictionary. Try again. "+ contentStrings;
+          }
+    }
+        // Send the prediction back in the response
+        res.send(JSON.stringify(word));
+
+  } catch (error) {
+        console.error('Error in /sendFrequencesBegining:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/receiveAttempt', async (req, res) => {
+  try {
+    // Extract the frequencies from the request body
+    const frequencies = req.body.messages[0].content;
+    const dictionary = new Set(req.body.messages[1].content);
+    const res1 = req.body.messages[2].content;
+    const res2 = req.body.messages[3].content;
+    const res3 = req.body.messages[4].content;
+    const res4 = req.body.messages[5].content;
+    const attempt = req.body.messages[6].content;
+
+    let contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
+                            formatFrequences(frequencies) +
+                            " Your previous guess was: " + attempt + ". The result was: first hidden word -->" + res1 + "; Second hidden word -->" 
+                            + res2 + "; Third hidden word -->" + res3 + "; Fourth hidden word -->" + res4 + ". " +
+                            " Green means the letter in the guessed word (" + attempt + ") is at the correct position" +
+                            " Yellow means the letter in the guessed word (" + attempt + ") is in the hidden word but in the wrong position" +
+                            " Grey means the letter in the guessed word (" + attempt + ") is not in the hidden word." +
+                            " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden words." +
                             " Return just the 5 letters word following the format: 'guess: word'.";
     let word = ''
     while(word.length != 5 || !dictionary.has(word)){

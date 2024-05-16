@@ -207,18 +207,13 @@ function App() {
 
     //send colors from AI to backend
     const colors1 = checkWord(wordAI, [solutionAI1]);
-    sendColorsWord1(colors1)
-  
-    const colors2 = checkWord(wordAI, [solutionAI2]);
-    sendColorsWord2(colors2)
-  
+    const colors2 = checkWord(wordAI, [solutionAI2]);  
     const colors3 = checkWord(wordAI, [solutionAI3]);
-    sendColorsWord3(colors3)
-  
     const colors4 = checkWord(wordAI, [solutionAI4]);
-    sendColorsWord4(colors4)
 
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
+    setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
+    receiveAttempt(colors1, colors2, colors3, colors4);
   }
 
   /////////////////////////////////////////////////////////////////////
@@ -228,10 +223,9 @@ function App() {
   const [boardAI, setBoardAI] = useState(boardBeginingAI);
   const [dictionaryAI, setDictionaryAI] = useState(new Set());
   const [wordAI, setWordAI] = useState('');
+  
 
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
-
-  const [wordPredictionAI, setWordPredictionAI] = useState('');
 
   useEffect(() => {
     CreateWordSet().then((words) => {
@@ -282,71 +276,43 @@ function App() {
   }, [dictionaryAI]);
   
   
-  async function sendColorsWord1(data) {
-    try {
-      const response = await fetch('http://localhost:5000/ColorsWord1', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ colors: data }),
-      });
-      const responseData = await response.json();
-      return responseData;
-    } catch (error) {
-      console.error('Error sending data to backend:', error);
-      throw error; 
-    }
-  }
+  async function receiveAttempt(res1, res2, res3, res4) {
+    if (dictionaryAI.size > 0) {
+      const dictionaryArray = Array.from(dictionaryAI);
+      const frequencies = getFrequencies(dictionaryArray);
 
-  async function sendColorsWord2(data) {
-    try {
-      const response = await fetch('http://localhost:5000/ColorsWord2', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ colors: data }),
-      });
-      const responseData = await response.json();
-      return responseData;
-    } catch (error) {
-      console.error('Error sending data to backend:', error);
-      throw error; 
-    }
-  }
+      try {
+        const response = await fetch('http://localhost:5000/receiveAttempt', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            messages: [
+              {content: frequencies},
+              {content: dictionaryArray},
+              {content: res1},
+              {content: res2},
+              {content: res3},
+              {content: res4},
+              {content: wordAI}
+            ]
+          }),
+        });
 
-  async function sendColorsWord3(data) {
-    try {
-      const response = await fetch('http://localhost:5000/ColorsWord3', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ colors: data }),
-      });
-      const responseData = await response.json();
-      return responseData;
-    } catch (error) {
-      console.error('Error sending data to backend:', error);
-      throw error; 
-    }
-  }
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-  async function sendColorsWord4(data) {
-    try {
-      const response = await fetch('http://localhost:5000/ColorsWord4', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ colors: data }),
-      });
-      const responseData = await response.json();
-      return responseData;
-    } catch (error) {
-      console.error('Error sending data to backend:', error);
-      throw error; 
+        // Get the response data
+        const responseData = await response.json();
+        console.log('Word:', responseData);
+        // Save the prediction in wordPredictionAI
+        setWordAI(responseData);
+
+      } catch (error) {
+        console.error('Error sending frequencies:', error);
+      }
     }
   }
 
@@ -387,7 +353,7 @@ function App() {
       newBoardAI[enteredLetterAI.row+9][i+5] = word[i];
     }
     setBoardAI(newBoardAI);
-    setEnteredLetterAI({row: enteredLetterAI.row , col: 0});
+    setEnteredLetterAI({row: enteredLetterAI.row, col: 0});
   };
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
