@@ -119,8 +119,16 @@ app.post('/sendFrequencesBegining', async (req, res) => {
     // Pass the frequencies to getGroqChatCompletion
     const prediction = await getGroqChatCompletion(formattedFrequencies);
 
+    // Extract the prediction from the response
+    const response = JSON.stringify(prediction.choices[0]?.message?.content);
+    console.log('Response:', response);
+    const wordMatch = response.match(/guess: (\w+)/);
+    const word = wordMatch ? wordMatch[1] : '';
+    console.log('Word:', word);
+
         // Send the prediction back in the response
-        res.send(JSON.stringify(prediction.choices[0]?.message?.content));
+        res.send(JSON.stringify(word));
+
       } catch (error) {
         console.error('Error in /sendFrequencesBegining:', error);
         res.status(500).send('Server error');

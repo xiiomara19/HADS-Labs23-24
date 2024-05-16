@@ -216,19 +216,12 @@ function App() {
 
   useEffect(() => {
     if (dictionaryAI.size > 0) {
-      //const frequencies = getFrequencies(Array.from(dictionaryAI));
   
       const dictionaryArray = Array.from(dictionaryAI);
-      console.log('dictionaryArray:', dictionaryArray);
-  
       const frequencies = getFrequencies(dictionaryArray);
-      console.log('frequencies:', frequencies);
-
 
       const sendFrequencies = async () => {
         try {
-          
-
           const response = await fetch('http://localhost:5000/sendFrequencesBegining', {
             method: 'POST',
             headers: {
@@ -249,12 +242,9 @@ function App() {
   
           // Get the response data
           const responseData = await response.json();
-          const wordMatch = responseData.match(/guess: (\w+)/);
-          const word = wordMatch ? wordMatch[1] : '';
-          console.log('Response:', responseData);
-          console.log('Word:', word);
+          console.log('Word:', responseData);
           // Save the prediction in wordPredictionAI
-          setWordPredictionAI(responseData);
+          setWordAI(responseData);
   
         } catch (error) {
           console.error('Error sending frequencies:', error);
@@ -265,20 +255,6 @@ function App() {
     }
   }, [dictionaryAI]);
   
-/** 
-  useEffect(() => {
-    const fetchWord = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/getWord')
-        const data = await response.json();
-        setWordAI(data);
-      } catch (error) {
-        console.error('Error fetching word:', error);
-      }
-    };
-    fetchWord();
-  }, []);
-  */ 
   
   async function sendColorsWord1(data) {
     try {
