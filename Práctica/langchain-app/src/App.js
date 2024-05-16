@@ -231,7 +231,8 @@ function App() {
               messages: [
                 {
                   content: frequencies
-                }
+                },
+                {content: dictionaryArray}
               ]
             }),
           });

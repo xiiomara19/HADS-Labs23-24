@@ -8,6 +8,7 @@ const cors = require('cors');
 const ChatGroq = require('groq-sdk');
 const fs = require("fs");
 const ChatPromptTemplate = require("@langchain/core/prompts");
+const e = require('express');
 
 app.use(cors());
 app.use(express.json());
@@ -101,35 +102,43 @@ app.post('/sendFrequencesBegining', async (req, res) => {
   try {
     // Extract the frequencies from the request body
     const frequencies = req.body.messages[0].content;
+    const dictionary = new Set(req.body.messages[1].content);
 
-    const contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
-    formatFrequences(frequencies) +
-    " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
-    " Return just the 5 letters word following the format: 'guess: word'."
+    let contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
+                            formatFrequences(frequencies) +
+                            " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
+                            " Return just the 5 letters word following the format: 'guess: word'.";
+    let word = ''
+    while(word.length != 5 || !dictionary.has(word)){
+          // Format the frequencies to match the expected format
+          const formattedFrequencies = {
+            messages: [
+              {
+                content: contentStrings
+              }
+            ]
+          };
 
-    // Format the frequencies to match the expected format
-    const formattedFrequencies = {
-      messages: [
-        {
-          content: contentStrings
-        }
-      ]
-    };
+          // Pass the frequencies to getGroqChatCompletion
+          const prediction = await getGroqChatCompletion(formattedFrequencies);
 
-    // Pass the frequencies to getGroqChatCompletion
-    const prediction = await getGroqChatCompletion(formattedFrequencies);
+          // Extract the prediction from the response
+          const response = JSON.stringify(prediction.choices[0]?.message?.content).toLowerCase();
+          const wordMatch = response.match(/guess: (\w+)/);
+          word = wordMatch ? wordMatch[1] : '';
+          console.log('Word:', word);
 
-    // Extract the prediction from the response
-    const response = JSON.stringify(prediction.choices[0]?.message?.content);
-    console.log('Response:', response);
-    const wordMatch = response.match(/guess: (\w+)/);
-    const word = wordMatch ? wordMatch[1] : '';
-    console.log('Word:', word);
-
+          if(word.length != 5){
+            contentStrings = "The word "+ word +" is not 5 letters long. Try again. "+ contentStrings;
+          }
+          else if(!dictionary.has(word)){
+            contentStrings = "The word "+ word +" is not in the dictionary. Try again. "+ contentStrings;
+          }
+    }
         // Send the prediction back in the response
         res.send(JSON.stringify(word));
 
-      } catch (error) {
+  } catch (error) {
         console.error('Error in /sendFrequencesBegining:', error);
         res.status(500).send('Server error');
     }
