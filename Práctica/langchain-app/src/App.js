@@ -182,7 +182,7 @@ function App() {
     }
 
     //send colors from AI to backend
-
+    
     const colors1 = checkWord(wordAI, [solutionAI1]);
     sendColorsWord1(colors1)
   
@@ -362,7 +362,7 @@ function App() {
       newBoardAI[enteredLetterAI.row+9][i+5] = word[i];
     }
     setBoardAI(newBoardAI);
-    setEnteredLetterAI({row: enteredLetterAI.row +1 , col: 0});
+    setEnteredLetterAI({row: enteredLetterAI.row , col: 0});
   };
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
