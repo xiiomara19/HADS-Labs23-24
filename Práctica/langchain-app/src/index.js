@@ -4,7 +4,7 @@ import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Settings from './settings';
-import Info from './Info';
+import Info from './info';
 import Statistics from './statistics';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
