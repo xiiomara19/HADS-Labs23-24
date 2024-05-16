@@ -6,7 +6,6 @@ import Board from './elements/Board';
 import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
-import Statistics from './statistics';
 
 
 export const AppContext = createContext();
@@ -27,14 +26,14 @@ function App() {
       }
     }, 1000);
     return () => clearInterval(timer);
-  })
+  }, [minutes, seconds])
 
-  const stop = () => {
+  function stop () {
     clearInterval(timer)
     console.log(minutes ," : ", seconds)
-    
-    //setGiveUpButton(true);
+    setGiveUpButton(true);
   }
+  
 
   /////////////////////////////////////////////////////////////////////
   // -------------------  FUNCIONES HUMANO ---------------------------
@@ -395,7 +394,7 @@ function App() {
 
     <div className="Game">
       <div className="Game-options ">
-        <button id="giveUp" className="App-button App-button-marked" onClick={() => {clearInterval(timer.current); setGiveUpButton(true); console.log(timer); }}>Rendirse</button>
+        <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
 
       </div>
