@@ -130,7 +130,7 @@ function App() {
 
   const OnKeyLetter = (val) => {
     if(enteredLetter.col > 4) return;
-    if (enteredLetter.row > 8) return;
+    if (enteredLetter.row > 8) return; 
     
     const newBoard = [...board];
     
@@ -179,7 +179,7 @@ function App() {
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
       if (word.toLowerCase() === solution1) {
         let newGuessedRows = [...guessedRows];
-        newGuessedRows[0] = {row: enteredLetter.row+1};
+        newGuessedRows[0] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
       if (word.toLowerCase() === solution2){
@@ -199,7 +199,6 @@ function App() {
         newGuessedRows[3] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
-      console.log(guessedRows[0]);
       checkWin(guessedRows);
     }
     else {
@@ -392,7 +391,7 @@ function App() {
             setGiveUpButton(false); 
             document.getElementById("giveUp").classList.add("invisible");
             document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
-          <p>La respuesta era:</p>
+          <p>Las respuestas eran:</p>
           <p>{solution1}, {solution2}, {solution3}, {solution4}</p>
           <br/>
           <p> Has tardado: {minutes<10? "0"+minutes:minutes}:{seconds<10? "0"+seconds:seconds}</p>
@@ -460,6 +459,10 @@ function App() {
     if (guessedRows.every(row => Object.keys(row).length !== 0)) {
       console.log("win");
       setGameOver(true);
+      return;
+    }
+    else if (enteredLetter.row === 8) {
+      setGiveUpButton(true);
       return;
     }
   }
