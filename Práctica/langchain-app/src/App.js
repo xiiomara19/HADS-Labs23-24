@@ -181,7 +181,7 @@ function App() {
       }, 2000);
     }
 
-    //send data to backend
+    //send colors from AI to backend
 
     const colors1 = checkWord(wordAI, [solutionAI1]);
     sendColorsWord1(colors1)
@@ -285,6 +285,7 @@ function App() {
     }
   }
 
+  //Devuelve array de colores para enviar a backend 
   function checkWord(word, solutions) {
     const colors = [];
     for (let i = 0; i < word.length; i++) {
@@ -294,15 +295,15 @@ function App() {
         if (solutions[j].includes(letter)) {
           found = true;
           if (solutions[j][i] === letter) {
-            colors.push("green"); // Correct letter in correct position
+            colors.push("green");
           } else {
-            colors.push("yellow"); // Correct letter in incorrect position
+            colors.push("yellow");
           }
           break;
         }
       }
       if (!found) {
-        colors.push("gray"); // Letter not in word
+        colors.push("gray");
       }
     }
     return colors;
