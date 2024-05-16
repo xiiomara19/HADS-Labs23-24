@@ -42,6 +42,10 @@ app.get('/getWord', async (req, res) => {
   res.send(JSON.stringify(chatCompletion.choices[0]?.message?.content));
 });
 
+app.get('/', (req, res) => {
+  res.send('AI Chatbot API is running!');
+})
+
 app.listen(port, () => {
   console.log('App listening at http://localhost:5000');
 });
