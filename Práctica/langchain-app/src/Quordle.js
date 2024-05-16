@@ -89,3 +89,27 @@ export const getFrequencies = (wordSet) => {
 
   return result;
 };
+
+export function filterDictionaryAI(wordSet, word, array1, array2, array3, array4) {
+  const arrays = [array1, array2, array3, array4];
+  const filteredWords = Array.from(wordSet).filter((setWord) => {
+    return arrays.some((array, index) => {
+      for (let i = 0; i < setWord.length; i++) {
+        const letter = setWord[i];
+        const color = array[i];
+        if (color === 'green' && letter !== word[i]) {
+          return false;
+        }
+        if (color === 'yellow' && (!word.includes(letter) || letter === word[i])) {
+          return false;
+        }
+        if (color === 'gray' && word.includes(letter)) {
+          return false;
+        }
+      }
+      return true;
+    });
+  });
+  console.log('PALABRAS FILTRADAS', filteredWords);
+  return filteredWords;
+}

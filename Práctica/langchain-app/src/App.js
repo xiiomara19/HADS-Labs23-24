@@ -3,7 +3,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
-import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies} from './Quordle';
+import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies, filterDictionaryAI} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
 
@@ -194,6 +194,8 @@ function App() {
   
     const colors4 = checkWord(wordAI, [solutionAI4]);
     sendColorsWord4(colors4)
+
+    setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
   }
 
   /////////////////////////////////////////////////////////////////////
