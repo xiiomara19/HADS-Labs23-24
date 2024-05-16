@@ -417,17 +417,31 @@ function App() {
 
         <Popup trigger={selectSolutions} setTrigger={setSelectSolutions}>
           <h1>Puedes elegir las soluciones de tu juego:</h1>
+          <b>(En caso de que no introduzca nada se mantendrá la solución original)</b>
+          <p></p>
           <button className='close-btn' onClick={() => {
             setSelectSolutions(false); }}>✖</button>
-          <input type="text" placeholder="Solucion 1" onChange={(e) => 
+          <div>
+          <input id="sol1" type="text" placeholder="Solucion 1" onChange={(e) => 
             {console.log(e.target.value.length);
               if (e.target.value !== "" && e.target.value.length === 5 ) setSolution1(e.target.value)}}></input>
+          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          </div>
           <p></p>
-          <input type="text" placeholder="Solución 2" onChange={(e) => setSolution2(e.target.value)}></input>
+          <div>
+          <input id="sol2" type="text" placeholder="Solución 2" onChange={(e) => setSolution2(e.target.value)}></input>
+          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          </div>
           <p></p>
-          <input type="text" placeholder="Solución 3" onChange={(e) => setSolution3(e.target.value)}></input>
+          <div>
+          <input id="sol3" type="text" placeholder="Solución 3" onChange={(e) => setSolution3(e.target.value)}></input>
+          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          </div>
           <p></p>
-          <input type="text" placeholder="Solución 4" onChange={(e) => setSolution4(e.target.value)}></input>
+          <div>
+          <input id="sol4" type="text" placeholder="Solución 4" onChange={(e) => setSolution4(e.target.value)}></input>
+          <p className='invisible'> Debe introducir una palabra de 5 letras</p>
+          </div>
           <br></br>
           <br></br>
           <button onClick={() => {
