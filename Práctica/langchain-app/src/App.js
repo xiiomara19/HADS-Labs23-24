@@ -181,6 +181,19 @@ function App() {
       }, 2000);
     }
 
+    //send data to backend
+
+    const colors1 = checkWord(wordAI, [solutionAI1]);
+    sendColorsWord1(colors1)
+  
+    const colors2 = checkWord(wordAI, [solutionAI2]);
+    sendColorsWord2(colors2)
+  
+    const colors3 = checkWord(wordAI, [solutionAI3]);
+    sendColorsWord3(colors3)
+  
+    const colors4 = checkWord(wordAI, [solutionAI4]);
+    sendColorsWord4(colors4)
   }
 
   /////////////////////////////////////////////////////////////////////
@@ -204,7 +217,99 @@ function App() {
     fetchWord();
   }, []);
   
+  async function sendColorsWord1(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord1', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  async function sendColorsWord2(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  async function sendColorsWord3(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord3', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  async function sendColorsWord4(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord4', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  function checkWord(word, solutions) {
+    const colors = [];
+    for (let i = 0; i < word.length; i++) {
+      const letter = word[i];
+      let found = false;
+      for (let j = 0; j < solutions.length; j++) {
+        if (solutions[j].includes(letter)) {
+          found = true;
+          if (solutions[j][i] === letter) {
+            colors.push("green"); // Correct letter in correct position
+          } else {
+            colors.push("yellow"); // Correct letter in incorrect position
+          }
+          break;
+        }
+      }
+      if (!found) {
+        colors.push("gray"); // Letter not in word
+      }
+    }
+    return colors;
+  }
   
+
+
   useEffect(() => {
   // Function to update boardAI with the wordAI horizontally at the first row
     const updateBoardAI = (word) => {
