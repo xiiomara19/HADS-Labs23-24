@@ -2,31 +2,32 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const port = 5000;
 const cors = require('cors');
 const ChatGroq = require('groq-sdk');
 const fs = require("fs");
 const ChatPromptTemplate = require("@langchain/core/prompts");
+const e = require('express');
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 
 const groq = new ChatGroq({
   apiKey: process.env.REACT_APP_GROQ_API_KEY,
 });
 
 
-async function getGroqChatCompletion() {
+async function getGroqChatCompletion(message) {
 
-  const data = fs.readFileSync("db.json", "utf8");
-  const obj = JSON.parse(data);
-  const str = JSON.stringify(obj.solutions);
+  message = JSON.stringify(message);
 
   return groq.chat.completions.create({
       messages: [
           {
               role: "user",
-              content: "Take 1 word from this file" + str + "Only write this word no other text",
+              content: message,
           }
       ],
       model: "llama3-8b-8192"
@@ -90,6 +91,73 @@ app.get('/', (req, res) => {
   res.send('AI Chatbot API is running!');
 })
 
+app.get('/getDbData', (req, res) => {
+  const data = fs.readFileSync("../langchain-app/src/data/db.json", "utf8");
+  console.log(data);
+  res.send(data);
+});
+
+
+app.post('/sendFrequencesBegining', async (req, res) => {
+  try {
+    // Extract the frequencies from the request body
+    const frequencies = req.body.messages[0].content;
+    const dictionary = new Set(req.body.messages[1].content);
+
+    let contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
+                            formatFrequences(frequencies) +
+                            " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
+                            " Return just the 5 letters word following the format: 'guess: word'.";
+    let word = ''
+    while(word.length != 5 || !dictionary.has(word)){
+          // Format the frequencies to match the expected format
+          const formattedFrequencies = {
+            messages: [
+              {
+                content: contentStrings
+              }
+            ]
+          };
+
+          // Pass the frequencies to getGroqChatCompletion
+          const prediction = await getGroqChatCompletion(formattedFrequencies);
+
+          // Extract the prediction from the response
+          const response = JSON.stringify(prediction.choices[0]?.message?.content).toLowerCase();
+          const wordMatch = response.match(/guess: (\w+)/);
+          word = wordMatch ? wordMatch[1] : '';
+          console.log('Word:', word);
+
+          if(word.length != 5){
+            contentStrings = "The word "+ word +" is not 5 letters long. Try again. "+ contentStrings;
+          }
+          else if(!dictionary.has(word)){
+            contentStrings = "The word "+ word +" is not in the dictionary. Try again. "+ contentStrings;
+          }
+    }
+        // Send the prediction back in the response
+        res.send(JSON.stringify(word));
+
+  } catch (error) {
+        console.error('Error in /sendFrequencesBegining:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+function formatFrequences(frequencies) {
+      // Parse the frequencies string into an array of arrays
+      const frequencyStrings = frequencies.split('; ');
+      const content = frequencyStrings.map(frequencyString => {
+        const numbers = frequencyString.replace(/.*: /, '').split(',');
+        return numbers.map(Number);
+      });
+  
+      // Convert each array in content to a string
+      const contentStrings = content.map(array => array.join(','));
+      return contentStrings;
+}
+
 app.listen(port, () => {
   console.log('App listening at http://localhost:5000');
 });
+

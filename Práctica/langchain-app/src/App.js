@@ -3,7 +3,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
-import { CreateWordSet, boardBegininig, boardBeginingAI} from './Quordle';
+import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
 
@@ -58,15 +58,15 @@ function App() {
   const [incorrectWord, setIncorrectWord] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
-  
+
   useEffect(() => {
-    const getRandomIndex = (usedIndices) => {
-      let index;
-      do {
-        index = Math.floor(Math.random() * data.solutions.length);
-      } while (usedIndices.includes(index));
-      return index;
-  };
+      const getRandomIndex = (usedIndices) => {
+        let index;
+        do {
+          index = Math.floor(Math.random() * data.solutions.length);
+        } while (usedIndices.includes(index));
+        return index;
+      };
 
     const usedIndices = [];
     usedIndices.push(getRandomIndex(usedIndices));
@@ -204,7 +204,7 @@ function App() {
     }
 
     //send colors from AI to backend
-
+    
     const colors1 = checkWord(wordAI, [solutionAI1]);
     sendColorsWord1(colors1)
   
@@ -223,23 +223,61 @@ function App() {
   /////////////////////////////////////////////////////////////////////
   
   const [boardAI, setBoardAI] = useState(boardBeginingAI);
-
+  const [dictionaryAI, setDictionaryAI] = useState(new Set());
   const [wordAI, setWordAI] = useState('');
 
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
 
+  const [wordPredictionAI, setWordPredictionAI] = useState('');
+
   useEffect(() => {
-    const fetchWord = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/getWord')
-        const data = await response.json();
-        setWordAI(data);
-      } catch (error) {
-        console.error('Error fetching word:', error);
-      }
-    };
-    fetchWord();
-  }, []);
+    CreateWordSet().then((words) => {
+      setDictionaryAI(words.wordSet);
+    }); 
+  },[]);
+
+  useEffect(() => {
+    if (dictionaryAI.size > 0) {
+  
+      const dictionaryArray = Array.from(dictionaryAI);
+      const frequencies = getFrequencies(dictionaryArray);
+
+      const sendFrequencies = async () => {
+        try {
+          const response = await fetch('http://localhost:5000/sendFrequencesBegining', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              messages: [
+                {
+                  content: frequencies
+                },
+                {content: dictionaryArray}
+              ]
+            }),
+          });
+  
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+  
+          // Get the response data
+          const responseData = await response.json();
+          console.log('Word:', responseData);
+          // Save the prediction in wordPredictionAI
+          setWordAI(responseData);
+  
+        } catch (error) {
+          console.error('Error sending frequencies:', error);
+        }
+      };
+  
+      sendFrequencies();
+    }
+  }, [dictionaryAI]);
+  
   
   async function sendColorsWord1(data) {
     try {
@@ -339,14 +377,14 @@ function App() {
   // Function to update boardAI with the wordAI horizontally at the first row
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
-    for (let i = enteredLetter.col; i < word.length; i++) {
-      newBoardAI[enteredLetter.row][i] = word[i];
-      newBoardAI[enteredLetter.row][i+5] = word[i];
-      newBoardAI[enteredLetter.row+9][i] = word[i];
-      newBoardAI[enteredLetter.row+9][i+5] = word[i];
+    for (let i = enteredLetterAI.col; i < word.length; i++) {
+      newBoardAI[enteredLetterAI.row][i] = word[i];
+      newBoardAI[enteredLetterAI.row][i+5] = word[i];
+      newBoardAI[enteredLetterAI.row+9][i] = word[i];
+      newBoardAI[enteredLetterAI.row+9][i+5] = word[i];
     }
     setBoardAI(newBoardAI);
-    setEnteredLetter({row: enteredLetter.row +1 , col: 0});
+    setEnteredLetterAI({row: enteredLetterAI.row , col: 0});
   };
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
