@@ -174,24 +174,24 @@ function App() {
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
       if (word.toLowerCase() === solution1) {
         let newGuessedRows = [...guessedRows];
-        newGuessedRows[0] = {value: word.toLowerCase()};
+        newGuessedRows[0] = {row: enteredLetter.row+1};
         setGuessedRows(newGuessedRows);
       }
       if (word.toLowerCase() === solution2){
         let newGuessedRows = [...guessedRows];
-        newGuessedRows[1] = {value: word.toLowerCase()};
+        newGuessedRows[1] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
       
       if (word.toLowerCase() === solution3 ) { 
         let newGuessedRows = [...guessedRows];
-        newGuessedRows[2] = {value: word.toLowerCase()};
+        newGuessedRows[2] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
   
       if ( word.toLowerCase() === solution4) {
         let newGuessedRows = [...guessedRows];
-        newGuessedRows[3] = {value: word.toLowerCase()};
+        newGuessedRows[3] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
       checkWin(guessedRows);
