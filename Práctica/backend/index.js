@@ -10,6 +10,7 @@ const fs = require("fs");
 const ChatPromptTemplate = require("@langchain/core/prompts");
 
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
 
 const groq = new ChatGroq({
@@ -59,6 +60,30 @@ module.exports = {
 app.get('/getWord', async (req, res) => {
   const chatCompletion = await getGroqChatCompletion();
   res.send(JSON.stringify(chatCompletion.choices[0]?.message?.content));
+});
+
+app.post('/ColorsWord1', (req, res) => {
+  const { colors } = req.body;
+  console.log('Received colors from word1:', colors);
+  res.json({ message: 'Colors received successfully' });
+});
+
+app.post('/ColorsWord2', (req, res) => {
+  const { colors } = req.body;
+  console.log('Received colors from word2:', colors);
+  res.json({ message: 'Colors received successfully' });
+});
+
+app.post('/ColorsWord3', (req, res) => {
+  const { colors } = req.body;
+  console.log('Received colors from word3:', colors);
+  res.json({ message: 'Colors received successfully' });
+});
+
+app.post('/ColorsWord4', (req, res) => {
+  const { colors } = req.body;
+  console.log('Received colors from word4:', colors);
+  res.json({ message: 'Colors received successfully' });
 });
 
 app.get('/', (req, res) => {

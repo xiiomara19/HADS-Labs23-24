@@ -6,7 +6,6 @@ import Board from './elements/Board';
 import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
-//import {main} from '../../backend/index';
 
 
 export const AppContext = createContext();
@@ -66,15 +65,18 @@ function App() {
     setSolutionAI3(data.solutions[usedIndices[6]]);
     setSolutionAI4(data.solutions[usedIndices[7]]);
   }, []);
-
+  console.log("Solutiones HUMANO: ");
   console.log(solution1);
   console.log(solution2);
   console.log(solution3);
   console.log(solution4);
+  console.log("");
+  console.log("Solutiones IA: ");
   console.log(solutionAI1);
   console.log(solutionAI2);
   console.log(solutionAI3);
   console.log(solutionAI4);
+  console.log("");
 
   
   useEffect(() => {
@@ -138,7 +140,6 @@ function App() {
 
   const onKeyEnter = () => {
     if (enteredLetter.col !== 5) return;
-    console.log(guessedRows)
     let word = '';
     for (let i=0; i<5; i++) {
       if (Object.keys(guessedRows[0]).length === 0) word += board[enteredLetter.row][i];
@@ -172,7 +173,6 @@ function App() {
         setGuessedRows(newGuessedRows);
       }
       checkWin(guessedRows);
-      console.log(guessedRows)
     }
     else {
       setIncorrectWord(true);
@@ -181,6 +181,19 @@ function App() {
       }, 2000);
     }
 
+    //send colors from AI to backend
+
+    const colors1 = checkWord(wordAI, [solutionAI1]);
+    sendColorsWord1(colors1)
+  
+    const colors2 = checkWord(wordAI, [solutionAI2]);
+    sendColorsWord2(colors2)
+  
+    const colors3 = checkWord(wordAI, [solutionAI3]);
+    sendColorsWord3(colors3)
+  
+    const colors4 = checkWord(wordAI, [solutionAI4]);
+    sendColorsWord4(colors4)
   }
 
   /////////////////////////////////////////////////////////////////////
@@ -190,6 +203,9 @@ function App() {
   const [boardAI, setBoardAI] = useState(boardBeginingAI);
   const [dictionaryAI, setDictionaryAI] = useState(new Set());
   const [wordAI, setWordAI] = useState('');
+
+  const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
+
   const [wordPredictionAI, setWordPredictionAI] = useState('');
 
   useEffect(() => {
@@ -256,7 +272,6 @@ function App() {
       try {
         const response = await fetch('http://localhost:5000/getWord')
         const data = await response.json();
-        console.log("palabra de la IA", data);
         setWordAI(data);
       } catch (error) {
         console.error('Error fetching word:', error);
@@ -264,19 +279,114 @@ function App() {
     };
     fetchWord();
   }, []);
- */ 
+  */ 
   
+  async function sendColorsWord1(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord1', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  async function sendColorsWord2(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  async function sendColorsWord3(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord3', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  async function sendColorsWord4(data) {
+    try {
+      const response = await fetch('http://localhost:5000/ColorsWord4', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ colors: data }),
+      });
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      throw error; 
+    }
+  }
+
+  //Devuelve array de colores para enviar a backend 
+  function checkWord(word, solutions) {
+    const colors = [];
+    for (let i = 0; i < word.length; i++) {
+      const letter = word[i];
+      let found = false;
+      for (let j = 0; j < solutions.length; j++) {
+        if (solutions[j].includes(letter)) {
+          found = true;
+          if (solutions[j][i] === letter) {
+            colors.push("green");
+          } else {
+            colors.push("yellow");
+          }
+          break;
+        }
+      }
+      if (!found) {
+        colors.push("gray");
+      }
+    }
+    return colors;
+  }
+  
+
+
   useEffect(() => {
   // Function to update boardAI with the wordAI horizontally at the first row
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
-    for (let i = 0; i < word.length; i++) {
-      newBoardAI[0][i] = word[i];
-      newBoardAI[0][i+5] = word[i];
-      newBoardAI[9][i] = word[i];
-      newBoardAI[9][i+5] = word[i];
+    for (let i = enteredLetter.col; i < word.length; i++) {
+      newBoardAI[enteredLetter.row][i] = word[i];
+      newBoardAI[enteredLetter.row][i+5] = word[i];
+      newBoardAI[enteredLetter.row+9][i] = word[i];
+      newBoardAI[enteredLetter.row+9][i+5] = word[i];
     }
     setBoardAI(newBoardAI);
+    setEnteredLetter({row: enteredLetter.row +1 , col: 0});
   };
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
