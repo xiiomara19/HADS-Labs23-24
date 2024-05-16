@@ -24,14 +24,14 @@ function Info({ onClose }) {
           </tbody>
         </table>
         <br></br>
-        <p><b class="letter-absent">L</b> no están en la solución.</p>
+        <p><b className="letter-absent">L</b> no están en la solución.</p>
         <p>
-          ¡<b class="letter-correct">B</b> es correcta! La tercera letras es la <b className="letter-correct">B</b>.
+          ¡<b className="letter-correct">B</b> es correcta! La tercera letras es la <b className="letter-correct">B</b>.
           <br></br>
           <b>(Puede haber más de una B en la palabra.)</b>
           </p>
         <p>
-          <b class="letter-elsewhere">A</b>, <b class="letter-elsewhere">R</b> y <b class="letter-elsewhere">O</b> estan en otra posición de la palabra.
+          <b className="letter-elsewhere">A</b>, <b className="letter-elsewhere">R</b> y <b className="letter-elsewhere">O</b> estan en otra posición de la palabra.
           <br></br>
           <b>(Y puede que mas de una vez. 🤔)</b>
           </p>

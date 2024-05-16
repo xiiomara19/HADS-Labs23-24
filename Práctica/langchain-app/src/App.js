@@ -3,6 +3,9 @@ import React, { useEffect, useState, createContext } from 'react';
 import data from './data/db.json';
 import Keyboard from './elements/Keyboard';
 import Board from './elements/Board';
+import Statistics from './statistics';
+import Info from './info';
+import Settings from './settings';
 import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies, filterDictionaryAI} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
@@ -363,6 +366,12 @@ function App() {
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
   }, [wordAI]);
+
+  const [activeComponent, setActiveComponent] = useState('game');
+
+  window.handleButtonClick = function(componentName) {
+    setActiveComponent(componentName);
+  };
   
   return (
 
@@ -377,14 +386,23 @@ function App() {
           board, setBoard, enteredLetter, setEnteredLetter,
           onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows}}>
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div className="game_container-outer" >     
-                <Board/>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: activeComponent === 'game' ? 'flex-start' : 'center' }}>
+            {activeComponent === 'game' ? (
+              <div className="game_container-outer">
+                <Board />
                 <div className="Game-challenge-bar"></div>
-                <Keyboard/>
-            </div>
-            <BoardAI/>
+                <Keyboard />
+              </div>
+            ) : activeComponent === 'settings' ? (
+              <Settings onClose={() => window.handleButtonClick('game')} />
+            ) : activeComponent === 'statistics' ? (
+              <Statistics onClose={() => window.handleButtonClick('game')} />
+            ) : activeComponent === 'info' ? (
+              <Info onClose={() => window.handleButtonClick('game')} />
+            ) : null}
+            {activeComponent === 'game' && <BoardAI />}
           </div>
+
       </AppContext.Provider>
         <Popup trigger={giveUpButton} setTrigger={setGiveUpButton}>
           <h1>Has PERDIDO </h1>

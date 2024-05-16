@@ -1,12 +1,11 @@
-import logo from './icons/logo.svg';
 import './styles/App.css';
 
-function App(onClose) {
+function App({onClose}) {
   return (
-    <div class="App-page">
-      <div class="App-title">
+    <div className="App-page">
+      <div className="App-title">
         Ajustes
-        <button class="App-button-close" onClick={onClose}>
+        <button className="App-button-close" onClick={onClose}>
         ✖
         </button>
       </div>
