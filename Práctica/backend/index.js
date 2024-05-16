@@ -102,10 +102,10 @@ app.post('/sendFrequencesBegining', async (req, res) => {
     // Extract the frequencies from the request body
     const frequencies = req.body.messages[0].content;
 
-    const contentStrings = "La frecuencia de aparición de cada letra del abecedario para cada palabra de 5 letras de una lista de palabras es la siguiente: "+ 
+    const contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
     formatFrequences(frequencies) +
-    " Debes acertar una palabra de 5 letras basándote en las frecuencias para poder adivinar la palabra elegida." +
-    " Elige 5 letras y forma una palabra con ellas. Devuelve la palabra generada de la sigiuente forma **palabra: palabraGenerada**. No incluyas comillas rodeando la palabra generada."
+    " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
+    " Return just the 5 letters word following the format: 'guess: word'."
 
     // Format the frequencies to match the expected format
     const formattedFrequencies = {

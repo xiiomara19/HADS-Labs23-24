@@ -249,9 +249,8 @@ function App() {
   
           // Get the response data
           const responseData = await response.json();
-          const regex = /{word:\s*['"]([^'"]+)['"]}/;
-          const match = responseData.match(regex);
-          const word = match ? match[1] : null;
+          const wordMatch = responseData.match(/guess: (\w+)/);
+          const word = wordMatch ? wordMatch[1] : '';
           console.log('Response:', responseData);
           console.log('Word:', word);
           // Save the prediction in wordPredictionAI
@@ -379,14 +378,14 @@ function App() {
   // Function to update boardAI with the wordAI horizontally at the first row
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
-    for (let i = enteredLetter.col; i < word.length; i++) {
-      newBoardAI[enteredLetter.row][i] = word[i];
-      newBoardAI[enteredLetter.row][i+5] = word[i];
-      newBoardAI[enteredLetter.row+9][i] = word[i];
-      newBoardAI[enteredLetter.row+9][i+5] = word[i];
+    for (let i = enteredLetterAI.col; i < word.length; i++) {
+      newBoardAI[enteredLetterAI.row][i] = word[i];
+      newBoardAI[enteredLetterAI.row][i+5] = word[i];
+      newBoardAI[enteredLetterAI.row+9][i] = word[i];
+      newBoardAI[enteredLetterAI.row+9][i+5] = word[i];
     }
     setBoardAI(newBoardAI);
-    setEnteredLetter({row: enteredLetter.row +1 , col: 0});
+    setEnteredLetterAI({row: enteredLetterAI.row +1 , col: 0});
   };
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
