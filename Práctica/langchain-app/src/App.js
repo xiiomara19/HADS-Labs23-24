@@ -6,7 +6,6 @@ import Board from './elements/Board';
 import { CreateWordSet, boardBegininig, boardBeginingAI} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
-//import {main} from '../../backend/index';
 
 
 export const AppContext = createContext();
@@ -66,15 +65,18 @@ function App() {
     setSolutionAI3(data.solutions[usedIndices[6]]);
     setSolutionAI4(data.solutions[usedIndices[7]]);
   }, []);
-
+  console.log("Solutiones HUMANO: ");
   console.log(solution1);
   console.log(solution2);
   console.log(solution3);
   console.log(solution4);
+  console.log("");
+  console.log("Solutiones IA: ");
   console.log(solutionAI1);
   console.log(solutionAI2);
   console.log(solutionAI3);
   console.log(solutionAI4);
+  console.log("");
 
   
   useEffect(() => {
@@ -138,7 +140,6 @@ function App() {
 
   const onKeyEnter = () => {
     if (enteredLetter.col !== 5) return;
-    console.log(guessedRows)
     let word = '';
     for (let i=0; i<5; i++) {
       if (Object.keys(guessedRows[0]).length === 0) word += board[enteredLetter.row][i];
@@ -172,7 +173,6 @@ function App() {
         setGuessedRows(newGuessedRows);
       }
       checkWin(guessedRows);
-      console.log(guessedRows)
     }
     else {
       setIncorrectWord(true);
@@ -190,6 +190,9 @@ function App() {
   const [boardAI, setBoardAI] = useState(boardBeginingAI);
 
   const [wordAI, setWordAI] = useState('');
+
+  const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
+
   useEffect(() => {
     const fetchWord = async () => {
       try {
@@ -209,13 +212,14 @@ function App() {
   // Function to update boardAI with the wordAI horizontally at the first row
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
-    for (let i = 0; i < word.length; i++) {
-      newBoardAI[0][i] = word[i];
-      newBoardAI[0][i+5] = word[i];
-      newBoardAI[9][i] = word[i];
-      newBoardAI[9][i+5] = word[i];
+    for (let i = enteredLetter.col; i < word.length; i++) {
+      newBoardAI[enteredLetter.row][i] = word[i];
+      newBoardAI[enteredLetter.row][i+5] = word[i];
+      newBoardAI[enteredLetter.row+9][i] = word[i];
+      newBoardAI[enteredLetter.row+9][i+5] = word[i];
     }
     setBoardAI(newBoardAI);
+    setEnteredLetter({row: enteredLetter.row +1 , col: 0});
   };
     // Call the function to update boardAI with wordAI
     updateBoardAI(wordAI);
