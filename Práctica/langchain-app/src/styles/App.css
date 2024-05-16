@@ -56,15 +56,15 @@
 .game__container-outer {
   display: flex;
   flex-direction: column;
-  height: 100%;
+
   overflow: hidden;
-  width: 100%
+
 }
 
 .game__container-inner {
   flex: 1 1 auto;
   margin: auto;
-  max-width: 550px;
+
   overflow: hidden;
   width: 100%
 }
