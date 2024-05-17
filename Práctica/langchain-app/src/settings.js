@@ -21,6 +21,7 @@ function App({onClose, onModeChange}) {
       <div className="App-settings">
       <button id="startOver" className="App-button App-button-marked"  onClick={() => handleStartOver('putada')} >Modo putada</button>
       <button id="startOver" className="App-button App-button-marked" onClick={() => handleStartOver('desesperacion')}>Modo desesperacion</button>
+      <button id="startOver" className="App-button App-button-marked" onClick={() => handleStartOver('normal')}>Modo normal</button>
       
       </div>
     </div>

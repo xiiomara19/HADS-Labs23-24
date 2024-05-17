@@ -20,7 +20,7 @@ function App() {
   const[minutes, setMinutes] = useState(0);
   
   
-
+  
   let timer;
   useEffect(() => {
     timer = setInterval(() => {
@@ -64,8 +64,9 @@ function App() {
   const [selectSolutions, setSelectSolutions] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
   const [mode, setMode] = useState(() => {
-    // Retrieve the game mode from local storage, defaulting to an empty string if not found
-    return localStorage.getItem('gameMode') || '';
+    const storedMode = localStorage.getItem('gameMode');
+    // If a mode is found, return it; otherwise, return the default mode
+    return storedMode ? storedMode : 'normal';
   });
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
 
