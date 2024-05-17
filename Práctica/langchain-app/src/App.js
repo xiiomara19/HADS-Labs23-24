@@ -129,7 +129,6 @@ function App() {
   useEffect(() => {
     CreateWordSet().then((words) => {
       setWordSet(words.wordSet);
-      //console.log(words.wordSet)
     }); 
   },[]);
   
@@ -259,8 +258,6 @@ function App() {
     ', Third hidden word -->'+ colors3 + ', Fourth hidden word -->'+ colors4 + '.')
     
 
-    console.log (guessedRowsAI)
-
     if(mode === 'normal'){
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
     }
@@ -269,9 +266,7 @@ function App() {
 
     }
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
-    //console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
-    //console.log(dictionaryAI);
   }
 
 
@@ -348,8 +343,7 @@ function App() {
   
           // Get the response data
           const responseData = await response.json();
-          //console.log(dictionaryAI);
-          console.log('Word:', responseData);
+
           // Save the prediction in wordPredictionAI
           setWordAI(responseData);
   
@@ -417,7 +411,7 @@ function App() {
 
         // Get the response data
         const responseData = await response.json();
-        console.log('Word:', responseData);
+
         // Save the prediction in wordPredictionAI
         setWordAI(responseData);
 
@@ -486,13 +480,6 @@ function App() {
   const handleModeChange = (newMode) => {
     setMode(newMode);
     sessionStorage.setItem('mode', newMode);
-    console.log("Mode changed to:", newMode);
-  };
-
-  const handlePlaysChange = (newPlays) => {
-    setPlays(newPlays);
-    sessionStorage.setItem('plays', newPlays);
-    console.log("Plays changed to:", newPlays);
   };
 
   useEffect(() => {
@@ -603,7 +590,6 @@ function App() {
           <button onClick={() => {
             let sol1 = document.getElementById("sol1");
             let msg1 = document.getElementById("msg1");
-            console.log(sol1.value);
             if (!wordSet.has(sol1.value)) if (sol1.value.length !== 0) msg1.classList.remove("invisible");
 
             let sol2 = document.getElementById("sol2");
