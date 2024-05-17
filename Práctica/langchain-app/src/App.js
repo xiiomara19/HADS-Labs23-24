@@ -18,6 +18,8 @@ function App() {
 
   const [seconds, setSeconds] = useState(0);
   const[minutes, setMinutes] = useState(0);
+  
+  
 
   let timer;
   useEffect(() => {
@@ -61,6 +63,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [selectSolutions, setSelectSolutions] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
+  const [mode, setMode] = useState();
 
   useEffect(() => {
       const getRandomIndex = (usedIndices) => {
@@ -229,6 +232,7 @@ function App() {
     console.log(dictionaryAI);
   }
 
+
   /////////////////////////////////////////////////////////////////////
   // -------------------  FUNCIONES IA ---------------------------
   /////////////////////////////////////////////////////////////////////
@@ -396,6 +400,13 @@ function App() {
   window.handleButtonClick = function(componentName) {
     setActiveComponent(componentName);
   };
+  const handleModeChange = (newMode) => {
+    setMode(newMode);
+    console.log("Mode changed to:", newMode);
+  };
+  useEffect(() => {
+    console.log("Current mode:", mode); // Log the current mode whenever it changes
+  }, [mode]);
   
   return (
 
@@ -409,7 +420,7 @@ function App() {
           value={{solution1, solution2, solution3, solution4,
           board, setBoard, enteredLetter, setEnteredLetter,
           onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
-          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows}}>
+          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows, mode}}>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: activeComponent === 'game' ? 'flex-start' : 'center' }}>
             {activeComponent === 'game' ? (
               <div className="game_container-inner">
@@ -418,7 +429,8 @@ function App() {
                 <Keyboard />
               </div>
             ) : activeComponent === 'settings' ? (
-              <Settings onClose={() => window.handleButtonClick('game')} />
+              <Settings onClose={() => setActiveComponent('game')} onModeChange={handleModeChange}> 
+              </Settings>
             ) : activeComponent === 'statistics' ? (
               <Statistics onClose={() => window.handleButtonClick('game')} />
             ) : activeComponent === 'info' ? (
