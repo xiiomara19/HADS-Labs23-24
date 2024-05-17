@@ -19,8 +19,6 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const[minutes, setMinutes] = useState(0);
   
-  
-  
   let timer;
   useEffect(() => {
     timer = setInterval(() => {
@@ -66,8 +64,8 @@ function App() {
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
   const [mode, setMode] = useState(sessionStorage.getItem('mode') || 'normal');
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
-  const [plays, setPlays] = useState(0);
-  const [wins, setWins] = useState(0);
+  const [plays, setPlays] = useState(sessionStorage.getItem('plays') || 0);
+  const [wins, setWins] = useState(sessionStorage.getItem('wins') || 0);
 
   useEffect(() => {
       const getRandomIndex = (usedIndices) => {
@@ -480,11 +478,19 @@ function App() {
   window.handleButtonClick = function(componentName) {
     setActiveComponent(componentName);
   };
+  
   const handleModeChange = (newMode) => {
     setMode(newMode);
     sessionStorage.setItem('mode', newMode);
     console.log("Mode changed to:", newMode);
   };
+
+  const handlePlaysChange = (newPlays) => {
+    setPlays(newPlays);
+    sessionStorage.setItem('plays', newPlays);
+    console.log("Plays changed to:", newPlays);
+  };
+
   useEffect(() => {
     console.log("Current mode:", mode); // Log the current mode whenever it changes
   }, [mode]);
@@ -496,8 +502,10 @@ function App() {
       <div className="Game-options ">
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
-        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
+        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
         <p>modo: {mode}</p>
+        <p>Partidas jugads: {plays}</p>
+        <p>Partidas ganadas: {wins}</p>
       </div>
       )}
       <AppContext.Provider 
