@@ -154,6 +154,7 @@ function App() {
   document.getElementById("home").onclick = handleStartOver;
 
   const OnKeyLetter = (val) => {
+    if (selectSolutions) return;
     if(enteredLetter.col > 4) return;
     if (enteredLetter.row > 8) return; 
     
@@ -180,6 +181,7 @@ function App() {
   }
 
   const onKeyDelete = () => {
+    if (selectSolutions) return;
     if (enteredLetter.col === 0) return;
     const newBoard = [...board];
     newBoard[enteredLetter.row][enteredLetter.col - 1] = '';
@@ -192,7 +194,7 @@ function App() {
 
   const onKeyEnter = () => {
 
-  console.log("-------------------------------------PREVIOUS"+previouswordAI);
+    if (selectSolutions) return;
     if (wordAI == previouswordAI) {
       setShowWaitMessage(true);
       setTimeout(() => {
@@ -505,6 +507,7 @@ function App() {
   useEffect(() => {
     console.log("CURRENT PREVIOUS:", previouswordAI); 
   }, [previouswordAI]);
+
   
   return (
 
@@ -515,7 +518,7 @@ function App() {
       
         <button id="giveUp" className="App-button App-button-marked" onClick={stopGiveUp}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
-        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
+        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) {setSelectSolutions(true)}}}>Elegir soluciones</button>
         <p className='App-button App-button-marked'>modo: {mode}</p>
       </div>
       )}
@@ -581,7 +584,7 @@ function App() {
           <b>(En caso de que no introduzca nada se mantendrá la solución original)</b>
           <p></p>
           <button className='close-btn' onClick={() => {
-            setSelectSolutions(false); }}>✖</button>
+            setSelectSolutions(false)}}>✖</button>
           <div>
           <input id="sol1" type="text" placeholder="Solucion 1"></input>
           <p id ="msg1" className='invisible'> Debe introducir una palabra valida de 5 letras</p>
@@ -605,6 +608,7 @@ function App() {
           <p id="cambiosMsg" className='invisible'>Se han guardado sus nuevas soluciones</p>
           <br></br>
           <button onClick={() => {
+            
             let sol1 = document.getElementById("sol1");
             let msg1 = document.getElementById("msg1");
             if (!wordSet.has(sol1.value)) if (sol1.value.length !== 0) msg1.classList.remove("invisible");
