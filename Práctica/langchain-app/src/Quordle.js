@@ -82,12 +82,11 @@ export const getFrequencies = (wordSet) => {
     }
   });
 
-  const result = frequencies.map((positionFrequencies, position) => {
-    const frequenciesString = positionFrequencies.join(',');
-    return `Posición ${position + 1}: ${frequenciesString}`;
-  }).join('; ');
+ // Convert each array in frequencies to a string
+ const contentStrings = frequencies.map(array => array.join(','));
+ console.log('FRECUENCIAS', contentStrings);
 
-  return result;
+ return contentStrings;
 };
 
 export function filterDictionaryAI(wordSet, word, array1, array2, array3, array4) {

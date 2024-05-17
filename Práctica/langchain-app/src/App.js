@@ -217,6 +217,10 @@ function App() {
     const colors2 = checkWord(wordAI, [solutionAI2]);  
     const colors3 = checkWord(wordAI, [solutionAI3]);
     const colors4 = checkWord(wordAI, [solutionAI4]);
+    setAttemptsResults(attemtsResults+ '. Your guess was '+ wordAI + 
+    ', the results for that guess were: first hidden word -->'+ 
+    colors1 + ', Second hidden word -->'+ colors2 + 
+    ', Third hidden word -->'+ colors3 + ', Fourth hidden word -->'+ colors4 + '.')
 
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
@@ -232,7 +236,7 @@ function App() {
   const [boardAI, setBoardAI] = useState(boardBeginingAI);
   const [dictionaryAI, setDictionaryAI] = useState(new Set());
   const [wordAI, setWordAI] = useState('');
-  
+  const [attemtsResults, setAttemptsResults] = useState('');
 
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
 
@@ -252,9 +256,13 @@ function App() {
 
   useEffect(() => {
     if (dictionaryAI.size > 0) {
-      console.log(dictionaryAI);
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
+
+      let msg = "For a list of 5 letters long words in Spanish, this are the frequences "+
+      "of appearence for each letter of the alphabet in order"+ frequencies +
+      " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
+      " Return just the 5 letters word following the format: 'guess: word'.";
 
       const sendFrequencies = async () => {
         try {
@@ -266,7 +274,7 @@ function App() {
             body: JSON.stringify({
               messages: [
                 {
-                  content: frequencies
+                  content: msg
                 },
                 {content: dictionaryArray}
               ]
@@ -296,15 +304,19 @@ function App() {
 
 
   async function receiveAttempt(res1, res2, res3, res4) {
-    console.log(dictionaryAI);
-    console.log(dictionaryAI.size);
-    console.log(dictionaryAI.length);
-    console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Recibiendo intento+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    
+   
     if (dictionaryAI.size > 0 || dictionaryAI.length > 0) {
-      console.log(dictionaryAI);
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
+
+      let msg = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
+                            frequencies +
+                            " Your previous guesses were: " + attemtsResults +
+                            " Green means the letter in the guessed word is at the correct position" +
+                            " Yellow means the letter in the guessed word is in the hidden word but in the wrong position" +
+                            " Grey means the letter in the guessed word is not in the hidden word." +
+                            " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden words." +
+                            " Return just the 5 letters word following the format: 'guess: word'.";
       
       try {
         const response = await fetch('http://localhost:5000/receiveAttempt', {
@@ -314,13 +326,8 @@ function App() {
           },
           body: JSON.stringify({
             messages: [
-              {content: frequencies},
-              {content: dictionaryArray},
-              {content: res1},
-              {content: res2},
-              {content: res3},
-              {content: res4},
-              {content: wordAI}
+              {content: msg},
+              {content: dictionaryArray}
             ]
           }),
         });
