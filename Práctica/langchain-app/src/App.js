@@ -6,7 +6,7 @@ import Board from './elements/Board';
 import Statistics from './statistics';
 import Info from './info';
 import Settings from './settings';
-import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies, filterDictionaryAI} from './Quordle';
+import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies, filterDictionaryAI, filterDictionaryModoPutada} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
 
@@ -67,8 +67,14 @@ function App() {
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
   const [mode, setMode] = useState(sessionStorage.getItem('mode') || 'normal');
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
-  const [plays, setPlays] = useState(sessionStorage.getItem('plays') || 0);
-  const [wins, setWins] = useState(sessionStorage.getItem('wins') || 0);
+  const [plays, setPlays] = useState(Number(sessionStorage.getItem('plays') || 0));
+  const [wins, setWins] = useState(Number(sessionStorage.getItem('wins') || 0));
+
+  useEffect(() => {
+    sessionStorage.setItem('plays', plays);
+    sessionStorage.setItem('wins', wins);
+  }, [plays, wins]);
+
 
   useEffect(() => {
       const getRandomIndex = (usedIndices) => {
@@ -97,10 +103,6 @@ function App() {
     setSolutionAI2(data.solutions[usedIndices[5]]);
     setSolutionAI3(data.solutions[usedIndices[6]]);
     setSolutionAI4(data.solutions[usedIndices[7]]);
-    setPlays(0);
-    console.log(plays)
-    setWins(0);
-    console.log(wins)
   }, []);
   
   useEffect(() => {
@@ -130,7 +132,6 @@ function App() {
   useEffect(() => {
     CreateWordSet().then((words) => {
       setWordSet(words.wordSet);
-      console.log(words.wordSet)
     }); 
   },[]);
   
@@ -203,7 +204,7 @@ function App() {
     }
 
     if (wordSet.has(word.toLowerCase())){
-      setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+      
       if (word.toLowerCase() === solution1) {
         let newGuessedRows = [...guessedRows];
         newGuessedRows[0] = {row: enteredLetter.row};
@@ -227,6 +228,8 @@ function App() {
         setGuessedRows(newGuessedRows);
       }
       checkWin(guessedRows);
+      setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+      console.log("el usuario va por la row: (KEY ENTER)",enteredLetter.row)
     }
     else {
       setIncorrectWord(true);
@@ -235,7 +238,7 @@ function App() {
       }, 2000);
       return;
     }
-
+    
     //send colors from AI to backend
     const colors1 = checkWord(wordAI, [solutionAI1]);
     if (colors1.every(color => color === "green")) {
@@ -268,14 +271,16 @@ function App() {
     ', Third hidden word -->'+ colors3 + ', Fourth hidden word -->'+ colors4 + '.')
     
 
-    console.log (guessedRowsAI)
-
+    if(mode === 'normal'){
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
+    }
+    else if (mode === 'putada'){
+      setDictionaryAI(filterDictionaryModoPutada(dictionaryAI, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
+
+    }
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
-    console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
     previoussetWordAI(wordAI);
-    console.log(dictionaryAI);
     setAiHasResponded(false);
   }
 
@@ -293,7 +298,11 @@ function App() {
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
 
   useEffect(() => {
-    console.log('Dictionary AI has been updated:', dictionaryAI);
+    console.log('Dictionary AI has been updated:', dictionaryAI);      
+    console.log(Array.from(dictionaryAI).includes(solutionAI1));
+      console.log(Array.from(dictionaryAI).includes(solutionAI2));
+      console.log(Array.from(dictionaryAI).includes(solutionAI3));
+      console.log(Array.from(dictionaryAI).includes(solutionAI4));
   }, [dictionaryAI]);
 
   useEffect(() => {
@@ -329,7 +338,7 @@ function App() {
 
       const sendFrequencies = async () => {
         try {
-          const response = await fetch('http://localhost:5000/sendFrequencesBegining', {
+          const response = await fetch('http://localhost:5000/receiveAttempt', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -350,8 +359,7 @@ function App() {
   
           // Get the response data
           const responseData = await response.json();
-          console.log(dictionaryAI);
-          console.log('Word:', responseData);
+
           // Save the prediction in wordPredictionAI
           
           setWordAI(responseData);
@@ -370,7 +378,7 @@ function App() {
   async function receiveAttempt(res1, res2, res3, res4) {
    
     if (dictionaryAI.size > 0 || dictionaryAI.length > 0) {
-      const dictionaryArray = Array.from(dictionaryAI);
+      let dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
 
       let msg = ''
@@ -387,7 +395,11 @@ function App() {
       }
       else if (mode === 'putada'){
         msg = "For a list of 5 letters long words in Spanish, this are the frequences "+
-        "of appearence for each letter of the alphabet in order"+ frequencies +
+        "of appearence for each letter of the alphabet in order: ['1309,589,1114,352,252,481,406,356,127,287,1,547,72…254,326,863,45,679,565,744,148,347,0,6,118,164,51', '2274,110,143,87,1381,64,59,164,1327,67,0,397,130,197,1599,130,4,724,171,127,1462,82,0,36,24,50,50', '717,361,646,361,721,186,338,49,726,298,0,853,447,7…,441,371,53,1074,589,616,479,128,0,52,153,191,245', '2168,208,410,458,1647,71,258,137,982,172,0,496,258,326,947,200,0,589,290,575,279,128,0,6,43,128,83', '2358,3,6,399,1397,0,1,3,222,6,0,321,7,1072,2035,2,0,608,2236,23,24,0,0,12,52,72,0']" +
+        ". Your guess was" + wordAI + 
+        ", the results for that guess were: first hidden word --> ['grey', 'yellow', 'grey', 'green', 'grey']"+ 
+         ", Second hidden word --> ['yellow', 'grey', 'green', 'green', 'grey']"+ 
+        ", Third hidden word --> ['grey', 'yellow', 'grey', 'yellow', 'grey'], Fourth hidden word --> ['green', 'grey', 'yellow', 'green', 'grey']" + 
         " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
         " Return just the 5 letters word following the format: 'guess: word'.";
       }
@@ -416,7 +428,7 @@ function App() {
         setAiHasResponded(true);
         // Get the response data
         const responseData = await response.json();
-        console.log('Word:', responseData);
+
         // Save the prediction in wordPredictionAI
         
         setWordAI(responseData);
@@ -486,13 +498,6 @@ function App() {
   const handleModeChange = (newMode) => {
     setMode(newMode);
     sessionStorage.setItem('mode', newMode);
-    console.log("Mode changed to:", newMode);
-  };
-
-  const handlePlaysChange = (newPlays) => {
-    setPlays(newPlays);
-    sessionStorage.setItem('plays', newPlays);
-    console.log("Plays changed to:", newPlays);
   };
 
   useEffect(() => {
@@ -507,14 +512,15 @@ function App() {
 
     <div className="Game">
       {activeComponent === 'game' && (
-      <div className="Game-options ">
+      <div className="Game-options " style={{ display: 'flex', justifyContent: 'center' }}>
         {showWaitMessage && <p>Please wait for the AI to respond...</p>}
+      
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
         <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
-        <p>modo: {mode}</p>
-        <p>Partidas jugads: {plays}</p>
-        <p>Partidas ganadas: {wins}</p>
+        <p className='App-button App-button-marked'>modo: {mode}</p>
+        <p className='App-button App-button-marked'>Partidas jugads: {plays}</p>
+        <p className='App-button App-button-marked'>Partidas ganadas: {wins}</p>
       </div>
       )}
       <AppContext.Provider 
@@ -535,7 +541,7 @@ function App() {
               <Settings onClose={() => setActiveComponent('game')} onModeChange={handleModeChange}> 
               </Settings>
             ) : activeComponent === 'statistics' ? (
-              <Statistics onClose={() => window.handleButtonClick('game')} />
+              <Statistics onClose={() => window.handleButtonClick('game')} plays ={plays}  wins={wins} />
             ) : activeComponent === 'info' ? (
               <Info onClose={() => window.handleButtonClick('game')} />
             ) : null}
@@ -608,7 +614,6 @@ function App() {
           <button onClick={() => {
             let sol1 = document.getElementById("sol1");
             let msg1 = document.getElementById("msg1");
-            console.log(sol1.value);
             if (!wordSet.has(sol1.value)) if (sol1.value.length !== 0) msg1.classList.remove("invisible");
 
             let sol2 = document.getElementById("sol2");
@@ -639,10 +644,7 @@ function App() {
   );
 
   function checkWin(guessedRows) {
-    console.log(Object.values(guessedRows[0]).length);
-    console.log(Object.values(guessedRows[1]).length);
-    console.log(Object.values(guessedRows[2]).length);
-    console.log(Object.values(guessedRows[3]).length);
+    console.log("el usuario va por la row: (CHECKWIN)",enteredLetter.row)
     if (guessedRows.every(row => Object.values(row).length === 1)) {
       console.log("win");
       setGameOver(true);
@@ -650,11 +652,12 @@ function App() {
       setPlays(plays => plays + 1);
       return;
     }
-    else if (!guessedRows.every(row => Object.values(row).length === 1) && enteredLetter.row === 9) {
-      console.log("perdido")
-      setPlays(plays => plays + 1);
-      setGiveUpButton(true);
-      return;
+    else if ( enteredLetter.row === 8){
+        console.log("perdido")
+        setPlays(plays => plays + 1);
+        setGiveUpButton(true);
+        return;
+      
     }
   }
 }
