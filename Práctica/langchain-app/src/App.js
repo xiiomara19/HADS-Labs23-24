@@ -502,9 +502,7 @@ function App() {
     sessionStorage.setItem('mode', newMode);
   };
 
-  useEffect(() => {
-    console.log("Current mode:", mode); 
-  }, [mode]);
+
   
   return (
 
