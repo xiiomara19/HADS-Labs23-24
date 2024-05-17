@@ -72,7 +72,7 @@ function Board() {
                     <Cell id='T1R8C4' row={7} col={3}/>
                     <Cell id='T1R8C5' row={7} col={4}/>
                   </div>
-                  <div id='T1R9' className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[0].row == 8 ? 'Row-current' : ''} ${Object.keys(guessedRows[0]).length === 0 ? 'Row-current' : ''}`}>
+                  <div id='T1R9' className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[0].row == 8 ? 'Row-current' : ''} `}>
                     <Cell id='T1R9C1' row={8} col={0}/>
                     <Cell id='T1R9C2' row={8} col={1}/>
                     <Cell id='T1R9C3' row={8} col={2}/>
@@ -137,7 +137,7 @@ function Board() {
                     <Cell id='T2R8C4' row={7} col={8}/>
                     <Cell id='T2R8C5' row={7} col={9}/>
                   </div>
-                  <div id='T2R9' className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[1].row == 8 ? 'Row-current' : ''} ${Object.keys(guessedRows[1]).length === 0 ? 'Row-current' : ''}`}>
+                  <div id='T2R9' className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[1].row == 8 ? 'Row-current' : ''} `}>
                     <Cell id='T2R9C1' row={8} col={5}/>
                     <Cell id='T2R9C2' row={8} col={6}/>
                     <Cell id='T2R9C3' row={8} col={7}/>
@@ -204,7 +204,7 @@ function Board() {
                     <Cell id='T3R8C4' row={16} col={3}/>
                     <Cell id='T3R8C5' row={16} col={4}/>
                   </div>
-                  <div id='T3R9' className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[2].row == 8 ? 'Row-current' : ''} ${Object.keys(guessedRows[2]).length === 0 ? 'Row-current' : ''}`}>
+                  <div id='T3R9' className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[2].row == 8 ? 'Row-current' : ''} `}>
                     <Cell id='T3R9C1' row={17} col={0}/>
                     <Cell id='T3R9C2' row={17} col={1}/>
                     <Cell id='T3R9C3' row={17} col={2}/>
@@ -269,7 +269,7 @@ function Board() {
                     <Cell id='T4R8C4' row={16} col={8}/>
                     <Cell id='T4R8C5' row={16} col={9}/>
                   </div>
-                  <div id='T4R9'className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[3].row == 8 ? 'Row-current' : ''} ${Object.keys(guessedRows[3]).length === 0 ? 'Row-current' : ''}` }>
+                  <div id='T4R9'className={`Row ${enteredLetter.row ==8 ? 'Row-current' : ''} ${guessedRows[3].row == 8 ? 'Row-current' : ''}` }>
                     <Cell id='T4R9C1' row={17} col={5}/>
                     <Cell id='T4R9C2' row={17} col={6}/>
                     <Cell id='T4R9C3' row={17} col={7}/>
