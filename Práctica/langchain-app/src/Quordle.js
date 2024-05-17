@@ -84,7 +84,7 @@ export const getFrequencies = (wordSet) => {
 
  // Convert each array in frequencies to a string
  const contentStrings = frequencies.map(array => array.join(','));
- console.log('FRECUENCIAS', contentStrings);
+ //console.log('FRECUENCIAS', contentStrings);
 
  return contentStrings;
 };
