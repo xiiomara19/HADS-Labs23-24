@@ -553,7 +553,6 @@ function App() {
             document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
           <p>Las respuestas eran:</p>
           <p>{solution1}, {solution2}, {solution3}, {solution4}</p>
-          <br/>
           <p> Has tardado: {minutes<10? "0"+minutes:minutes}:{seconds<10? "0"+seconds:seconds}</p>
           <button onClick={handleStartOver}>Comenzar de nuevo</button>
         </Popup>
@@ -573,9 +572,7 @@ function App() {
             document.getElementById("giveUp").classList.add("invisible");
             document.getElementById("startOver").classList.remove("invisible"); }}>✖</button>
           <h1>¡Felicidades!</h1>
-          <br/>
           
-          <p> Lo has conseguido en {minutes<10? "0"+minutes:minutes}:{seconds<10? "0"+seconds:seconds}</p>
           <button onClick={handleStartOver}>Comenzar de nuevo</button>
         </Popup>
 
