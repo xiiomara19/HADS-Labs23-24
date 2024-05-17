@@ -239,7 +239,7 @@ function App() {
       newGuessedRowsAI[4] = {row: enteredLetterAI.row};
       setGuessedRowsAI(newGuessedRowsAI);
     }
-    
+
     setAttemptsResults(attemtsResults+ '. Your guess was '+ wordAI + 
     ', the results for that guess were: first hidden word -->'+ 
     colors1 + ', Second hidden word -->'+ colors2 + 
@@ -401,7 +401,7 @@ function App() {
 
   useEffect(() => {
   // Function to update boardAI with the wordAI horizontally at the first row
-    //if (enteredLetterAI.row === 8) return;
+    if (enteredLetterAI.row === 8) return;
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
     for (let i = enteredLetterAI.col; i < word.length; i++) {
