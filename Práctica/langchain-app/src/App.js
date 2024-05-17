@@ -63,11 +63,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [selectSolutions, setSelectSolutions] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
-  const [mode, setMode] = useState(() => {
-    const storedMode = localStorage.getItem('gameMode');
-    // If a mode is found, return it; otherwise, return the default mode
-    return storedMode ? storedMode : 'normal';
-  });
+  const [mode, setMode] = useState(sessionStorage.getItem('mode') || 'normal');
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
 
   useEffect(() => {
@@ -219,6 +215,7 @@ function App() {
       setTimeout(() => {
         setIncorrectWord(false);
       }, 2000);
+      return;
     }
 
     //send colors from AI to backend
@@ -438,6 +435,7 @@ function App() {
   };
   const handleModeChange = (newMode) => {
     setMode(newMode);
+    sessionStorage.setItem('mode', newMode);
     console.log("Mode changed to:", newMode);
   };
   useEffect(() => {
