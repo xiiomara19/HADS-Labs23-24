@@ -506,7 +506,7 @@ function App() {
     <div className="Game">
       {activeComponent === 'game' && (
       <div className="Game-options " style={{ display: 'flex', justifyContent: 'center' }}>
-        {showWaitMessage && <p>Please wait for the AI to respond...</p>}
+        {showWaitMessage && <p>Espera a que la IA responda...</p>}
       
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>

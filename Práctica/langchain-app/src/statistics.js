@@ -9,7 +9,7 @@ function Statistics({ onClose , plays, wins}) {
         onClose();
     };
     const {guessedRows} = useContext(AppContext);
-    
+
     return (
     <div className="App-page">
       <div className="App-title">
@@ -23,21 +23,21 @@ function Statistics({ onClose , plays, wins}) {
        <div className="stats-container">
                 <div className="stat-item">
                     <div className="stat-value">{plays}</div>
-                    <div className="stat-description"> Games played </div>
+                    <div className="stat-description"> Partidas jugadas </div>
                 </div>
                 <div className="stat-item">
                     <div className="stat-value"> {wins} </div>
-                    <div className="stat-description"> Games won </div>
+                    <div className="stat-description"> Partidas ganadas </div>
                 </div>
                 <div className="stat-item">
                     <div className="stat-value"> {wins * 100 / plays} </div>
-                    <div className="stat-description"> % of wins </div>
+                    <div className="stat-description"> % de victorias </div>
                 </div>
         </div>
 
        <div className="stats-chart">
             <hr/>
-            <div className="chart-title">Best tries distribution</div>
+            <div className="chart-title">Distribución de las mejores tiradas</div>
             <table>
                 <tbody>
                     <tr>
