@@ -408,27 +408,16 @@ function App() {
     if (enteredLetterAI.row === 8) return;
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
-    console.log(word.length)
+
     for (let i = enteredLetterAI.col; i < word.length; i++) {
-      console.log (word[i])
-      if (Object.keys(guessedRowsAI[0]).length === 0) {
-        console.log("entra 1")
-        newBoardAI[enteredLetterAI.row][i] = word[i];
-      }
+      if (enteredLetterAI.row < 10) {
+        if (Object.keys(guessedRowsAI[0]).length === 0) newBoardAI[enteredLetterAI.row][i] = word[i];
+
+      if (Object.keys(guessedRowsAI[1]).length === 0) newBoardAI[enteredLetterAI.row][i + 5] = word[i];
   
-      if (Object.keys(guessedRowsAI[1]).length === 0) {
-        console.log("entra 2")
-        newBoardAI[enteredLetterAI.row][i + 5] = word[i];
-      }
+      if (Object.keys(guessedRowsAI[2]).length === 0) newBoardAI[enteredLetterAI.row + 9][i] = word[i];
   
-      if (Object.keys(guessedRowsAI[2]).length === 0 ) {
-        console.log("entra 3")
-        newBoardAI[enteredLetterAI.row + 9][i] = word[i];
-      }
-  
-      if (Object.keys(guessedRowsAI[3]).length === 0) {
-        console.log("entra 4")
-        newBoardAI[enteredLetterAI.row + 9][i + 5] = word[i];
+      if (Object.keys(guessedRowsAI[3]).length === 0) newBoardAI[enteredLetterAI.row + 9][i + 5] = word[i];
       }
     }
     setBoardAI(newBoardAI);
@@ -454,11 +443,7 @@ function App() {
   return (
 
     <div className="Game">
-      <div className="Game-options ">
-        <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
-        <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
-        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
-      </div>
+      
       <AppContext.Provider 
           value={{solution1, solution2, solution3, solution4,
           board, setBoard, enteredLetter, setEnteredLetter,
@@ -466,6 +451,11 @@ function App() {
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows, mode,
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, 
           wordAI, wordSet, guessedRows, enteredLetterAI, guessedRowsAI}}>
+          <div className="Game-options ">
+            <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
+            <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
+            <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
+          </div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: activeComponent === 'game' ? 'flex-start' : 'center' }}>
             {activeComponent === 'game' ? (
               <div className="game_container-inner">
@@ -581,12 +571,16 @@ function App() {
   );
 
   function checkWin(guessedRows) {
+    console.log(Object.values(guessedRows[0]).length);
+    console.log(Object.values(guessedRows[1]).length);
+    console.log(Object.values(guessedRows[2]).length);
+    console.log(Object.values(guessedRows[3]).length);
     if (guessedRows.every(row => Object.values(row).length === 1)) {
       console.log("win");
       setGameOver(true);
       return;
     }
-    else if (enteredLetter.row === 8) {
+    else if (!guessedRows.every(row => Object.values(row).length === 1) && enteredLetter.row === 9) {
       console.log("perdido")
       setGiveUpButton(true);
       return;
