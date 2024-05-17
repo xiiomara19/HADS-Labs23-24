@@ -458,11 +458,6 @@ function App() {
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows, mode,
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, 
           wordAI, wordSet, guessedRows, enteredLetterAI, guessedRowsAI}}>
-          <div className="Game-options ">
-            <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
-            <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
-            <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
-          </div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: activeComponent === 'game' ? 'flex-start' : 'center' }}>
             {activeComponent === 'game' ? (
               <div className="game_container-inner">
