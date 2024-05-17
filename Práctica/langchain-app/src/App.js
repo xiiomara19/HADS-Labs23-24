@@ -192,7 +192,6 @@ function App() {
 
   const onKeyEnter = () => {
 
-  console.log("-------------------------------------PREVIOUS"+previouswordAI);
     if (wordAI == previouswordAI) {
       setShowWaitMessage(true);
       setTimeout(() => {
@@ -309,7 +308,9 @@ function App() {
     }); 
   },[]);
 
-
+  useEffect(() => {
+    console.log('DictionaryAI:', dictionaryAI);
+  }, [dictionaryAI]);
 
 
   useEffect(() => {
@@ -502,9 +503,7 @@ function App() {
     console.log("Current mode:", mode); 
   }, [mode]);
 
-  useEffect(() => {
-    console.log("CURRENT PREVIOUS:", previouswordAI); 
-  }, [previouswordAI]);
+  
   
   return (
 
