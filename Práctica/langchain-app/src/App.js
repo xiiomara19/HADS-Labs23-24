@@ -63,7 +63,10 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [selectSolutions, setSelectSolutions] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
-  const [mode, setMode] = useState();
+  const [mode, setMode] = useState(() => {
+    // Retrieve the game mode from local storage, defaulting to an empty string if not found
+    return localStorage.getItem('gameMode') || '';
+  });
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
 
   useEffect(() => {
@@ -458,6 +461,7 @@ function App() {
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
         <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
+        
       </div>
       <AppContext.Provider 
           value={{solution1, solution2, solution3, solution4,
