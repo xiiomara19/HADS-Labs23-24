@@ -11,6 +11,7 @@ import Popup from './elements/Popup';
 import BoardAI from './elements/BoardAI';
 
 
+
 export const AppContext = createContext();
 
 
@@ -133,7 +134,7 @@ function App() {
   },[]);
   
   useEffect(() => {
-    checkWin(guessedRows);
+    checkWin(guessedRows, enteredLetter.row);
   }, [guessedRows]);
 
   const handleStartOver = () => {
@@ -214,7 +215,7 @@ function App() {
         newGuessedRows[3] = {row: enteredLetter.row};
         setGuessedRows(newGuessedRows);
       }
-      checkWin(guessedRows);
+      checkWin(guessedRows, enteredLetter.row+1);
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
       console.log("el usuario va por la row: (KEY ENTER)",enteredLetter.row)
     }
@@ -280,14 +281,6 @@ function App() {
   const [attemtsResults, setAttemptsResults] = useState('');
 
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
-
-  useEffect(() => {
-    console.log('Dictionary AI has been updated:', dictionaryAI);      
-    console.log(Array.from(dictionaryAI).includes(solutionAI1));
-      console.log(Array.from(dictionaryAI).includes(solutionAI2));
-      console.log(Array.from(dictionaryAI).includes(solutionAI3));
-      console.log(Array.from(dictionaryAI).includes(solutionAI4));
-  }, [dictionaryAI]);
 
   useEffect(() => {
     CreateWordSet().then((words) => {
@@ -495,8 +488,6 @@ function App() {
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
         <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
         <p className='App-button App-button-marked'>modo: {mode}</p>
-        <p className='App-button App-button-marked'>Partidas jugads: {plays}</p>
-        <p className='App-button App-button-marked'>Partidas ganadas: {wins}</p>
       </div>
       )}
       <AppContext.Provider 
@@ -619,7 +610,7 @@ function App() {
       </div>
   );
 
-  function checkWin(guessedRows) {
+  function checkWin(guessedRows, row) {
     console.log("el usuario va por la row: (CHECKWIN)",enteredLetter.row)
     if (guessedRows.every(row => Object.values(row).length === 1)) {
       console.log("win");
@@ -628,7 +619,7 @@ function App() {
       setPlays(plays => plays + 1);
       return;
     }
-    else if ( enteredLetter.row === 8){
+    else if ( row >= 9){
         console.log("perdido")
         setPlays(plays => plays + 1);
         setGiveUpButton(true);

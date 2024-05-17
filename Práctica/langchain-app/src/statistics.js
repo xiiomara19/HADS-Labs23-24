@@ -1,12 +1,15 @@
 
 import './styles/App.css';
+import React, {useContext} from 'react'
+import { AppContext } from './App'
 
 function Statistics({ onClose , plays, wins}) {
     const handleStartOver = () => {
         window.location.reload();   //SI HACER RELOAD MODO = 'undefined' SIN RELOAD DA BIEN MODO
         onClose();
-      };
-  
+    };
+    const {guessedRows} = useContext(AppContext);
+    
     return (
     <div className="App-page">
       <div className="App-title">
@@ -30,7 +33,8 @@ function Statistics({ onClose , plays, wins}) {
                     <div className="stat-value"> {wins * 100 / plays} </div>
                     <div className="stat-description"> % of wins </div>
                 </div>
-        </div>        
+        </div>
+
        <div className="stats-chart">
             <hr/>
             <div className="chart-title">Best tries distribution</div>
