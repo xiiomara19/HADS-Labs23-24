@@ -81,6 +81,8 @@ app.post('/sendFrequencesBegining', async (req, res) => {
           }
           else if(!dictionary.has(word)){
             contentStrings = "The word "+ word +" is not in the dictionary. Try again. "+ contentStrings;
+            console.log('The word ', word + ' is not in the dictionary. Finding the most similar word...');
+            word = findMostSimilarWord(word, dictionary);
           }
     }
         // Send the prediction back in the response

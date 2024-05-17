@@ -254,7 +254,7 @@ function App() {
 
     console.log (guessedRowsAI)
 
-    setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
+    setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
     console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
