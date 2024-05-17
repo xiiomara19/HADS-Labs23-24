@@ -405,7 +405,7 @@ function App() {
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows}}>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: activeComponent === 'game' ? 'flex-start' : 'center' }}>
             {activeComponent === 'game' ? (
-              <div className="game_container-outer">
+              <div className="game_container-inner">
                 <Board />
                 <div className="Game-challenge-bar"></div>
                 <Keyboard />
