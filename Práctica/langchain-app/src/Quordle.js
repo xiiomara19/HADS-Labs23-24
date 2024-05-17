@@ -89,7 +89,7 @@ export const getFrequencies = (wordSet) => {
  return contentStrings;
 };
 
-export function filterDictionaryAI(wordSet, word, array1, array2, array3, array4) {
+export function filterDictionaryAI(wordSet, word, array1, array2, array3, array4,  sol1, sol2, sol3, sol4) {
   const arrays = [array1, array2, array3, array4];
   const filteredWords = Array.from(wordSet).filter((setWord) => {
     return arrays.some((array, index) => {
@@ -109,6 +109,7 @@ export function filterDictionaryAI(wordSet, word, array1, array2, array3, array4
       return true;
     });
   });
+  const DictionaryFiltered = filteredWords.push(sol1, sol2, sol3, sol4);
   console.log('PALABRAS FILTRADAS', filteredWords);
   return filteredWords;
 }

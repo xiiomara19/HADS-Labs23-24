@@ -20,7 +20,7 @@ function App() {
   const[minutes, setMinutes] = useState(0);
   
   
-
+  
   let timer;
   useEffect(() => {
     timer = setInterval(() => {
@@ -64,10 +64,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [selectSolutions, setSelectSolutions] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
-  const [mode, setMode] = useState(() => {
-    // Retrieve the game mode from local storage, defaulting to an empty string if not found
-    return localStorage.getItem('gameMode') || '';
-  });
+  const [mode, setMode] = useState(sessionStorage.getItem('mode') || 'normal');
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
   const [plays, setPlays] = useState(0);
   const [wins, setWins] = useState(0);
@@ -225,6 +222,7 @@ function App() {
       setTimeout(() => {
         setIncorrectWord(false);
       }, 2000);
+      return;
     }
 
     //send colors from AI to backend
@@ -261,7 +259,7 @@ function App() {
 
     console.log (guessedRowsAI)
 
-    setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
+    setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
     console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
@@ -444,6 +442,7 @@ function App() {
   };
   const handleModeChange = (newMode) => {
     setMode(newMode);
+    sessionStorage.setItem('mode', newMode);
     console.log("Mode changed to:", newMode);
   };
   useEffect(() => {
@@ -458,6 +457,7 @@ function App() {
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
         <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
+        <p>modo: {mode}</p>
       </div>
       )}
       <AppContext.Provider 
