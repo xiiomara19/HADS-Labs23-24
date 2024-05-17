@@ -3,9 +3,8 @@ import './styles/App.css';
 function App({onClose, onModeChange}) {
 
   const handleStartOver = (mode) => {
-    window.location.reload();   //SI HACER RELOAD MODO = 'undefined' SIN RELOAD DA BIEN MODO
+    window.location.reload(); 
     onModeChange(mode);
-    localStorage.setItem('gameMode', mode);
   };
 
   //document.getElementById("home").onclick = handleStartOver;
