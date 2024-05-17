@@ -19,8 +19,6 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const[minutes, setMinutes] = useState(0);
   
-  
-  
   let timer;
   useEffect(() => {
     timer = setInterval(() => {
@@ -66,8 +64,8 @@ function App() {
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
   const [mode, setMode] = useState(sessionStorage.getItem('mode') || 'normal');
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
-  const [plays, setPlays] = useState(0);
-  const [wins, setWins] = useState(0);
+  const [plays, setPlays] = useState(sessionStorage.getItem('plays') || 0);
+  const [wins, setWins] = useState(sessionStorage.getItem('wins') || 0);
 
   useEffect(() => {
       const getRandomIndex = (usedIndices) => {
@@ -295,11 +293,23 @@ function App() {
     if (dictionaryAI.size > 0) {
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
-
-      let msg = "For a list of 5 letters long words in Spanish, this are the frequences "+
+      let msg = ''
+      if(mode === 'normal'){
+        msg = "For a list of 5 letters long words in Spanish, this are the frequences "+
       "of appearence for each letter of the alphabet in order"+ frequencies +
       " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
       " Return just the 5 letters word following the format: 'guess: word'.";
+      }
+      else if (mode === 'putada'){
+        msg = "For a list of 5 letters long words in Spanish, this are the frequences "+
+      "of appearence for each letter of the alphabet in order"+ frequencies +
+      " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
+      " Return just the 5 letters word following the format: 'guess: word'.";
+      }
+      else if (mode === 'desesperacion'){
+        msg =  " Guess a 5 letters long word in spanish." +
+        " Return just the 5 letters word following the format: 'guess: word'.";
+      }
 
       const sendFrequencies = async () => {
         try {
@@ -346,14 +356,28 @@ function App() {
       const dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
 
-      let msg = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
-                            frequencies +
-                            " Your previous guesses were: " + attemtsResults +
-                            " Green means the letter in the guessed word is at the correct position" +
-                            " Yellow means the letter in the guessed word is in the hidden word but in the wrong position" +
-                            " Grey means the letter in the guessed word is not in the hidden word." +
-                            " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden words." +
-                            " Return just the 5 letters word following the format: 'guess: word'.";
+      let msg = ''
+
+      if(mode === 'normal'){
+        msg = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
+        frequencies +
+        " Your previous guesses were: " + attemtsResults +
+        " Green means the letter in the guessed word is at the correct position" +
+        " Yellow means the letter in the guessed word is in the hidden word but in the wrong position" +
+        " Grey means the letter in the guessed word is not in the hidden word." +
+        " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden words." +
+        " Return just the 5 letters word following the format: 'guess: word'.";
+      }
+      else if (mode === 'putada'){
+        msg = "For a list of 5 letters long words in Spanish, this are the frequences "+
+        "of appearence for each letter of the alphabet in order"+ frequencies +
+        " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
+        " Return just the 5 letters word following the format: 'guess: word'.";
+      }
+      else if (mode === 'desesperacion'){
+      msg =  " Guess a 5 letters long word in spanish." +
+      " Return just the 5 letters word following the format: 'guess: word'.";
+      }
       
       try {
         const response = await fetch('http://localhost:5000/receiveAttempt', {
@@ -413,12 +437,12 @@ function App() {
 
   useEffect(() => {
   // Function to update boardAI with the wordAI horizontally at the first row
-    if (enteredLetterAI.row === 8) return;
+    if (enteredLetterAI.row === 9) return;
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
 
     for (let i = enteredLetterAI.col; i < word.length; i++) {
-      if (enteredLetterAI.row < 10) {
+      if (enteredLetterAI.row < 9) {
         if (Object.keys(guessedRowsAI[0]).length === 0) newBoardAI[enteredLetterAI.row][i] = word[i];
 
       if (Object.keys(guessedRowsAI[1]).length === 0) newBoardAI[enteredLetterAI.row][i + 5] = word[i];
@@ -440,11 +464,19 @@ function App() {
   window.handleButtonClick = function(componentName) {
     setActiveComponent(componentName);
   };
+  
   const handleModeChange = (newMode) => {
     setMode(newMode);
     sessionStorage.setItem('mode', newMode);
     console.log("Mode changed to:", newMode);
   };
+
+  const handlePlaysChange = (newPlays) => {
+    setPlays(newPlays);
+    sessionStorage.setItem('plays', newPlays);
+    console.log("Plays changed to:", newPlays);
+  };
+
   useEffect(() => {
     console.log("Current mode:", mode); // Log the current mode whenever it changes
   }, [mode]);
@@ -456,8 +488,10 @@ function App() {
       <div className="Game-options ">
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
-        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
+        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
         <p>modo: {mode}</p>
+        <p>Partidas jugads: {plays}</p>
+        <p>Partidas ganadas: {wins}</p>
       </div>
       )}
       <AppContext.Provider 
