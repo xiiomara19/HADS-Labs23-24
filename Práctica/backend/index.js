@@ -43,13 +43,9 @@ app.get('/', (req, res) => {
 app.post('/sendFrequencesBegining', async (req, res) => {
   try {
     // Extract the frequencies from the request body
-    const frequencies = req.body.messages[0].content;
+    let contentStrings = req.body.messages[0].content;
     const dictionary = new Set(req.body.messages[1].content);
 
-    let contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
-                            formatFrequences(frequencies) +
-                            " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
-                            " Return just the 5 letters word following the format: 'guess: word'.";
     let word = ''
     while(word.length != 5 || !dictionary.has(word)){
           // Format the frequencies to match the expected format
@@ -89,23 +85,9 @@ app.post('/sendFrequencesBegining', async (req, res) => {
 app.post('/receiveAttempt', async (req, res) => {
   try {
     // Extract the frequencies from the request body
-    const frequencies = req.body.messages[0].content;
+    let contentStrings = req.body.messages[0].content;
     const dictionary = new Set(req.body.messages[1].content);
-    const res1 = req.body.messages[2].content;
-    const res2 = req.body.messages[3].content;
-    const res3 = req.body.messages[4].content;
-    const res4 = req.body.messages[5].content;
-    const attempt = req.body.messages[6].content;
-
-    let contentStrings = "For a list of 5 letters long words in Spanish, this are the frequences of appearence for each letter of the alphabet in order"+ 
-                            formatFrequences(frequencies) +
-                            " Your previous guess was: " + attempt + ". The result was: first hidden word -->" + res1 + "; Second hidden word -->" 
-                            + res2 + "; Third hidden word -->" + res3 + "; Fourth hidden word -->" + res4 + ". " +
-                            " Green means the letter in the guessed word (" + attempt + ") is at the correct position" +
-                            " Yellow means the letter in the guessed word (" + attempt + ") is in the hidden word but in the wrong position" +
-                            " Grey means the letter in the guessed word (" + attempt + ") is not in the hidden word." +
-                            " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden words." +
-                            " Return just the 5 letters word following the format: 'guess: word'.";
+    
     let word = ''
     while(word.length != 5 || !dictionary.has(word)){
           // Format the frequencies to match the expected format
@@ -124,13 +106,16 @@ app.post('/receiveAttempt', async (req, res) => {
           const response = JSON.stringify(prediction.choices[0]?.message?.content).toLowerCase();
           const wordMatch = response.match(/guess: (\w+)/);
           word = wordMatch ? wordMatch[1] : '';
-          console.log('Word:', word);
+          console.log('Created word:', word);
 
           if(word.length != 5){
             contentStrings = "The word "+ word +" is not 5 letters long. Try again. "+ contentStrings;
+            console.log('The word ', word + ' is not 5 letters long. Try again.');
           }
           else if(!dictionary.has(word)){
             contentStrings = "The word "+ word +" is not in the dictionary. Try again. "+ contentStrings;
+            console.log('The word ', word + ' is not in the dictionary. Finding the most similar word...');
+            word = findMostSimilarWord(word, dictionary);
           }
     }
         // Send the prediction back in the response
@@ -143,17 +128,43 @@ app.post('/receiveAttempt', async (req, res) => {
     }
 });
 
-function formatFrequences(frequencies) {
-      // Parse the frequencies string into an array of arrays
-      const frequencyStrings = frequencies.split('; ');
-      const content = frequencyStrings.map(frequencyString => {
-        const numbers = frequencyString.replace(/.*: /, '').split(',');
-        return numbers.map(Number);
-      });
-  
-      // Convert each array in content to a string
-      const contentStrings = content.map(array => array.join(','));
-      return contentStrings;
+function levenshteinDistance(a, b) {
+  const matrix = [];
+
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
+function findMostSimilarWord(guess, wordSet) {
+  let minDistance = Infinity;
+  let mostSimilarWord = '';
+
+  for (const word of wordSet) {
+    const distance = levenshteinDistance(guess, word);
+    if (distance < minDistance) {
+      minDistance = distance;
+      mostSimilarWord = word;
+    }
+  }
+
+  return mostSimilarWord;
 }
 
 app.listen(port, () => {
