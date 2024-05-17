@@ -259,7 +259,16 @@ function App() {
 
     console.log (guessedRowsAI)
 
+    if(mode === 'normal'){
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
+    }
+    else if (mode === 'putada'){
+      setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, ['yellow', 'green', 'green', 'green', 'green'], 
+      ['green', 'yellow', 'green', 'green', 'yellow'], 
+      ['green', 'yellow', 'green', 'yellow', 'green'], 
+      ['green', 'yellow', 'yellow', 'green', 'grey'], 
+      solutionAI1, solutionAI2, solutionAI3, solutionAI4));
+    }
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
     console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
@@ -355,7 +364,7 @@ function App() {
   async function receiveAttempt(res1, res2, res3, res4) {
    
     if (dictionaryAI.size > 0 || dictionaryAI.length > 0) {
-      const dictionaryArray = Array.from(dictionaryAI);
+      let dictionaryArray = Array.from(dictionaryAI);
       const frequencies = getFrequencies(dictionaryArray);
 
       let msg = ''
@@ -372,7 +381,11 @@ function App() {
       }
       else if (mode === 'putada'){
         msg = "For a list of 5 letters long words in Spanish, this are the frequences "+
-        "of appearence for each letter of the alphabet in order"+ frequencies +
+        "of appearence for each letter of the alphabet in order: ['1309,589,1114,352,252,481,406,356,127,287,1,547,72…254,326,863,45,679,565,744,148,347,0,6,118,164,51', '2274,110,143,87,1381,64,59,164,1327,67,0,397,130,197,1599,130,4,724,171,127,1462,82,0,36,24,50,50', '717,361,646,361,721,186,338,49,726,298,0,853,447,7…,441,371,53,1074,589,616,479,128,0,52,153,191,245', '2168,208,410,458,1647,71,258,137,982,172,0,496,258,326,947,200,0,589,290,575,279,128,0,6,43,128,83', '2358,3,6,399,1397,0,1,3,222,6,0,321,7,1072,2035,2,0,608,2236,23,24,0,0,12,52,72,0']" +
+        ". Your guess was" + wordAI + 
+        ", the results for that guess were: first hidden word --> ['grey', 'yellow', 'grey', 'green', 'grey']"+ 
+         ", Second hidden word --> ['yellow', 'grey', 'green', 'green', 'grey']"+ 
+        ", Third hidden word --> ['grey', 'yellow', 'grey', 'yellow', 'grey'], Fourth hidden word --> ['green', 'grey', 'yellow', 'green', 'grey']" + 
         " Guess a 5 letters long word in spanish based on the frequency of appearence given, so that you find the hidden word." +
         " Return just the 5 letters word following the format: 'guess: word'.";
       }
