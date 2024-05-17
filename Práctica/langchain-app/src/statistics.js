@@ -1,7 +1,10 @@
 
 import './styles/App.css';
+import React, {useContext} from 'react'
+import { AppContext } from './App'
 
 function Statistics({ onClose }) {
+    const {guessedRows, wins, plays} = useContext(AppContext);
   return (
     <div className="App-page">
       <div className="App-title">
@@ -14,11 +17,11 @@ function Statistics({ onClose }) {
         <hr></hr>
        <div className="stats-container">
                 <div className="stat-item">
-                    <div className="stat-value"> 0 </div>
+                    <div className="stat-value">{plays}</div>
                     <div className="stat-description"> Games played </div>
                 </div>
                 <div className="stat-item">
-                    <div className="stat-value"> 0 </div>
+                    <div className="stat-value"> {wins} </div>
                     <div className="stat-description"> Games won </div>
                 </div>
                 <div className="stat-item">

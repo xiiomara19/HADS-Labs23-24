@@ -36,6 +36,7 @@ function App() {
   function stop () {
     clearInterval(timer);
     setGiveUpButton(true);
+    setPlays(plays => plays + 1);
   }
   
 
@@ -68,6 +69,8 @@ function App() {
     return localStorage.getItem('gameMode') || '';
   });
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
+  const [plays, setPlays] = useState(0);
+  const [wins, setWins] = useState(0);
 
   useEffect(() => {
       const getRandomIndex = (usedIndices) => {
@@ -96,6 +99,10 @@ function App() {
     setSolutionAI2(data.solutions[usedIndices[5]]);
     setSolutionAI3(data.solutions[usedIndices[6]]);
     setSolutionAI4(data.solutions[usedIndices[7]]);
+    setPlays(0);
+    console.log(plays)
+    setWins(0);
+    console.log(wins)
   }, []);
   
   useEffect(() => {
@@ -459,7 +466,7 @@ function App() {
           onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows, mode,
           solutionAI1, solutionAI2, solutionAI3, solutionAI4, 
-          wordAI, wordSet, guessedRows, enteredLetterAI, guessedRowsAI}}>
+          wordAI, wordSet, guessedRows, enteredLetterAI, guessedRowsAI, wins, plays}}>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: activeComponent === 'game' ? 'flex-start' : 'center' }}>
             {activeComponent === 'game' ? (
               <div className="game_container-inner">
@@ -582,10 +589,13 @@ function App() {
     if (guessedRows.every(row => Object.values(row).length === 1)) {
       console.log("win");
       setGameOver(true);
+      setWins(wins => wins + 1);
+      setPlays(plays => plays + 1);
       return;
     }
     else if (!guessedRows.every(row => Object.values(row).length === 1) && enteredLetter.row === 9) {
       console.log("perdido")
+      setPlays(plays => plays + 1);
       setGiveUpButton(true);
       return;
     }
