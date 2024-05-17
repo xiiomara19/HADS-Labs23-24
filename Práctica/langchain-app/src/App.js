@@ -61,6 +61,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [selectSolutions, setSelectSolutions] = useState(false);
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
+  const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
 
   useEffect(() => {
       const getRandomIndex = (usedIndices) => {
@@ -170,6 +171,7 @@ function App() {
   } 
 
   const onKeyEnter = () => {
+    console.log("LA IA VA POR LA ROW:",enteredLetterAI.row);
     if (enteredLetter.col !== 5) return;
     let word = '';
     for (let i=0; i<5; i++) {
@@ -214,13 +216,37 @@ function App() {
 
     //send colors from AI to backend
     const colors1 = checkWord(wordAI, [solutionAI1]);
-    const colors2 = checkWord(wordAI, [solutionAI2]);  
+    if (colors1.every(color => color === "green")) {
+      let newGuessedRowsAI = [...guessedRowsAI];
+      newGuessedRowsAI[0] = {row: enteredLetterAI.row};
+      setGuessedRowsAI(newGuessedRowsAI);
+    }
+    const colors2 = checkWord(wordAI, [solutionAI2]); 
+    if (colors2.every(color => color === "green")) {
+      let newGuessedRowsAI = [...guessedRowsAI];
+      newGuessedRowsAI[1] = {row: enteredLetterAI.row};
+      setGuessedRowsAI(newGuessedRowsAI);
+    } 
     const colors3 = checkWord(wordAI, [solutionAI3]);
+    if (colors3.every(color => color === "green")) {
+      let newGuessedRowsAI = [...guessedRowsAI];
+      newGuessedRowsAI[2] = {row: enteredLetterAI.row};
+      setGuessedRowsAI(newGuessedRowsAI);
+    }
     const colors4 = checkWord(wordAI, [solutionAI4]);
+    if (colors4.every(color => color === "green")) {
+      let newGuessedRowsAI = [...guessedRowsAI];
+      newGuessedRowsAI[4] = {row: enteredLetterAI.row};
+      setGuessedRowsAI(newGuessedRowsAI);
+    }
+
     setAttemptsResults(attemtsResults+ '. Your guess was '+ wordAI + 
     ', the results for that guess were: first hidden word -->'+ 
     colors1 + ', Second hidden word -->'+ colors2 + 
     ', Third hidden word -->'+ colors3 + ', Fourth hidden word -->'+ colors4 + '.')
+    
+
+    console.log (guessedRowsAI)
 
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4));
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
@@ -247,7 +273,6 @@ function App() {
   useEffect(() => {
     CreateWordSet().then((words) => {
       setDictionaryAI(words.wordSet);
-      //console.log(dictionaryAI);
     }); 
   },[]);
 
@@ -376,6 +401,7 @@ function App() {
 
   useEffect(() => {
   // Function to update boardAI with the wordAI horizontally at the first row
+    if (enteredLetterAI.row === 8) return;
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
     for (let i = enteredLetterAI.col; i < word.length; i++) {
@@ -409,7 +435,8 @@ function App() {
           value={{solution1, solution2, solution3, solution4,
           board, setBoard, enteredLetter, setEnteredLetter,
           onKeyDelete, onKeyEnter, OnKeyLetter, boardAI, 
-          solutionAI1, solutionAI2, solutionAI3, solutionAI4, wordAI, wordSet, guessedRows, setGuessedRows}}>
+          solutionAI1, solutionAI2, solutionAI3, solutionAI4, 
+          wordAI, wordSet, guessedRows, enteredLetterAI, guessedRowsAI}}>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: activeComponent === 'game' ? 'flex-start' : 'center' }}>
             {activeComponent === 'game' ? (
               <div className="game_container-inner">
@@ -524,13 +551,13 @@ function App() {
   );
 
   function checkWin(guessedRows) {
-
-    if (guessedRows.every(row => Object.keys(row).length !== 0)) {
+    if (guessedRows.every(row => Object.values(row).length === 1)) {
       console.log("win");
       setGameOver(true);
       return;
     }
     else if (enteredLetter.row === 8) {
+      console.log("perdido")
       setGiveUpButton(true);
       return;
     }
