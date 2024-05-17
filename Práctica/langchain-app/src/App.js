@@ -311,7 +311,9 @@ function App() {
     }); 
   },[]);
 
-
+  useEffect(() => {
+    console.log('DictionaryAI:', dictionaryAI);
+  }, [dictionaryAI]);
 
 
   useEffect(() => {
@@ -503,11 +505,6 @@ function App() {
   useEffect(() => {
     console.log("Current mode:", mode); 
   }, [mode]);
-
-  useEffect(() => {
-    console.log("CURRENT PREVIOUS:", previouswordAI); 
-  }, [previouswordAI]);
-
   
   return (
 
