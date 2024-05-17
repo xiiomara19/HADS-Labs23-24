@@ -1,15 +1,17 @@
 
 import './styles/App.css';
-import React, {useContext} from 'react'
-import { AppContext } from './App'
 
-function Statistics({ onClose }) {
-    const {guessedRows, wins, plays} = useContext(AppContext);
-  return (
+function Statistics({ onClose , plays, wins}) {
+    const handleStartOver = () => {
+        window.location.reload();   //SI HACER RELOAD MODO = 'undefined' SIN RELOAD DA BIEN MODO
+        onClose();
+      };
+  
+    return (
     <div className="App-page">
       <div className="App-title">
         Estadisticas
-        <button className="App-button-close" onClick={onClose}>
+        <button className="App-button-close" onClick={handleStartOver}>
         ✖
         </button>
       </div>
@@ -25,7 +27,7 @@ function Statistics({ onClose }) {
                     <div className="stat-description"> Games won </div>
                 </div>
                 <div className="stat-item">
-                    <div className="stat-value"> 0 </div>
+                    <div className="stat-value"> {wins * 100 / plays} </div>
                     <div className="stat-description"> % of wins </div>
                 </div>
         </div>        

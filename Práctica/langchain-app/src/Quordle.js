@@ -84,7 +84,7 @@ export const getFrequencies = (wordSet) => {
 
  // Convert each array in frequencies to a string
  const contentStrings = frequencies.map(array => array.join(','));
- console.log('FRECUENCIAS', contentStrings);
+ //console.log('FRECUENCIAS', contentStrings);
 
  return contentStrings;
 };
@@ -110,6 +110,6 @@ export function filterDictionaryAI(wordSet, word, array1, array2, array3, array4
     });
   });
   const DictionaryFiltered = filteredWords.push(sol1, sol2, sol3, sol4);
-  console.log('PALABRAS FILTRADAS', filteredWords);
+  //console.log('PALABRAS FILTRADAS', filteredWords);
   return filteredWords;
 }

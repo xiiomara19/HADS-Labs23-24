@@ -64,8 +64,14 @@ function App() {
   const [guessedRows, setGuessedRows] = useState([{}, {}, {}, {}]);
   const [mode, setMode] = useState(sessionStorage.getItem('mode') || 'normal');
   const [guessedRowsAI, setGuessedRowsAI] = useState([{}, {}, {}, {}]);
-  const [plays, setPlays] = useState(sessionStorage.getItem('plays') || 0);
-  const [wins, setWins] = useState(sessionStorage.getItem('wins') || 0);
+  const [plays, setPlays] = useState(Number(sessionStorage.getItem('plays') || 0));
+  const [wins, setWins] = useState(Number(sessionStorage.getItem('wins') || 0));
+
+  useEffect(() => {
+    sessionStorage.setItem('plays', plays);
+    sessionStorage.setItem('wins', wins);
+  }, [plays, wins]);
+
 
   useEffect(() => {
       const getRandomIndex = (usedIndices) => {
@@ -94,10 +100,6 @@ function App() {
     setSolutionAI2(data.solutions[usedIndices[5]]);
     setSolutionAI3(data.solutions[usedIndices[6]]);
     setSolutionAI4(data.solutions[usedIndices[7]]);
-    setPlays(0);
-    console.log(plays)
-    setWins(0);
-    console.log(wins)
   }, []);
   
   useEffect(() => {
@@ -127,7 +129,7 @@ function App() {
   useEffect(() => {
     CreateWordSet().then((words) => {
       setWordSet(words.wordSet);
-      console.log(words.wordSet)
+      //console.log(words.wordSet)
     }); 
   },[]);
   
@@ -190,7 +192,7 @@ function App() {
     }
 
     if (wordSet.has(word.toLowerCase())){
-      setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+      
       if (word.toLowerCase() === solution1) {
         let newGuessedRows = [...guessedRows];
         newGuessedRows[0] = {row: enteredLetter.row};
@@ -214,6 +216,8 @@ function App() {
         setGuessedRows(newGuessedRows);
       }
       checkWin(guessedRows);
+      setEnteredLetter({row: enteredLetter.row + 1, col: 0});
+      console.log("el usuario va por la row: (KEY ENTER)",enteredLetter.row)
     }
     else {
       setIncorrectWord(true);
@@ -222,7 +226,7 @@ function App() {
       }, 2000);
       return;
     }
-
+    
     //send colors from AI to backend
     const colors1 = checkWord(wordAI, [solutionAI1]);
     if (colors1.every(color => color === "green")) {
@@ -259,9 +263,9 @@ function App() {
 
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
-    console.log(dictionaryAI);
+    //console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
-    console.log(dictionaryAI);
+    //console.log(dictionaryAI);
   }
 
 
@@ -277,7 +281,7 @@ function App() {
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
 
   useEffect(() => {
-    console.log('Dictionary AI has been updated:', dictionaryAI);
+    //console.log('Dictionary AI has been updated:', dictionaryAI);
   }, [dictionaryAI]);
 
   useEffect(() => {
@@ -334,7 +338,7 @@ function App() {
   
           // Get the response data
           const responseData = await response.json();
-          console.log(dictionaryAI);
+          //console.log(dictionaryAI);
           console.log('Word:', responseData);
           // Save the prediction in wordPredictionAI
           setWordAI(responseData);
@@ -512,7 +516,7 @@ function App() {
               <Settings onClose={() => setActiveComponent('game')} onModeChange={handleModeChange}> 
               </Settings>
             ) : activeComponent === 'statistics' ? (
-              <Statistics onClose={() => window.handleButtonClick('game')} />
+              <Statistics onClose={() => window.handleButtonClick('game')} plays ={plays}  wins={wins} />
             ) : activeComponent === 'info' ? (
               <Info onClose={() => window.handleButtonClick('game')} />
             ) : null}
@@ -616,10 +620,7 @@ function App() {
   );
 
   function checkWin(guessedRows) {
-    console.log(Object.values(guessedRows[0]).length);
-    console.log(Object.values(guessedRows[1]).length);
-    console.log(Object.values(guessedRows[2]).length);
-    console.log(Object.values(guessedRows[3]).length);
+    console.log("el usuario va por la row: (CHECKWIN)",enteredLetter.row)
     if (guessedRows.every(row => Object.values(row).length === 1)) {
       console.log("win");
       setGameOver(true);
@@ -627,11 +628,12 @@ function App() {
       setPlays(plays => plays + 1);
       return;
     }
-    else if (!guessedRows.every(row => Object.values(row).length === 1) && enteredLetter.row === 9) {
-      console.log("perdido")
-      setPlays(plays => plays + 1);
-      setGiveUpButton(true);
-      return;
+    else if ( enteredLetter.row === 8){
+        console.log("perdido")
+        setPlays(plays => plays + 1);
+        setGiveUpButton(true);
+        return;
+      
     }
   }
 }
