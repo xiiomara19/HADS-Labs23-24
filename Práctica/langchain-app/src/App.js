@@ -499,13 +499,13 @@ function App() {
 
     <div className="Game">
       {activeComponent === 'game' && (
-      <div className="Game-options ">
+      <div className="Game-options " style={{ display: 'flex', justifyContent: 'center' }}>
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
         <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
-        <p>modo: {mode}</p>
-        <p>Partidas jugads: {plays}</p>
-        <p>Partidas ganadas: {wins}</p>
+        <p className='App-button App-button-marked'>modo: {mode}</p>
+        <p className='App-button App-button-marked'>Partidas jugads: {plays}</p>
+        <p className='App-button App-button-marked'>Partidas ganadas: {wins}</p>
       </div>
       )}
       <AppContext.Provider 
