@@ -30,7 +30,7 @@ function Statistics({ onClose , plays, wins}) {
                     <div className="stat-description"> Partidas ganadas </div>
                 </div>
                 <div className="stat-item">
-                    <div className="stat-value"> {wins * 100 / plays} </div>
+                    <div className="stat-value"> {(wins * 100 / plays).toFixed(2)} </div>
                     <div className="stat-description"> % de victorias </div>
                 </div>
         </div>
