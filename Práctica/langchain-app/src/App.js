@@ -408,11 +408,28 @@ function App() {
     if (enteredLetterAI.row === 8) return;
     const updateBoardAI = (word) => {
     const newBoardAI = [...boardAI];
+    console.log(word.length)
     for (let i = enteredLetterAI.col; i < word.length; i++) {
-      newBoardAI[enteredLetterAI.row][i] = word[i];
-      newBoardAI[enteredLetterAI.row][i+5] = word[i];
-      newBoardAI[enteredLetterAI.row+9][i] = word[i];
-      newBoardAI[enteredLetterAI.row+9][i+5] = word[i];
+      console.log (word[i])
+      if (Object.keys(guessedRowsAI[0]).length === 0) {
+        console.log("entra 1")
+        newBoardAI[enteredLetterAI.row][i] = word[i];
+      }
+  
+      if (Object.keys(guessedRowsAI[1]).length === 0) {
+        console.log("entra 2")
+        newBoardAI[enteredLetterAI.row][i + 5] = word[i];
+      }
+  
+      if (Object.keys(guessedRowsAI[2]).length === 0 ) {
+        console.log("entra 3")
+        newBoardAI[enteredLetterAI.row + 9][i] = word[i];
+      }
+  
+      if (Object.keys(guessedRowsAI[3]).length === 0) {
+        console.log("entra 4")
+        newBoardAI[enteredLetterAI.row + 9][i + 5] = word[i];
+      }
     }
     setBoardAI(newBoardAI);
     setEnteredLetterAI({row: enteredLetterAI.row, col: 0});
