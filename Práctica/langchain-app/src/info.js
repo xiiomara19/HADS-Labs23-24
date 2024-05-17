@@ -1,11 +1,15 @@
 import './styles/App.css';
 
 function Info({ onClose }) {
+  const handleStartOver = () => {
+    window.location.reload(); 
+    onClose();
+};
   return (
     <div className="App-page">
       <div className="App-title">
         Sobre
-        <button className="App-button-close" onClick={onClose}>
+        <button className="App-button-close" onClick={handleStartOver}>
         ✖
         </button>
       </div>

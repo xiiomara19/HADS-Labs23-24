@@ -35,10 +35,17 @@ function App() {
     return () => clearInterval(timer);
   }, [seconds, minutes])
 
-  function stop () {
+  function stopGiveUp () {
     clearInterval(timer);
     setGiveUpButton(true);
     setPlays(plays => plays + 1);
+  }
+
+  function stopGameOver () {
+    clearInterval(timer);
+    setGameOver(true);
+    setPlays(plays => plays + 1);
+    setWins(wins => wins + 1);
   }
   
 
@@ -194,7 +201,6 @@ function App() {
       return; 
     }
 
-    console.log("LA IA VA POR LA ROW:",enteredLetterAI.row);
     if (enteredLetter.col !== 5) return;
     let word = '';
     for (let i=0; i<5; i++) {
@@ -230,7 +236,6 @@ function App() {
       }
       checkWin(guessedRows, enteredLetter.row+1);
       setEnteredLetter({row: enteredLetter.row + 1, col: 0});
-      console.log("el usuario va por la row: (KEY ENTER)",enteredLetter.row)
     }
     else {
       setIncorrectWord(true);
@@ -508,7 +513,7 @@ function App() {
       <div className="Game-options " style={{ display: 'flex', justifyContent: 'center' }}>
         {showWaitMessage && <p>Espera a que la IA responda...</p>}
       
-        <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
+        <button id="giveUp" className="App-button App-button-marked" onClick={stopGiveUp}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
         <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
         <p className='App-button App-button-marked'>modo: {mode}</p>
@@ -635,12 +640,9 @@ function App() {
   );
 
   function checkWin(guessedRows, row) {
-    console.log("el usuario va por la row: (CHECKWIN)",enteredLetter.row)
     if (guessedRows.every(row => Object.values(row).length === 1)) {
       console.log("win");
-      setGameOver(true);
-      setWins(wins => wins + 1);
-      setPlays(plays => plays + 1);
+      stopGameOver();
       return;
     }
     else if ( row >= 9){

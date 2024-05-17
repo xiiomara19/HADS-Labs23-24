@@ -1,14 +1,11 @@
 
 import './styles/App.css';
-import React, {useContext} from 'react'
-import { AppContext } from './App'
 
 function Statistics({ onClose , plays, wins}) {
     const handleStartOver = () => {
-        window.location.reload();   //SI HACER RELOAD MODO = 'undefined' SIN RELOAD DA BIEN MODO
+        window.location.reload(); 
         onClose();
     };
-    const {guessedRows} = useContext(AppContext);
 
     return (
     <div className="App-page">
@@ -35,52 +32,7 @@ function Statistics({ onClose , plays, wins}) {
                 </div>
         </div>
 
-       <div className="stats-chart">
-            <hr/>
-            <div className="chart-title">Distribución de las mejores tiradas</div>
-            <table>
-                <tbody>
-                    <tr>
-                        <td className="number">#4</td>
-                        <td>
-                            <div className="percentage">0%</div>
-                        </td>
-                        <td className="amount">0</td>
-                    </tr>
-                    <tr>
-                        <td className="number">#5</td>
-                            <td>
-                                <div className="percentage">0%</div>
-                            </td>
-                        <td className="amount">0</td>
-                    </tr>
-                    <tr>
-                        <td className="number">#6</td>
-                            <td>
-                                <div className="percentage">0%</div>
-                            </td>
-                        <td className="amount">0</td>
-                    </tr>
-                    <tr>
-                        <td className="number">#7</td>
-                            <td>
-                                <div className="percentage">0%</div>
-                            </td>
-                        <td className="amount">0</td>
-                    </tr>
-                    <tr>
-                        <td className="number">#8</td>
-                            <td>
-                                <div className="percentage">0%</div>
-                            </td>
-                        <td className="amount">0</td>
-                    </tr>
-                </tbody>
-            </table>
-            <hr/>
        </div>
-       
-      </div>
     </div>
   );
 }
