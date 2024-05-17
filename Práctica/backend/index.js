@@ -23,16 +23,26 @@ async function getGroqChatCompletion(message) {
 
   message = JSON.stringify(message);
 
-  return groq.chat.completions.create({
-      messages: [
-          {
-              role: "user",
-              content: message,
-          }
-      ],
-      model: "llama3-8b-8192"
-  });
-  
+  try{
+    return groq.chat.completions.create({
+        messages: [
+            {
+                role: "user",
+                content: message,
+            }
+        ],
+        model: "llama3-8b-8192"
+    });
+    } catch(error) {
+      if (error instanceof RateLimitError) {
+        const retryAfter = error.headers['retry-after'];
+        console.log(`Rate limited. Retrying after ${retryAfter} seconds.`);
+        setTimeout(getGroqChatCompletion(message), retryAfter);
+      } else {
+        console.error('Error in /sendFrequencesBegining:', error);
+        res.status(500).send('Server error');
+      }
+    }
 };
 
 

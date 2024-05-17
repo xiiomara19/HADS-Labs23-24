@@ -3,12 +3,12 @@ import { AppContext } from '../App'
 
 
 function Cell({col, row}) {
-    const {board, solution1, solution2, solution3, solution4, enteredLetter} = useContext(AppContext);
+    const {board, solution1, solution2, solution3, solution4, enteredLetterAI} = useContext(AppContext);
     const cell = board[row][col];
     if (cell === "") {
         return <div className="Row-letter" aria-live="assertive"></div>;
     }
-    if (enteredLetter.row > row) {
+    if (enteredLetterAI.row > row) {
         if (col < 5){
             return checkCell(solution1, col, cell);
         }
@@ -17,7 +17,7 @@ function Cell({col, row}) {
         }
     }
 
-    if (row > 8 && enteredLetter.row +9 > row ) {
+    if (row > 8 && enteredLetterAI.row +9 > row ) {
         if (col < 5){
             return checkCell(solution3, col, cell);
         }
