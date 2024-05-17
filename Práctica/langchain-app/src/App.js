@@ -323,7 +323,7 @@ function App() {
 
       const sendFrequencies = async () => {
         try {
-          const response = await fetch('http://localhost:5000/sendFrequencesBegining', {
+          const response = await fetch('http://localhost:5000/receiveAttempt', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

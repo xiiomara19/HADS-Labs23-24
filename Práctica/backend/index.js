@@ -7,7 +7,6 @@ const port = 5000;
 const cors = require('cors');
 const ChatGroq = require('groq-sdk');
 const fs = require("fs");
-const ChatPromptTemplate = require("@langchain/core/prompts");
 const e = require('express');
 
 app.use(cors());
@@ -49,50 +48,6 @@ async function getGroqChatCompletion(message) {
 app.get('/', (req, res) => {
   res.send('AI Chatbot API is running!');
 })
-
-app.post('/sendFrequencesBegining', async (req, res) => {
-  try {
-    // Extract the frequencies from the request body
-    let contentStrings = req.body.messages[0].content;
-    const dictionary = new Set(req.body.messages[1].content);
-
-    let word = ''
-    while(word.length != 5 || !dictionary.has(word)){
-          // Format the frequencies to match the expected format
-          const formattedFrequencies = {
-            messages: [
-              {
-                content: contentStrings
-              }
-            ]
-          };
-
-          // Pass the frequencies to getGroqChatCompletion
-          const prediction = await getGroqChatCompletion(formattedFrequencies);
-
-          // Extract the prediction from the response
-          const response = JSON.stringify(prediction.choices[0]?.message?.content).toLowerCase();
-          const wordMatch = response.match(/guess: (\w+)/);
-          word = wordMatch ? wordMatch[1] : '';
-          console.log('Word:', word);
-
-          if(word.length != 5){
-            contentStrings = "The word "+ word +" is not 5 letters long. Try again. "+ contentStrings;
-          }
-          else if(!dictionary.has(word)){
-            contentStrings = "The word "+ word +" is not in the dictionary. Try again. "+ contentStrings;
-            console.log('The word ', word + ' is not in the dictionary. Finding the most similar word...');
-            word = findMostSimilarWord(word, dictionary);
-          }
-    }
-        // Send the prediction back in the response
-        res.send(JSON.stringify(word));
-
-  } catch (error) {
-        console.error('Error in /sendFrequencesBegining:', error);
-        res.status(500).send('Server error');
-    }
-});
 
 app.post('/receiveAttempt', async (req, res) => {
   try {
