@@ -18,6 +18,9 @@ function App() {
 
   const [seconds, setSeconds] = useState(0);
   const[minutes, setMinutes] = useState(0);
+
+  const [aiHasResponded, setAiHasResponded] = useState(false); 
+  const [showWaitMessage, setShowWaitMessage] = useState(false);
   
   let timer;
   useEffect(() => {
@@ -179,6 +182,16 @@ function App() {
   } 
 
   const onKeyEnter = () => {
+
+  console.log("-------------------------------------PREVIOUS"+previouswordAI);
+    if (wordAI == previouswordAI) {
+      setShowWaitMessage(true);
+      setTimeout(() => {
+        setShowWaitMessage(false);
+      }, 2000); 
+      return; 
+    }
+
     console.log("LA IA VA POR LA ROW:",enteredLetterAI.row);
     if (enteredLetter.col !== 5) return;
     let word = '';
@@ -261,7 +274,9 @@ function App() {
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
     console.log(dictionaryAI);
     receiveAttempt(colors1, colors2, colors3, colors4);
+    previoussetWordAI(wordAI);
     console.log(dictionaryAI);
+    setAiHasResponded(false);
   }
 
 
@@ -272,6 +287,7 @@ function App() {
   const [boardAI, setBoardAI] = useState(boardBeginingAI);
   const [dictionaryAI, setDictionaryAI] = useState(new Set());
   const [wordAI, setWordAI] = useState('');
+  const [previouswordAI, previoussetWordAI] = useState('');
   const [attemtsResults, setAttemptsResults] = useState('');
 
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
@@ -337,6 +353,7 @@ function App() {
           console.log(dictionaryAI);
           console.log('Word:', responseData);
           // Save the prediction in wordPredictionAI
+          
           setWordAI(responseData);
   
         } catch (error) {
@@ -396,11 +413,12 @@ function App() {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
+        setAiHasResponded(true);
         // Get the response data
         const responseData = await response.json();
         console.log('Word:', responseData);
         // Save the prediction in wordPredictionAI
+        
         setWordAI(responseData);
 
       } catch (error) {
@@ -478,14 +496,19 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("Current mode:", mode); // Log the current mode whenever it changes
+    console.log("Current mode:", mode); 
   }, [mode]);
+
+  useEffect(() => {
+    console.log("CURRENT PREVIOUS:", previouswordAI); 
+  }, [previouswordAI]);
   
   return (
 
     <div className="Game">
       {activeComponent === 'game' && (
       <div className="Game-options ">
+        {showWaitMessage && <p>Please wait for the AI to respond...</p>}
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
         <button id="newSolutions" className='App-button App-button-marked' onClick={() => {if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
