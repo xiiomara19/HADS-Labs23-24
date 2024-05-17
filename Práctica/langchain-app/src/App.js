@@ -6,7 +6,7 @@ import Board from './elements/Board';
 import Statistics from './statistics';
 import Info from './info';
 import Settings from './settings';
-import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies, filterDictionaryAI} from './Quordle';
+import { CreateWordSet, boardBegininig, boardBeginingAI, getFrequencies, filterDictionaryAI, filterDictionaryModoPutada} from './Quordle';
 import Popup from './elements/Popup'; 
 import BoardAI from './elements/BoardAI';
 
@@ -263,11 +263,8 @@ function App() {
     setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, colors1, colors2, colors3, colors4, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
     }
     else if (mode === 'putada'){
-      setDictionaryAI(filterDictionaryAI(dictionaryAI, wordAI, ['yellow', 'green', 'green', 'green', 'green'], 
-      ['green', 'yellow', 'green', 'green', 'yellow'], 
-      ['green', 'yellow', 'green', 'yellow', 'green'], 
-      ['green', 'yellow', 'yellow', 'green', 'grey'], 
-      solutionAI1, solutionAI2, solutionAI3, solutionAI4));
+      setDictionaryAI(filterDictionaryModoPutada(dictionaryAI, solutionAI1, solutionAI2, solutionAI3, solutionAI4));
+
     }
     setEnteredLetterAI({row: enteredLetterAI.row+1, col: 0})
     console.log(dictionaryAI);
@@ -288,7 +285,11 @@ function App() {
   const[enteredLetterAI, setEnteredLetterAI] = useState({row: 0, col: 0});
 
   useEffect(() => {
-    console.log('Dictionary AI has been updated:', dictionaryAI);
+    console.log('Dictionary AI has been updated:', dictionaryAI);      
+    console.log(Array.from(dictionaryAI).includes(solutionAI1));
+      console.log(Array.from(dictionaryAI).includes(solutionAI2));
+      console.log(Array.from(dictionaryAI).includes(solutionAI3));
+      console.log(Array.from(dictionaryAI).includes(solutionAI4));
   }, [dictionaryAI]);
 
   useEffect(() => {

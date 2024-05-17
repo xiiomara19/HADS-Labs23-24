@@ -109,7 +109,13 @@ export function filterDictionaryAI(wordSet, word, array1, array2, array3, array4
       return true;
     });
   });
-  const DictionaryFiltered = filteredWords.push(sol1, sol2, sol3, sol4);
-  console.log('PALABRAS FILTRADAS', filteredWords);
+  filteredWords.push(sol1, sol2, sol3, sol4);
   return filteredWords;
+}
+
+export function filterDictionaryModoPutada(wordSet, sol1, sol2, sol3, sol4){
+  const wordArray = Array.from(wordSet);
+  const randomWords = wordArray.slice(0, wordArray.length - 1300);
+  randomWords.push(sol1, sol2, sol3, sol4);
+  return randomWords;
 }
