@@ -396,7 +396,7 @@ function App() {
       <div className="Game-options ">
         <button id="giveUp" className="App-button App-button-marked" onClick={stop}>Rendirse</button>
         <button id="startOver" className="App-button App-button-marked invisible" onClick={handleStartOver}>Comenzar de nuevo</button>
-        <button id="newSolutions" className='App-button App-button-marked' onClick={() => setSelectSolutions(true)}>Elegir soluciones</button>
+        <button id="newSolutions" className='App-button App-button-marked' onClick={() => {console.log(enteredLetter.row); if (enteredLetter.row === 0) setSelectSolutions(true)}}>Elegir soluciones</button>
       </div>
       <AppContext.Provider 
           value={{solution1, solution2, solution3, solution4,
